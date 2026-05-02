@@ -67,6 +67,12 @@ Addressed 7 blockers and ~15 concerns from Trinity, Oracle, and Mouse spec revie
 - Added 404/error page and robots.txt/sitemap tests
 - Added smoke test suite, link checking tests, launch-day verification suite
 
+### Team Review Status (2026-05-02)
+- **Trinity** ⚠️ Found 2 blockers (form contracts, content contracts), approved stack
+- **Oracle** ⚠️ Found 2 blockers (palette AA safety, design handoff incomplete), approved trust-first direction
+- **Mouse** ❌ Did NOT approve, found 3 blockers (E2E environment, Vitest setup, form determinism)
+- **Morpheus action:** Specs v1.1 published with all blocker fixes + concern resolutions
+
 ### Key File Paths
 - `.squad/specs/architecture-blueprint.md` — Master architecture document
 - `.squad/specs/trinity-frontend-spec.md` — Frontend implementation spec

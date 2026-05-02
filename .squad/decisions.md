@@ -62,6 +62,35 @@
 **What:** Authentication (Auth.js v5), database (Prisma + PostgreSQL), payments (Stripe), and portal routing are architecturally planned with clear insertion points, but zero implementation in Phase 1.
 **Why:** Avoid over-engineering Phase 1 while ensuring Phase 2 doesn't require a rewrite.
 
+### 2026-05-02T17:18:03-05:00: Assessment form structure — single-page
+**By:** Shaeel Afsar
+**What:** Assessment form will be single-page with inline validation (not multi-step).
+**Why:** User directive. Simpler to implement, meets user expectations.
+**Resolves:** Oracle wireframe review blocker #3 (form structure).
+
+### 2026-05-02T17:18:03-05:00: Pricing display strategy — use placeholders
+**By:** Shaeel Afsar
+**What:** Packages page uses `$XXX / month` placeholders. No real pricing required for Phase 1.
+**Why:** User confirmed pricing placeholders are acceptable. Avoids premature commitment to pricing model.
+**Resolves:** Oracle wireframe review concern (pricing display).
+
+### 2026-05-02T17:18:03-05:00: News & Events deferred to Phase 2
+**By:** Shaeel Afsar
+**What:** News & Events page is deferred. Remove from Phase 1 navigation.
+**Why:** Content readiness not addressed; user treating as deferred concern. Prevents trust issue from lorem ipsum.
+**Resolves:** Oracle wireframe review concern (News & Events).
+
+### 2026-05-02T17:18:03-05:00: Transportation page — minimal scope
+**By:** Shaeel Afsar
+**What:** Transportation/logistics page kept minimal. No route planning, GPS guidance, or complex logistics.
+**Why:** User directive: people have GPS. Not a differentiator for Cedar. Reduces scope bloat.
+
+### 2026-05-02T17:18:03-05:00: Aesthetic priority — modern, not dated
+**By:** Shaeel Afsar
+**What:** Final website design MUST be aesthetic, modern, friendly, and easy to navigate. Reject "early 2000s" appearance.
+**Why:** User prioritizing design quality and freshness over functionality minimalism. Core brand signal.
+**Trade-off:** May require additional design iteration vs. minimal wireframes.
+
 ## Team Reviews
 
 ### 2026-05-02: Trinity frontend spec review

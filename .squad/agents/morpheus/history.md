@@ -106,3 +106,23 @@ Oracle completed a comprehensive UX/design review of the current website impleme
 - `.squad/specs/morpheus-alignment-review-2026-05-03.md` — Architecture alignment review + verdicts
 - `.squad/decisions/inbox/morpheus-ux-alignment.md` — Decision records for ledger
 - `.squad/site-audit.md` — Comprehensive site audit (input for all decisions)
+
+### Trinity: Programs/Test Prep Content Migration (2026-05-03)
+**Status:** COMPLETE ✅
+
+Trinity executed Slice 4 (Programs + Test Prep migration to content layer):
+- **Content files created (5):**
+  - `content/pages/programs-hub.json` — Programs overview hub shell
+  - `content/pages/test-prep-hub.json` — Test prep hub shell  
+  - `content/test-prep/sat.json`, `act.json`, `psat.json` — Detail page content
+- **Type system:** Added `TestPrepPageContent` interface with shared `detailPage` shell pattern
+- **Loaders:** Implemented `loadTestPrepPage()` in `src/lib/content/test-prep.ts` with Zod validation
+- **Static routes:** All test-prep routes (`/test-prep`, `/test-prep/sat/act/psat`) generate at build time
+- **Build status:** ✅ Passed with 0 TypeScript errors, all static params generated
+
+**Decision record:** Trinity — Programs/Test Prep Content Shell Decision (2026-05-03)
+- Hub and detail page copy stored together in typed JSON via `detailPage` objects
+- Removes remaining hardcoded copy from TSX, keeps shared route templates maintainable
+- Content-driven pattern validated with Zod at build time
+
+**Impact:** Static export unblocked for test-prep routes. Ready for design review and copy approval.

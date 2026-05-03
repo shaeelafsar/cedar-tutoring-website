@@ -304,3 +304,10 @@
 - Program detail pages and homepage cards share source-of-truth outcome language
 - If future design needs distinct homepage-only line, team revisits schema intentionally
 - No schema extension required for Phase 1
+
+### 2026-05-03T15:51:16-05:00: Programs/Test Prep Content Shell Decision
+**By:** Trinity (Frontend Engineer)
+**Status:** APPROVED
+**What:** Store hub-page copy and reusable detail-page shell copy together in `content/pages/programs-hub.json` and `content/pages/test-prep-hub.json` via typed `detailPage` objects.
+**Why:** This removes the remaining marketing copy from TSX without scattering one-off JSON files across the repo, while keeping the shared route templates easy to maintain.
+**Impact:** Future copy edits for programs and test prep stay centralized, static export remains build-time safe, and section headings/process/CTA language can evolve without touching React layout code.

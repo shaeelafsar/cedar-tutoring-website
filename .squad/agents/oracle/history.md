@@ -202,3 +202,20 @@ Oracle audited and updated programs hub and individual program pages for compreh
 
 **Status:** ✅ COMPLETED (spec delivered; awaiting Trinity implementation)
 
+### Trinity: Slice 4 Programs/Test Prep Content Migration (2026-05-03)
+
+Trinity completed content layer migration for programs and test-prep sections.
+
+**Work completed:**
+- Migrated Programs and Test Prep hub/detail pages to content-driven JSON pattern
+- Created 5 content files: `content/pages/programs-hub.json`, `content/pages/test-prep-hub.json`, `content/test-prep/{sat,act,psat}.json`
+- Implemented typed loaders (`loadTestPrepPage()`) with Zod validation
+- Generated all static routes for test-prep section (`/test-prep`, `/test-prep/sat`, `/test-prep/act`, `/test-prep/psat`)
+- Build passed ✅ with 0 TypeScript errors
+
+**Impact on design:** Test-prep detail page content now fully defined in JSON. Design review can proceed with confidence on content structure and scope. Copy ready for Shaeel approval.
+
+**Type system additions:** `TestPrepPageContent` interface with reusable `detailPage` shell pattern for hub/detail metadata sharing.
+
+**Status:** Ready for design layout review and copy sign-off.
+

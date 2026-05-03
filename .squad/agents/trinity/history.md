@@ -60,3 +60,39 @@ Oracle, Morpheus, and Oracle validation cycle completed. All 14 verdicts agreed.
 
 **Priority:** This color palette update gates all remaining Phase 1 feature work.
 
+### Brand Implementation Completed (2026-05-03T12:02:42.230-05:00)
+**Status:** ✅ COMPLETED  
+Trinity implemented the agreed Oracle + Morpheus brand refresh across homepage and programs surfaces.
+
+**What shipped:**
+- Converted global design tokens to Tailwind v4 HSL variables, set Cedar Blue / Cedar Orange, and added `--brand-red`
+- Documented and enforced `--primary-text` (`#0a7ab8`) for Cedar Blue text on light backgrounds
+- Upgraded interior `PageHero` to the shared Cedar Blue gradient with decorative orbs
+- Extracted a reusable `CTASection` and deployed it to homepage, programs hub, and program detail pages
+- Unified process steps to filled circles, strengthened connector visibility, and increased mobile spacing/touch targets
+- Added Cedar Red into program-card accent bars while keeping green semantic-only
+- Captured updated reference screenshots for homepage, programs hub, and a program detail page
+
+**Validation:**
+- `npm run build` passed
+- Repository-wide `npm run lint` still fails only because of pre-existing `.squad/templates/ralph-triage.js` errors unrelated to Trinity's frontend files
+
+### Homepage Reordering + Mobile Bug Fix Implementation (2026-05-03T14:08:57-05:00)
+
+**Context:** Oracle's UX review identified mobile testimonial scroll bug + suboptimal section ordering. Shaeel approved all 3 changes (P0/P1). Trinity assigned implementation.
+
+**Changes Completed:**
+1. **Mobile Testimonials CSS:** Added `max-w-[85%]` to cards; `break-words` to quote text. Eliminates per-card horizontal scroll on mobile.
+2. **Homepage Section Reorder:** Moved Testimonials from position 6 → 3 (after Proof Bar). Keeps: Hero → Proof Bar → **Testimonials** → Programs → How It Works → Why Cedar → CTA.
+3. **Programs Hub Cleanup:** Removed "Why Cedar" section (was duplicating Homepage verbatim). Tightens Programs Hub focus to program differentiation only.
+
+**Deliverables:**
+- `src/app/(marketing)/page.tsx` — sections reordered + testimonial CSS fix
+- `src/app/(marketing)/programs/page.tsx` — "Why Cedar" section removed
+
+**Validation:**
+- `npm run build` passed
+- Lint passing on modified files
+- No breaking changes
+
+**Related:** Oracle UX review spec + Scribe decision log merge. All work merged into canonical ledger.

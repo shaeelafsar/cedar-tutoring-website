@@ -181,6 +181,28 @@
 **Status:** AGREED — all 14 Morpheus alignment decisions accepted
 **Summary:** Cedar Red as `--brand-red` (not replacing `--secondary`), hero gradient Cedar Blue range, Cedar Orange as `--accent`, PageHero decorative orbs default true, CTASection as universal shared component, ProcessSteps filled circles only, program card stripe Cedar Blue only, interior testimonials on muted background with gradient stripe (not full dark section), photography deferred to Phase 1.5, plus 4 additional design consistency points. All Oracle color constraints enforced: Cedar Blue NOT text-safe on white (use #0a7ab8 variant), Cedar Orange background/decoration only, Cedar Red emphasis/featured contexts only.
 
+### 2026-05-03: Homepage Section Reordering & Mobile Testimonial Fix
+**By:** Oracle (UX/Design) via Shaeel approval
+**Status:** APPROVED
+**What:** 
+1. Fix horizontal scroll bug in testimonials on mobile by adding `max-w-[85%]` to cards + `break-words` to quote text
+2. Reorder homepage sections: move Testimonials from position 6 to position 3 (after Proof Bar)
+3. Remove "Why Cedar" section from Programs Hub (duplicates Homepage)
+**Why:** Social proof is trust driver #1 for local service businesses. Mobile users rarely scroll to position 6. Removes cross-page redundancy.
+**SEO Impact:** Neutral to positive (content preserved, engagement improves).
+**Implementation:** Trinity (Frontend Engineer)
+**Spec:** `.squad/specs/oracle-homepage-reorder-review-2026-05-03.md`
+
+### 2026-05-03: Brand Implementation — Color Tokens & Component Standardization
+**By:** Trinity (Frontend Engineer)
+**Status:** COMPLETED
+**What:** Implemented Oracle + Morpheus brand alignment:
+1. Added `--primary-text` token (#0a7ab8) for AA-safe Cedar Blue text on light backgrounds
+2. Standardized CTASection as universal final-CTA component (gradient, dual-CTA, trust bullets)
+3. Applied Cedar Red as decorative accent in program-card top stripes (not replacing semantic green)
+4. Updated PageHero with Cedar Blue gradient + lighter decorative orbs (interior pages parity with homepage)
+**Impact:** Brand consistency across all marketing surfaces. No breaking changes.
+
 ## Governance
 
 - All meaningful changes require team consensus

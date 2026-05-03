@@ -1,5 +1,22 @@
 ## Learnings
 
+### Homepage UX Review: Section Ordering & Mobile Testimonial Bug (2026-05-03T14:08:57-05:00)
+
+**Context:** Shaeel requested UX review of homepage in light of mobile testing feedback. Reviewed: section ordering, mobile testimonial horizontal scroll bug, cross-page content repetition.
+
+**Key Findings:**
+1. **Mobile Testimonial Bug:** Testimonial cards lack `max-width` constraint; long text pushes card beyond 85% viewport width, triggering per-card horizontal scroll. Fix: Add `max-w-[85%]` + `break-words` to quote text.
+2. **Section Ordering:** Testimonials at position 6 (below Why Cedar); most mobile users never scroll that far. Social proof is trust driver #1 for local service tutoring. Recommendation: Move to position 3 (after Proof Bar).
+3. **Cross-Page Redundancy:** "Why Cedar" section on Programs Hub duplicates Homepage nearly verbatim. Programs Hub should focus on program differentiation, not Cedar brand rationale. Recommendation: Remove from Programs Hub.
+
+**Decisions Approved:** Shaeel approved all 3 changes as P0/P1.
+
+**SEO Review:** Content moves/removals are neutral to positive. No indexing concerns.
+
+**Spec:** `.squad/specs/oracle-homepage-reorder-review-2026-05-03.md`
+
+**Delegation:** Trinity assigned for implementation.
+
 ### Response to Morpheus Alignment Review (2026-05-03T12:02:42-05:00)
 
 **Context:** Reviewed Morpheus's verdict on all 14 recommendations from Oracle's UX review. Agreed on all 14 verdicts.

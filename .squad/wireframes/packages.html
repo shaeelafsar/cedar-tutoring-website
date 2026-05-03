@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cedar Wireframe — Packages & Pricing</title>
+  <style>
+    :root { --bg:#f7f7f7; --surface:#fff; --line:#b8b8b8; --text:#222; --muted:#666; --soft:#ececec; --annotation:#eaf4ff; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Inter, Arial, sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }
+    a { color:inherit; text-decoration:none; }
+    .page { max-width:1280px; margin:0 auto; }
+    .topbar,.hero,.section,.footer { background:var(--surface); border:2px solid var(--line); margin:16px; }
+    .topbar { position:sticky; top:0; z-index:10; }
+    .inner,.hero-inner,.section,.footer-inner { padding:16px; }
+    .nav,.row { display:flex; gap:12px; justify-content:space-between; align-items:center; flex-wrap:wrap; }
+    .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+    .nav-links a,.button,.chip,.tag { border:1px solid var(--line); background:var(--soft); padding:8px 12px; }
+    .hero { background:linear-gradient(180deg,#fafafa,#efefef); }
+    .label { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); }
+    h1,h2,h3 { margin:8px 0 12px; }
+    h1,h2 { font-family:Newsreader, Georgia, serif; }
+    .grid { display:grid; gap:16px; }
+    .two { grid-template-columns: 0.9fr 1.1fr; }
+    .three { grid-template-columns: repeat(3, 1fr); }
+    .card,.table-wrap,.list,.step,.faq,.cta-box { border:2px dashed var(--line); background:#fcfcfc; padding:16px; }
+    .featured { background:#f0f0f0; border-style:solid; }
+    .annotation { margin-top:12px; padding:12px; border:1px solid #a7c7e7; background:var(--annotation); font-size:14px; }
+    .small { font-size:14px; color:var(--muted); }
+    table { width:100%; border-collapse:collapse; margin-top:8px; }
+    th, td { border:1px solid var(--line); padding:10px; text-align:left; vertical-align:top; }
+    ul { margin:10px 0 0 18px; }
+    @media (max-width: 980px) { .two,.three { grid-template-columns:1fr; } }
+    /* Mobile intent: pricing cards stack vertically, comparison tables scroll horizontally, and CTAs stay large and full-width for easier decision-making. */
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="inner nav">
+        <div><div class="label">Shared Wireframe Nav</div><strong>Cedar Tutoring Academy</strong></div>
+        <nav class="nav-links" aria-label="Wireframe pages">
+          <a href="./about.html">About Us</a>
+          <a href="./testimonials.html">Testimonials</a>
+          <a href="./faq.html">FAQ</a>
+          <a href="./packages.html"><strong>Packages &amp; Pricing</strong></a>
+        </nav>
+        <a class="button" href="#cta">Book Assessment CTA</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-inner grid two">
+        <div>
+          <div class="label">Hero Section</div>
+          <h1>Packages &amp; Pricing</h1>
+          <p class="small">Clear, parent-friendly pricing page that explains how plans work and helps families compare options without feeling pressured.</p>
+        </div>
+        <div class="card">
+          <strong>Pricing Positioning Note</strong><br />Every plan starts with a free assessment so Cedar can recommend the right frequency, subject mix, and support level.
+        </div>
+      </div>
+      <div class="annotation">UX rationale: Parents visiting pricing pages are highly intent-driven. The hero should reduce uncertainty immediately and explain that pricing is tied to fit, not just a generic rate card.</div>
+    </section>
+
+    <section class="section">
+      <div class="label">How It Works Section</div>
+      <div class="grid three">
+        <div class="step"><strong>1. Free Assessment</strong><br />Identify skill gaps, goals, and best-fit support.</div>
+        <div class="step"><strong>2. Plan Recommendation</strong><br />Recommend frequency and package based on student needs.</div>
+        <div class="step"><strong>3. Start Tutoring</strong><br />Launch with clear expectations, schedule, and progress checkpoints.</div>
+      </div>
+      <div class="annotation">UX rationale: Explaining the process before the prices helps families understand the logic behind the tiers and frames Cedar as consultative rather than transactional.</div>
+    </section>
+
+    <section class="section" style="background:#f3f3f3;">
+      <div class="label">Pricing Tier Cards</div>
+      <div class="grid three">
+        <div class="card">
+          <div class="tag">Starter Plan</div>
+          <h2>1 Session / Week</h2>
+          <p><strong>$XXX / month</strong></p>
+          <ul>
+            <li>Best for maintenance or light support</li>
+            <li>One subject focus</li>
+            <li>Monthly progress touchpoint</li>
+          </ul>
+          <p class="button" style="display:inline-block; margin-top:12px;">Choose Starter</p>
+        </div>
+        <div class="card featured">
+          <div class="tag"><strong>Most Popular</strong></div>
+          <h2>Growth Plan</h2>
+          <p><strong>2 Sessions / Week</strong></p>
+          <p><strong>$XXX / month</strong></p>
+          <ul>
+            <li>Ideal for catch-up and steady progress</li>
+            <li>Deeper skill reinforcement</li>
+            <li>Regular parent updates</li>
+          </ul>
+          <p class="button" style="display:inline-block; margin-top:12px;">Choose Growth</p>
+        </div>
+        <div class="card">
+          <div class="tag">Accelerator Plan</div>
+          <h2>3+ Sessions / Week</h2>
+          <p><strong>$XXX / month</strong></p>
+          <ul>
+            <li>Best for intensive support or test prep</li>
+            <li>Multi-subject or high-frequency options</li>
+            <li>Closer milestone tracking</li>
+          </ul>
+          <p class="button" style="display:inline-block; margin-top:12px;">Choose Accelerator</p>
+        </div>
+      </div>
+      <div class="annotation">UX rationale: Tier cards support quick comparison and make the decision feel manageable. Highlighting one recommended option can guide overwhelmed parents without limiting choice.</div>
+    </section>
+
+    <section class="section">
+      <div class="label">Comparison Table Section</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Starter</th>
+              <th>Growth</th>
+              <th>Accelerator</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Recommended For</td>
+              <td>Staying on track</td>
+              <td>Catching up / building confidence</td>
+              <td>Intensive support / test prep</td>
+            </tr>
+            <tr>
+              <td>Sessions Per Week</td>
+              <td>1</td>
+              <td>2</td>
+              <td>3+</td>
+            </tr>
+            <tr>
+              <td>Parent Progress Updates</td>
+              <td>Monthly</td>
+              <td>Biweekly</td>
+              <td>Biweekly + milestone review</td>
+            </tr>
+            <tr>
+              <td>Subject Flexibility</td>
+              <td>Single subject</td>
+              <td>One or two subjects</td>
+              <td>Custom mix</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="annotation">UX rationale: A comparison table supports analysis-minded parents who want to justify the investment and understand what changes from tier to tier before contacting Cedar.</div>
+    </section>
+
+    <section class="section">
+      <div class="label">What's Included Section</div>
+      <div class="grid two">
+        <div class="list">
+          <h2>Included Across All Plans</h2>
+          <ul>
+            <li>Initial assessment and recommendation</li>
+            <li>Personalized learning goals</li>
+            <li>Progress tracking and family communication</li>
+            <li>Warm, structured academic support</li>
+          </ul>
+        </div>
+        <div class="list">
+          <h2>Add-On / Notes Area</h2>
+          <ul>
+            <li>Transportation eligibility placeholder</li>
+            <li>Test prep customization note</li>
+            <li>Sibling discount or package note placeholder</li>
+            <li>Policy note for schedule changes</li>
+          </ul>
+        </div>
+      </div>
+      <div class="annotation">UX rationale: This section reinforces value beyond the raw dollar amount. It helps parents understand that Cedar is selling a structured support system, not just seat time.</div>
+    </section>
+
+    <section class="section" style="background:#f3f3f3;">
+      <div class="label">Pricing FAQ Section</div>
+      <div class="grid two">
+        <div class="faq"><strong>FAQ 1</strong><br />Can you recommend a plan after the assessment?</div>
+        <div class="faq"><strong>FAQ 2</strong><br />Do you offer custom packages for multiple subjects or siblings?</div>
+        <div class="faq"><strong>FAQ 3</strong><br />Is there a minimum commitment?</div>
+        <div class="faq"><strong>FAQ 4</strong><br />How soon can my child start after enrollment?</div>
+      </div>
+      <div class="annotation">UX rationale: Pricing FAQs address friction points that block conversion—commitment, flexibility, and customization—without making parents dig elsewhere for answers.</div>
+    </section>
+
+    <section class="section" id="cta" style="background:#dedede;">
+      <div class="label">CTA Block</div>
+      <div class="grid two">
+        <div class="cta-box"><strong>Primary CTA</strong><br />Book Free Assessment — We'll Recommend a Plan</div>
+        <div class="cta-box"><strong>Reassurance Copy</strong><br />No-obligation conversation, clear next steps, parent-focused guidance.</div>
+      </div>
+      <div class="annotation">UX rationale: Pricing pages should always end by reducing pressure. This CTA converts intent into action while reinforcing that Cedar will guide the family to the right fit.</div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="label">Footer</div>
+        <div class="row">
+          <div><strong>Cedar Tutoring Academy</strong><br /><span class="small">Transparent, confidence-building enrollment journey.</span></div>
+          <div class="nav-links">
+            <a href="./about.html">About</a>
+            <a href="./testimonials.html">Reviews</a>
+            <a href="./faq.html">FAQ</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

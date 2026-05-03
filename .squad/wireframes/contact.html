@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cedar Tutoring Academy — Contact Wireframe</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, Arial, sans-serif; background: #efefef; color: #222; }
+    a { color: #222; }
+    .shell { max-width: 1200px; margin: 0 auto; padding: 0 20px 48px; }
+    .block, .card, .placeholder, .annotation, .note, .field, .chip { border: 1px solid #bcbcbc; background: #fff; }
+    .topbar { position: sticky; top: 0; z-index: 10; background: #fff; border-bottom: 1px solid #bcbcbc; }
+    .topbar-inner { max-width: 1200px; margin: 0 auto; padding: 14px 20px; display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .brand { font-weight: 700; }
+    nav { display: flex; gap: 10px; flex-wrap: wrap; }
+    nav a, .cta { text-decoration: none; padding: 10px 12px; border: 1px solid #999; background: #fafafa; font-size: 14px; }
+    .cta { font-weight: 700; }
+    .section { margin-top: 24px; padding: 24px; }
+    .label { font-size: 12px; font-weight: 800; letter-spacing: .08em; color: #555; margin-bottom: 10px; }
+    .hero, .contact-layout, .info-layout, .map-layout { display: grid; grid-template-columns: 1.05fr .95fr; gap: 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+    .card { padding: 18px; }
+    .placeholder { min-height: 210px; display: flex; align-items: center; justify-content: center; padding: 12px; text-align: center; background: repeating-linear-gradient(45deg, #f5f5f5, #f5f5f5 10px, #ebebeb 10px, #ebebeb 20px); color: #555; }
+    .annotation { margin-top: 10px; padding: 12px 14px; background: #eaf4ff; border-color: #9fbfdf; font-size: 14px; }
+    .note { margin-top: 16px; padding: 12px 14px; background: #f8f8f8; font-size: 14px; }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .chip { padding: 10px 12px; background: #f8f8f8; font-size: 14px; }
+    .form { display: grid; gap: 12px; }
+    .field { padding: 12px; min-height: 46px; display: flex; align-items: center; color: #666; }
+    .field.large { min-height: 110px; align-items: flex-start; }
+    .reassurance { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+    footer { margin-top: 24px; padding: 24px; }
+    /* Mobile behavior: reassurance panel moves above or below form, map falls below office info, buttons expand full width. */
+    @media (max-width: 820px) {
+      .hero, .contact-layout, .info-layout, .map-layout { grid-template-columns: 1fr; }
+      .topbar { position: static; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">CEDAR TUTORING ACADEMY — WIREFRAMES</div>
+      <nav aria-label="Wireframe navigation">
+        <a href="./locations.html">Locations</a>
+        <a href="./transportation.html">Transportation</a>
+        <a href="./news-events.html">News &amp; Events</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./about.html">About</a>
+      </nav>
+      <a class="cta" href="./locations.html">VIEW LOCATIONS</a>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="section block">
+      <div class="label">HERO SECTION</div>
+      <div class="hero">
+        <div>
+          <h1>Contact Cedar and get clear next steps for your child.</h1>
+          <p>The contact page should feel calm, credible, and low-friction. Parents can ask a question, request a callback, or start the assessment conversation without feeling overwhelmed.</p>
+          <div class="chip-row">
+            <div class="chip">Token note: Primary blue used later for primary CTA emphasis</div>
+            <div class="chip">Typography note: Inter for form labels, Newsreader for headline</div>
+            <div class="chip">Mobile note: form fields remain single-column and touch-friendly</div>
+          </div>
+          <div class="chip-row">
+            <a class="cta" href="#contact-form">GO TO FORM</a>
+            <a class="cta" href="./locations.html">SEE LOCATION INFO</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="label">QUICK CONTACT OPTIONS</div>
+          <p><strong>Call:</strong> (972) 555-0142</p>
+          <p><strong>Email:</strong> hello@cedartutoring.com</p>
+          <p><strong>Response time:</strong> Within 24 hours</p>
+          <p><strong>Best for:</strong> General questions, assessment requests, transportation questions</p>
+        </div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> The hero keeps the emotional tone supportive and practical. Some parents want a form, others want immediate contact details, so both are visible above the fold.</div>
+    </section>
+
+    <section id="contact-form" class="section block">
+      <div class="label">CONTACT FORM SECTION</div>
+      <div class="contact-layout">
+        <div class="card">
+          <h2>Contact form</h2>
+          <div class="form">
+            <div class="field">FIELD: Parent name</div>
+            <div class="field">FIELD: Email address</div>
+            <div class="field">FIELD: Phone number (optional)</div>
+            <div class="field">FIELD: Subject dropdown — General Question / Assessment / Transportation / Scheduling</div>
+            <div class="field large">FIELD: Message textarea</div>
+            <div class="field">FIELD: Privacy consent checkbox</div>
+            <div class="chip-row">
+              <a class="cta" href="#">SUBMIT BUTTON</a>
+            </div>
+          </div>
+        </div>
+        <aside class="card">
+          <h2>REASSURANCE PANEL</h2>
+          <ul class="reassurance">
+            <li>We respond within 24 hours</li>
+            <li>Your information stays private and secure</li>
+            <li>No pressure — ask a question first</li>
+            <li>Prefer to call? Phone number stays visible</li>
+          </ul>
+          <div class="placeholder" style="min-height:150px; margin-top:16px;">OPTIONAL STAFF / FAMILY-FRIENDLY IMAGE PLACEHOLDER</div>
+        </aside>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Pairing the form with reassurance reduces anxiety and increases completion. The subject field also helps Cedar route inquiries quickly without making the form feel long.</div>
+    </section>
+
+    <section class="section block">
+      <div class="label">LOCATION INFO + OFFICE HOURS SECTION</div>
+      <div class="info-layout">
+        <div class="card">
+          <h2>Office and center information</h2>
+          <p><strong>Main location:</strong> Cedar Tutoring — Plano Learning Center</p>
+          <p><strong>Address:</strong> 123 Cedar Parkway, Plano, TX 75024</p>
+          <p><strong>Call:</strong> (972) 555-0142</p>
+          <p><strong>Email:</strong> hello@cedartutoring.com</p>
+        </div>
+        <div class="card">
+          <h2>Office hours</h2>
+          <p>Mon–Thu: 3:00 PM – 8:00 PM</p>
+          <p>Friday: 3:00 PM – 6:00 PM</p>
+          <p>Saturday: 10:00 AM – 2:00 PM</p>
+          <p>Sunday: Closed</p>
+        </div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Many parents visit contact pages only to confirm hours or phone details. Splitting contact information from office hours improves scan speed and makes the page more utilitarian.</div>
+    </section>
+
+    <section class="section block">
+      <div class="label">MAP EMBED PLACEHOLDER SECTION</div>
+      <div class="map-layout">
+        <div class="placeholder">MAP EMBED PLACEHOLDER<br />Google Maps embed area</div>
+        <div class="card">
+          <h2>Visit planning details</h2>
+          <p>Placeholder notes for parking, entrance, and first-visit expectations.</p>
+          <p><strong>Parking:</strong> Front-row family parking</p>
+          <p><strong>Arrival:</strong> Check in at front desk</p>
+          <p><strong>Nearby landmark:</strong> Close to major Plano shopping and school corridors</p>
+        </div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> The map helps with confidence, but the visit-planning copy is equally important. Together they reduce uncertainty and make in-person follow-through more likely.</div>
+    </section>
+
+    <section class="section block">
+      <div class="label">SECONDARY SUPPORT SECTION</div>
+      <div class="grid">
+        <div class="card"><strong>Need transportation details?</strong><br /><a href="./transportation.html">See transportation wireframe</a></div>
+        <div class="card"><strong>Need location details?</strong><br /><a href="./locations.html">Compare locations and directions</a></div>
+        <div class="card"><strong>Want recent updates first?</strong><br /><a href="./news-events.html">View news and events</a></div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Secondary paths help parents who are not quite ready to submit the form. Instead of bouncing, they can resolve their remaining questions while staying in Cedar’s conversion flow.</div>
+    </section>
+
+    <section class="section block">
+      <div class="label">FINAL CTA SECTION</div>
+      <h2>Let’s talk about what your child needs and what Cedar recommends next.</h2>
+      <p>Final reinforcement keeps the contact page action-oriented and supportive.</p>
+      <div class="chip-row">
+        <a class="cta" href="#contact-form">SEND A MESSAGE</a>
+        <a class="cta" href="./locations.html">PLAN A VISIT</a>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Repeating the CTA after all practical details catches parents who needed reassurance before acting. It closes the page with clarity rather than clutter.</div>
+    </section>
+
+    <footer class="block">
+      <div class="label">FOOTER</div>
+      <p><strong>Cedar Tutoring Academy</strong> — approachable contact experience for busy parents.</p>
+      <div class="note"><strong>Responsive intent:</strong> On mobile, the contact form appears first, reassurance content compresses into short bullets, and the map shifts below office details to keep the primary action in view.</div>
+    </footer>
+  </main>
+</body>
+</html>

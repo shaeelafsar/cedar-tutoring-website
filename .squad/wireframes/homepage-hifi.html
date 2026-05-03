@@ -1,0 +1,1850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cedar Tutoring Academy — Homepage High-Fidelity Mockup</title>
+  <meta name="description" content="High-fidelity homepage mockup for Cedar Tutoring Academy in Plano, TX." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,600;6..72,700;6..72,800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      color-scheme: light;
+      --primary: #2563eb;
+      --primary-deep: #1d4ed8;
+      --secondary: #059669;
+      --accent: #f59e0b;
+      --accent-foreground: #1c1917;
+      --background: #ffffff;
+      --foreground: #1e293b;
+      --muted: #f3f4f6;
+      --muted-strong: #e5e7eb;
+      --muted-foreground: #4b5563;
+      --border: #dbe4f0;
+      --card: #ffffff;
+      --card-foreground: #1e293b;
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 6px rgba(15, 23, 42, 0.07);
+      --shadow-lg: 0 10px 15px rgba(15, 23, 42, 0.1);
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --radius-full: 9999px;
+      --container: 1280px;
+      --transition-fast: 150ms ease;
+      --transition-base: 200ms ease;
+      --transition-slow: 300ms ease-out;
+      --hero-overlay: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(5, 150, 105, 0.08) 45%, rgba(245, 158, 11, 0.08));
+      --dark: #0f172a;
+      --dark-muted: rgba(255, 255, 255, 0.72);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--foreground);
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 28%),
+        radial-gradient(circle at top right, rgba(5, 150, 105, 0.08), transparent 24%),
+        linear-gradient(180deg, #f8fbff 0%, #ffffff 18%, #ffffff 100%);
+      line-height: 1.6;
+    }
+
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+    button, a { transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast), opacity var(--transition-fast); }
+    :focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px rgba(37, 99, 235, 0.95);
+      border-radius: var(--radius-sm);
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 96px 0;
+    }
+
+    .section-muted {
+      background: linear-gradient(180deg, #f8fafc 0%, #f3f4f6 100%);
+      border-top: 1px solid rgba(219, 228, 240, 0.7);
+      border-bottom: 1px solid rgba(219, 228, 240, 0.7);
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding: 8px 14px;
+      border-radius: var(--radius-full);
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2,
+    .hero-copy h1,
+    .cta-panel h2 {
+      margin: 0;
+      font-family: 'Newsreader', Georgia, serif;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2.25rem, 4vw, 3.25rem);
+      margin-bottom: 16px;
+    }
+
+    .section-heading p,
+    .hero-copy p,
+    .cta-panel p {
+      margin: 0;
+      color: var(--muted-foreground);
+      font-size: 1.0625rem;
+      max-width: 65ch;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      border-bottom: 1px solid rgba(219, 228, 240, 0.82);
+      background: rgba(255, 255, 255, 0.84);
+      backdrop-filter: blur(16px);
+    }
+
+    .site-header-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      min-height: 44px;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(5, 150, 105, 0.18));
+      border: 1px solid rgba(37, 99, 235, 0.14);
+      box-shadow: var(--shadow-sm);
+      color: var(--primary);
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-text span {
+      display: block;
+      color: var(--muted-foreground);
+      font-size: 0.85rem;
+    }
+
+    .desktop-nav,
+    .mobile-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .desktop-nav a,
+    .mobile-nav-links a,
+    .footer-list a,
+    .footer-social a {
+      text-decoration: none;
+    }
+
+    .desktop-nav a,
+    .mobile-nav-links a {
+      color: var(--muted-foreground);
+      font-weight: 500;
+    }
+
+    .desktop-nav a:hover,
+    .mobile-nav-links a:hover,
+    .footer-list a:hover,
+    .footer-social a:hover,
+    .text-link:hover {
+      color: var(--primary);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .button,
+    .mobile-nav summary {
+      min-height: 44px;
+      padding: 12px 18px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .button-primary {
+      background: linear-gradient(180deg, var(--primary) 0%, var(--primary-deep) 100%);
+      color: #ffffff;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.18);
+    }
+
+    .button-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.24);
+    }
+
+    .button-outline {
+      border-color: rgba(37, 99, 235, 0.22);
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .button-outline:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .button-ghost {
+      color: var(--muted-foreground);
+      background: transparent;
+      border-color: rgba(219, 228, 240, 0.8);
+    }
+
+    .mobile-nav {
+      display: none;
+      position: relative;
+    }
+
+    .mobile-nav summary {
+      list-style: none;
+      color: var(--foreground);
+      background: #ffffff;
+      border: 1px solid rgba(219, 228, 240, 0.9);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .mobile-nav summary::-webkit-details-marker { display: none; }
+
+    .mobile-nav-panel {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 10px);
+      width: min(320px, calc(100vw - 32px));
+      padding: 16px;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(219, 228, 240, 0.9);
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .mobile-nav-links {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .mobile-nav-links a {
+      padding: 10px 12px;
+      border-radius: var(--radius-md);
+      background: #f8fafc;
+    }
+
+    .hero {
+      padding: 40px 0 28px;
+    }
+
+    .hero-shell {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid rgba(219, 228, 240, 0.9);
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.14), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(5, 150, 105, 0.12), transparent 26%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.98));
+      box-shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+    }
+
+    .hero-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--hero-overlay);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 40px;
+      padding: 80px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      max-width: 640px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(3rem, 5vw, 4.75rem);
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    .hero-copy p.lead {
+      font-size: 1.125rem;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .hero-pill,
+    .proof-pill,
+    .grade-chip,
+    .testimonial-badge,
+    .footer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 36px;
+      padding: 8px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: 1px solid rgba(219, 228, 240, 0.95);
+      background: rgba(255, 255, 255, 0.84);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .hero-stat {
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(219, 228, 240, 0.95);
+      background: rgba(255, 255, 255, 0.74);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 1.125rem;
+      margin-bottom: 4px;
+      color: var(--foreground);
+    }
+
+    .hero-stat span {
+      color: var(--muted-foreground);
+      font-size: 0.92rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 520px;
+    }
+
+    .visual-stage {
+      position: absolute;
+      inset: 0;
+      border-radius: 32px;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.75), transparent 20%),
+        radial-gradient(circle at 82% 26%, rgba(245, 158, 11, 0.16), transparent 20%),
+        linear-gradient(160deg, #0f172a 0%, #1d4ed8 45%, #059669 110%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 24px 80px rgba(15, 23, 42, 0.28);
+      overflow: hidden;
+    }
+
+    .visual-stage::before,
+    .visual-stage::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .visual-stage::before {
+      width: 280px;
+      height: 280px;
+      right: -80px;
+      top: -70px;
+    }
+
+    .visual-stage::after {
+      width: 240px;
+      height: 240px;
+      left: -80px;
+      bottom: -90px;
+    }
+
+    .visual-card {
+      position: absolute;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.93);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 24px 50px rgba(15, 23, 42, 0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    .lesson-card {
+      width: min(100%, 420px);
+      right: 36px;
+      top: 52px;
+      padding: 24px;
+    }
+
+    .lesson-top,
+    .result-row,
+    .visual-pill,
+    .progress-stat {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .lesson-top { margin-bottom: 22px; }
+
+    .avatar-group {
+      display: flex;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-full);
+      border: 2px solid #ffffff;
+      display: grid;
+      place-items: center;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-left: -10px;
+      color: #ffffff;
+    }
+
+    .avatar:first-child { margin-left: 0; }
+    .avatar-blue { background: linear-gradient(135deg, #2563eb, #60a5fa); }
+    .avatar-green { background: linear-gradient(135deg, #059669, #34d399); }
+    .avatar-amber { background: linear-gradient(135deg, #f59e0b, #fbbf24); color: var(--accent-foreground); }
+
+    .visual-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--secondary);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .lesson-card h3,
+    .program-card h3,
+    .feature-card h3,
+    .testimonial-card h3,
+    .step-card h3,
+    .footer-title,
+    .cta-checklist strong {
+      margin: 0;
+      color: var(--foreground);
+    }
+
+    .lesson-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .lesson-card p,
+    .program-card p,
+    .feature-card p,
+    .testimonial-card p,
+    .step-card p,
+    .cta-checklist span,
+    .footer-copy,
+    .footer-list a,
+    .footer-bottom {
+      margin: 0;
+      color: var(--muted-foreground);
+    }
+
+    .lesson-screen {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #eef4ff 0%, #f8fbff 100%);
+      border: 1px solid rgba(37, 99, 235, 0.14);
+    }
+
+    .lesson-bars {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .lesson-bars span {
+      position: relative;
+      display: block;
+      height: 12px;
+      border-radius: var(--radius-full);
+      background: rgba(37, 99, 235, 0.1);
+      overflow: hidden;
+    }
+
+    .lesson-bars span::after {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: var(--fill, 70%);
+      border-radius: inherit;
+      background: linear-gradient(90deg, #2563eb, #059669);
+    }
+
+    .result-card {
+      left: 24px;
+      bottom: 70px;
+      width: 240px;
+      padding: 18px;
+    }
+
+    .result-card strong {
+      font-size: 1.85rem;
+      line-height: 1;
+      color: var(--foreground);
+    }
+
+    .rating-card {
+      left: 82px;
+      top: 34px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .schedule-card {
+      right: 20px;
+      bottom: 22px;
+      width: 190px;
+      padding: 18px;
+      background: rgba(15, 23, 42, 0.88);
+      border-color: rgba(255, 255, 255, 0.16);
+    }
+
+    .schedule-card h4,
+    .schedule-card p,
+    .schedule-card li {
+      color: rgba(255, 255, 255, 0.92);
+      margin: 0;
+    }
+
+    .schedule-card h4 { margin-bottom: 10px; }
+    .schedule-card ul {
+      padding-left: 18px;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.74);
+    }
+
+    .stars {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--accent);
+    }
+
+    .proof-bar {
+      padding: 20px 0 0;
+    }
+
+    .proof-strip {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .proof-pill {
+      justify-content: flex-start;
+      min-height: 76px;
+      padding: 16px 18px;
+      border-radius: var(--radius-lg);
+      background: #ffffff;
+    }
+
+    .icon-shell,
+    .program-icon,
+    .feature-icon,
+    .proof-icon,
+    .step-number,
+    .check-icon,
+    .social-icon {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+    }
+
+    .proof-icon,
+    .feature-icon,
+    .program-icon,
+    .step-number,
+    .social-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(5, 150, 105, 0.14));
+      color: var(--primary);
+    }
+
+    .proof-pill strong,
+    .program-card strong,
+    .feature-card strong,
+    .testimonial-author strong,
+    .footer-title {
+      display: block;
+      color: var(--foreground);
+    }
+
+    .proof-pill span,
+    .program-meta,
+    .testimonial-author span,
+    .footer-copy small,
+    .footer-bottom span {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--muted-foreground);
+    }
+
+    .program-grid,
+    .feature-grid,
+    .testimonial-grid,
+    .footer-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .program-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .program-card,
+    .feature-card,
+    .testimonial-card,
+    .step-card {
+      position: relative;
+      height: 100%;
+      padding: 28px;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(219, 228, 240, 0.95);
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .program-card {
+      overflow: hidden;
+    }
+
+    .program-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+    }
+
+    .program-card:hover,
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .program-card:hover::before { opacity: 1; }
+
+    .program-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .program-icon {
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+    }
+
+    .grade-chip {
+      min-height: 28px;
+      padding: 6px 10px;
+      background: rgba(5, 150, 105, 0.08);
+      border-color: rgba(5, 150, 105, 0.16);
+      color: var(--secondary);
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .program-card h3,
+    .feature-card h3,
+    .step-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .program-card p { margin-bottom: 18px; }
+    .program-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(219, 228, 240, 0.8);
+    }
+
+    .program-link,
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .program-link:hover,
+    .text-link:hover {
+      gap: 10px;
+    }
+
+    .steps-wrap {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 12px;
+    }
+
+    .steps-wrap::before {
+      content: "";
+      position: absolute;
+      left: 84px;
+      right: 84px;
+      top: 46px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(37, 99, 235, 0.2), rgba(5, 150, 105, 0.22));
+      z-index: 0;
+    }
+
+    .step-card {
+      z-index: 1;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      text-align: left;
+    }
+
+    .step-number {
+      margin-bottom: 18px;
+      border-radius: var(--radius-full);
+      font-size: 1rem;
+      font-weight: 800;
+      color: #ffffff;
+      background: linear-gradient(180deg, var(--primary), var(--primary-deep));
+      box-shadow: 0 10px 18px rgba(37, 99, 235, 0.18);
+    }
+
+    .feature-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .feature-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,250,252,0.96));
+    }
+
+    .feature-icon { margin-bottom: 18px; }
+
+    .feature-list {
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .feature-list li,
+    .cta-checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--muted-foreground);
+      font-size: 0.95rem;
+    }
+
+    .check-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: var(--radius-full);
+      margin-top: 2px;
+      background: rgba(5, 150, 105, 0.12);
+      color: var(--secondary);
+    }
+
+    .testimonial-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .testimonial-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(248,250,252,0.94));
+    }
+
+    .testimonial-card::before {
+      content: "\201C";
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 5rem;
+      line-height: 1;
+      color: rgba(37, 99, 235, 0.12);
+    }
+
+    .testimonial-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .testimonial-badge {
+      min-height: 30px;
+      padding: 6px 10px;
+      font-size: 0.75rem;
+      background: rgba(245, 158, 11, 0.16);
+      border-color: rgba(245, 158, 11, 0.28);
+      color: var(--accent-foreground);
+      box-shadow: none;
+    }
+
+    .testimonial-card p { margin-bottom: 22px; }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(219, 228, 240, 0.82);
+    }
+
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-full);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      color: #ffffff;
+      background: linear-gradient(135deg, #2563eb, #059669);
+    }
+
+    .cta-shell {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      padding: 40px;
+      background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 58%, #059669 140%);
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.18);
+    }
+
+    .cta-shell::before,
+    .cta-shell::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .cta-shell::before {
+      width: 320px;
+      height: 320px;
+      top: -120px;
+      right: -80px;
+    }
+
+    .cta-shell::after {
+      width: 220px;
+      height: 220px;
+      bottom: -100px;
+      left: -60px;
+    }
+
+    .cta-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .cta-panel,
+    .cta-panel p,
+    .cta-panel .eyebrow,
+    .cta-actions .button,
+    .cta-card h3,
+    .cta-card p,
+    .cta-card strong,
+    .footer-brand strong,
+    .footer-title,
+    .footer-list a,
+    .footer-bottom,
+    .footer-bottom a {
+      color: #ffffff;
+    }
+
+    .cta-panel .eyebrow {
+      background: rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .cta-panel p { color: rgba(255, 255, 255, 0.8); }
+
+    .cta-panel h2 {
+      font-size: clamp(2.3rem, 4vw, 3.6rem);
+      margin-bottom: 18px;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .cta-actions .button-primary {
+      background: #ffffff;
+      color: var(--primary-deep);
+    }
+
+    .cta-actions .button-outline {
+      color: #ffffff;
+      border-color: rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .cta-card {
+      position: relative;
+      z-index: 1;
+      padding: 28px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+      backdrop-filter: blur(12px);
+    }
+
+    .cta-card h3 { margin-bottom: 10px; font-size: 1.25rem; }
+    .cta-card p { color: rgba(255,255,255,0.74); margin-bottom: 18px; }
+    .cta-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 22px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .cta-checklist .check-icon {
+      background: rgba(255,255,255,0.18);
+      color: #ffffff;
+    }
+
+    .mini-stat {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .mini-stat .hero-stat {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.14);
+      box-shadow: none;
+    }
+
+    .mini-stat .hero-stat strong,
+    .mini-stat .hero-stat span {
+      color: #ffffff;
+    }
+
+    .site-footer {
+      padding: 72px 0 28px;
+      background: linear-gradient(180deg, #111827 0%, #0f172a 100%);
+    }
+
+    .footer-grid {
+      grid-template-columns: 1.2fr 1fr 1fr 1fr;
+      margin-bottom: 36px;
+    }
+
+    .footer-brand {
+      max-width: 340px;
+    }
+
+    .footer-brand .brand {
+      margin-bottom: 18px;
+    }
+
+    .footer-brand .brand-mark {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.12);
+      color: #93c5fd;
+    }
+
+    .footer-copy {
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 18px;
+    }
+
+    .footer-badge {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.88);
+      box-shadow: none;
+    }
+
+    .footer-title {
+      margin-bottom: 18px;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .footer-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .footer-list a,
+    .footer-bottom,
+    .footer-copy,
+    .footer-bottom a {
+      color: rgba(255,255,255,0.72);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .social-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.08);
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .cta-grid,
+      .footer-grid,
+      .feature-grid,
+      .steps-wrap,
+      .proof-strip,
+      .program-grid,
+      .testimonial-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-grid {
+        padding: 64px;
+      }
+
+      .hero-visual {
+        min-height: 460px;
+      }
+
+      .steps-wrap::before {
+        left: 70px;
+        right: 70px;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .section { padding: 72px 0; }
+      .site-header-inner { min-height: 64px; }
+      .desktop-nav,
+      .header-actions > .button-primary {
+        display: none;
+      }
+
+      .mobile-nav { display: block; }
+
+      .hero-grid,
+      .cta-grid,
+      .footer-grid,
+      .program-grid,
+      .testimonial-grid,
+      .feature-grid,
+      .proof-strip,
+      .steps-wrap,
+      .hero-stat-row {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        padding: 28px 24px 24px;
+        gap: 28px;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2.3rem, 10vw, 3.2rem);
+      }
+
+      .hero-copy p.lead,
+      .section-heading p,
+      .cta-panel p {
+        font-size: 1rem;
+      }
+
+      .hero-visual {
+        min-height: 430px;
+      }
+
+      .lesson-card {
+        left: 18px;
+        right: 18px;
+        width: auto;
+        top: 34px;
+      }
+
+      .result-card {
+        left: 18px;
+        bottom: 84px;
+      }
+
+      .rating-card {
+        left: 20px;
+        top: 14px;
+      }
+
+      .schedule-card {
+        right: 18px;
+        bottom: 18px;
+      }
+
+      .steps-wrap::before { display: none; }
+      .step-card { padding-top: 22px; }
+      .cta-shell { padding: 28px; }
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container { width: min(var(--container), calc(100% - 20px)); }
+      .hero { padding-top: 20px; }
+      .hero-shell,
+      .cta-shell { border-radius: 22px; }
+      .proof-pill,
+      .program-card,
+      .feature-card,
+      .testimonial-card,
+      .step-card,
+      .cta-card { padding: 22px; }
+      .hero-actions,
+      .cta-actions { flex-direction: column; }
+      .hero-actions .button,
+      .cta-actions .button,
+      .mobile-nav summary,
+      .mobile-nav-panel .button { width: 100%; }
+      .hero-meta { gap: 10px; }
+      .hero-pill { width: 100%; justify-content: center; }
+      .rating-card {
+        max-width: calc(100% - 40px);
+        width: calc(100% - 40px);
+      }
+      .result-card,
+      .schedule-card {
+        position: static;
+        width: auto;
+        margin: 14px 18px 0;
+      }
+      .hero-visual { min-height: 520px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      .program-card:hover,
+      .feature-card:hover,
+      .button-primary:hover,
+      .button-outline:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a class="brand" href="#top" aria-label="Cedar Tutoring Academy home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12.9 3.2c3.9 1.4 6.3 4.8 6.3 9 0 4.9-3.9 8.8-8.8 8.8-3.8 0-6.8-2.6-7.7-6.1 4.5 1 8.9-1 11.1-4.6 1.1-1.8 1.6-4 1.4-7.1Z" fill="currentColor" />
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>Cedar Tutoring Academy</strong>
+          <span>Warm, measurable academic support for Plano families</span>
+        </span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#programs">Programs</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#why-cedar">Why Cedar</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="button button-primary" href="#contact">Book a Free Assessment</a>
+        <details class="mobile-nav">
+          <summary aria-label="Open navigation menu">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+            </svg>
+            Menu
+          </summary>
+          <div class="mobile-nav-panel">
+            <nav class="mobile-nav-links" aria-label="Mobile navigation">
+              <a href="#programs">Programs</a>
+              <a href="#how-it-works">How It Works</a>
+              <a href="#why-cedar">Why Cedar</a>
+              <a href="#testimonials">Reviews</a>
+              <a href="#contact">Contact</a>
+            </nav>
+            <a class="button button-primary" href="#contact">Book a Free Assessment</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-shell">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <span class="eyebrow">Plano, TX • K–12 tutoring &amp; test prep</span>
+              <h1>Build skills, confidence, and results with tutoring that feels personal.</h1>
+              <p class="lead">Personalized support in reading, math, writing, science, Arabic, homework help, and SAT/ACT prep — with caring teachers, flexible scheduling, and measurable progress parents can actually see.</p>
+
+              <div class="hero-actions">
+                <a class="button button-primary" href="#contact">Book a Free Assessment</a>
+                <a class="button button-outline" href="#programs">Explore Programs</a>
+              </div>
+
+              <div class="hero-meta" aria-label="Key trust signals">
+                <span class="hero-pill">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+                  122 Five-Star Reviews
+                </span>
+                <span class="hero-pill">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2.2a5.8 5.8 0 1 0 0 11.6A5.8 5.8 0 0 0 8 2.2Zm0 2.2v3.7l2.6 1.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  Flexible after-school scheduling
+                </span>
+                <span class="hero-pill">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.4 11.8h11.2M4 11.8V6.9l2.2-2h3.6L12 6.9v4.9M6.1 8.1h3.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  Transportation available
+                </span>
+              </div>
+
+              <div class="hero-stat-row">
+                <div class="hero-stat">
+                  <strong>5.0 Google Rating</strong>
+                  <span>Trusted by local parents who want both warmth and results.</span>
+                </div>
+                <div class="hero-stat">
+                  <strong>1:3 Student-Tutor Ratio</strong>
+                  <span>Small-group support that stays personal and attentive.</span>
+                </div>
+                <div class="hero-stat">
+                  <strong>K–12 Programs</strong>
+                  <span>From elementary reading support to high school test prep.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-visual" aria-hidden="true">
+              <div class="visual-stage"></div>
+
+              <div class="visual-card rating-card">
+                <div class="proof-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.4l2.8 5.6 6.2.9-4.5 4.4 1.1 6.2L12 16.3l-5.6 3 1.1-6.2L3 8.9 9.2 8 12 2.4Z" /></svg>
+                </div>
+                <div>
+                  <strong>5.0 rating</strong>
+                  <span>Google Reviews</span>
+                </div>
+              </div>
+
+              <div class="visual-card lesson-card">
+                <div class="lesson-top">
+                  <div>
+                    <div class="visual-kicker">Today at Cedar</div>
+                    <h3>Free assessment → custom learning plan</h3>
+                    <p>Parents get a calm, clear next step — not a confusing sales pitch.</p>
+                  </div>
+                  <div class="avatar-group" aria-hidden="true">
+                    <span class="avatar avatar-blue">MA</span>
+                    <span class="avatar avatar-green">RD</span>
+                    <span class="avatar avatar-amber">WR</span>
+                  </div>
+                </div>
+
+                <div class="lesson-screen">
+                  <div class="result-row">
+                    <strong>Progress snapshot</strong>
+                    <span style="color: var(--secondary); font-weight: 700;">On track</span>
+                  </div>
+                  <div class="lesson-bars">
+                    <span style="--fill: 82%;"></span>
+                    <span style="--fill: 68%;"></span>
+                    <span style="--fill: 91%;"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="visual-card result-card">
+                <div class="visual-kicker">Parent-friendly proof</div>
+                <div class="result-row" style="margin-bottom: 10px;">
+                  <strong>122+</strong>
+                  <div class="stars" aria-label="Five stars">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+                  </div>
+                </div>
+                <p>Families consistently mention confidence growth, flexible scheduling, safety, and thoughtful communication.</p>
+              </div>
+
+              <div class="visual-card schedule-card">
+                <h4>Built for busy families</h4>
+                <ul>
+                  <li>After-school and weekend options</li>
+                  <li>Transportation within 5 miles</li>
+                  <li>Progress updates parents can understand</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof-bar" aria-label="Proof bar">
+      <div class="container">
+        <div class="proof-strip">
+          <div class="proof-pill">
+            <span class="proof-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.4l2.8 5.6 6.2.9-4.5 4.4 1.1 6.2L12 16.3l-5.6 3 1.1-6.2L3 8.9 9.2 8 12 2.4Z" /></svg>
+            </span>
+            <span><strong>5.0 Google Rating</strong>Real parent reviews, not generic marketing copy.</span>
+          </div>
+          <div class="proof-pill">
+            <span class="proof-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
+            </span>
+            <span><strong>K–12 Programs</strong>Support for foundational gaps, confidence, and growth.</span>
+          </div>
+          <div class="proof-pill">
+            <span class="proof-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 17V7m7 10V4m7 13V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
+            </span>
+            <span><strong>1:3 Ratio</strong>Small-group attention that still feels personal.</span>
+          </div>
+          <div class="proof-pill">
+            <span class="proof-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 14h16l-1.8-5.7A2 2 0 0 0 16.3 7H7.7a2 2 0 0 0-1.9 1.3L4 14Zm2 0v3m12-3v3M7 17a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm10 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /></svg>
+            </span>
+            <span><strong>Transportation Available</strong>Practical support that reduces after-school stress.</span>
+          </div>
+          <div class="proof-pill">
+            <span class="proof-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11Zm0-8.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="currentColor" stroke-width="1.6" /></svg>
+            </span>
+            <span><strong>Plano, TX</strong>Local, community-rooted, and parent-trusted.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="programs" class="section section-muted">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Programs overview</span>
+          <h2>Academic support designed for catch-up, confidence, and momentum.</h2>
+          <p>Parents can self-identify quickly, compare options with ease, and move toward the right next step without feeling buried in dense copy.</p>
+        </div>
+
+        <div class="program-grid">
+          <article class="program-card">
+            <div class="program-head">
+              <span class="program-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 6.5A2.5 2.5 0 0 1 7.5 4H19v14H7.5A2.5 2.5 0 0 0 5 20.5v-14Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" /><path d="M8 8h7M8 12h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" /></svg>
+              </span>
+              <span class="grade-chip">K–8</span>
+            </div>
+            <h3>Reading</h3>
+            <p>Support for fluency, comprehension, vocabulary, and confidence when school reading starts to feel frustrating.</p>
+            <div class="program-meta">
+              <span>Build confidence and stronger school performance.</span>
+              <a class="program-link" href="#contact">Learn more →</a>
+            </div>
+          </article>
+
+          <article class="program-card">
+            <div class="program-head">
+              <span class="program-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 5v14M17 5v14M7 12h10M10 8h4M9 16h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" /></svg>
+              </span>
+              <span class="grade-chip">K–12</span>
+            </div>
+            <h3>Math</h3>
+            <p>Targeted support for foundational gaps, homework struggles, and the confidence students need to keep progressing.</p>
+            <div class="program-meta">
+              <span>From number sense to advanced problem-solving.</span>
+              <a class="program-link" href="#contact">Learn more →</a>
+            </div>
+          </article>
+
+          <article class="program-card">
+            <div class="program-head">
+              <span class="program-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 18c1.2-1.9 3-2.8 5.2-2.8h6.8V5H9.2C7 5 5.2 5.9 4 7.8V20c1.1-1.2 2.5-2 4-2h10" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" /></svg>
+              </span>
+              <span class="grade-chip">2–12</span>
+            </div>
+            <h3>Writing</h3>
+            <p>Coaching for sentence structure, grammar, organization, and clearer academic writing across grade levels.</p>
+            <div class="program-meta">
+              <span>Better structure, stronger clarity, less homework stress.</span>
+              <a class="program-link" href="#contact">Learn more →</a>
+            </div>
+          </article>
+
+          <article class="program-card">
+            <div class="program-head">
+              <span class="program-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 3h8M12 3v5m-4 8a4 4 0 1 0 8 0c0-1.5-1-2.6-2.2-3.4-.9-.6-1.8-1.6-1.8-2.6 0 1-1 2-1.8 2.6C9 13.4 8 14.5 8 16Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" /></svg>
+              </span>
+              <span class="grade-chip">5–12</span>
+            </div>
+            <h3>Science</h3>
+            <p>Concept clarity, study strategies, and skill-building for students who need science to feel less overwhelming.</p>
+            <div class="program-meta">
+              <span>Ideal for middle and high school support.</span>
+              <a class="program-link" href="#contact">Learn more →</a>
+            </div>
+          </article>
+
+          <article class="program-card">
+            <div class="program-head">
+              <span class="program-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6.5C6.7 5.5 8.8 5 12 5s5.3.5 8 1.5v11C17.3 18.5 15.2 19 12 19s-5.3-.5-8-1.5v-11Z" stroke="currentColor" stroke-width="1.7" /><path d="M8.5 9h7M8.5 13h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" /></svg>
+              </span>
+              <span class="grade-chip">K–12</span>
+            </div>
+            <h3>Arabic</h3>
+            <p>Reading, writing, vocabulary, and comprehension support for children learning Arabic with structure and consistency.</p>
+            <div class="program-meta">
+              <span>Warm, guided language support for growing learners.</span>
+              <a class="program-link" href="#contact">Learn more →</a>
+            </div>
+          </article>
+
+          <article class="program-card">
+            <div class="program-head">
+              <span class="program-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 4h12v16l-6-3-6 3V4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" /><path d="M9 8h6M9 11.5h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" /></svg>
+              </span>
+              <span class="grade-chip">K–12</span>
+            </div>
+            <h3>Homework Help</h3>
+            <p>Guided accountability, calmer evenings, and structured support for students who need consistency after school.</p>
+            <div class="program-meta">
+              <span>Ideal for busy families who want better routines.</span>
+              <a class="program-link" href="#contact">Learn more →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">How it works</span>
+          <h2>A simple enrollment journey that feels organized, supportive, and low-pressure.</h2>
+          <p>Parents should know what happens next before they click. Clear process builds confidence and reduces hesitation.</p>
+        </div>
+
+        <div class="steps-wrap">
+          <article class="step-card">
+            <div class="step-number">1</div>
+            <h3>Free assessment</h3>
+            <p>We learn where your child is now, what feels hard, and what goals matter most to your family.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-number">2</div>
+            <h3>Custom plan</h3>
+            <p>We recommend the right program, schedule, and level of support based on actual needs — not a generic package.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-number">3</div>
+            <h3>Targeted tutoring</h3>
+            <p>Students get focused instruction, consistent encouragement, and practical strategies they can apply right away.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-number">4</div>
+            <h3>Progress reviews</h3>
+            <p>Parents stay informed through thoughtful updates, visible wins, and clear next-step recommendations.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="why-cedar" class="section section-muted">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Why Cedar</span>
+          <h2>The differentiators parents actually care about, surfaced clearly and intentionally.</h2>
+          <p>Cedar’s strongest value is not just tutoring — it’s the combination of warmth, structure, trust, and practical support for real family life.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 20s7-4.4 7-10.2V5.5L12 3 5 5.5v4.3C5 15.6 12 20 12 20Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" /></svg>
+            </div>
+            <h3>Trust-heavy experience</h3>
+            <p>Parents are choosing Cedar with real stakes in mind. The brand should feel calm, credible, and serious without losing warmth.</p>
+            <ul class="feature-list">
+              <li><span class="check-icon" aria-hidden="true">✓</span><span>Strong reviews and local reputation</span></li>
+              <li><span class="check-icon" aria-hidden="true">✓</span><span>Clear, parent-friendly information architecture</span></li>
+            </ul>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" /><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7" /></svg>
+            </div>
+            <h3>Small-group attention</h3>
+            <p>The 1:3 student-tutor ratio keeps instruction personal, attentive, and more responsive to actual learning gaps.</p>
+            <ul class="feature-list">
+              <li><span class="check-icon" aria-hidden="true">✓</span><span>More feedback, less blending into the crowd</span></li>
+              <li><span class="check-icon" aria-hidden="true">✓</span><span>Ideal for both catch-up and staying on track</span></li>
+            </ul>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 19V8m5 11V5m5 14v-7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" /></svg>
+            </div>
+            <h3>Progress parents can see</h3>
+            <p>Assessment-led planning and progress reviews make Cedar feel like a measurable academic partner, not just extra time after school.</p>
+            <ul class="feature-list">
+              <li><span class="check-icon" aria-hidden="true">✓</span><span>Custom plans based on real needs</span></li>
+              <li><span class="check-icon" aria-hidden="true">✓</span><span>Updates focused on growth and next steps</span></li>
+            </ul>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 8h16M8 4v4m8-4v4M5 10.5h14v8.5H5v-8.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" /></svg>
+            </div>
+            <h3>Family-friendly logistics</h3>
+            <p>Flexible scheduling and transportation make Cedar easier to fit into real life — a major differentiator parents remember.</p>
+            <ul class="feature-list">
+              <li><span class="check-icon" aria-hidden="true">✓</span><span>After-school and weekend options</span></li>
+              <li><span class="check-icon" aria-hidden="true">✓</span><span>Transportation support within the service radius</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Parent proof</span>
+          <h2>What parents describe most often: confidence, communication, and visible progress.</h2>
+          <p>Cedar’s testimonials are one of its strongest brand assets, so this section feels warm, specific, and grounded in real parent concerns.</p>
+        </div>
+
+        <div class="testimonial-grid">
+          <article class="testimonial-card">
+            <div class="testimonial-top">
+              <div class="stars" aria-label="Five stars">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+              </div>
+              <span class="testimonial-badge">Reading growth</span>
+            </div>
+            <p>Within weeks, our daughter was reading with more confidence and actually wanted to go to tutoring. Cedar made the process feel encouraging instead of stressful.</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar">AN</span>
+              <div>
+                <strong>Amina N.</strong>
+                <span>Parent of a 3rd grader • Plano, TX</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-top">
+              <div class="stars" aria-label="Five stars">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+              </div>
+              <span class="testimonial-badge">Flexible scheduling</span>
+            </div>
+            <p>The flexible timing and transportation option made Cedar doable for our family. We finally found support that fit our schedule instead of adding more chaos to it.</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar">MR</span>
+              <div>
+                <strong>Maria R.</strong>
+                <span>Parent of a middle school student • Plano, TX</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-top">
+              <div class="stars" aria-label="Five stars">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+              </div>
+              <span class="testimonial-badge">Visible results</span>
+            </div>
+            <p>We saw thoughtful communication, clearer study habits, and score improvement without the experience feeling overwhelming. Cedar felt strategic and genuinely caring.</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar">SK</span>
+              <div>
+                <strong>Samir K.</strong>
+                <span>Parent of an 11th grader • Plano, TX</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section section-muted">
+      <div class="container">
+        <div class="cta-shell">
+          <div class="cta-grid">
+            <div class="cta-panel">
+              <span class="eyebrow">Final call to action</span>
+              <h2>Ready to find the right support for your child?</h2>
+              <p>Book a free assessment to identify learning gaps, recommend the best-fit program, and map next steps with clarity. The ask feels earned here because the page has already done the work of building trust.</p>
+              <div class="cta-actions">
+                <a class="button button-primary" href="mailto:hello@cedartutoring.com">Book a Free Assessment</a>
+                <a class="button button-outline" href="mailto:hello@cedartutoring.com">Email Cedar</a>
+              </div>
+            </div>
+
+            <aside class="cta-card">
+              <h3>What families can expect next</h3>
+              <p>Designed to feel reassuring, practical, and easy to say yes to.</p>
+              <ul class="cta-checklist">
+                <li><span class="check-icon" aria-hidden="true">✓</span><span>Response within 24 hours</span></li>
+                <li><span class="check-icon" aria-hidden="true">✓</span><span>No obligation — just a free assessment</span></li>
+                <li><span class="check-icon" aria-hidden="true">✓</span><span>Support for K–12 programs, test prep, and homework help</span></li>
+                <li><span class="check-icon" aria-hidden="true">✓</span><span>Plano, TX center with transportation availability</span></li>
+              </ul>
+
+              <div class="mini-stat">
+                <div class="hero-stat">
+                  <strong>hello@cedartutoring.com</strong>
+                  <span>Email for availability and next steps</span>
+                </div>
+                <div class="hero-stat">
+                  <strong>(972) 555-0142</strong>
+                  <span>Call for immediate questions</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="#top">
+            <span class="brand-mark" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12.9 3.2c3.9 1.4 6.3 4.8 6.3 9 0 4.9-3.9 8.8-8.8 8.8-3.8 0-6.8-2.6-7.7-6.1 4.5 1 8.9-1 11.1-4.6 1.1-1.8 1.6-4 1.4-7.1Z" fill="currentColor" />
+              </svg>
+            </span>
+            <span class="brand-text">
+              <strong>Cedar Tutoring Academy</strong>
+              <span>Academic support with warmth, trust, and structure.</span>
+            </span>
+          </a>
+          <p class="footer-copy">A modern, parent-facing visual direction that feels calm, confident, and measurably better than the dated WordPress experience.</p>
+          <span class="footer-badge">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l2.1 4.2 4.6.7-3.3 3.2.8 4.6L8 11.7 3.8 14l.8-4.6L1.3 6.1l4.6-.7L8 1.2Z" /></svg>
+            5.0 Google Rating • 122 reviews
+          </span>
+          <div class="footer-social" aria-label="Social links">
+            <a class="social-icon" href="#contact" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="1.7" /><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" /></svg>
+            </a>
+            <a class="social-icon" href="#contact" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M13.2 20v-7h2.6l.4-3h-3V8.1c0-.9.3-1.5 1.6-1.5h1.5V4c-.3 0-1.4-.1-2.6-.1-2.6 0-4.3 1.6-4.3 4.5V10H7v3h2.4v7h3.8Z" fill="currentColor" /></svg>
+            </a>
+            <a class="social-icon" href="#contact" aria-label="Google reviews">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 12.2c0-.7-.1-1.2-.2-1.8H12v3.3h5.1c-.1.8-.8 2.1-2.1 2.9l-.1.1 3 2.3.2-.1c1.8-1.6 2.9-4 2.9-6.7Z" fill="currentColor" /><path d="M12 21c2.5 0 4.7-.8 6.2-2.1l-3-2.3c-.8.5-1.9.8-3.2.8-2.4 0-4.5-1.6-5.2-3.8l-.1.1-3.1 2.4-.1.1C5 19 8.3 21 12 21Z" fill="currentColor" /><path d="M6.8 13.6c-.2-.5-.4-1.1-.4-1.6s.1-1.1.4-1.6l-.1-.1-3.1-2.5-.1.1C2.9 9.1 2.5 10.5 2.5 12s.4 2.9 1 4.1l3.3-2.5Z" fill="currentColor" /><path d="M12 6.5c1.6 0 2.7.7 3.3 1.2l2.4-2.4C16.7 4.3 14.5 3 12 3 8.3 3 5 5 3.5 7.9l3.3 2.5C7.5 8.1 9.6 6.5 12 6.5Z" fill="currentColor" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="footer-title">Programs</h3>
+          <ul class="footer-list">
+            <li><a href="#programs">Math</a></li>
+            <li><a href="#programs">Reading</a></li>
+            <li><a href="#programs">Writing</a></li>
+            <li><a href="#programs">Science</a></li>
+            <li><a href="#programs">Arabic</a></li>
+            <li><a href="#programs">Homework Help</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-title">Why families choose Cedar</h3>
+          <ul class="footer-list">
+            <li><a href="#why-cedar">1:3 student-tutor ratio</a></li>
+            <li><a href="#why-cedar">Flexible scheduling</a></li>
+            <li><a href="#why-cedar">Transportation available</a></li>
+            <li><a href="#how-it-works">Free assessment</a></li>
+            <li><a href="#testimonials">Parent reviews</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-title">Contact</h3>
+          <ul class="footer-list">
+            <li><a href="mailto:hello@cedartutoring.com">hello@cedartutoring.com</a></li>
+            <li><a href="tel:+19725550142">(972) 555-0142</a></li>
+            <li><a href="#contact">Book a Free Assessment</a></li>
+            <li><a href="#contact">Plano, TX</a></li>
+            <li><a href="#contact">Serving K–12 families</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>High-fidelity homepage mockup for Cedar Tutoring Academy.</span>
+        <span><a href="#top">Back to top</a></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cedar Tutoring Academy — News & Events Wireframe</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, Arial, sans-serif; background: #efefef; color: #222; }
+    a { color: #222; }
+    .shell { max-width: 1200px; margin: 0 auto; padding: 0 20px 48px; }
+    .block, .card, .placeholder, .annotation, .note, .chip { border: 1px solid #bcbcbc; background: #fff; }
+    .topbar { position: sticky; top: 0; z-index: 10; background: #fff; border-bottom: 1px solid #bcbcbc; }
+    .topbar-inner { max-width: 1200px; margin: 0 auto; padding: 14px 20px; display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .brand { font-weight: 700; }
+    nav { display: flex; gap: 10px; flex-wrap: wrap; }
+    nav a, .cta { text-decoration: none; padding: 10px 12px; border: 1px solid #999; background: #fafafa; font-size: 14px; }
+    .cta { font-weight: 700; }
+    .section { margin-top: 24px; padding: 24px; }
+    .label { font-size: 12px; font-weight: 800; letter-spacing: .08em; color: #555; margin-bottom: 10px; }
+    .hero, .content-layout, .feature-grid, .calendar-layout { display: grid; grid-template-columns: 1.15fr .85fr; gap: 20px; }
+    .posts, .categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+    .card { padding: 18px; }
+    .placeholder { min-height: 180px; display: flex; align-items: center; justify-content: center; padding: 12px; text-align: center; background: repeating-linear-gradient(45deg, #f5f5f5, #f5f5f5 10px, #ebebeb 10px, #ebebeb 20px); color: #555; }
+    .annotation { margin-top: 10px; padding: 12px 14px; background: #eaf4ff; border-color: #9fbfdf; font-size: 14px; }
+    .note { margin-top: 16px; padding: 12px 14px; background: #f8f8f8; font-size: 14px; }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .chip { padding: 10px 12px; background: #f8f8f8; font-size: 14px; }
+    .meta { font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: .04em; }
+    .calendar-list { margin: 0; padding-left: 18px; }
+    footer { margin-top: 24px; padding: 24px; }
+    /* Mobile behavior: featured story stacks above sidebar, then posts flow in a single reading column. */
+    @media (max-width: 820px) {
+      .hero, .content-layout, .feature-grid, .calendar-layout { grid-template-columns: 1fr; }
+      .topbar { position: static; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">CEDAR TUTORING ACADEMY — WIREFRAMES</div>
+      <nav aria-label="Wireframe navigation">
+        <a href="./locations.html">Locations</a>
+        <a href="./transportation.html">Transportation</a>
+        <a href="./news-events.html">News &amp; Events</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./about.html">About</a>
+      </nav>
+      <a class="cta" href="./contact.html">SUBSCRIBE / CONTACT CTA</a>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="section block">
+      <div class="label">HERO SECTION</div>
+      <div class="hero">
+        <div>
+          <h1>News, events, and parent updates from Cedar.</h1>
+          <p>This page shifts the current placeholder content into a real trust-building channel: recent announcements, educational guidance, event visibility, and signs of an active local academy.</p>
+          <div class="chip-row">
+            <div class="chip">Token note: Accent amber reserved for badges / date highlights</div>
+            <div class="chip">Typography note: Newsreader for editorial headlines</div>
+            <div class="chip">Mobile note: category chips scroll horizontally if needed</div>
+          </div>
+          <div class="chip-row">
+            <a class="cta" href="./contact.html">ASK ABOUT AN EVENT</a>
+            <a class="cta" href="./programs.html">EXPLORE PROGRAMS</a>
+          </div>
+        </div>
+        <div class="placeholder">FEATURED IMAGE / EDITORIAL COLLAGE PLACEHOLDER</div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> The hero reframes News &amp; Events as proof of activity and expertise. For parents, fresh updates signal that Cedar is engaged, current, and invested in its families.</div>
+    </section>
+
+    <section class="section block">
+      <div class="label">CATEGORY FILTERS SECTION</div>
+      <div class="categories">
+        <div class="card"><strong>Category:</strong> Cedar News</div>
+        <div class="card"><strong>Category:</strong> Parent Tips</div>
+        <div class="card"><strong>Category:</strong> Student Events</div>
+        <div class="card"><strong>Category:</strong> Testing Dates</div>
+        <div class="card"><strong>Category:</strong> Center Announcements</div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Simple category filters make the page usable for two audiences: parents seeking practical updates and returning visitors browsing recent Cedar activity.</div>
+    </section>
+
+    <section class="section block">
+      <div class="label">FEATURED STORY + RECENT POSTS SECTION</div>
+      <div class="content-layout">
+        <article class="card">
+          <div class="meta">FEATURED STORY • May 2026</div>
+          <h2>Cedar Tutoring launches summer skill-building workshops for reading, math, and writing.</h2>
+          <div class="placeholder">FEATURED ARTICLE IMAGE PLACEHOLDER</div>
+          <p>Placeholder summary explains what the workshop offers, who it is for, and what parents should do next.</p>
+          <div class="chip-row">
+            <a class="cta" href="./contact.html">READ MORE CTA</a>
+            <a class="cta" href="./contact.html">REGISTER INTEREST</a>
+          </div>
+        </article>
+        <aside class="card">
+          <div class="meta">RECENT POSTS SIDEBAR</div>
+          <p><strong>How to tell if your child needs summer tutoring</strong><br /><span class="meta">Parent Tips</span></p>
+          <p><strong>What families can expect during a first Cedar assessment</strong><br /><span class="meta">Cedar News</span></p>
+          <p><strong>Back-to-school planning checklist for busy parents</strong><br /><span class="meta">Center Announcements</span></p>
+          <p><strong>Testing timeline reminder for SAT and ACT families</strong><br /><span class="meta">Testing Dates</span></p>
+        </aside>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> The featured story establishes editorial hierarchy, while the sidebar keeps other fresh content visible without overwhelming the page. This supports both deep reading and quick scanning.</div>
+    </section>
+
+    <section class="section block">
+      <div class="label">POSTS GRID SECTION</div>
+      <div class="posts">
+        <article class="card">
+          <div class="meta">PARENT TIPS</div>
+          <h2>Helping a child rebuild confidence after a hard report card</h2>
+          <p>Short excerpt focused on parent pain points and Cedar’s supportive approach.</p>
+        </article>
+        <article class="card">
+          <div class="meta">CEDAR NEWS</div>
+          <h2>New progress update format for families</h2>
+          <p>Short excerpt previewing clearer academic communication and results tracking.</p>
+        </article>
+        <article class="card">
+          <div class="meta">STUDENT EVENTS</div>
+          <h2>Reading challenge week at Cedar</h2>
+          <p>Short excerpt showing student engagement and community-building moments.</p>
+        </article>
+        <article class="card">
+          <div class="meta">TESTING DATES</div>
+          <h2>ACT and SAT registration reminders</h2>
+          <p>Short excerpt supporting search visibility and practical parent planning.</p>
+        </article>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> A multi-card posts grid makes the page feel alive and browseable, while giving Cedar room to mix evergreen parent guidance with time-sensitive updates.</div>
+    </section>
+
+    <section class="section block">
+      <div class="label">EVENT CALENDAR SECTION</div>
+      <div class="calendar-layout">
+        <div class="placeholder">EVENT CALENDAR PLACEHOLDER<br />Month view with event markers / list toggle</div>
+        <div class="card">
+          <div class="meta">UPCOMING EVENTS</div>
+          <ul class="calendar-list">
+            <li>May 12 — Parent orientation evening</li>
+            <li>May 18 — Summer workshop info session</li>
+            <li>June 3 — SAT strategy seminar</li>
+            <li>June 10 — Reading success open house</li>
+          </ul>
+        </div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> The event layer gives parents concrete opportunities to engage with Cedar offline or live. Pairing a calendar placeholder with a short list supports both visual and list-based browsing styles.</div>
+    </section>
+
+    <section class="section block">
+      <div class="label">NEWSLETTER / FINAL CTA SECTION</div>
+      <h2>Stay informed about Cedar programs, parent events, and important school-year updates.</h2>
+      <p>Visible subscription or inquiry CTA keeps this page conversion-aware instead of becoming a dead-end content archive.</p>
+      <div class="chip-row">
+        <a class="cta" href="./contact.html">JOIN EMAIL LIST</a>
+        <a class="cta" href="./contact.html">CONTACT CEDAR</a>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Content should still move the journey forward. This CTA converts trust built through news and events into an ongoing relationship or direct inquiry.</div>
+    </section>
+
+    <footer class="block">
+      <div class="label">FOOTER</div>
+      <p><strong>Cedar Tutoring Academy</strong> — an active, credible local academy with real updates and family touchpoints.</p>
+      <div class="note"><strong>Responsive intent:</strong> On mobile, category cards become a tap-friendly row, the featured article appears first, and upcoming events condense into a simple stacked list below the calendar placeholder.</div>
+    </footer>
+  </main>
+</body>
+</html>

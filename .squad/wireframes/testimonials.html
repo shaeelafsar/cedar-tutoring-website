@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cedar Wireframe — Testimonials</title>
+  <style>
+    :root { --bg:#f7f7f7; --surface:#fff; --line:#b8b8b8; --text:#222; --muted:#666; --soft:#ececec; --annotation:#eaf4ff; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:Inter, Arial, sans-serif; background:var(--bg); color:var(--text); }
+    a { color:inherit; text-decoration:none; }
+    .page { max-width:1280px; margin:0 auto; }
+    .topbar,.section,.hero,.footer { background:var(--surface); border:2px solid var(--line); margin:16px; }
+    .topbar { position:sticky; top:0; z-index:10; }
+    .inner,.section,.hero-inner,.footer-inner { padding:16px; }
+    .nav,.row,.summary { display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+    .nav-links,.filters,.chips { display:flex; gap:8px; flex-wrap:wrap; }
+    .nav-links a,.chip,.button,.filter,.badge { border:1px solid var(--line); background:var(--soft); padding:8px 12px; }
+    .hero { background:linear-gradient(180deg,#fafafa,#efefef); }
+    .label { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); }
+    h1,h2,h3 { margin:8px 0 12px; }
+    h1,h2 { font-family:Newsreader, Georgia, serif; }
+    .grid { display:grid; gap:16px; }
+    .overview { grid-template-columns: 0.9fr 1.1fr; }
+    .cards { grid-template-columns: repeat(3, 1fr); }
+    .card,.metric,.panel,.search,.google,.cta-box { border:2px dashed var(--line); background:#fcfcfc; padding:16px; min-height:110px; }
+    .stars { font-size:24px; letter-spacing:3px; }
+    .annotation { margin-top:12px; padding:12px; border:1px solid #a7c7e7; background:var(--annotation); font-size:14px; }
+    .small { color:var(--muted); font-size:14px; }
+    .divider { height:1px; background:var(--line); margin:12px 0; }
+    @media (max-width: 980px) { .overview,.cards { grid-template-columns:1fr; } }
+    /* Mobile intent: filters wrap into stacked rows, testimonial cards collapse to one column, and the rating overview moves above cards for immediate proof. */
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="inner nav">
+        <div><div class="label">Shared Wireframe Nav</div><strong>Cedar Tutoring Academy</strong></div>
+        <nav class="nav-links" aria-label="Wireframe pages">
+          <a href="./about.html">About Us</a>
+          <a href="./testimonials.html"><strong>Testimonials</strong></a>
+          <a href="./faq.html">FAQ</a>
+          <a href="./packages.html">Packages &amp; Pricing</a>
+        </nav>
+        <a class="button" href="#cta">Book Assessment CTA</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="label">Hero Section</div>
+        <h1>What Parents Say About Cedar</h1>
+        <p class="small">Reviews page focused on proof: aggregate rating, program filtering, and high-signal quotes that help parents compare Cedar with alternatives.</p>
+      </div>
+      <div class="annotation">UX rationale: This page is designed to reduce hesitation. Parents often seek reassurance after they understand the offer, so proof is placed immediately and organized for easy scanning.</div>
+    </section>
+
+    <section class="section">
+      <div class="label">Rating Overview Section</div>
+      <div class="grid overview">
+        <div class="metric">
+          <div class="label">Aggregate Rating</div>
+          <h2 style="font-size:64px; margin:0;">5.0</h2>
+          <div class="stars">★★★★★</div>
+          <p><strong>122 Five-Star Google Reviews</strong></p>
+          <p class="small">Large social proof panel meant to be visible above the fold.</p>
+        </div>
+        <div class="grid" style="grid-template-columns:1fr 1fr;">
+          <div class="google"><strong>Google Review Integration Block</strong><br />Google badge/logo placeholder<br /><span class="small">Live feed or synced highlights module</span></div>
+          <div class="panel"><strong>Review Themes</strong><br />Reading Growth<br />Confidence Building<br />Flexible Scheduling<br />Caring Teachers</div>
+          <div class="panel"><strong>Program Coverage</strong><br />Reading, Math, Writing, Science, SAT/ACT, Homework Help</div>
+          <div class="panel"><strong>Trust Snapshot</strong><br />Local families, repeat referrals, measurable outcomes language</div>
+        </div>
+      </div>
+      <div class="annotation">UX rationale: The overview combines quantitative proof and qualitative themes so parents get both “how many families trust Cedar” and “what those families actually value.”</div>
+    </section>
+
+    <section class="section" style="background:#f3f3f3;">
+      <div class="label">Filter + Search Controls</div>
+      <div class="search row">
+        <div><strong>Search Reviews</strong><br /><span class="small">Placeholder input: “Search by reading, math, confidence, transportation...”</span></div>
+        <div class="filters" aria-label="Program filters">
+          <span class="filter"><strong>All Programs</strong></span>
+          <span class="filter">Reading</span>
+          <span class="filter">Math</span>
+          <span class="filter">Test Prep</span>
+          <span class="filter">Homework Help</span>
+          <span class="filter">Transportation</span>
+        </div>
+      </div>
+      <div class="annotation">UX rationale: Filtering helps parents self-qualify quickly by looking for stories that match their child's needs, which increases perceived relevance and confidence.</div>
+    </section>
+
+    <section class="section">
+      <div class="label">Testimonials Grid</div>
+      <div class="grid cards">
+        <article class="card">
+          <div class="badge">Reading Growth</div>
+          <p class="stars">★★★★★</p>
+          <h3>“Our son actually enjoys reading again.”</h3>
+          <p class="small">Parent of 3rd grader — mentions improved fluency, patient teachers, and confidence at school.</p>
+        </article>
+        <article class="card">
+          <div class="badge">Math Support</div>
+          <p class="stars">★★★★★</p>
+          <h3>“They broke concepts down in a way that finally clicked.”</h3>
+          <p class="small">Parent of 6th grader — emphasizes step-by-step instruction and communication.</p>
+        </article>
+        <article class="card">
+          <div class="badge">Flexible Scheduling</div>
+          <p class="stars">★★★★★</p>
+          <h3>“Cedar made tutoring workable for our family calendar.”</h3>
+          <p class="small">Parent of two students — highlights schedule flexibility and convenience.</p>
+        </article>
+        <article class="card">
+          <div class="badge">SAT / ACT Prep</div>
+          <p class="stars">★★★★★</p>
+          <h3>“My daughter felt prepared instead of overwhelmed.”</h3>
+          <p class="small">Parent of high school student — outcome-focused test prep testimonial.</p>
+        </article>
+        <article class="card">
+          <div class="badge">Caring Teachers</div>
+          <p class="stars">★★★★★</p>
+          <h3>“The staff feels warm, professional, and genuinely invested.”</h3>
+          <p class="small">Parent review spotlighting trust and relationship quality.</p>
+        </article>
+        <article class="card">
+          <div class="badge">Transportation</div>
+          <p class="stars">★★★★★</p>
+          <h3>“Transportation support made a huge difference for us.”</h3>
+          <p class="small">Parent testimonial that surfaces a practical Cedar differentiator.</p>
+        </article>
+      </div>
+      <div class="annotation">UX rationale: Grid mode is more trustworthy and scannable than a carousel on a dedicated reviews page, especially when families want to compare multiple experiences at once.</div>
+    </section>
+
+    <section class="section">
+      <div class="label">Review Source + Moderation Notes</div>
+      <div class="grid overview">
+        <div class="panel"><strong>Google Reviews Feed Placeholder</strong><br />Module for synced review snippets, date stamps, or “Read more on Google” links.</div>
+        <div class="panel"><strong>Curation Notes</strong><br />Mix testimonial themes intentionally: outcomes, care, flexibility, logistics, communication, and affordability.</div>
+      </div>
+      <div class="annotation">UX rationale: Clarifying the source of reviews helps this page feel authentic, not hand-picked marketing copy. It adds credibility without overwhelming the user.</div>
+    </section>
+
+    <section class="section" id="cta" style="background:#dedede;">
+      <div class="label">CTA Block</div>
+      <div class="grid overview">
+        <div class="cta-box"><strong>Headline</strong><br />Ready to join these families?</div>
+        <div class="cta-box"><strong>Actions</strong><br />Primary CTA: Book Free Assessment<br />Secondary CTA: Explore Programs</div>
+      </div>
+      <div class="annotation">UX rationale: After seeing strong proof, the user is primed for action. This CTA converts confidence into a next step while still offering a lower-commitment browse path.</div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="label">Footer</div>
+        <div class="row">
+          <div><strong>Cedar Tutoring Academy</strong><br /><span class="small">Reviews, proof, and parent trust.</span></div>
+          <div class="nav-links">
+            <a href="./about.html">About</a>
+            <a href="./faq.html">FAQ</a>
+            <a href="./packages.html">Pricing</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

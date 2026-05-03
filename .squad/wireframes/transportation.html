@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cedar Tutoring Academy — Transportation Wireframe</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, Arial, sans-serif; background: #efefef; color: #222; }
+    a { color: #222; }
+    .shell { max-width: 1200px; margin: 0 auto; padding: 0 20px 48px; }
+    .block, .card, .placeholder, .annotation, .note, .chip, .step { border: 1px solid #bcbcbc; background: #fff; }
+    .topbar { position: sticky; top: 0; z-index: 10; background: #fff; border-bottom: 1px solid #bcbcbc; }
+    .topbar-inner { max-width: 1200px; margin: 0 auto; padding: 14px 20px; display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .brand { font-weight: 700; }
+    nav { display: flex; gap: 10px; flex-wrap: wrap; }
+    nav a, .cta { text-decoration: none; padding: 10px 12px; border: 1px solid #999; background: #fafafa; font-size: 14px; }
+    .cta { font-weight: 700; }
+    .section { margin-top: 24px; padding: 24px; }
+    .label { font-size: 12px; font-weight: 800; letter-spacing: .08em; color: #555; margin-bottom: 10px; }
+    .hero, .two-col { display: grid; grid-template-columns: 1.15fr .85fr; gap: 20px; }
+    .grid, .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+    .card, .step { padding: 18px; }
+    .placeholder { min-height: 190px; display: flex; align-items: center; justify-content: center; padding: 12px; text-align: center; background: repeating-linear-gradient(45deg, #f5f5f5, #f5f5f5 10px, #ebebeb 10px, #ebebeb 20px); color: #555; }
+    .annotation { margin-top: 10px; padding: 12px 14px; background: #eaf4ff; border-color: #9fbfdf; font-size: 14px; }
+    .note { margin-top: 16px; padding: 12px 14px; background: #f8f8f8; font-size: 14px; }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .chip { padding: 10px 12px; background: #f8f8f8; font-size: 14px; }
+    .step strong { display: inline-block; margin-bottom: 10px; }
+    .safety-list { margin: 0; padding-left: 18px; }
+    footer { margin-top: 24px; padding: 24px; }
+    /* Mobile behavior: route cards, process steps, and safety blocks stack in reading order. */
+    @media (max-width: 820px) {
+      .hero, .two-col { grid-template-columns: 1fr; }
+      .topbar { position: static; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">CEDAR TUTORING ACADEMY — WIREFRAMES</div>
+      <nav aria-label="Wireframe navigation">
+        <a href="./locations.html">Locations</a>
+        <a href="./transportation.html">Transportation</a>
+        <a href="./news-events.html">News &amp; Events</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./about.html">About</a>
+      </nav>
+      <a class="cta" href="./contact.html">ASK ABOUT ROUTES</a>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="section block">
+      <div class="label">HERO SECTION</div>
+      <div class="hero">
+        <div>
+          <h1>Transportation that makes tutoring easier to say yes to.</h1>
+          <p>Parents often have interest before they have certainty on pickup, dropoff, or service area coverage. This wireframe is designed to remove that friction with direct operational answers.</p>
+          <div class="chip-row">
+            <div class="chip">Token note: Primary blue = trust / logistics clarity</div>
+            <div class="chip">Token note: Secondary green = safety / confirmation states</div>
+            <div class="chip">Mobile note: route details collapse into accordion-friendly cards</div>
+          </div>
+          <div class="chip-row">
+            <a class="cta" href="./contact.html">CHECK ELIGIBILITY</a>
+            <a class="cta" href="./locations.html">SEE LOCATIONS</a>
+          </div>
+        </div>
+        <div class="placeholder">SERVICE AREA MAP PLACEHOLDER<br />Highlighted school zones, route lines, pickup radius</div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> The hero leads with a parent pain point—time and transportation coordination—not generic feature language. A map cue signals that this page is practical, not promotional fluff.</div>
+    </section>
+
+    <section class="section block">
+      <div class="label">TRANSPORTATION OVERVIEW STRIP</div>
+      <div class="grid">
+        <div class="card"><strong>Who it serves</strong><br /><span>Families balancing work, school pickup, and after-school tutoring.</span></div>
+        <div class="card"><strong>Typical coverage</strong><br /><span>Sample copy: within 5 miles of Cedar partner schools and neighborhoods.</span></div>
+        <div class="card"><strong>Schedule window</strong><br /><span>After-school pickup, tutoring block, and parent pickup or return option.</span></div>
+        <div class="card"><strong>How to confirm</strong><br /><span>Parents submit location details and Cedar responds with route fit.</span></div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> This section gives quick qualification criteria before parents read process details. It helps users self-identify whether transportation is likely relevant.</div>
+    </section>
+
+    <section class="section block">
+      <div class="label">SERVICE AREAS / ROUTES SECTION</div>
+      <div class="grid">
+        <article class="card">
+          <h2>Plano Route</h2>
+          <div class="placeholder">ROUTE MAP PLACEHOLDER</div>
+          <p><strong>Schools served:</strong> West Plano elementary and middle school corridor</p>
+          <p><strong>Pickup window:</strong> 3:00 PM – 3:45 PM</p>
+          <p><strong>Dropoff options:</strong> Cedar center pickup or parent-approved destination</p>
+        </article>
+        <article class="card">
+          <h2>Frisco Route</h2>
+          <div class="placeholder">ROUTE MAP PLACEHOLDER</div>
+          <p><strong>Schools served:</strong> Central Frisco and nearby family neighborhoods</p>
+          <p><strong>Pickup window:</strong> 2:45 PM – 3:30 PM</p>
+          <p><strong>Dropoff options:</strong> Standard parent pickup with optional return scheduling note</p>
+        </article>
+        <article class="card">
+          <h2>Allen / McKinney Route</h2>
+          <div class="placeholder">ROUTE MAP PLACEHOLDER</div>
+          <p><strong>Schools served:</strong> Sample northern coverage zone for qualified families</p>
+          <p><strong>Pickup window:</strong> 2:50 PM – 3:35 PM</p>
+          <p><strong>Dropoff options:</strong> Cedar arrival confirmation sent to parents</p>
+        </article>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Route cards make the service feel organized and tangible. Listing schools, timing, and dropoff options turns a vague transportation promise into a believable operations system.</div>
+    </section>
+
+    <section class="section block">
+      <div class="label">PICKUP / DROPOFF PROCESS SECTION</div>
+      <div class="steps">
+        <div class="step"><strong>STEP 1 — CONFIRM ELIGIBILITY</strong><br />Family shares school, grade, and address so Cedar can match the child to an existing route.</div>
+        <div class="step"><strong>STEP 2 — RECEIVE A SCHEDULE</strong><br />Parent gets a clear pickup window, tutoring block, and handoff expectation in advance.</div>
+        <div class="step"><strong>STEP 3 — DAILY CHECK-IN</strong><br />Cedar confirms student pickup and center arrival using a simple parent communication flow.</div>
+        <div class="step"><strong>STEP 4 — SAFE RELEASE</strong><br />Approved pickup contact, dismissal note, and end-of-session timing are verified before release.</div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Process steps reduce ambiguity and show that Cedar has predictable routines. This is especially important for parents entrusting a child to transportation.</div>
+    </section>
+
+    <section class="section block">
+      <div class="label">SAFETY FEATURES SECTION</div>
+      <div class="two-col">
+        <div class="card">
+          <h2>Safety and communication features</h2>
+          <ul class="safety-list">
+            <li>Adult-supervised pickup and handoff</li>
+            <li>Approved contact list for dismissal</li>
+            <li>Arrival confirmation for parents</li>
+            <li>Clear procedure for schedule changes</li>
+            <li>Student attendance tracked by route</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Parent reassurance panel</h2>
+          <p>Placeholder copy mirrors form reassurance patterns used across the site.</p>
+          <p>• We communicate clearly<br />• We prioritize student safety<br />• We confirm schedule details in advance<br />• We make logistics easier for busy families</p>
+        </div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Safety content deserves its own section because it is a trust decision, not a minor FAQ. Parents need to see both procedures and communication standards to feel comfortable.</div>
+    </section>
+
+    <section class="section block">
+      <div class="label">FAQ / EDGE CASES SECTION</div>
+      <div class="grid">
+        <div class="card"><strong>What if my child’s school is outside the usual route?</strong><br />Placeholder answer explains review and waitlist process.</div>
+        <div class="card"><strong>Can transportation be combined with multiple tutoring days?</strong><br />Placeholder answer explains schedule flexibility.</div>
+        <div class="card"><strong>How are late changes handled?</strong><br />Placeholder answer explains cutoffs and parent communication.</div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Transportation questions often involve exceptions. Addressing likely edge cases helps prevent friction during inquiry and shows Cedar anticipates real family schedules.</div>
+    </section>
+
+    <section class="section block">
+      <div class="label">FINAL CTA SECTION</div>
+      <h2>Need to know whether Cedar transportation fits your family?</h2>
+      <p>Guide the parent to one simple action: ask for route confirmation while interest is high.</p>
+      <div class="chip-row">
+        <a class="cta" href="./contact.html">REQUEST ROUTE REVIEW</a>
+        <a class="cta" href="./locations.html">COMPARE LOCATIONS</a>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> The closing CTA is intentionally specific. “Request route review” matches the parent’s task better than a generic “Learn more” and supports conversion from a logistics-focused page.</div>
+    </section>
+
+    <footer class="block">
+      <div class="label">FOOTER</div>
+      <p><strong>Cedar Tutoring Academy</strong> — parent-friendly logistics paired with trustworthy academic support.</p>
+      <div class="note"><strong>Responsive intent:</strong> On small screens, service-area cards stack vertically, process steps become a top-to-bottom checklist, and safety content appears before FAQs so trust information stays prominent.</div>
+    </footer>
+  </main>
+</body>
+</html>

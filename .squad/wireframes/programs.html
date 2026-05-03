@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cedar Wireframe - Programs</title>
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --panel: #ffffff;
+      --line: #9ca3af;
+      --text: #111827;
+      --muted: #6b7280;
+      --annotation: #e8f3ff;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 Inter, Arial, sans-serif; }
+    .container { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    a { color: inherit; }
+    header, footer, section, .panel, .card, .chip, .annotation, .placeholder, .note, .step { border: 2px solid var(--line); }
+    header, footer, section, .note { background: var(--panel); margin: 16px 0; padding: 20px; }
+    header { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    nav { display: flex; flex-wrap: wrap; gap: 12px; }
+    .brand { font-weight: 700; }
+    .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .title { margin: 4px 0 12px; font-size: 28px; font-family: Newsreader, Georgia, serif; }
+    .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; }
+    .placeholder { min-height: 210px; background: repeating-linear-gradient(135deg, #fafafa, #fafafa 10px, #ececec 10px, #ececec 20px); display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+    .filters, .grid-3, .detail-grid, .steps, .outcomes, .related, .cta-row { display: grid; gap: 16px; }
+    .filters { grid-template-columns: repeat(5, auto); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .detail-grid { grid-template-columns: 1.1fr .9fr; }
+    .steps { grid-template-columns: repeat(4, 1fr); }
+    .outcomes, .related { grid-template-columns: repeat(3, 1fr); }
+    .panel, .card, .step, .chip { background: #fafafa; padding: 14px; }
+    .chip { text-align: center; font-weight: 600; }
+    .annotation { background: var(--annotation); padding: 12px 14px; margin-top: 12px; font-size: 14px; }
+    .cta { display: inline-block; padding: 8px 12px; border: 2px solid #444; background: #efefef; font-weight: 600; }
+    .small { color: var(--muted); font-size: 14px; }
+    .note { padding: 14px 16px; }
+    /* Mobile intent: filters wrap into stacked chips, card grid becomes one column, and detail content shifts into a single narrative flow. */
+    @media (max-width: 900px) {
+      header, .hero, .detail-grid, .steps, .outcomes, .related, .cta-row { display: grid; grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+      .filters { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .grid-3, .filters { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">CEDAR TUTORING ACADEMY<br /><span class="small">Programs wireframe</span></div>
+      <nav aria-label="Wireframe navigation">
+        <a href="./homepage.html">Home</a>
+        <a href="./programs.html">Programs</a>
+        <a href="./test-prep.html">Test Prep</a>
+        <a href="./book-assessment.html">Book Assessment</a>
+      </nav>
+      <span class="cta">BOOK ASSESSMENT</span>
+    </header>
+
+    <div class="note"><strong>Layout note:</strong> this wireframe shows both the Programs hub and an example individual program detail layout on one reference page so Trinity can implement the listing and detail hierarchy consistently.</div>
+
+    <section>
+      <div class="eyebrow">PAGE HERO</div>
+      <div class="hero">
+        <div>
+          <h1 class="title">Academic Programs for Every Stage of Learning</h1>
+          <p>Help families compare Cedar's tutoring options by need, subject, and student stage—from catching up in core subjects to getting ahead with structured enrichment.</p>
+          <p><span class="cta">CTA: Book a Free Assessment</span> <span class="cta">CTA: Compare Programs</span></p>
+        </div>
+        <div class="placeholder">SHORT INTERIOR HERO VISUAL<br />Pattern, subject icons, or center photography placeholder</div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> The hero should orient parents quickly and set the page up as a decision-making tool, not just a gallery of disconnected subjects.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">FILTERING BAR</div>
+      <div class="filters">
+        <div class="chip">FILTER: All Programs</div>
+        <div class="chip">FILTER: Catch Up</div>
+        <div class="chip">FILTER: Stay On Track</div>
+        <div class="chip">FILTER: Get Ahead</div>
+        <div class="chip">FILTER: Test Prep / Specialty</div>
+      </div>
+      <div class="note">Optional secondary controls: grade bands (K-5, 6-8, 9-12) and learning goals. In grayscale wireframe, these read as pills/chips only.</div>
+      <div class="annotation"><strong>UX rationale:</strong> Parents often arrive knowing the problem, not the exact service name. Filters help them self-sort without reading every card.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">PROGRAM CARDS GRID</div>
+      <h2 class="title">Programs Overview</h2>
+      <div class="grid-3">
+        <div class="card"><strong>PROGRAM CARD</strong><h3>Math Tutoring</h3><p>For students struggling with foundations, homework, or advanced concepts.</p><p class="small">Grades K-12 • Catch up / stay on track</p></div>
+        <div class="card"><strong>PROGRAM CARD</strong><h3>Reading Support</h3><p>Build fluency, comprehension, vocabulary, and confidence.</p><p class="small">Grades K-12 • Catch up / confidence</p></div>
+        <div class="card"><strong>PROGRAM CARD</strong><h3>Writing Coaching</h3><p>Improve organization, grammar, clarity, and school writing performance.</p><p class="small">Grades 3-12 • Core skills</p></div>
+        <div class="card"><strong>PROGRAM CARD</strong><h3>Science Tutoring</h3><p>Support for content mastery, labs, tests, and study habits.</p><p class="small">Grades 6-12 • Core subject</p></div>
+        <div class="card"><strong>PROGRAM CARD</strong><h3>Arabic</h3><p>Specialty language support for literacy, reading, and communication goals.</p><p class="small">All ages • Specialty</p></div>
+        <div class="card"><strong>PROGRAM CARD</strong><h3>Homework Help</h3><p>Guided accountability, structure, and after-school academic support.</p><p class="small">Grades K-12 • Stay on track</p></div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Each card should answer who the program is for, what pain point it addresses, and why a parent should click. This supports fast comparison.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">INDIVIDUAL PROGRAM DETAIL LAYOUT</div>
+      <h2 class="title">Example Detail Layout: Reading Support</h2>
+      <div class="detail-grid">
+        <div class="panel">
+          <strong>THE PROBLEM SECTION</strong>
+          <p>Does your child avoid reading, struggle with fluency, or feel discouraged in class? This space frames parent pain points before Cedar explains the solution.</p>
+          <strong>OUR APPROACH SECTION</strong>
+          <p>Personalized reading assessment, targeted instruction, confidence-building practice, and progress updates for families.</p>
+          <strong>FAQ PREVIEW</strong>
+          <p>When should we start? How often does tutoring happen? How do you measure progress?</p>
+        </div>
+        <div class="placeholder">PROGRAM HERO / SUPPORTING VISUAL<br />Breadcrumbs + headline + CTA + grade badge</div>
+      </div>
+      <div class="steps">
+        <div class="step"><strong>ASSESS</strong><br />Identify fluency and comprehension gaps.</div>
+        <div class="step"><strong>PLAN</strong><br />Set goals by skill and confidence level.</div>
+        <div class="step"><strong>TEACH</strong><br />Use targeted strategies and practice.</div>
+        <div class="step"><strong>MEASURE</strong><br />Share growth and next steps.</div>
+      </div>
+      <div class="outcomes">
+        <div class="card"><strong>OUTCOME</strong><br />Improved fluency and comprehension</div>
+        <div class="card"><strong>OUTCOME</strong><br />More confidence with school reading tasks</div>
+        <div class="card"><strong>OUTCOME</strong><br />Clear parent visibility into progress</div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> The detail layout should move from empathy to method to outcome. That sequence mirrors how parents evaluate tutoring: problem first, credibility second, action third.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">HOW CEDAR IS DIFFERENT</div>
+      <div class="grid-3">
+        <div class="card"><h3>Assessment-Led Placement</h3><p>Parents get guidance instead of guessing which program fits best.</p></div>
+        <div class="card"><h3>Warm, Structured Teaching</h3><p>Cedar balances care and academic rigor for parent trust.</p></div>
+        <div class="card"><h3>Flexible Family Logistics</h3><p>Schedules, transportation considerations, and practical support reduce friction.</p></div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Hub pages should not rely on subject cards alone. This section reinforces why Cedar is the right provider across all programs.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">RELATED PROGRAMS / CROSS-SELL</div>
+      <div class="related">
+        <div class="card"><strong>RELATED PROGRAM</strong><br />Writing Support for students who need reading + writing alignment.</div>
+        <div class="card"><strong>RELATED PROGRAM</strong><br />Homework Help for broader academic accountability.</div>
+        <div class="card"><strong>RELATED PROGRAM</strong><br />Test Prep for older students with performance goals.</div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Cross-linking helps parents see Cedar as a long-term academic partner and increases discovery of adjacent services.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">CTA BLOCK</div>
+      <div class="panel">
+        <h2 class="title">Not Sure Which Program Fits Best?</h2>
+        <p>Guide parents toward the assessment when uncertainty is high. This CTA should appear after enough context to make the ask feel helpful.</p>
+        <p><span class="cta">BOOK A FREE ASSESSMENT</span></p>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> The hub page should gracefully catch indecision. A direct assessment CTA keeps decision fatigue from becoming drop-off.</div>
+    </section>
+
+    <footer>
+      <strong>FOOTER</strong><br />Shared nav, contact info, and repeated booking action.
+    </footer>
+  </div>
+</body>
+</html>

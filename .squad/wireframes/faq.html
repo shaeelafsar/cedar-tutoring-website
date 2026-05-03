@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cedar Wireframe — FAQ</title>
+  <style>
+    :root { --bg:#f7f7f7; --surface:#fff; --line:#b8b8b8; --text:#222; --muted:#666; --soft:#ececec; --annotation:#eaf4ff; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:Inter, Arial, sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }
+    a { color:inherit; text-decoration:none; }
+    .page { max-width:1280px; margin:0 auto; }
+    .topbar,.hero,.section,.footer { background:var(--surface); border:2px solid var(--line); margin:16px; }
+    .topbar { position:sticky; top:0; z-index:10; }
+    .inner,.hero-inner,.section,.footer-inner { padding:16px; }
+    .nav,.row { display:flex; gap:12px; justify-content:space-between; align-items:center; flex-wrap:wrap; }
+    .nav-links,.tabs { display:flex; gap:8px; flex-wrap:wrap; }
+    .nav-links a,.tab,.button { border:1px solid var(--line); background:var(--soft); padding:8px 12px; }
+    .hero { background:linear-gradient(180deg,#fafafa,#efefef); }
+    .label { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); }
+    h1,h2,h3 { margin:8px 0 12px; }
+    h1,h2 { font-family:Newsreader, Georgia, serif; }
+    .grid { display:grid; gap:16px; }
+    .two { grid-template-columns: 0.8fr 1.2fr; }
+    .search,.cta-panel,.category-panel, details { border:2px dashed var(--line); background:#fcfcfc; padding:16px; }
+    details + details { margin-top:12px; }
+    summary { cursor:pointer; font-weight:700; }
+    .annotation { margin-top:12px; padding:12px; border:1px solid #a7c7e7; background:var(--annotation); font-size:14px; }
+    .small { font-size:14px; color:var(--muted); }
+    @media (max-width: 900px) { .two { grid-template-columns:1fr; } }
+    /* Mobile intent: category tabs wrap, search stays above answers, and accordions remain the core interaction to keep dense information easy to scan on small screens. */
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="inner nav">
+        <div><div class="label">Shared Wireframe Nav</div><strong>Cedar Tutoring Academy</strong></div>
+        <nav class="nav-links" aria-label="Wireframe pages">
+          <a href="./about.html">About Us</a>
+          <a href="./testimonials.html">Testimonials</a>
+          <a href="./faq.html"><strong>FAQ</strong></a>
+          <a href="./packages.html">Packages &amp; Pricing</a>
+        </nav>
+        <a class="button" href="#cta">Book Assessment CTA</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="label">Hero Section</div>
+        <h1>Frequently Asked Questions</h1>
+        <p class="small">FAQ page designed to lower friction for parents comparing options, checking logistics, and deciding whether to book an assessment.</p>
+      </div>
+      <div class="annotation">UX rationale: A focused hero sets expectation quickly—this page exists to answer objections and reduce uncertainty, not to re-sell the brand from scratch.</div>
+    </section>
+
+    <section class="section">
+      <div class="label">Search + Category Grouping</div>
+      <div class="grid two">
+        <div class="search">
+          <strong>Search Field Placeholder</strong>
+          <p class="small">Search prompt example: “What grade levels do you serve?” or “Do you offer transportation?”</p>
+          <p class="small">Suggested quick links: pricing, schedule, assessment, test prep.</p>
+        </div>
+        <div class="category-panel">
+          <strong>Category Tabs</strong>
+          <div class="tabs" style="margin-top:12px;">
+            <span class="tab"><strong>Programs</strong></span>
+            <span class="tab">Logistics</span>
+            <span class="tab">Pricing</span>
+            <span class="tab">Enrollment</span>
+          </div>
+          <p class="small" style="margin-top:12px;">Selected-state wireframe shown for “Programs.” Tabs naturally become a wrapped chip list on mobile.</p>
+        </div>
+      </div>
+      <div class="annotation">UX rationale: Parents usually arrive with a specific question, not a desire to browse every answer. Search and categories shorten the path to reassurance.</div>
+    </section>
+
+    <section class="section" style="background:#f3f3f3;">
+      <div class="label">Accordion-Style Q&amp;A Section</div>
+      <div class="grid two">
+        <div class="category-panel">
+          <h2>Visible Category: Programs</h2>
+          <p class="small">Secondary nav or sticky sidebar placeholder. Could show counts such as Programs (6), Logistics (5), Pricing (4), Enrollment (4).</p>
+        </div>
+        <div>
+          <details open>
+            <summary>What grades do you support?</summary>
+            <p>Cedar supports K-12 students across reading, math, writing, science, homework help, and test prep, with plans tailored to each student's needs.</p>
+          </details>
+          <details>
+            <summary>Do you only help students who are behind?</summary>
+            <p>No. The wireframe assumes FAQs cover catch-up support, confidence building, enrichment, and getting ahead.</p>
+          </details>
+          <details>
+            <summary>How do you decide what my child needs?</summary>
+            <p>Every plan starts with a free assessment and conversation with the family so Cedar can recommend frequency, goals, and program fit.</p>
+          </details>
+          <details>
+            <summary>Do you offer SAT and ACT prep?</summary>
+            <p>Yes. A dedicated answer would link to test prep details and clarify who it is best suited for.</p>
+          </details>
+        </div>
+      </div>
+      <div class="annotation">UX rationale: Accordion UI keeps dense content compact while still making answers easy to scan. Grouping by category prevents the page from feeling overwhelming.</div>
+    </section>
+
+    <section class="section">
+      <div class="label">Secondary FAQ Category Preview</div>
+      <div class="grid two">
+        <div class="category-panel">
+          <h2>Logistics Preview</h2>
+          <ul>
+            <li>Do you offer transportation?</li>
+            <li>Where are you located?</li>
+            <li>How flexible is scheduling?</li>
+          </ul>
+        </div>
+        <div class="category-panel">
+          <h2>Pricing + Enrollment Preview</h2>
+          <ul>
+            <li>How do packages work?</li>
+            <li>Is pricing listed or customized?</li>
+            <li>What happens after I book an assessment?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="annotation">UX rationale: Previewing additional categories encourages deeper browsing and reassures parents that common practical questions are covered without forcing immediate context switching.</div>
+    </section>
+
+    <section class="section" id="cta" style="background:#ededed;">
+      <div class="label">Contact Reassurance CTA</div>
+      <div class="grid two">
+        <div class="cta-panel"><strong>Still have questions?</strong><br />Prompt for parents who need a human answer before booking.</div>
+        <div class="cta-panel"><strong>Contact Options</strong><br />Phone placeholder<br />Email placeholder<br />Primary CTA: Book Free Assessment</div>
+      </div>
+      <div class="annotation">UX rationale: FAQ pages often support users who are close to converting but still unsure. This CTA removes dead ends by offering direct contact and a clear next step.</div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="label">Footer</div>
+        <div class="row">
+          <div><strong>Cedar Tutoring Academy</strong><br /><span class="small">Answering parent questions clearly and calmly.</span></div>
+          <div class="nav-links">
+            <a href="./about.html">About</a>
+            <a href="./testimonials.html">Reviews</a>
+            <a href="./packages.html">Pricing</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

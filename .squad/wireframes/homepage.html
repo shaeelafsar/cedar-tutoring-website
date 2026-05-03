@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cedar Wireframe - Homepage</title>
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --panel: #ffffff;
+      --line: #9ca3af;
+      --text: #111827;
+      --muted: #6b7280;
+      --annotation: #e8f3ff;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 Inter, Arial, sans-serif; }
+    a { color: inherit; }
+    .container { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    .site-header, .site-footer, section, .note, .annotation, .card, .placeholder, .stat, .step { border: 2px solid var(--line); }
+    .site-header, .site-footer, section, .note { background: var(--panel); margin: 16px 0; }
+    .site-header, .site-footer, section { padding: 20px; }
+    .site-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; position: sticky; top: 0; z-index: 2; }
+    .brand { font-weight: 700; }
+    nav { display: flex; flex-wrap: wrap; gap: 12px; }
+    .cta, .tag { display: inline-block; border: 2px solid #444; padding: 8px 12px; background: #efefef; text-decoration: none; font-weight: 600; }
+    .note { padding: 14px 16px; }
+    .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .section-title { margin: 4px 0 12px; font-size: 28px; font-family: Newsreader, Georgia, serif; }
+    .hero { display: grid; grid-template-columns: 1.3fr .9fr; gap: 20px; align-items: stretch; }
+    .placeholder { min-height: 260px; background: repeating-linear-gradient(135deg, #fafafa, #fafafa 10px, #ececec 10px, #ececec 20px); display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+    .grid-4, .grid-3, .stats, .steps { display: grid; gap: 16px; }
+    .stats { grid-template-columns: repeat(5, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .stat, .card, .step { background: #fafafa; padding: 16px; min-height: 130px; }
+    .step { min-height: 160px; }
+    .card h3, .step h3 { margin: 8px 0; font-size: 18px; }
+    .annotation { background: var(--annotation); padding: 12px 14px; margin-top: 12px; font-size: 14px; }
+    .split-cta { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; align-items: center; }
+    .testimonial-track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .small { color: var(--muted); font-size: 14px; }
+    .site-footer { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 16px; }
+    /* Mobile intent: nav wraps, two-column sections collapse to one column, cards stack for quick scanning. */
+    @media (max-width: 820px) {
+      .site-header, .hero, .split-cta, .site-footer { grid-template-columns: 1fr; display: grid; }
+      .stats, .grid-3, .grid-4, .testimonial-track, .site-footer { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .stats, .grid-3, .grid-4, .testimonial-track, .site-footer { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <div class="brand">CEDAR TUTORING ACADEMY<br /><span class="small">Wireframe / Typography labels: Newsreader + Inter</span></div>
+      <nav aria-label="Wireframe navigation">
+        <a href="./homepage.html">Home</a>
+        <a href="./programs.html">Programs</a>
+        <a href="./test-prep.html">Test Prep</a>
+        <a href="./book-assessment.html">Book Assessment</a>
+      </nav>
+      <a class="cta" href="./book-assessment.html">BOOK ASSESSMENT CTA</a>
+    </header>
+
+    <div class="note">
+      <strong>Wireframe note:</strong> grayscale-only layout study. Brand tokens referenced as labels for implementation later: Primary Blue, Secondary Green, Accent Amber.
+    </div>
+
+    <section>
+      <div class="eyebrow">HERO SECTION</div>
+      <div class="hero">
+        <div>
+          <h1 class="section-title">Unlock Your Child's Potential with K-12 Tutoring and Test Prep That Builds Skills, Confidence, and Results.</h1>
+          <p>Personalized support in reading, math, writing, science, SAT/ACT prep, homework help, and more—with caring teachers, flexible schedules, and measurable progress.</p>
+          <p><span class="cta">PRIMARY CTA: Book a Free Assessment</span> <span class="cta">SECONDARY CTA: Explore Programs</span></p>
+          <p class="small">Supportive sub-copy area for transportation note, review badge, and "Serving K-12 families" reassurance.</p>
+        </div>
+        <div class="placeholder">HERO IMAGE / CAMPUS PHOTO / ABSTRACT PATTERN<br />Right-side visual balances copy and reinforces warmth + professionalism.</div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Parents should understand Cedar's audience, offer, and next step in under five seconds. Dual CTAs support both ready-to-convert users and comparison shoppers.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">TRUST SIGNALS / PROOF BAR</div>
+      <div class="stats">
+        <div class="stat"><strong>5.0 Google Rating</strong><br />122+ reviews</div>
+        <div class="stat"><strong>K-12 Grades Served</strong><br />Elementary through high school</div>
+        <div class="stat"><strong>Small Groups</strong><br />1:3 support model</div>
+        <div class="stat"><strong>Flexible Scheduling</strong><br />After-school and weekend slots</div>
+        <div class="stat"><strong>Transportation Available</strong><br />Service-area dependent</div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> This fast-scanning strip answers credibility and logistics questions before parents scroll into detail, reducing bounce from anxious first-time visitors.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">PROGRAMS OVERVIEW</div>
+      <h2 class="section-title">Academic Programs for Catch-Up, Confidence, and Growth</h2>
+      <div class="grid-3">
+        <div class="card"><div class="tag">PROGRAM CARD</div><h3>Math Tutoring</h3><p>Support for foundational gaps, homework struggles, and advanced skill-building.</p></div>
+        <div class="card"><div class="tag">PROGRAM CARD</div><h3>Reading Support</h3><p>Fluency, comprehension, vocabulary, and confidence for reluctant readers.</p></div>
+        <div class="card"><div class="tag">PROGRAM CARD</div><h3>Writing Coaching</h3><p>Sentence structure, organization, grammar, and school writing support.</p></div>
+        <div class="card"><div class="tag">PROGRAM CARD</div><h3>Science Help</h3><p>Concept clarity, lab prep, and study strategies for middle and high school.</p></div>
+        <div class="card"><div class="tag">PROGRAM CARD</div><h3>Test Prep</h3><p>SAT, ACT, and PSAT planning with diagnostics and pacing strategies.</p></div>
+        <div class="card"><div class="tag">PROGRAM CARD</div><h3>Homework Help</h3><p>Consistent academic structure for students who need guided accountability.</p></div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> A concise grid lets parents self-identify quickly. It bridges broad homepage messaging to deeper service pages without forcing long reading first.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">HOW IT WORKS</div>
+      <h2 class="section-title">Simple, Reassuring Enrollment Journey</h2>
+      <div class="steps grid-4">
+        <div class="step"><div class="tag">STEP 1</div><h3>Free Assessment</h3><p>Understand current performance, goals, and learning gaps.</p></div>
+        <div class="step"><div class="tag">STEP 2</div><h3>Custom Plan</h3><p>Match the student to the right program, schedule, and support level.</p></div>
+        <div class="step"><div class="tag">STEP 3</div><h3>Targeted Tutoring</h3><p>Build skills through caring instruction, practice, and feedback.</p></div>
+        <div class="step"><div class="tag">STEP 4</div><h3>Progress Reviews</h3><p>Keep families informed with updates, wins, and next-step recommendations.</p></div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Parents need clarity on what happens after clicking. This section removes uncertainty and frames Cedar as organized, measurable, and low-friction.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">WHY CEDAR</div>
+      <h2 class="section-title">Differentiators Parents Care About</h2>
+      <div class="grid-4">
+        <div class="card"><h3>Caring Teachers</h3><p>Warm, encouraging instruction that helps students feel safe asking for help.</p></div>
+        <div class="card"><h3>Flexible Scheduling</h3><p>Designed for busy families balancing school, activities, and transportation.</p></div>
+        <div class="card"><h3>Progress You Can See</h3><p>Assessment-led planning and visible milestones build parent confidence.</p></div>
+        <div class="card"><h3>Local, Trusted Academy</h3><p>Real community reputation with strong parent testimonials and practical support.</p></div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Testimonials prove trust, but differentiators should not stay buried inside reviews. This block turns hidden strengths into intentional positioning.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">TESTIMONIAL CAROUSEL</div>
+      <h2 class="section-title">What Parents Say About Cedar</h2>
+      <div class="testimonial-track">
+        <div class="card"><div class="tag">TESTIMONIAL</div><p>"My daughter gained confidence in reading and finally enjoys going to tutoring."</p><p class="small">Parent of 3rd grader</p></div>
+        <div class="card"><div class="tag">TESTIMONIAL</div><p>"Flexible scheduling and thoughtful communication made Cedar easy for our family."</p><p class="small">Parent of middle school student</p></div>
+        <div class="card"><div class="tag">TESTIMONIAL</div><p>"Our son's SAT prep felt strategic, not overwhelming. His score improved and so did his confidence."</p><p class="small">Parent of 11th grader</p></div>
+      </div>
+      <div class="note">Placeholder for carousel controls, review stars, and Google review badge.</div>
+      <div class="annotation"><strong>UX rationale:</strong> Parent voices are Cedar's strongest persuasion tool. Placing curated proof after value explanation helps visitors validate that the promise is real.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">CTA BLOCK</div>
+      <div class="split-cta">
+        <div>
+          <h2 class="section-title">Ready to Find the Right Support for Your Child?</h2>
+          <p>Book a free assessment to identify learning gaps, recommend the best-fit program, and map next steps.</p>
+        </div>
+        <div class="placeholder">PRIMARY ACTION PANEL<br />Button + reassurance note:<br />"We'll contact you within 24 hours."</div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> The final CTA appears after proof and process so the ask feels earned. It converts high-intent parents while keeping the message supportive rather than pushy.</div>
+    </section>
+
+    <footer class="site-footer">
+      <div><strong>FOOTER / BRAND</strong><br />Cedar Tutoring Academy<br /><span class="small">Warm, professional, parent-facing.</span></div>
+      <div><strong>PROGRAM LINKS</strong><br />Math<br />Reading<br />Writing</div>
+      <div><strong>TEST PREP LINKS</strong><br />SAT<br />ACT<br />PSAT</div>
+      <div><strong>CONTACT / CTA</strong><br />Phone placeholder<br />Address placeholder<br />Book Assessment</div>
+    </footer>
+  </div>
+</body>
+</html>

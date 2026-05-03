@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cedar Wireframe - Test Prep</title>
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --panel: #ffffff;
+      --line: #9ca3af;
+      --text: #111827;
+      --muted: #6b7280;
+      --annotation: #e8f3ff;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 Inter, Arial, sans-serif; }
+    .container { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
+    a { color: inherit; }
+    header, footer, section, .card, .panel, .annotation, .placeholder, .stat, .step, .slot, .note { border: 2px solid var(--line); }
+    header, footer, section, .note { background: var(--panel); margin: 16px 0; padding: 20px; }
+    header { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    nav { display: flex; flex-wrap: wrap; gap: 12px; }
+    .brand { font-weight: 700; }
+    .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .title { margin: 4px 0 12px; font-size: 28px; font-family: Newsreader, Georgia, serif; }
+    .hero, .programs, .stats, .method, .schedule, .cta-row { display: grid; gap: 16px; }
+    .hero { grid-template-columns: 1.2fr .8fr; }
+    .programs { grid-template-columns: repeat(3, 1fr); }
+    .stats { grid-template-columns: repeat(3, 1fr); }
+    .method { grid-template-columns: repeat(4, 1fr); }
+    .schedule { grid-template-columns: 1fr 1fr; }
+    .card, .panel, .stat, .step, .slot { background: #fafafa; padding: 14px; }
+    .placeholder { min-height: 220px; background: repeating-linear-gradient(135deg, #fafafa, #fafafa 10px, #ececec 10px, #ececec 20px); display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+    .annotation { background: var(--annotation); padding: 12px 14px; margin-top: 12px; font-size: 14px; }
+    .cta { display: inline-block; padding: 8px 12px; border: 2px solid #444; background: #efefef; font-weight: 600; }
+    .small { color: var(--muted); font-size: 14px; }
+    .note { padding: 14px 16px; }
+    /* Mobile intent: exam cards stack, score stats become a vertical proof list, and scheduling blocks become a single-column planner. */
+    @media (max-width: 900px) {
+      header, .hero, .programs, .stats, .method, .schedule, .cta-row { display: grid; grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">CEDAR TUTORING ACADEMY<br /><span class="small">Test Prep wireframe</span></div>
+      <nav aria-label="Wireframe navigation">
+        <a href="./homepage.html">Home</a>
+        <a href="./programs.html">Programs</a>
+        <a href="./test-prep.html">Test Prep</a>
+        <a href="./book-assessment.html">Book Assessment</a>
+      </nav>
+      <span class="cta">BOOK DIAGNOSTIC</span>
+    </header>
+
+    <div class="note"><strong>Positioning note:</strong> this page acts as the Test Prep hub for SAT, ACT, and PSAT. It should feel more strategic and outcomes-focused than a generic tutoring page.</div>
+
+    <section>
+      <div class="eyebrow">PAGE HERO</div>
+      <div class="hero">
+        <div>
+          <h1 class="title">SAT and ACT Prep That Builds Strategy, Confidence, and Score Growth</h1>
+          <p>Give families a credible, lower-stress path to test preparation with diagnostics, targeted tutoring, timed practice, and flexible scheduling.</p>
+          <p><span class="cta">PRIMARY CTA: Book a Diagnostic Test</span> <span class="cta">SECONDARY CTA: Compare SAT / ACT</span></p>
+          <p class="small">Support line: "1:3 support ratio, customized plans, and measurable progress for busy high school families."</p>
+        </div>
+        <div class="placeholder">INTERIOR HERO VISUAL<br />Exam prep graphic, score report mock, or study session photo placeholder</div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> High school families need authority and calm. The hero should promise a structured plan rather than hype or fear-based messaging.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">TEST PREP OFFERINGS</div>
+      <h2 class="title">Exam Options at a Glance</h2>
+      <div class="programs">
+        <div class="card"><strong>PROGRAM CARD</strong><h3>SAT Prep</h3><p>Diagnostic-led support for reading, writing, math, timing, and test strategy.</p><p class="small">Best for students targeting college admissions milestones.</p></div>
+        <div class="card"><strong>PROGRAM CARD</strong><h3>ACT Prep</h3><p>Focused help for pacing, multi-section strategy, and confidence under time pressure.</p><p class="small">Best for students who want structured practice with section targeting.</p></div>
+        <div class="card"><strong>PROGRAM CARD</strong><h3>PSAT Prep</h3><p>Early diagnostic preparation that builds readiness for future SAT performance.</p><p class="small">Best for 9th-11th graders planning ahead.</p></div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Parents and students need a quick comparison before diving into details. Clear cards turn a potentially confusing category into a manageable choice set.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">SCORE IMPROVEMENT STATS</div>
+      <div class="stats">
+        <div class="stat"><strong>STAT BLOCK</strong><br />Average score growth range placeholder<br /><span class="small">Use credible ranges or outcome framing once real data is approved.</span></div>
+        <div class="stat"><strong>STAT BLOCK</strong><br />Students receiving targeted section plans<br /><span class="small">Reinforces customization, not one-size-fits-all tutoring.</span></div>
+        <div class="stat"><strong>STAT BLOCK</strong><br />Families who start with a diagnostic assessment<br /><span class="small">Shows process discipline and strategic preparation.</span></div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Quantitative proof helps this page feel credible, but stats should stay honest and specific. If exact data is unavailable, structure the space now for future trust content.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">CEDAR'S TEST PREP METHOD</div>
+      <h2 class="title">A Practical, Measurable Prep Framework</h2>
+      <div class="method">
+        <div class="step"><strong>STEP 1</strong><br />Diagnostic test reveals baseline, strengths, and weak sections.</div>
+        <div class="step"><strong>STEP 2</strong><br />Personalized study plan sets goals, pacing, and priority skills.</div>
+        <div class="step"><strong>STEP 3</strong><br />Targeted tutoring builds strategies through guided practice.</div>
+        <div class="step"><strong>STEP 4</strong><br />Timed reviews and mock testing track readiness before exam day.</div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> This process replaces vague marketing with an understandable methodology. Parents can picture what Cedar actually does and why it leads to better outcomes.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">SCHEDULING + PROGRAM FORMAT</div>
+      <div class="schedule">
+        <div class="panel">
+          <strong>SCHEDULING OPTIONS</strong>
+          <div class="slot">Weeknight sessions</div>
+          <div class="slot">Weekend prep blocks</div>
+          <div class="slot">Intensive lead-up calendar before exam dates</div>
+          <div class="slot">Flexible cadence for section-specific support</div>
+        </div>
+        <div class="panel">
+          <strong>WHAT'S INCLUDED</strong>
+          <ul>
+            <li>Diagnostic or baseline review</li>
+            <li>Section-by-section strategy coaching</li>
+            <li>Homework and timed practice expectations</li>
+            <li>Parent/student progress check-ins</li>
+          </ul>
+        </div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Scheduling details matter on test-prep pages because families are balancing school, extracurriculars, and exam timelines. This section turns logistics into reassurance.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">PROOF / STUDENT OUTCOMES</div>
+      <div class="programs">
+        <div class="card"><strong>TESTIMONIAL</strong><p>"Cedar helped my son stop panicking about the SAT and build a realistic study plan."</p><p class="small">Parent of 11th grader</p></div>
+        <div class="card"><strong>TESTIMONIAL</strong><p>"The ACT sessions felt targeted and efficient. We always knew what to work on next."</p><p class="small">Parent of high school junior</p></div>
+        <div class="card"><strong>FAQ / OBJECTION</strong><p>When should we start? Can Cedar help only with math? How many weeks of prep are typical?</p><p class="small">Use accordions or quick links to deeper pages.</p></div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Test prep decisions are part emotional and part strategic. Blending proof with FAQs answers both trust and planning concerns in one zone.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">CTA BLOCK</div>
+      <div class="panel">
+        <h2 class="title">Ready to Build a Smarter Test Prep Plan?</h2>
+        <p>Invite families to start with a diagnostic instead of a generic inquiry. This clarifies the next step and strengthens perceived expertise.</p>
+        <p><span class="cta">BOOK A DIAGNOSTIC TEST</span></p>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> The page should end on a concrete action that matches the program's promise. "Book a Diagnostic" feels more expert and valuable than a vague contact CTA.</div>
+    </section>
+
+    <footer>
+      <strong>FOOTER</strong><br />Shared navigation, test prep links, parent resources, and booking CTA.
+    </footer>
+  </div>
+</body>
+</html>

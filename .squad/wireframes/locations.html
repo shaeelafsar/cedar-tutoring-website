@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cedar Tutoring Academy — Locations Wireframe</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, Arial, sans-serif; background: #efefef; color: #222; }
+    a { color: #222; }
+    .shell { max-width: 1200px; margin: 0 auto; padding: 0 20px 48px; }
+    .block, .card, .placeholder, .annotation, .note, .pill { border: 1px solid #bcbcbc; background: #fff; }
+    .topbar { position: sticky; top: 0; z-index: 10; background: #fff; border-bottom: 1px solid #bcbcbc; }
+    .topbar-inner { max-width: 1200px; margin: 0 auto; padding: 14px 20px; display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .brand { font-weight: 700; }
+    nav { display: flex; gap: 10px; flex-wrap: wrap; }
+    nav a, .cta { text-decoration: none; padding: 10px 12px; border: 1px solid #999; background: #fafafa; font-size: 14px; }
+    .cta { font-weight: 700; }
+    .section { margin-top: 24px; padding: 24px; }
+    .label { font-size: 12px; font-weight: 800; letter-spacing: .08em; color: #555; margin-bottom: 10px; }
+    .hero, .two-col, .visit-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 20px; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .card { padding: 18px; }
+    .placeholder { min-height: 180px; display: flex; align-items: center; justify-content: center; padding: 12px; text-align: center; background: repeating-linear-gradient(45deg, #f5f5f5, #f5f5f5 10px, #ebebeb 10px, #ebebeb 20px); color: #555; }
+    .annotation { margin-top: 10px; padding: 12px 14px; background: #eaf4ff; border-color: #9fbfdf; font-size: 14px; }
+    .note { margin-top: 16px; padding: 12px 14px; background: #f8f8f8; font-size: 14px; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .pill { padding: 10px 12px; background: #f8f8f8; font-size: 14px; }
+    .hours { margin: 12px 0; padding: 0; list-style: none; }
+    .hours li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-top: 1px solid #ddd; }
+    .hours li:first-child { border-top: 0; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+    .mini-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+    footer { margin-top: 24px; padding: 24px; }
+    .small { font-size: 14px; color: #555; }
+    /* Mobile behavior: hero, visit, and card grids collapse to one column for easy scanning. */
+    @media (max-width: 820px) {
+      .hero, .two-col, .visit-grid { grid-template-columns: 1fr; }
+      .topbar { position: static; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">CEDAR TUTORING ACADEMY — WIREFRAMES</div>
+      <nav aria-label="Wireframe navigation">
+        <a href="./locations.html">Locations</a>
+        <a href="./transportation.html">Transportation</a>
+        <a href="./news-events.html">News &amp; Events</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./about.html">About</a>
+      </nav>
+      <a class="cta" href="./contact.html">BOOK ASSESSMENT CTA</a>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="section block">
+      <div class="label">HERO SECTION</div>
+      <div class="hero">
+        <div>
+          <h1>Find the Cedar location that fits your family’s routine.</h1>
+          <p>Parents need quick answers on where Cedar is, when the center is open, and how easy it is to visit. This page makes logistics feel simple and trustworthy before a family reaches out.</p>
+          <div class="pill-row">
+            <div class="pill">Token note: Primary blue supports trust</div>
+            <div class="pill">Typography note: Newsreader for hero heading</div>
+            <div class="pill">Mobile note: CTA buttons stack under 820px</div>
+          </div>
+          <div class="actions">
+            <a class="cta" href="./contact.html">CONTACT CEDAR</a>
+            <a class="cta" href="./transportation.html">VIEW TRANSPORTATION</a>
+          </div>
+        </div>
+        <div class="placeholder">MAP CLUSTER PLACEHOLDER<br />Dallas-area locations / service radius overview</div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> The hero answers the immediate parent question: “Where are you located and can I get there easily?” It pairs reassurance copy with a visual map cue so logistics are understood before deeper reading.</div>
+    </section>
+
+    <section class="section block">
+      <div class="label">QUICK LOGISTICS STRIP</div>
+      <div class="mini-grid">
+        <div class="card"><strong>Convenient hours</strong><br /><span class="small">After-school and Saturday availability</span></div>
+        <div class="card"><strong>Easy directions</strong><br /><span class="small">Major roads and parking called out clearly</span></div>
+        <div class="card"><strong>Family contact options</strong><br /><span class="small">Call, email, or request a visit</span></div>
+        <div class="card"><strong>Transportation available</strong><br /><span class="small">Cross-link to Cedar pickup service details</span></div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> This scannable strip surfaces the four logistics parents compare fastest: hours, access, contact, and transportation. It reduces the need to hunt through each card for basic facts.</div>
+    </section>
+
+    <section class="section block">
+      <div class="label">LOCATION CARDS SECTION</div>
+      <div class="cards">
+        <article class="card">
+          <div class="placeholder">MAP PLACEHOLDER<br />Cedar Tutoring — Plano Location</div>
+          <h2>Cedar Tutoring — Plano Learning Center</h2>
+          <p>Best for families wanting in-center tutoring, progress meetings, and consistent after-school scheduling.</p>
+          <p><strong>Address:</strong> 123 Cedar Parkway, Plano, TX 75024</p>
+          <p><strong>Phone:</strong> (972) 555-0142</p>
+          <p><strong>Email:</strong> plano@cedartutoring.com</p>
+          <ul class="hours">
+            <li><span>Mon–Thu</span><span>3:00 PM – 8:00 PM</span></li>
+            <li><span>Friday</span><span>3:00 PM – 6:00 PM</span></li>
+            <li><span>Saturday</span><span>10:00 AM – 2:00 PM</span></li>
+          </ul>
+          <p><strong>Directions:</strong> Near Legacy West, two minutes from the tollway, front-door family parking.</p>
+          <div class="actions">
+            <a class="cta" href="./contact.html">GET DIRECTIONS</a>
+            <a class="cta" href="./contact.html">SCHEDULE A VISIT</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="placeholder">MAP PLACEHOLDER<br />Cedar Tutoring — Frisco Family Hub</div>
+          <h2>Cedar Tutoring — Frisco Family Hub</h2>
+          <p>Supports North Frisco families who want a nearby meeting point, parent consultations, and transportation coordination.</p>
+          <p><strong>Address:</strong> 455 Learning Lane, Frisco, TX 75034</p>
+          <p><strong>Phone:</strong> (469) 555-0130</p>
+          <p><strong>Email:</strong> frisco@cedartutoring.com</p>
+          <ul class="hours">
+            <li><span>Mon–Thu</span><span>2:30 PM – 7:30 PM</span></li>
+            <li><span>Friday</span><span>By appointment</span></li>
+            <li><span>Saturday</span><span>10:00 AM – 1:00 PM</span></li>
+          </ul>
+          <p><strong>Directions:</strong> Easy pickup lane access, quick turn-in from Main Street, close to local schools.</p>
+          <div class="actions">
+            <a class="cta" href="./contact.html">GET DIRECTIONS</a>
+            <a class="cta" href="./transportation.html">SEE ROUTES</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="placeholder">MAP PLACEHOLDER<br />Cedar Tutoring — Allen Service Point</div>
+          <h2>Cedar Tutoring — Allen Service Point</h2>
+          <p>Designed as a logistics-focused touchpoint for families asking about transportation, service areas, and intake calls.</p>
+          <p><strong>Address:</strong> 820 Scholar Drive, Allen, TX 75013</p>
+          <p><strong>Phone:</strong> (214) 555-0184</p>
+          <p><strong>Email:</strong> allen@cedartutoring.com</p>
+          <ul class="hours">
+            <li><span>Mon–Thu</span><span>2:30 PM – 6:30 PM</span></li>
+            <li><span>Friday</span><span>By appointment</span></li>
+            <li><span>Saturday</span><span>Closed</span></li>
+          </ul>
+          <p><strong>Directions:</strong> Parent drop-by point near neighborhood schools, ideal for enrollment conversations.</p>
+          <div class="actions">
+            <a class="cta" href="./contact.html">ASK A QUESTION</a>
+            <a class="cta" href="./contact.html">REQUEST CALLBACK</a>
+          </div>
+        </article>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Card-based location browsing supports comparison without forcing a parent to open a map app first. Every card includes the confidence-builders families expect: map cue, hours, human contact details, and a clear next step.</div>
+    </section>
+
+    <section class="section block">
+      <div class="label">WHAT TO EXPECT ON YOUR FIRST VISIT</div>
+      <div class="visit-grid">
+        <div class="card">
+          <h2>Arrival and parking</h2>
+          <p>Families see where to park, where to enter, and how long an average first visit takes.</p>
+          <ul>
+            <li>Reserved family parking note</li>
+            <li>Front desk check-in placeholder</li>
+            <li>Expected visit time: 20–30 minutes</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Inside the center</h2>
+          <p>Placeholder content introduces a calm, organized learning environment with friendly staff and a clear intake path.</p>
+          <div class="placeholder">FACILITY PHOTO / INTERIOR PLACEHOLDER</div>
+        </div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Visit-planning content lowers anxiety for first-time parents and helps Cedar feel real, orderly, and welcoming. It also reinforces the brand promise of warmth plus professionalism.</div>
+    </section>
+
+    <section class="section block">
+      <div class="label">TRANSPORTATION CROSS-LINK SECTION</div>
+      <div class="two-col">
+        <div class="card">
+          <h2>Need help getting to Cedar?</h2>
+          <p>Cedar can highlight transportation options, pickup availability, and service-area expectations right from the locations page.</p>
+          <div class="actions">
+            <a class="cta" href="./transportation.html">OPEN TRANSPORTATION PAGE</a>
+          </div>
+        </div>
+        <div class="placeholder">TRANSPORTATION ILLUSTRATION / ROUTE MAP PLACEHOLDER</div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Families deciding on tutoring often compare convenience as much as academics. This bridge section keeps logistics questions in the journey instead of sending parents into a dead end.</div>
+    </section>
+
+    <section class="section block">
+      <div class="label">FINAL CTA SECTION</div>
+      <h2>Ready to visit Cedar or ask about the best location for your child?</h2>
+      <p>Primary CTA drives contact. Secondary CTA supports parents who still need transportation details before converting.</p>
+      <div class="actions">
+        <a class="cta" href="./contact.html">CONTACT CEDAR</a>
+        <a class="cta" href="./transportation.html">COMPARE ROUTES</a>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> The page ends with a choice aligned to intent: contact now or resolve the last logistics concern. That keeps momentum high for both ready-to-convert and still-evaluating parents.</div>
+    </section>
+
+    <footer class="block">
+      <div class="label">FOOTER</div>
+      <p><strong>Cedar Tutoring Academy</strong> — warm, professional, parent-facing academic support.</p>
+      <p class="small">Footer includes contact links, core navigation, legal links, and repeated conversion CTA.</p>
+      <div class="note"><strong>Responsive intent:</strong> On mobile, location cards stack into a single-column checklist, maps move above details, and action buttons become full width for thumb-friendly tapping.</div>
+    </footer>
+  </main>
+</body>
+</html>

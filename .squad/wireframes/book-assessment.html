@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cedar Wireframe - Book Assessment</title>
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --panel: #ffffff;
+      --line: #9ca3af;
+      --text: #111827;
+      --muted: #6b7280;
+      --annotation: #e8f3ff;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 Inter, Arial, sans-serif; }
+    .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    a { color: inherit; }
+    header, footer, section, .annotation, .panel, .field, .step, .callout, .note { border: 2px solid var(--line); }
+    header, footer, section, .note { background: var(--panel); margin: 16px 0; padding: 20px; }
+    header { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    nav { display: flex; flex-wrap: wrap; gap: 12px; }
+    .brand { font-weight: 700; }
+    .eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; font-weight: 700; color: var(--muted); }
+    .title { margin: 4px 0 12px; font-size: 28px; font-family: Newsreader, Georgia, serif; }
+    .cta { display: inline-block; padding: 8px 12px; border: 2px solid #444; background: #efefef; font-weight: 600; }
+    .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; align-items: stretch; }
+    .placeholder { min-height: 220px; background: repeating-linear-gradient(135deg, #fafafa, #fafafa 10px, #ececec 10px, #ececec 20px); display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+    .two-col { display: grid; grid-template-columns: 1.4fr .8fr; gap: 16px; }
+    .progress { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+    .step, .panel, .callout, .field { background: #fafafa; padding: 14px; }
+    .field { min-height: 74px; margin-bottom: 12px; }
+    .field strong { display: block; }
+    .annotation { background: var(--annotation); padding: 12px 14px; margin-top: 12px; font-size: 14px; }
+    .steps-next { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .contact-options { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .small { color: var(--muted); font-size: 14px; }
+    .note { padding: 14px 16px; }
+    /* Mobile intent: reassurance panel moves above the form and multi-step cards stack vertically for one-thumb scanning. */
+    @media (max-width: 840px) {
+      header, .hero, .two-col, .steps-next, .contact-options { display: grid; grid-template-columns: 1fr; }
+      .progress { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">CEDAR TUTORING ACADEMY<br /><span class="small">Book Assessment wireframe</span></div>
+      <nav aria-label="Wireframe navigation">
+        <a href="./homepage.html">Home</a>
+        <a href="./programs.html">Programs</a>
+        <a href="./test-prep.html">Test Prep</a>
+        <a href="./book-assessment.html">Book Assessment</a>
+      </nav>
+      <span class="cta">PRIMARY ACTION</span>
+    </header>
+
+    <div class="note"><strong>Design token labels:</strong> Use Primary Blue for the primary button, Secondary Green for success states, and Accent Amber for subtle progress highlights in implementation. Wireframe stays grayscale except annotation boxes.</div>
+
+    <section>
+      <div class="eyebrow">HERO SECTION</div>
+      <div class="hero">
+        <div>
+          <h1 class="title">Book Your Free Assessment</h1>
+          <p>Get expert insight into your child's academic needs, recommended next steps, and the best-fit Cedar program—without pressure or obligation.</p>
+          <p><span class="cta">CTA: Start the Assessment Form</span></p>
+          <p class="small">Support copy: "We respond within 24 hours" / "Families choose Cedar for warmth, clarity, and measurable progress."</p>
+        </div>
+        <div class="placeholder">VALUE PROPOSITION PANEL<br />Mini proof stack:<br />5.0 reviews / K-12 support / flexible scheduling / transportation note</div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> This hero reframes the form as a helpful first step, not a sales trap. It reduces hesitation by promising clarity, support, and low commitment.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">MULTI-STEP FORM + REASSURANCE</div>
+      <div class="two-col">
+        <div class="panel">
+          <div class="progress">
+            <div class="step"><strong>STEP 1</strong><br />Parent details</div>
+            <div class="step"><strong>STEP 2</strong><br />Student needs</div>
+            <div class="step"><strong>STEP 3</strong><br />Schedule + consent</div>
+          </div>
+          <div class="field"><strong>PARENT NAME + EMAIL + PHONE</strong><span class="small">First step captures the minimum contact information needed to continue.</span></div>
+          <div class="field"><strong>STUDENT GRADE</strong><span class="small">Dropdown for K-12.</span></div>
+          <div class="field"><strong>SUBJECTS OF INTEREST</strong><span class="small">Math, Reading, Writing, Science, Homework Help, Test Prep.</span></div>
+          <div class="field"><strong>CHALLENGES / GOALS</strong><span class="small">"Falling behind in math" / "Needs SAT support" / "Wants more confidence."</span></div>
+          <div class="field"><strong>PREFERRED DAYS / TIMES</strong><span class="small">Flexible scheduling inputs and transportation interest checkbox.</span></div>
+          <div class="field"><strong>CONSENT + PRIVACY</strong><span class="small">Required checkbox and reassurance that Cedar will only contact about the inquiry.</span></div>
+          <p><span class="cta">BACK</span> <span class="cta">NEXT STEP</span> <span class="cta">SUBMIT REQUEST</span></p>
+          <div class="note">Wireframe note: on desktop, each step can replace the form area progressively; on mobile, steps may appear as stacked panels with a sticky progress indicator.</div>
+        </div>
+        <aside class="panel">
+          <div class="eyebrow">FORM REASSURANCE PANEL</div>
+          <div class="callout"><strong>We respond within 24 hours</strong><br /><span class="small">Sets a clear expectation after submission.</span></div>
+          <div class="callout"><strong>No obligation</strong><br /><span class="small">Parents can ask questions before committing to a plan.</span></div>
+          <div class="callout"><strong>Your information is private</strong><br /><span class="small">Builds trust around sharing family details.</span></div>
+          <div class="callout"><strong>Prefer to call?</strong><br /><span class="small">Phone number and hours sit here for high-intent users.</span></div>
+          <div class="callout"><strong>What to have ready</strong><br /><span class="small">Student grade, current concerns, and ideal tutoring times.</span></div>
+        </aside>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> The multi-step structure lowers cognitive load and makes the form feel achievable. Reassurance content beside it answers anxiety before it becomes abandonment.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">WHAT HAPPENS NEXT</div>
+      <h2 class="title">A Clear Follow-Up Process for Parents</h2>
+      <div class="steps-next">
+        <div class="step"><strong>STEP A</strong><br />Cedar reviews the request and confirms details.</div>
+        <div class="step"><strong>STEP B</strong><br />A team member contacts the family to schedule the free assessment.</div>
+        <div class="step"><strong>STEP C</strong><br />Parents receive recommendations for program fit, schedule, and next steps.</div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Showing the post-submit path reduces uncertainty and increases completion. Parents know they are starting a conversation, not sending information into a black box.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">VALUE PROPOSITION / WHY BOOK NOW</div>
+      <div class="contact-options">
+        <div class="panel">
+          <strong>What families get from the assessment</strong>
+          <ul>
+            <li>Insight into learning gaps and current skill level</li>
+            <li>A recommended tutoring path based on goals</li>
+            <li>Scheduling guidance for realistic weekly support</li>
+            <li>Confidence that Cedar is the right fit before committing</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <strong>Best for parents who are asking...</strong>
+          <ul>
+            <li>"Why is my child falling behind?"</li>
+            <li>"Which program should we start with?"</li>
+            <li>"How often should tutoring happen?"</li>
+            <li>"Can Cedar work with our schedule?"</li>
+          </ul>
+        </div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> This section clarifies the payoff of filling out the form. It helps uncertain parents self-qualify and see the assessment as useful, even if they are early in the decision journey.</div>
+    </section>
+
+    <section>
+      <div class="eyebrow">CONTACT ALTERNATIVE</div>
+      <div class="contact-options">
+        <div class="panel"><strong>CALL INSTEAD</strong><br />Phone placeholder<br /><span class="small">Best for urgent questions or families who prefer live conversation.</span></div>
+        <div class="panel"><strong>EMAIL INSTEAD</strong><br />hello@cedartutoring.com<br /><span class="small">Alternative path for parents who are gathering information.</span></div>
+      </div>
+      <div class="annotation"><strong>UX rationale:</strong> Not every parent wants to complete a form. Offering alternate channels respects different preferences and preserves conversions that would otherwise be lost.</div>
+    </section>
+
+    <footer>
+      <strong>FOOTER</strong><br />Shared navigation, contact details, privacy link, and repeated assessment CTA.
+    </footer>
+  </div>
+</body>
+</html>

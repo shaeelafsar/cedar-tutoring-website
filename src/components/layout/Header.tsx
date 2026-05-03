@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/sheet";
 import { buttonVariants } from "@/components/ui/button";
 import { NAV_ITEMS, type NavItem } from "@/lib/constants";
+import { imagePath } from "@/lib/image-path";
 import { cn } from "@/lib/utils";
 
 const primaryTextClass = "text-[hsl(var(--primary-text))]";
@@ -133,7 +134,7 @@ function BrandLink({ className }: { className?: string }) {
       aria-label="Cedar Tutoring Academy home"
     >
       <Image
-        src="/images/logos/cedar-logo-original.jpg"
+        src={imagePath("/images/logos/cedar-logo-original.jpg")}
         alt="Cedar Tutoring Academy"
         width={240}
         height={133}

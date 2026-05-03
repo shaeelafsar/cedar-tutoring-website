@@ -1,5 +1,58 @@
 ## Learnings
 
+### Response to Morpheus Alignment Review (2026-05-03T12:02:42-05:00)
+
+**Context:** Reviewed Morpheus's verdict on all 14 recommendations from Oracle's UX review. Agreed on all 14 verdicts.
+
+**Key Learnings:**
+- **Token semantic clarity matters:** My original ask to replace `--secondary` (green) with Cedar Red conflated brand identity with semantic UX roles. Morpheus correctly separated them. Brand colors should have dedicated tokens; semantic roles (success/error/warning) should remain stable. Will not conflate these in future design asks.
+- **Red has earned connotations:** Proposing Cedar Red for "Why Cedar" feature stripes was a misstep — positive reassurance content with red decorative elements creates cognitive dissonance. Always consider the emotional register of color in context, not just brand palette coverage.
+- **Don't re-raise previously decided items:** Photography was already correctly deferred to Phase 1.5 in the design spec. Raising it again in the UX review created noise. If a decision is already made and well-handled, do not surface it as a new finding.
+- **Scope precision on hover states:** My original ask for program card hover gradients was too broad (implied full card). Morpheus's scoping to top-stripe-only is more refined and produces a better UX result (full card gradients on hover create visual overwhelm at grid level). Be more precise when specifying hover treatment scope.
+- **Rarity preserves impact:** Full dark testimonial sections work on the homepage *because* they're visually distinctive. Applying the same treatment to every interior page would have diluted that impact. Design hierarchy requires differential treatment across pages.
+
+**Decisions agreed:**
+- Cedar Blue as `--primary` (background/icon/border; NOT text on white)
+- Cedar Orange as `--accent` (decoration, backgrounds)
+- Cedar Red as `--brand-red` (emphasis badges, featured indicators — new token, NOT replacing `--secondary`)
+- Secondary green retained for semantic success/growth states
+- All 14 Morpheus verdicts accepted
+
+**Output:** `.squad/specs/oracle-morpheus-review-response-2026-05-03.md`
+
+### Full UX/Design Review (2026-05-03T11:46:55-05:00)
+
+**Context:** Conducted comprehensive visual review of the Cedar website rebuild using Playwright screenshots at desktop (1440px) and mobile (390px iPhone, 360px Samsung) viewports.
+
+**Critical Finding — Brand Color Misalignment:**
+- Current implementation uses generic design-system colors (#2563eb blue, #059669 green, #f59e0b amber)
+- Owner requested actual Cedar logo colors: Primary #0d8ecf (sky blue), Secondary #d92027 (red), Accent #ffa725 (orange)
+- The Cedar Red (#d92027) is completely absent from the site — this is a key brand differentiator from the logo figures
+- The current gradient (#062a40 → #0a4a6e → blue) feels corporate/fintech rather than warm education
+
+**What's Working Well:**
+- Homepage demonstrates excellent premium-frontend-ui craft: decorative blurred orbs, gradient depth, dark testimonial section, polished CTA
+- Section rhythm with alternating white/muted backgrounds creates visual flow
+- Mobile snap-scroll testimonials and horizontal proof bar are well-executed
+- Touch targets largely meet 44px minimum (one borderline case in proof bar)
+- Typography hierarchy (Newsreader display + Inter body) is effective
+
+**Key Improvements Needed:**
+1. Update color palette to match extracted Cedar logo colors
+2. Bring homepage visual polish to interior PageHero components
+3. Unify CTA sections across all pages (apply gradient container treatment)
+4. Add Cedar Red as accent for emphasis elements
+5. Fix process step inconsistency (homepage filled vs detail page bordered)
+6. Increase mobile minimum text from 11px to 12px
+
+**Accessibility Status:**
+- WCAG AA contrast: Passing with current palette (need to revalidate after brand color update)
+- Focus states: Properly implemented with `focus-visible:ring-2`
+- Touch targets: 44px+ on most elements
+- prefers-reduced-motion: Not verified in code review
+
+**Review Document:** `.squad/specs/oracle-ux-review-2026-05-03.md`
+
 ### High-Fidelity Homepage Mockup (2026-05-02T17:18:52.106-05:00)
 - Established the homepage visual direction around a modern split hero with a trust-heavy gradient shell, elevated stat cards, and an abstract product-style visual instead of dated stock-photo patterns.
 - Applied the full Oracle design system in one artifact: Primary blue `#2563EB`, Secondary green `#059669`, Accent amber `#F59E0B`, Newsreader + Inter typography, 8px spacing rhythm, layered elevation, and consistent radius tokens.

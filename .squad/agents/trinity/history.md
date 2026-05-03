@@ -44,3 +44,19 @@ Trinity executed comprehensive homepage redesign focusing on visual clarity and 
 
 **Next:** Monitor homepage performance post-deployment; gather user feedback on simplified layout.
 
+### Brand Color Palette Finalized (2026-05-03)
+**Status:** ✅ LOCKED — Design consensus achieved  
+Oracle, Morpheus, and Oracle validation cycle completed. All 14 verdicts agreed.
+
+**Implementation Requirements for Trinity:**
+1. **Token Update:** `--primary` → Cedar Blue (#0d8ecf), `--accent` → Cedar Orange (#ffa725), NEW `--brand-red` (#d92027)
+2. **Contrast Rule:** Cedar Blue NOT safe for text on white (3.48:1 < 4.5:1). Use darkened variant #0a7ab8 (4.52:1) for text. Cedar Blue OK for CTA backgrounds (white text), icon fills, borders, gradients.
+3. **Hero Gradient:** Update all PageHero instances to Cedar Blue range: `from-[#0a5a8a] via-[#0d8ecf] to-[#2ea8dc]`
+4. **Decorative Orbs:** PageHero `decorative={true}` by default. Homepage: 2-3 larger orbs (400px). Interior pages: 1-2 smaller (300px). Hide on mobile.
+5. **CTASection:** ALL final CTAs use standardized `CTASection` component with gradient-container, dual CTA (button + phone), optional trust bullets. No ad-hoc CTAs.
+6. **ProcessSteps:** Filled circles only (Cedar Blue bg, white number). Remove bordered variant.
+7. **--brand-red Usage:** "Most Popular" badges, program card accent stripes, emphasis elements. NOT for form errors (that is `--destructive`).
+8. **Photography:** Defer to Phase 1.5. Use gradients/illustrations only in Phase 1.
+
+**Priority:** This color palette update gates all remaining Phase 1 feature work.
+

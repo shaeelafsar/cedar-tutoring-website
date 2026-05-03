@@ -133,6 +133,54 @@
 - Form coverage missing trimming, sanitization, retry logic, server validation parity
 - SEO validation incomplete (missing sitemap, robots.txt, OG image checks)
 
+### 2026-05-03: Cedar Blue as primary color
+**By:** Morpheus (Lead/Architect)
+**What:** Update `--primary` to Cedar Blue (#0d8ecf, `hsl(199 87% 43%)`).
+**Why:** Owner-mandated brand alignment. Current #2563eb is generic Tailwind blue, not Cedar's logo color.
+**Constraint:** Cedar Blue (#0d8ecf) has 3.48:1 contrast on white — FAILS WCAG AA for normal text. Use only as: CTA backgrounds (white text on top), icon fills, borders, hero gradients. For text on light backgrounds, use text-safe variant #0a7ab8 (~4.52:1).
+
+### 2026-05-03: Cedar Orange as accent color
+**By:** Morpheus (Lead/Architect)
+**What:** Update `--accent` to Cedar Orange (#ffa725, `hsl(38 97% 57%)`).
+**Why:** Owner-mandated brand alignment. Current #f59e0b is close but not the exact logo color.
+**Constraint:** Background/decoration only — never text on light backgrounds. Proof Bar, star fills, highlight badges.
+
+### 2026-05-03: Cedar Red as --brand-red token (NOT replacing --secondary)
+**By:** Morpheus (Lead/Architect)
+**What:** Introduce Cedar Red (#d92027) as a new `--brand-red` design token. `--secondary` green (#059669) is retained for semantic success/outcome states.
+**Why:** Oracle recommended replacing `--secondary` with Cedar Red. This was rejected: `--secondary` carries semantic meaning (success checkmarks, credential chips, growth indicators) that red would violate (red = danger in UX). Cedar Red is a brand color, not a success indicator. Green stays semantic; red becomes brand accent.
+**Usage of --brand-red:** "Most Popular" badges on pricing, program card accent stripes, emphasis brand elements. NOT for form validation errors (that is `--destructive`).
+
+### 2026-05-03: Hero gradients updated to Cedar Blue family
+**By:** Morpheus (Lead/Architect)
+**What:** Approved gradient formula: `from-[#0a5a8a] via-[#0d8ecf] to-[#2ea8dc]`. The old dark fintech gradient (#062a40 → #0a4a6e) is deprecated.
+**Why:** Cedar is a warm, friendly tutoring center — not a SaaS fintech product. Cedar Blue gradient signals trustworthy education brand.
+
+### 2026-05-03: Decorative orbs required on all PageHero instances
+**By:** Morpheus (Lead/Architect)
+**What:** PageHero renders decorative blurred orbs by default (`decorative={true}`). Homepage: 2-3 larger orbs (400px). Interior pages: 1-2 smaller orbs (300px). Hidden on mobile for performance.
+**Why:** Interior page heroes were flat and inconsistent with homepage quality. Orbs are CSS-only, zero bundle impact.
+
+### 2026-05-03: CTASection standardized as mandatory shared component
+**By:** Morpheus (Lead/Architect)
+**What:** All final CTA sections on all pages use the `CTASection` shared component with gradient-container, decorative circles, dual CTA (button + phone), and optional trust bullets. Per-page ad-hoc CTAs are not permitted.
+**Why:** Interior page CTAs were rated 3/5 vs homepage 5/5. Standardizing on the gradient-container pattern raises conversion quality across the entire site.
+
+### 2026-05-03: ProcessSteps — filled circles only
+**By:** Morpheus (Lead/Architect)
+**What:** ProcessSteps component always uses filled circles (Cedar Blue background, white number). The bordered/outline variant is removed.
+**Why:** Homepage and detail page process steps were visually inconsistent. Filled circles are more visually impactful and consistent with the homepage.
+
+### 2026-05-03: Photography deferred to Phase 1.5
+**By:** Morpheus (Lead/Architect)
+**What:** No photography (real or stock) in Phase 1. Gradient/illustration fallbacks as specced. Phase 1.5 photo shoot planned.
+**Why:** No real assets exist. Stock photography would harm brand credibility (per oracle-design-spec.md). Out of Phase 1 scope.
+
+### 2026-05-03: Oracle decision review — all 14 verdicts accepted
+**By:** Oracle (UX/Design)
+**Status:** AGREED — all 14 Morpheus alignment decisions accepted
+**Summary:** Cedar Red as `--brand-red` (not replacing `--secondary`), hero gradient Cedar Blue range, Cedar Orange as `--accent`, PageHero decorative orbs default true, CTASection as universal shared component, ProcessSteps filled circles only, program card stripe Cedar Blue only, interior testimonials on muted background with gradient stripe (not full dark section), photography deferred to Phase 1.5, plus 4 additional design consistency points. All Oracle color constraints enforced: Cedar Blue NOT text-safe on white (use #0a7ab8 variant), Cedar Orange background/decoration only, Cedar Red emphasis/featured contexts only.
+
 ## Governance
 
 - All meaningful changes require team consensus

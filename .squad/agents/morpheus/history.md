@@ -73,9 +73,36 @@ Addressed 7 blockers and ~15 concerns from Trinity, Oracle, and Mouse spec revie
 - **Mouse** ❌ Did NOT approve, found 3 blockers (E2E environment, Vitest setup, form determinism)
 - **Morpheus action:** Specs v1.1 published with all blocker fixes + concern resolutions
 
+### Oracle UX Review + Alignment (2026-05-03)
+Oracle completed a comprehensive UX/design review of the current website implementation. Key findings and architectural decisions:
+
+**Brand color alignment (critical):**
+- Site was using generic Tailwind blue (#2563eb) instead of Cedar's logo blue (#0d8ecf)
+- `--primary` updated to Cedar Blue (#0d8ecf). **CRITICAL CONSTRAINT: fails AA on white (3.48:1) — never use as text on light backgrounds. Text-safe variant: #0a7ab8 (4.52:1).**
+- `--accent` updated to Cedar Orange (#ffa725, was #f59e0b)
+- Cedar Red (#d92027) introduced as `--brand-red` token — NOT replacing `--secondary`. Green secondary stays for semantic success/outcome states. This distinction is architecturally important: replacing green with red would break the UX convention that green = success/positive.
+
+**Design consistency decisions:**
+- `CTASection` is now a mandatory shared component — all pages use gradient-container treatment for final CTAs. No ad-hoc per-page CTA sections.
+- `PageHero` gets `decorative` prop (default `true`) — all heroes render blurred gradient orbs. Interior pages: 1-2 smaller orbs; homepage: 2-3 larger.
+- `ProcessSteps` always uses filled circles (Cedar Blue bg, white number). Bordered/outline variant removed.
+
+**Rejected recommendations:**
+- Photography: rejected for Phase 1. No assets. Phase 1.5 photo shoot planned.
+- Replacing `--secondary` with Cedar Red: rejected (semantic conflict with success states).
+
+**Spec versions after alignment:**
+- oracle-design-spec.md → v1.2
+- trinity-frontend-spec.md → v1.2
+- morpheus-alignment-review-2026-05-03.md created (decisions record)
+- decisions/inbox/morpheus-ux-alignment.md created (for decision ledger)
+
 ### Key File Paths
 - `.squad/specs/architecture-blueprint.md` — Master architecture document
-- `.squad/specs/trinity-frontend-spec.md` — Frontend implementation spec
-- `.squad/specs/oracle-design-spec.md` — Design system spec
+- `.squad/specs/trinity-frontend-spec.md` — Frontend implementation spec (v1.2)
+- `.squad/specs/oracle-design-spec.md` — Design system spec (v1.2)
 - `.squad/specs/mouse-testing-spec.md` — Testing spec
+- `.squad/specs/oracle-ux-review-2026-05-03.md` — Oracle's UX review (input to alignment)
+- `.squad/specs/morpheus-alignment-review-2026-05-03.md` — Architecture alignment review + verdicts
+- `.squad/decisions/inbox/morpheus-ux-alignment.md` — Decision records for ledger
 - `.squad/site-audit.md` — Comprehensive site audit (input for all decisions)

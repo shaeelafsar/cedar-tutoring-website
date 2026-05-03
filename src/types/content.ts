@@ -216,6 +216,33 @@ export interface PricingPageContent {
   finalCta: CtaBlock;
 }
 
+export interface BookAssessmentPageContent {
+  seo: SeoMeta;
+  hero: HeroContent;
+  heroImage: ContentImage;
+  formIntro: SectionShellContent & {
+    reassurance: string;
+    responsePromise: string;
+  };
+  stepsSection: SectionShellContent & {
+    items: Array<{
+      iconName: string;
+      title: string;
+      description: string;
+    }>;
+  };
+  trustSignals: string[];
+  testimonialIds: string[];
+  faqSection: SectionShellContent & {
+    items: FAQItem[];
+  };
+  closing: {
+    heading: string;
+    body: string;
+    highlights: string[];
+  };
+}
+
 export interface ProgramContent {
   slug: string;
   title: string;

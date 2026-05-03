@@ -1,4 +1,5 @@
 import aboutPageJson from "@content/pages/about.json";
+import bookAssessmentPageJson from "@content/pages/book-assessment.json";
 import faqPageJson from "@content/pages/faq.json";
 import homePageJson from "@content/pages/home.json";
 import locationsPageJson from "@content/pages/locations.json";
@@ -9,6 +10,7 @@ import testPrepHubPageJson from "@content/pages/test-prep-hub.json";
 
 import type {
   AboutPageContent,
+  BookAssessmentPageContent,
   FaqPageContent,
   HomePageContent,
   LocationsPageContent,
@@ -20,6 +22,7 @@ import type {
 
 import {
   aboutPageContentSchema,
+  bookAssessmentPageContentSchema,
   faqPageContentSchema,
   homePageContentSchema,
   locationsPageContentSchema,
@@ -51,6 +54,10 @@ export function getTestPrepHubPageContent(): TestPrepHubPageContent {
 
 export function getAboutPageContent(): AboutPageContent {
   return aboutPageContentSchema.parse(aboutPageJson);
+}
+
+export function getBookAssessmentPageContent(): BookAssessmentPageContent {
+  return bookAssessmentPageContentSchema.parse(bookAssessmentPageJson);
 }
 
 export function getReviewsPageContent(): ReviewsPageContent {

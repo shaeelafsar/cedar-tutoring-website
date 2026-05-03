@@ -2,6 +2,7 @@ import { z } from "zod";
 
 import type {
   AboutPageContent,
+  BookAssessmentPageContent,
   CategorizedFAQItem,
   ContentImage,
   CtaBlock,
@@ -46,6 +47,12 @@ const proofBarItemSchema = z.object({
 
 const howItWorksStepSchema = z.object({
   number: z.string(),
+  title: z.string(),
+  description: z.string(),
+});
+
+const iconStepSchema = z.object({
+  iconName: z.string(),
   title: z.string(),
   description: z.string(),
 });
@@ -394,6 +401,30 @@ export const pricingPageContentSchema: z.ZodType<PricingPageContent> = z.object(
     finalCta: ctaBlockSchema,
   }
 );
+
+export const bookAssessmentPageContentSchema: z.ZodType<BookAssessmentPageContent> =
+  z.object({
+    seo: seoMetaSchema,
+    hero: heroContentSchema,
+    heroImage: contentImageSchema,
+    formIntro: sectionShellSchema.extend({
+      reassurance: z.string(),
+      responsePromise: z.string(),
+    }),
+    stepsSection: sectionShellSchema.extend({
+      items: z.array(iconStepSchema),
+    }),
+    trustSignals: z.array(z.string()),
+    testimonialIds: z.array(z.string()),
+    faqSection: sectionShellSchema.extend({
+      items: z.array(faqItemSchema),
+    }),
+    closing: z.object({
+      heading: z.string(),
+      body: z.string(),
+      highlights: z.array(z.string()),
+    }),
+  });
 
 export const testimonialsSchema = z.array(testimonialSchema);
 export const teamMembersSchema = z.array(teamMemberSchema);

@@ -177,3 +177,28 @@ Oracle audited and updated programs hub and individual program pages for compreh
 
 **Next:** Cross-check remaining marketing pages for legacy color removal; plan Phase 2 brand consistency audit.
 
+### Mobile Navigation Drawer Premium Redesign (2026-05-03T19:57:30Z)
+
+**Context:** Current mobile nav drawer is functional but generic: plain white background, text-only links, minimal visual hierarchy. Does not reflect Cedar's premium positioning on mobile devices.
+
+**Redesign Scope:**
+1. **Branded Header:** Logo + tagline on subtle blue gradient (establishes brand presence immediately)
+2. **Iconography:** Lucide icons for every navigation item (visual rhythm, faster scanning)
+3. **Visual Hierarchy:** Active states highlighted in Cedar Blue; secondary items in lighter tones
+4. **Premium CTA:** Cedar Orange button with calendar icon for "Book Assessment" (conversion focal point)
+5. **Contact Footer:** Phone and email for quick parent access (trust/accessibility)
+6. **Motion:** Staggered entrance animation (Framer Motion; already installed)
+7. **Accessibility:** 44px touch targets, WCAG AA contrast, focus states, proper ARIA labels
+
+**Design Rationale:**
+- Mobile represents 60%+ of tutoring center user traffic; premium experience here = brand credibility
+- Gradients and icons elevate perceived quality without heavy cost (CSS-only, zero bundle impact)
+- Contact footer solves immediate parent question: "How do I reach you?" — reduces friction
+- Staggered animations create micro-moments of delight (Cedar's friendly, modern positioning)
+
+**Deliverable:** `.squad/specs/oracle-mobile-nav-redesign-2026-05-03.md` (full visual spec + component breakdown)
+
+**Assignee:** Trinity (Frontend Engineer) — implementation ready
+
+**Status:** ✅ COMPLETED (spec delivered; awaiting Trinity implementation)
+

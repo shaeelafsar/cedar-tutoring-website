@@ -203,6 +203,51 @@
 4. Updated PageHero with Cedar Blue gradient + lighter decorative orbs (interior pages parity with homepage)
 **Impact:** Brand consistency across all marketing surfaces. No breaking changes.
 
+### 2026-05-03: Mobile navigation hamburger — verified working
+**By:** Mouse (QA)
+**What:** The reported hamburger-menu failure on mobile is not reproducible in current Cedar codebase at 375x812 viewport.
+**Evidence:** Playwright regression test (`tests/mobile-nav.spec.ts`) clicks "Open navigation menu" button, verifies sheet opens, passes locally with before/after screenshots.
+**Code impact:** No code changes required; SheetTrigger + Base UI `render` already functioning.
+**QA note:** Separate 404 issues found: `/about`, `/reviews`, `/pricing`, `/locations`, `/faq`, `/test-prep`, `/book-assessment` — navigation destinations not yet implemented.
+
+### 2026-05-03: Mobile Navigation Drawer Premium Redesign
+**By:** Oracle (UX/Design)
+**Status:** APPROVED
+**What:** Redesign mobile nav from plain white text-only menu to premium branded experience with icons, gradients, animations, and contact info.
+**Redesign includes:**
+1. Branded header (Logo + tagline on subtle blue gradient)
+2. Iconography (Lucide icons for every nav item)
+3. Visual hierarchy (Active states Cedar Blue, children styled distinctly)
+4. Premium CTA (Cedar Orange button with calendar icon)
+5. Contact footer (Phone and email for quick access)
+6. Motion (Staggered entrance animation, Framer Motion)
+7. Accessibility (44px touch targets, proper contrast, focus states)
+**Why:** Current nav lacks brand presence; premium redesign reinforces Cedar's positioning on mobile.
+**Development:** ~2-3 hours for Trinity; Framer Motion already in project.
+**Spec:** `.squad/specs/oracle-mobile-nav-redesign-2026-05-03.md`
+
+### 2026-05-03: GitHub Pages static export deployment
+**By:** Trinity (Frontend Engineer)
+**Status:** COMPLETED
+**What:** 
+1. Enabled static export with `output: "export"` and `images.unoptimized: true`
+2. Added `trailingSlash: true` for deep link compatibility
+3. Applied `basePath` and `assetPrefix` for production (site resolves under `/cedar-tutoring-website` on GitHub Pages; local dev stays root)
+4. GitHub Actions workflow: builds `out/`, adds `.nojekyll`, uploads Pages artifact, deploys on `main` pushes
+**Audit:** No API routes, server actions, or SSR-only hooks blocking GitHub Pages deployment.
+**Open:** Pre-existing links still point to unimplemented routes (`/book-assessment`, `/privacy`, `/terms`, `/about`, `/faq`, etc.) — static 404 until implemented.
+
+### 2026-05-03: Mobile Sheet trigger native button rendering
+**By:** Trinity (Frontend Engineer)
+**Status:** COMPLETED
+**What:**
+1. Replaced mobile `SheetTrigger` in `Header.tsx` with native button rendering + Tailwind classes (removed Base UI `render` prop)
+2. Updated `src/components/ui/sheet.tsx` close control to direct button styling on `SheetPrimitive.Close`
+3. Reworked header layout: mobile (left hamburger, centered logo, right CTA), desktop (left logo, centered nav, right CTA)
+4. Mobile sheet opens from left to match trigger placement
+**Why:** Improves real-device touch reliability on mobile.
+**Related to:** Oracle mobile nav redesign spec (foundation for premium redesign).
+
 ## Governance
 
 - All meaningful changes require team consensus

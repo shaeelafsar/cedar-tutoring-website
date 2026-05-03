@@ -96,3 +96,47 @@ Trinity implemented the agreed Oracle + Morpheus brand refresh across homepage a
 - No breaking changes
 
 **Related:** Oracle UX review spec + Scribe decision log merge. All work merged into canonical ledger.
+
+### GitHub Pages Static Export Deployment (2026-05-03T19:57:30Z)
+
+**Context:** Cedar website was originally scoped for Vercel deployment. Shaeel requested option for GitHub Pages (zero-cost static hosting on GitHub-provided infrastructure).
+
+**Implementation:**
+1. **Static Export Configuration:** Updated `next.config.ts` with `output: "export"`, `images.unoptimized: true`, `trailingSlash: true` for GitHub Pages deep link compatibility
+2. **Asset Path Handling:** Created `src/lib/image-path.ts` utility to resolve basePath in Header (logo) + other asset references
+3. **Production Basepath:** Applied `basePath: "/cedar-tutoring-website"` and `assetPrefix` so production build resolves at `https://github.com/pages/cedar-tutoring-website/`; local dev stays root
+4. **GitHub Actions Workflow:** Added CI/CD pipeline that builds `out/` directory, adds `.nojekyll` file (disables Jekyll processing), uploads Pages artifact, deploys on `main` branch pushes
+5. **Deployment Audit:** Scanned codebase for API routes, Server Actions, or SSR-only data hooks that would block static export — found zero blockers
+
+**Status:** ✅ COMPLETED  
+Deployment ready; site will build to static HTML/CSS/JS on GitHub Pages. Commit: a7db2f4
+
+**Open Items:**
+- Pre-existing navigation links still point to unimplemented routes (`/book-assessment`, `/privacy`, `/terms`, `/about`, `/faq`, `/reviews`, `/pricing`, `/locations`, `/test-prep`) — will resolve 404 once routes added in Phase 1
+
+**Trade-off:** Static export means content updates require rebuild (~2 min on Vercel, instant locally). Acceptable for Phase 1 (low content velocity).
+
+### Mobile Navigation Drawer Foundation Work (2026-05-03T19:57:30Z)
+
+**Context:** Oracle designed premium mobile nav drawer spec. Trinity assigned implementation. Foundation work addresses touch reliability issues identified in earlier testing.
+
+**Foundation Completed:**
+1. **SheetTrigger Button Rendering:** Replaced Base UI `render` prop with native button + Tailwind classes on mobile hamburger trigger (improves touch reliability on real devices)
+2. **Sheet Close Button:** Updated `src/components/ui/sheet.tsx` to use direct button styling on `SheetPrimitive.Close` (consistent with trigger, no `render` prop)
+3. **Header Layout Refactor:** Reworked header grid to support distinct mobile vs desktop layouts:
+   - Mobile: left-aligned hamburger | centered logo | right CTA placeholder
+   - Desktop: left logo | centered navigation | right CTA
+4. **Sheet Origin:** Mobile sheet now opens from left edge (matches left-aligned trigger position)
+
+**Status:** ✅ FOUNDATION COMPLETE | 🔄 IN PROGRESS — Premium redesign implementation
+
+**Next Steps (per Oracle spec `.squad/specs/oracle-mobile-nav-redesign-2026-05-03.md`):**
+1. Build gradient header with logo + tagline on Cedar Blue family
+2. Implement full navigation menu interior with Lucide icons + active states
+3. Add visual hierarchy (active items Cedar Blue, children in lighter tones)
+4. Integrate Premium CTA button (Cedar Orange, calendar icon, "Book Assessment")
+5. Add contact footer (phone + email)
+6. Implement staggered entrance animations (Framer Motion)
+7. Full accessibility sweep: 44px touch targets, ARIA labels, keyboard navigation, focus restoration on close, screen reader testing
+
+**Related:** Orchestration logs + Scribe batch processing. All work merged into canonical ledger.

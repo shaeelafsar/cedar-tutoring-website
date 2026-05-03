@@ -198,3 +198,11 @@ Trinity implemented Morpheus's JSON-first content layer foundation and migrated 
 - All pages are static-export compatible and ready for E2E test coverage
 
 **Build Status:** ✅ PASSED
+
+### Logistics Pages — Slice 6 (2026-05-03T15:51:16.373-05:00)
+**Status:** ✅ COMPLETED  
+- Added new JSON-first collections for `locations` and `pricing-tiers`, plus page-shell content in `content/pages/locations.json` and `content/pages/pricing.json`.
+- Extended the typed content layer with `LocationsPageContent` and `PricingPageContent`, new Zod schemas, and loaders in `src/lib/content/pages.ts` / `src/lib/content/collections.ts`.
+- Built static-export-safe `/locations` and `/pricing` marketing pages with shared `PageHero`, `CTASection`, `Reveal`, and `FAQAccordion` patterns, including DFW location cards, transportation callouts, a trust-first pricing table, and pricing FAQ content.
+- Added three Cedar-branded location illustration SVGs under `public/images/locations/` and rendered them via `imagePath()` to stay aligned with the content-layer image contract.
+- Validation: `npm run build` ✅; `npm run lint` still fails only on pre-existing `.squad/templates/ralph-triage.js` issues unrelated to Slice 6.

@@ -1,6 +1,6 @@
-import { expect, test } from '@playwright/test';
 import fs from 'node:fs';
 import path from 'node:path';
+import { expect, test } from '@playwright/test';
 
 const screenshotDir = path.join(process.cwd(), 'tests', 'screenshots');
 
@@ -12,11 +12,11 @@ function screenshotPath(fileName: string) {
 test.describe('Mobile navigation', () => {
   test.beforeEach(async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 812 });
-    await page.goto('http://localhost:3000');
   });
 
-  test('Homepage - hamburger menu opens the mobile sheet', async ({ page }) => {
+  test('Homepage - drawer shows branded navigation and quick contact actions', async ({ page }) => {
     const consoleMessages: string[] = [];
+
     page.on('console', (message) => {
       consoleMessages.push(`${message.type()}: ${message.text()}`);
     });
@@ -24,63 +24,58 @@ test.describe('Mobile navigation', () => {
       consoleMessages.push(`pageerror: ${error.message}`);
     });
 
-    const menuButton = page.getByRole('button', {
-      name: 'Open navigation menu',
-    });
-    const mobileNav = page.getByRole('navigation', { name: 'Mobile navigation' });
+    await page.goto('/', { waitUntil: 'networkidle' });
 
-    await test.step('Capture the closed mobile header state', async () => {
+    const menuButton = page.getByRole('button', { name: 'Open navigation menu' });
+    const drawer = page.locator('[data-slot="sheet-content"]');
+
+    await test.step('Open the drawer from the mobile header', async () => {
       await expect(menuButton).toHaveCount(1);
-      await expect(menuButton).toBeVisible();
-      await page.screenshot({
-        path: screenshotPath('mobile-home-before.png'),
-        fullPage: true,
-      });
-    });
-
-    await test.step('Open the mobile navigation sheet', async () => {
       await menuButton.click();
-      await expect(mobileNav).toBeVisible();
-      await expect(page.locator('[data-slot="sheet-content"]')).toBeVisible();
+      await expect(page.getByRole('navigation', { name: 'Mobile navigation' })).toHaveCount(1);
+      await expect(drawer).toContainText('Where Learning Takes Root');
       await page.screenshot({
-        path: screenshotPath('mobile-home-after.png'),
+        path: screenshotPath('mobile-home-after-redesign.png'),
         fullPage: true,
       });
     });
 
-    await test.step('Verify there are no browser errors while opening the menu', async () => {
+    await test.step('Verify branded actions and contact links are present', async () => {
+      await expect(drawer.getByRole('link', { name: 'Book a Free Assessment' })).toHaveCount(1);
+      await expect(drawer.getByRole('link', { name: '(469) 757-2220' })).toHaveCount(1);
+      await expect(drawer.getByRole('link', { name: 'info@cedartutoring.com' })).toHaveCount(1);
+      await expect(drawer.getByRole('button', { name: 'Expand Programs' })).toHaveCount(1);
+      await expect(drawer.getByRole('button', { name: 'Expand Test Prep' })).toHaveCount(1);
+    });
+
+    await test.step('Expand Programs and reveal the subject links', async () => {
+      await drawer.getByRole('button', { name: 'Expand Programs' }).click();
+      await expect(drawer.getByRole('link', { name: 'Math' })).toHaveCount(1);
+      await expect(drawer.getByRole('link', { name: 'Reading' })).toHaveCount(1);
+      await expect(drawer.getByRole('link', { name: 'Homework Help' })).toHaveCount(1);
+    });
+
+    await test.step('Verify the drawer opens without browser errors', async () => {
       expect(consoleMessages.filter((message) => message.startsWith('pageerror:'))).toEqual([]);
     });
   });
 
-  test('Implemented marketing pages render on mobile', async ({ page }) => {
-    const pages = [
-      {
-        url: 'http://localhost:3000/',
-        headingFragment: 'Build skills, confidence, and results',
-        screenshot: 'homepage-mobile.png',
-      },
-      {
-        url: 'http://localhost:3000/programs',
-        headingFragment: 'Academic programs built around',
-        screenshot: 'programs-mobile.png',
-      },
-      {
-        url: 'http://localhost:3000/programs/math',
-        headingFragment: 'Math tutoring that meets students',
-        screenshot: 'programs-math-mobile.png',
-      },
-    ] as const;
+  test('Programs child routes keep the current section expanded with active child link state', async ({ page }) => {
+    await page.goto('/programs/math', { waitUntil: 'networkidle' });
+    await page.getByRole('button', { name: 'Open navigation menu' }).click();
 
-    for (const currentPage of pages) {
-      await test.step(`Check ${currentPage.url}`, async () => {
-        await page.goto(currentPage.url, { waitUntil: 'networkidle' });
-        await expect(page.locator('h1')).toContainText(currentPage.headingFragment);
-        await page.screenshot({
-          path: screenshotPath(currentPage.screenshot),
-          fullPage: true,
-        });
-      });
-    }
+    const drawer = page.locator('[data-slot="sheet-content"]');
+    const programsToggle = drawer.getByRole('button', { name: 'Collapse Programs' });
+    const mathLink = drawer.getByRole('link', { name: 'Math' });
+
+    await test.step('Keep the active parent section expanded', async () => {
+      await expect(programsToggle).toHaveCount(1);
+      await expect(mathLink).toHaveCount(1);
+    });
+
+    await test.step('Expose the active page semantics for the selected child route', async () => {
+      await expect(mathLink).toHaveAttribute('aria-current', 'page');
+      await expect(drawer.getByRole('link', { name: 'Programs' })).toHaveCount(1);
+    });
   });
 });

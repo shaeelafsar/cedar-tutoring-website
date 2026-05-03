@@ -1,0 +1,77 @@
+{
+  "slug": "science",
+  "title": "Science Tutoring",
+  "shortTitle": "Science",
+  "shortDescription": "Concept clarity, study strategies, and skill-building for students who need science to feel less overwhelming.",
+  "iconName": "flask-conical",
+  "grades": "5–12",
+  "tags": [
+    "stem"
+  ],
+  "seo": {
+    "title": "Science Tutoring for Grades 5-12 | Cedar Tutoring Academy",
+    "description": "Personalized science tutoring for biology, chemistry, physics, and more. Small groups, real teachers in Plano, TX."
+  },
+  "hero": {
+    "heading": "Science tutoring that turns confusion into clarity.",
+    "subtitle": "When science concepts feel overwhelming, students shut down. Cedar helps them understand, not just memorize — so they can keep up and feel capable."
+  },
+  "problem": {
+    "heading": "Science gets harder fast — and catching up feels impossible.",
+    "paragraphs": [
+      "Science courses shift quickly from familiar topics to abstract concepts. A student who did fine in 5th-grade science can suddenly struggle in middle school biology or high school chemistry.",
+      "The combination of dense vocabulary, multi-step problem solving, and lab-based application makes science uniquely challenging. Without structured support, many students fall into a pattern of memorizing without understanding."
+    ]
+  },
+  "approach": {
+    "heading": "How Cedar makes science manageable.",
+    "paragraphs": [
+      "We focus on concept clarity first. When students understand why something works — not just what to memorize — they can apply that understanding across topics and tests."
+    ],
+    "bullets": [
+      "Concept-based instruction that builds real understanding",
+      "Study strategies for vocabulary-heavy subjects like biology",
+      "Problem-solving frameworks for physics and chemistry",
+      "Lab report and scientific writing support when needed"
+    ]
+  },
+  "outcomes": {
+    "heading": "What parents can expect.",
+    "items": [
+      "Stronger understanding of core science concepts",
+      "Better study habits and test preparation strategies",
+      "Improved grades and less last-minute cramming",
+      "More confidence participating in class",
+      "Clear communication about progress and next steps"
+    ]
+  },
+  "faq": [
+    {
+      "question": "What science subjects do you cover?",
+      "answer": "We support general science, biology, chemistry, physics, and earth science at middle and high school levels. Our assessment identifies where support is most needed."
+    },
+    {
+      "question": "Can Cedar help with AP science courses?",
+      "answer": "Yes. We work with students in AP Biology, AP Chemistry, and AP Physics, focusing on concept mastery and exam preparation."
+    },
+    {
+      "question": "How do small groups work for science tutoring?",
+      "answer": "Students are grouped by subject and level. Our 1:3 ratio means each student gets personalized attention while benefiting from peer discussion and collaborative problem-solving."
+    }
+  ],
+  "testimonialIds": [
+    "science-1"
+  ],
+  "relatedPrograms": [
+    "math",
+    "homework-help"
+  ],
+  "cta": {
+    "heading": "Ready to help your child master science?",
+    "subtext": "Start with a free assessment. We'll identify the concepts that need attention and build a focused plan.",
+    "primaryCta": {
+      "label": "Book a Free Science Assessment",
+      "href": "/book-assessment"
+    }
+  }
+}

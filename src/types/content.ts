@@ -1,134 +1,324 @@
-/** MDX frontmatter for program pages */
-export interface ProgramFrontmatter {
-  slug: string;
+export interface SeoMeta {
   title: string;
-  shortDescription: string;
-  icon: string;
-  grades: string;
-  tags: string[];
-  relatedPrograms: string[];
-  seo: {
-    title: string;
-    description: string;
-    ogImage?: string;
-  };
-  faq: { question: string; answer: string }[];
+  description: string;
+  ogImage?: string;
 }
 
-/** Full program page data — canonical source for hub cards, individual pages, and homepage */
-export interface ProgramPageData {
-  slug: string;
-  title: string;
-  shortTitle: string;
-  shortDescription: string;
-  icon: string;
-  grades: string;
-  tags: string[];
-  relatedPrograms: string[];
-  seo: {
-    title: string;
-    description: string;
-  };
-  hero: {
-    heading: string;
-    subtitle: string;
-  };
-  problem: {
-    heading: string;
-    paragraphs: string[];
-  };
-  approach: {
-    heading: string;
-    paragraphs: string[];
-    bullets: string[];
-  };
-  outcomes: {
-    heading: string;
-    items: string[];
-  };
-  testimonials: {
-    quote: string;
-    author: string;
-    relation: string;
-    rating: number;
-    badge?: string;
-  }[];
-  faq: { question: string; answer: string }[];
-  cta: {
-    heading: string;
-    description: string;
-    buttonText: string;
-  };
+export interface ContentImage {
+  src: string;
+  alt: string;
 }
 
-/** MDX frontmatter for test prep pages */
-export interface TestPrepFrontmatter {
-  slug: string;
-  title: string;
-  shortDescription: string;
-  icon: string;
-  relatedTests: string[];
-  seo: {
-    title: string;
-    description: string;
-    ogImage?: string;
-  };
-  faq: { question: string; answer: string }[];
+export interface LinkItem {
+  label: string;
+  href: string;
 }
 
-/** Single testimonial entry */
+export interface CtaBlock {
+  heading: string;
+  subtext: string;
+  primaryCta: LinkItem;
+  secondaryCta?: LinkItem;
+  trustBullets?: string[];
+}
+
+export interface HeroContent {
+  eyebrow?: string;
+  heading: string;
+  subtitle: string;
+  primaryCta?: LinkItem;
+  secondaryCta?: LinkItem;
+  stats?: Array<{ value: string; label: string }>;
+}
+
+export interface StatItem {
+  value: string;
+  label: string;
+  detail?: string;
+}
+
+export interface CollectionOption {
+  id: string;
+  label: string;
+}
+
+export interface FilterGroup {
+  id: string;
+  label: string;
+  options: CollectionOption[];
+}
+
+export interface ValueCard {
+  iconName: string;
+  title: string;
+  description: string;
+  bullets?: string[];
+}
+
 export interface Testimonial {
   id: string;
   quote: string;
   author: string;
   relation: string;
+  location?: string;
   rating: number;
-  highlight?: string;
-  program?: string;
-  featured: boolean;
-  source: "google" | "direct" | "other";
+  badge?: string;
+  featured?: boolean;
+  programSlugs?: string[];
+  testPrepSlugs?: string[];
+  source?: "google" | "direct";
 }
 
-/** FAQ entry */
-export interface FAQEntry {
-  id: string;
-  category: "programs" | "logistics" | "pricing" | "enrollment" | "test-prep";
+export interface FAQItem {
   question: string;
   answer: string;
-  order: number;
 }
 
-/** Location entry */
-export interface Location {
+export interface CategorizedFAQItem extends FAQItem {
+  category: string;
+}
+
+export interface TeamMember {
   id: string;
   name: string;
-  address: {
-    street: string;
-    city: string;
-    state: string;
-    zip: string;
-    full: string;
-  };
-  phone: string;
-  email: string;
-  hours: {
-    label: string;
-    time: string;
-  }[];
-  coordinates: { lat: number; lng: number };
-  mapUrl: string;
-  serviceArea: string[];
-  image?: string;
+  role: string;
+  credentials?: string[];
+  bio: string;
+  image?: ContentImage;
 }
 
-/** Site-wide metadata defaults */
-export interface SiteMetadata {
-  siteName: string;
-  siteUrl: string;
-  defaultTitle: string;
-  defaultDescription: string;
-  defaultOgImage: string;
-  socialLinks: { platform: string; url: string }[];
+export interface LocationContent {
+  id: string;
+  name: string;
+  addressLine1: string;
+  city: string;
+  state: string;
+  zip: string;
   phone: string;
-  email: string;
+  hours: Array<{ label: string; time: string }>;
+  serviceAreas: string[];
+  transportationAvailable?: boolean;
+  mapUrl?: string;
+  image?: ContentImage;
+}
+
+export interface PricingTier {
+  id: string;
+  name: string;
+  priceLabel: string;
+  cadence: string;
+  description: string;
+  features: string[];
+  badge?: string;
+  highlighted?: boolean;
+}
+
+export interface SectionShellContent {
+  eyebrow: string;
+  heading: string;
+  subtitle?: string;
+}
+
+export interface CardGridSectionContent extends SectionShellContent {
+  cardLinkLabel: string;
+}
+
+export interface ProcessStepContent {
+  number: string;
+  title: string;
+  description: string;
+}
+
+export interface ProcessSectionContent extends SectionShellContent {
+  steps: ProcessStepContent[];
+}
+
+export interface FAQShellContent {
+  eyebrow: string;
+  headingTemplate: string;
+}
+
+export interface RelatedLinksSectionContent {
+  eyebrow: string;
+  heading: string;
+  linkLabel: string;
+}
+
+export interface StorySectionContent {
+  eyebrow: string;
+  heading: string;
+  paragraphs: string[];
+  missionTitle: string;
+  missionText: string;
+  valuesTitle: string;
+  values: string[];
+}
+
+export interface AboutPageContent {
+  seo: SeoMeta;
+  hero: HeroContent;
+  story: StorySectionContent;
+  stats: StatItem[];
+  differentiators: SectionShellContent & {
+    items: ValueCard[];
+  };
+  teamSection: SectionShellContent;
+  finalCta: CtaBlock;
+}
+
+export interface ReviewsPageContent {
+  seo: SeoMeta;
+  hero: HeroContent;
+  stats: StatItem[];
+  filters: SectionShellContent & {
+    groups: FilterGroup[];
+  };
+  finalCta: CtaBlock;
+}
+
+export interface FaqPageContent {
+  seo: SeoMeta;
+  hero: HeroContent;
+  faqSection: SectionShellContent;
+  categories: string[];
+  finalCta: CtaBlock;
+}
+
+export interface LocationsPageContent {
+  seo: SeoMeta;
+  hero: HeroContent;
+  intro: SectionShellContent & {
+    paragraphs: string[];
+    transportationNote: string;
+  };
+  locationsSection: SectionShellContent;
+  finalCta: CtaBlock;
+}
+
+export interface PricingPageContent {
+  seo: SeoMeta;
+  hero: HeroContent;
+  intro: SectionShellContent & {
+    paragraphs: string[];
+  };
+  comparisonNote: SectionShellContent & {
+    body: string;
+    highlights: string[];
+  };
+  tiersSection: SectionShellContent;
+  allPlansInclude: SectionShellContent & {
+    items: string[];
+    footnote?: string;
+  };
+  faqSection: SectionShellContent & {
+    items: FAQItem[];
+  };
+  finalCta: CtaBlock;
+}
+
+export interface ProgramContent {
+  slug: string;
+  title: string;
+  shortTitle: string;
+  shortDescription: string;
+  iconName: string;
+  grades: string;
+  tags: string[];
+  seo: SeoMeta;
+  hero: HeroContent;
+  problem: { heading: string; paragraphs: string[] };
+  approach: { heading: string; paragraphs: string[]; bullets: string[] };
+  outcomes: { heading: string; items: string[] };
+  faq: FAQItem[];
+  testimonialIds?: string[];
+  relatedPrograms: string[];
+  cta: CtaBlock;
+}
+
+export interface ProgramDetailPageContent {
+  problemEyebrow: string;
+  approachEyebrow: string;
+  process: ProcessSectionContent;
+  outcomesEyebrow: string;
+  testimonials: SectionShellContent;
+  faq: FAQShellContent;
+  related: RelatedLinksSectionContent;
+  ctaTrustBullets: string[];
+}
+
+export interface ProgramsHubPageContent {
+  seo: SeoMeta;
+  hero: HeroContent;
+  programsSection: CardGridSectionContent;
+  finalCta: CtaBlock;
+  detailPage: ProgramDetailPageContent;
+}
+
+export interface TestPrepContent {
+  slug: string;
+  title: string;
+  shortTitle: string;
+  shortDescription: string;
+  iconName: string;
+  grades: string;
+  seo: SeoMeta;
+  hero: HeroContent;
+  idealFor: string[];
+  focusAreas: string[];
+  format: string[];
+  outcomes: string[];
+  faq: FAQItem[];
+  testimonialIds?: string[];
+  relatedTests: string[];
+  cta: CtaBlock;
+}
+
+export interface TestPrepDetailPageContent {
+  idealFor: SectionShellContent;
+  focusAreas: SectionShellContent;
+  process: ProcessSectionContent;
+  format: SectionShellContent;
+  outcomes: SectionShellContent;
+  testimonials: SectionShellContent;
+  faq: FAQShellContent;
+  related: RelatedLinksSectionContent;
+  ctaTrustBullets: string[];
+}
+
+export interface TestPrepHubPageContent {
+  seo: SeoMeta;
+  hero: HeroContent;
+  testPrepSection: CardGridSectionContent;
+  finalCta: CtaBlock;
+  detailPage: TestPrepDetailPageContent;
+}
+
+export interface HomePageContent {
+  seo: SeoMeta;
+  hero: HeroContent;
+  proofBar: Array<{ iconName: string; label: string }>;
+  programsSection: { eyebrow: string; heading: string; subtitle: string };
+  testimonialsSection: {
+    eyebrow: string;
+    heading: string;
+    subtitle: string;
+    featuredIds: string[];
+  };
+  howItWorks: {
+    eyebrow: string;
+    heading: string;
+    steps: Array<{ number: string; title: string; description: string }>;
+  };
+  whyCedar: {
+    eyebrow: string;
+    heading: string;
+    subtitle: string;
+    items: Array<{
+      iconName: string;
+      title: string;
+      description: string;
+      checks: string[];
+    }>;
+  };
+  finalCta: CtaBlock;
 }

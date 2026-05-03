@@ -8,21 +8,21 @@ import { FAQAccordion } from "@/components/shared/FAQAccordion";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { getTestimonialsByIds } from "@/lib/content/collections";
-import { getProgramsHubPageContent } from "@/lib/content/pages";
+import { getTestPrepHubPageContent } from "@/lib/content/pages";
 import {
-  getAllProgramSlugs,
-  getProgramBySlug,
-  getRelatedPrograms,
-} from "@/lib/content/programs";
+  getAllTestPrepSlugs,
+  getRelatedTestPrep,
+  getTestPrepBySlug,
+} from "@/lib/content/testPrep";
 import { getIcon } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 
-const programsHubContent = getProgramsHubPageContent();
+const testPrepHubContent = getTestPrepHubPageContent();
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return getAllProgramSlugs().map((slug) => ({ slug }));
+  return getAllTestPrepSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -31,7 +31,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const program = getProgramBySlug(slug);
+  const program = getTestPrepBySlug(slug);
   if (!program) return {};
   return {
     title: program.seo.title,
@@ -47,20 +47,33 @@ function resolveHeadingTemplate(template: string, value: string): string {
   return template.replace("{{program}}", value);
 }
 
-export default async function ProgramPage({
+function BulletList({ items }: { items: string[] }) {
+  return (
+    <ul className="space-y-3">
+      {items.map((item) => (
+        <li key={item} className="flex items-start gap-3">
+          <Check className="text-secondary mt-0.5 h-5 w-5 shrink-0" />
+          <span className="text-muted-foreground text-base">{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export default async function TestPrepDetailPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const program = getProgramBySlug(slug);
+  const program = getTestPrepBySlug(slug);
   if (!program) notFound();
 
-  const related = getRelatedPrograms(slug);
+  const related = getRelatedTestPrep(slug);
   const testimonials = program.testimonialIds
     ? getTestimonialsByIds(program.testimonialIds)
     : [];
-  const detailPageContent = programsHubContent.detailPage;
+  const detailPageContent = testPrepHubContent.detailPage;
 
   return (
     <>
@@ -68,7 +81,7 @@ export default async function ProgramPage({
         heading={program.hero.heading}
         subtitle={program.hero.subtitle}
         breadcrumbs={[
-          { label: "Programs", href: "/programs" },
+          { label: "Test Prep", href: "/test-prep" },
           { label: program.shortTitle },
         ]}
       />
@@ -76,46 +89,24 @@ export default async function ProgramPage({
       <section className="px-4 py-16 md:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <SectionHeading
-            eyebrow={detailPageContent.problemEyebrow}
-            heading={program.problem.heading}
+            eyebrow={detailPageContent.idealFor.eyebrow}
+            heading={detailPageContent.idealFor.heading}
+            subtitle={detailPageContent.idealFor.subtitle}
             align="left"
           />
-          <div className="space-y-4">
-            {program.problem.paragraphs.map((paragraph, index) => (
-              <p
-                key={index}
-                className="text-muted-foreground text-base leading-relaxed"
-              >
-                {paragraph}
-              </p>
-            ))}
-          </div>
+          <BulletList items={program.idealFor} />
         </div>
       </section>
 
       <section className="bg-muted/50 px-4 py-16 md:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <SectionHeading
-            eyebrow={detailPageContent.approachEyebrow}
-            heading={program.approach.heading}
+            eyebrow={detailPageContent.focusAreas.eyebrow}
+            heading={detailPageContent.focusAreas.heading}
+            subtitle={detailPageContent.focusAreas.subtitle}
             align="left"
           />
-          {program.approach.paragraphs.map((paragraph, index) => (
-            <p
-              key={index}
-              className="text-muted-foreground mb-6 text-base leading-relaxed"
-            >
-              {paragraph}
-            </p>
-          ))}
-          <ul className="space-y-3">
-            {program.approach.bullets.map((bullet, index) => (
-              <li key={index} className="flex items-start gap-3">
-                <Check className="text-secondary mt-0.5 h-5 w-5 shrink-0" />
-                <span className="text-muted-foreground text-base">{bullet}</span>
-              </li>
-            ))}
-          </ul>
+          <BulletList items={program.focusAreas} />
         </div>
       </section>
 
@@ -124,6 +115,7 @@ export default async function ProgramPage({
           <SectionHeading
             eyebrow={detailPageContent.process.eyebrow}
             heading={detailPageContent.process.heading}
+            subtitle={detailPageContent.process.subtitle}
           />
           <div className="relative grid gap-6 md:grid-cols-4 md:gap-8">
             <div className="from-primary/40 via-primary/40 to-primary/40 absolute top-8 right-8 left-8 hidden h-0.5 bg-gradient-to-r md:block" />
@@ -147,18 +139,24 @@ export default async function ProgramPage({
       <section className="bg-muted/50 px-4 py-16 md:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <SectionHeading
-            eyebrow={detailPageContent.outcomesEyebrow}
-            heading={program.outcomes.heading}
+            eyebrow={detailPageContent.format.eyebrow}
+            heading={detailPageContent.format.heading}
+            subtitle={detailPageContent.format.subtitle}
             align="left"
           />
-          <ul className="space-y-3">
-            {program.outcomes.items.map((item, index) => (
-              <li key={index} className="flex items-start gap-3">
-                <Check className="text-secondary mt-0.5 h-5 w-5 shrink-0" />
-                <span className="text-muted-foreground text-base">{item}</span>
-              </li>
-            ))}
-          </ul>
+          <BulletList items={program.format} />
+        </div>
+      </section>
+
+      <section className="px-4 py-16 md:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl">
+          <SectionHeading
+            eyebrow={detailPageContent.outcomes.eyebrow}
+            heading={detailPageContent.outcomes.heading}
+            subtitle={detailPageContent.outcomes.subtitle}
+            align="left"
+          />
+          <BulletList items={program.outcomes} />
         </div>
       </section>
 
@@ -168,6 +166,7 @@ export default async function ProgramPage({
             <SectionHeading
               eyebrow={detailPageContent.testimonials.eyebrow}
               heading={detailPageContent.testimonials.heading}
+              subtitle={detailPageContent.testimonials.subtitle}
             />
             <div
               className={cn(
@@ -230,7 +229,7 @@ export default async function ProgramPage({
               eyebrow={detailPageContent.faq.eyebrow}
               heading={resolveHeadingTemplate(
                 detailPageContent.faq.headingTemplate,
-                program.shortTitle.toLowerCase(),
+                program.shortTitle,
               )}
             />
             <FAQAccordion items={program.faq} defaultOpen={0} />
@@ -251,7 +250,7 @@ export default async function ProgramPage({
                 return (
                   <Link
                     key={relatedProgram.slug}
-                    href={`/programs/${relatedProgram.slug}`}
+                    href={`/test-prep/${relatedProgram.slug}`}
                     className="group border-border bg-card hover:border-primary/30 relative overflow-hidden rounded-xl border p-6 transition-all hover:shadow-md"
                   >
                     <div className="from-primary to-accent absolute inset-x-0 top-0 h-1 bg-gradient-to-r via-[hsl(var(--brand-red))]" />

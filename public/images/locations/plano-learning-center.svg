@@ -1,0 +1,17 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" rx="48" fill="#EAF6FB"/>
+  <circle cx="170" cy="132" r="78" fill="#FFA725" fill-opacity="0.22"/>
+  <circle cx="1030" cy="142" r="118" fill="#0D8ECF" fill-opacity="0.12"/>
+  <rect x="130" y="194" width="940" height="372" rx="40" fill="white"/>
+  <rect x="238" y="130" width="724" height="112" rx="32" fill="#0D8ECF"/>
+  <rect x="238" y="450" width="194" height="116" rx="24" fill="#0D8ECF" fill-opacity="0.1"/>
+  <rect x="500" y="450" width="194" height="116" rx="24" fill="#0D8ECF" fill-opacity="0.1"/>
+  <rect x="762" y="450" width="194" height="116" rx="24" fill="#0D8ECF" fill-opacity="0.1"/>
+  <rect x="278" y="282" width="178" height="122" rx="22" fill="#DDEFF8"/>
+  <rect x="512" y="282" width="178" height="122" rx="22" fill="#DDEFF8"/>
+  <rect x="746" y="282" width="178" height="122" rx="22" fill="#DDEFF8"/>
+  <path d="M1004 226C1004 267.422 970.422 301 929 301C887.578 301 854 267.422 854 226C854 184.578 929 101 929 101C929 101 1004 184.578 1004 226Z" fill="#FFA725"/>
+  <circle cx="929" cy="225" r="28" fill="white"/>
+  <text x="600" y="197" text-anchor="middle" fill="white" font-size="46" font-family="Arial, sans-serif" font-weight="700">Plano Learning Center</text>
+  <text x="600" y="644" text-anchor="middle" fill="#0A7AB8" font-size="30" font-family="Arial, sans-serif" font-weight="600">After-school tutoring with transportation-friendly access</text>
+</svg>

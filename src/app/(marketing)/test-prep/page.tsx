@@ -5,42 +5,42 @@ import { ArrowRight } from "lucide-react";
 import { CTASection } from "@/components/shared/CTASection";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { getProgramsHubPageContent } from "@/lib/content/pages";
-import { getAllPrograms } from "@/lib/content/programs";
+import { getTestPrepHubPageContent } from "@/lib/content/pages";
+import { getAllTestPrep } from "@/lib/content/testPrep";
 import { getIcon } from "@/lib/icons";
 
-const programs = getAllPrograms();
-const programsHubContent = getProgramsHubPageContent();
+const testPrepPrograms = getAllTestPrep();
+const testPrepHubContent = getTestPrepHubPageContent();
 
 export const metadata: Metadata = {
-  title: programsHubContent.seo.title,
-  description: programsHubContent.seo.description,
+  title: testPrepHubContent.seo.title,
+  description: testPrepHubContent.seo.description,
 };
 
-export default function ProgramsHubPage() {
+export default function TestPrepHubPage() {
   return (
     <>
       <PageHero
-        heading={programsHubContent.hero.heading}
-        subtitle={programsHubContent.hero.subtitle}
-        breadcrumbs={[{ label: "Programs" }]}
+        heading={testPrepHubContent.hero.heading}
+        subtitle={testPrepHubContent.hero.subtitle}
+        breadcrumbs={[{ label: "Test Prep" }]}
       />
 
       <section className="px-4 py-16 md:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <SectionHeading
-            eyebrow={programsHubContent.programsSection.eyebrow}
-            heading={programsHubContent.programsSection.heading}
-            subtitle={programsHubContent.programsSection.subtitle}
+            eyebrow={testPrepHubContent.testPrepSection.eyebrow}
+            heading={testPrepHubContent.testPrepSection.heading}
+            subtitle={testPrepHubContent.testPrepSection.subtitle}
           />
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {programs.map((program) => {
+          <div className="grid gap-6 md:grid-cols-3">
+            {testPrepPrograms.map((program) => {
               const Icon = getIcon(program.iconName);
               return (
                 <Link
                   key={program.slug}
-                  href={`/programs/${program.slug}`}
+                  href={`/test-prep/${program.slug}`}
                   className="group border-border bg-card hover:border-primary/30 relative overflow-hidden rounded-xl border p-6 transition-all hover:shadow-md"
                 >
                   <div className="from-primary to-accent absolute inset-x-0 top-0 h-1 bg-gradient-to-r via-[hsl(var(--brand-red))]" />
@@ -63,7 +63,7 @@ export default function ProgramsHubPage() {
                   </p>
 
                   <span className="inline-flex items-center gap-1 text-sm font-semibold text-[hsl(var(--primary-text))] transition-all group-hover:gap-2">
-                    {programsHubContent.programsSection.cardLinkLabel}
+                    {testPrepHubContent.testPrepSection.cardLinkLabel}
                     <ArrowRight className="h-4 w-4" />
                   </span>
                 </Link>
@@ -74,11 +74,11 @@ export default function ProgramsHubPage() {
       </section>
 
       <CTASection
-        heading={programsHubContent.finalCta.heading}
-        subtext={programsHubContent.finalCta.subtext}
-        primaryCta={programsHubContent.finalCta.primaryCta}
-        secondaryCta={programsHubContent.finalCta.secondaryCta}
-        trustBullets={programsHubContent.finalCta.trustBullets}
+        heading={testPrepHubContent.finalCta.heading}
+        subtext={testPrepHubContent.finalCta.subtext}
+        primaryCta={testPrepHubContent.finalCta.primaryCta}
+        secondaryCta={testPrepHubContent.finalCta.secondaryCta}
+        trustBullets={testPrepHubContent.finalCta.trustBullets}
       />
     </>
   );

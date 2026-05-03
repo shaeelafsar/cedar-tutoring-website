@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { Breadcrumbs } from "./Breadcrumbs";
 
 interface PageHeroProps {
+  eyebrow?: string;
   heading: string;
   subtitle?: string;
   breadcrumbs?: { label: string; href?: string }[];
@@ -10,6 +11,7 @@ interface PageHeroProps {
 }
 
 export function PageHero({
+  eyebrow,
   heading,
   subtitle,
   breadcrumbs,
@@ -34,6 +36,13 @@ export function PageHero({
       <div className="relative mx-auto max-w-4xl text-center">
         {breadcrumbs ? (
           <Breadcrumbs items={breadcrumbs} variant="inverse" />
+        ) : null}
+
+        {eyebrow ? (
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-[0.14em] text-white/90 uppercase">
+            <span className="bg-accent h-1.5 w-1.5 rounded-full" />
+            {eyebrow}
+          </span>
         ) : null}
 
         <h1 className="font-heading text-[clamp(2rem,4vw,3.5rem)] leading-[1.08] font-bold tracking-[-0.03em] text-white">

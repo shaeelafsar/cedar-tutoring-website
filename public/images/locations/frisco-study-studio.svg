@@ -1,0 +1,17 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" rx="48" fill="#FFF7EB"/>
+  <circle cx="1065" cy="122" r="94" fill="#FFA725" fill-opacity="0.25"/>
+  <circle cx="172" cy="592" r="128" fill="#0D8ECF" fill-opacity="0.1"/>
+  <rect x="116" y="220" width="968" height="318" rx="42" fill="white"/>
+  <rect x="178" y="160" width="842" height="106" rx="28" fill="#0D8ECF"/>
+  <rect x="216" y="292" width="292" height="156" rx="28" fill="#FFF0D2"/>
+  <rect x="548" y="292" width="292" height="156" rx="28" fill="#FFF0D2"/>
+  <rect x="880" y="292" width="120" height="156" rx="24" fill="#FFF0D2"/>
+  <path d="M318 580H882" stroke="#0A7AB8" stroke-width="18" stroke-linecap="round"/>
+  <path d="M220 580H260" stroke="#FFA725" stroke-width="18" stroke-linecap="round"/>
+  <path d="M940 580H980" stroke="#FFA725" stroke-width="18" stroke-linecap="round"/>
+  <path d="M1026 206C1026 243.003 996.003 273 959 273C921.997 273 892 243.003 892 206C892 168.997 959 95 959 95C959 95 1026 168.997 1026 206Z" fill="#D92027"/>
+  <circle cx="959" cy="205" r="24" fill="white"/>
+  <text x="599" y="225" text-anchor="middle" fill="white" font-size="46" font-family="Arial, sans-serif" font-weight="700">Frisco Study Studio</text>
+  <text x="600" y="642" text-anchor="middle" fill="#0A7AB8" font-size="30" font-family="Arial, sans-serif" font-weight="600">Flexible weekly tutoring for Frisco and nearby communities</text>
+</svg>

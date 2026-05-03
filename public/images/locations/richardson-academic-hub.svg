@@ -1,0 +1,16 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" rx="48" fill="#EEF8FD"/>
+  <circle cx="1062" cy="600" r="124" fill="#FFA725" fill-opacity="0.2"/>
+  <circle cx="190" cy="144" r="92" fill="#0D8ECF" fill-opacity="0.14"/>
+  <rect x="160" y="176" width="880" height="392" rx="42" fill="white"/>
+  <rect x="240" y="116" width="720" height="104" rx="28" fill="#0D8ECF"/>
+  <rect x="230" y="284" width="244" height="216" rx="26" fill="#E4F2F9"/>
+  <rect x="520" y="284" width="160" height="216" rx="26" fill="#E4F2F9"/>
+  <rect x="726" y="284" width="244" height="216" rx="26" fill="#E4F2F9"/>
+  <path d="M824 240C824 277.003 794.003 307 757 307C719.997 307 690 277.003 690 240C690 202.997 757 129 757 129C757 129 824 202.997 824 240Z" fill="#FFA725"/>
+  <circle cx="757" cy="239" r="24" fill="white"/>
+  <path d="M332 574C374.341 574 408.667 539.674 408.667 497.333C408.667 454.993 374.341 420.667 332 420.667C289.66 420.667 255.333 454.993 255.333 497.333C255.333 539.674 289.66 574 332 574Z" fill="#0D8ECF" fill-opacity="0.09"/>
+  <path d="M868 574C910.341 574 944.667 539.674 944.667 497.333C944.667 454.993 910.341 420.667 868 420.667C825.66 420.667 791.333 454.993 791.333 497.333C791.333 539.674 825.66 574 868 574Z" fill="#0D8ECF" fill-opacity="0.09"/>
+  <text x="600" y="183" text-anchor="middle" fill="white" font-size="44" font-family="Arial, sans-serif" font-weight="700">Richardson Academic Hub</text>
+  <text x="600" y="640" text-anchor="middle" fill="#0A7AB8" font-size="30" font-family="Arial, sans-serif" font-weight="600">Weekend-friendly tutoring with North Dallas area access</text>
+</svg>

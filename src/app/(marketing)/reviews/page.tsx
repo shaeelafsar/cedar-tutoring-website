@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 
 import { CTASection } from "@/components/shared/CTASection";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { PageHero } from "@/components/shared/PageHero";
 import { Reveal } from "@/components/shared/Reveal";
 import { getTestimonials } from "@/lib/content/collections";
 import { getReviewsPageContent } from "@/lib/content/pages";
 import { getAllPrograms } from "@/lib/content/programs";
 import { getAllTestPrep } from "@/lib/content/testPrep";
+import { SITE_CONFIG } from "@/lib/constants";
+import { absoluteUrl, buildPageMetadata } from "@/lib/seo";
 
 import { ReviewsGrid } from "./ReviewsGrid";
 
@@ -23,24 +26,60 @@ const programTagMap = Object.fromEntries([
   ]),
 ]);
 
-function buildPageMetadata(): Metadata {
-  return {
-    title: reviewsPageContent.seo.title,
-    description: reviewsPageContent.seo.description,
-    openGraph: {
-      title: reviewsPageContent.seo.title,
-      description: reviewsPageContent.seo.description,
+const reviewsPageStructuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "EducationalOrganization",
+      "@id": absoluteUrl("/#organization"),
+      name: SITE_CONFIG.name,
+      url: SITE_CONFIG.url,
     },
-  };
-}
+    {
+      "@type": "AggregateRating",
+      itemReviewed: {
+        "@id": absoluteUrl("/#organization"),
+      },
+      ratingValue: "5.0",
+      reviewCount: String(testimonials.length),
+      bestRating: "5",
+      worstRating: "1",
+    },
+    ...testimonials.map((testimonial) => ({
+      "@type": "Review",
+      author: {
+        "@type": "Person",
+        name: testimonial.author,
+      },
+      reviewBody: testimonial.quote,
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: String(testimonial.rating),
+        bestRating: "5",
+      },
+      itemReviewed: {
+        "@id": absoluteUrl("/#organization"),
+      },
+      publisher: {
+        "@type": "Organization",
+        name: SITE_CONFIG.name,
+      },
+    })),
+  ],
+};
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildPageMetadata();
+  return buildPageMetadata({
+    title: reviewsPageContent.seo.title,
+    description: reviewsPageContent.seo.description,
+    path: "/reviews",
+  });
 }
 
 export default function ReviewsPage() {
   return (
     <>
+      <JsonLd data={reviewsPageStructuredData} />
       <PageHero
         eyebrow={reviewsPageContent.hero.eyebrow}
         heading={reviewsPageContent.hero.heading}

@@ -8,14 +8,16 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 import { getProgramsHubPageContent } from "@/lib/content/pages";
 import { getAllPrograms } from "@/lib/content/programs";
 import { getIcon } from "@/lib/icons";
+import { buildPageMetadata } from "@/lib/seo";
 
 const programs = getAllPrograms();
 const programsHubContent = getProgramsHubPageContent();
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: programsHubContent.seo.title,
   description: programsHubContent.seo.description,
-};
+  path: "/programs",
+});
 
 export default function ProgramsHubPage() {
   return (

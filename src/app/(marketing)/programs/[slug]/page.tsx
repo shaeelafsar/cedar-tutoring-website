@@ -15,6 +15,7 @@ import {
   getRelatedPrograms,
 } from "@/lib/content/programs";
 import { getIcon } from "@/lib/icons";
+import { buildPageMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 const programsHubContent = getProgramsHubPageContent();
@@ -33,10 +34,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const program = getProgramBySlug(slug);
   if (!program) return {};
-  return {
+  return buildPageMetadata({
     title: program.seo.title,
     description: program.seo.description,
-  };
+    path: `/programs/${slug}`,
+  });
 }
 
 function formatTestimonialMeta(relation: string, location?: string): string {

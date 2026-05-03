@@ -1,7 +1,7 @@
 export const SITE_CONFIG = {
   name: "Cedar Tutoring Academy",
   tagline: "Where Learning Takes Root",
-  url: "https://cedartutoring.com",
+  url: "https://shaeelafsar.github.io/cedar-tutoring-website",
   phone: "(469) 757-2220",
   email: "info@cedartutoring.com",
   address: {

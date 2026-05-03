@@ -14,11 +14,14 @@ import {
 } from "lucide-react";
 
 import { CTASection } from "@/components/shared/CTASection";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { buttonVariants } from "@/components/ui/button";
 import { getTestimonials } from "@/lib/content/collections";
 import { getHomePageContent } from "@/lib/content/pages";
 import { getAllPrograms } from "@/lib/content/programs";
+import { SITE_CONFIG } from "@/lib/constants";
 import { getIcon } from "@/lib/icons";
+import { buildPageMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 const homePageContent = getHomePageContent();
@@ -45,9 +48,30 @@ const featuredTestimonials = homePageContent.testimonialsSection.featuredIds
 
 const statDotClasses = ["bg-accent", "bg-secondary", "bg-white"] as const;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: homePageContent.seo.title,
   description: homePageContent.seo.description,
+  path: "/",
+});
+
+const homePageStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  name: SITE_CONFIG.name,
+  url: SITE_CONFIG.url,
+  description:
+    "Personalized tutoring in Reading, Math, Writing, Science, Arabic, and Test Prep in the Dallas-Fort Worth area",
+  areaServed: "Dallas-Fort Worth, Texas",
+  telephone: SITE_CONFIG.phone,
+  email: SITE_CONFIG.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: SITE_CONFIG.address.street,
+    addressLocality: SITE_CONFIG.address.city,
+    addressRegion: SITE_CONFIG.address.state,
+    postalCode: SITE_CONFIG.address.zip,
+    addressCountry: "US",
+  },
 };
 
 function formatTestimonialMeta(relation: string, location?: string): string {
@@ -70,6 +94,7 @@ export default function HomePage() {
 
   return (
     <>
+      <JsonLd data={homePageStructuredData} />
       <section className="via-primary relative overflow-hidden bg-gradient-to-br from-[#0a5a8a] to-[#2ea8dc] px-4 pt-14 pb-12 text-white sm:py-24 md:px-6 md:py-28 lg:px-8 lg:py-36">
         <div className="pointer-events-none absolute inset-0">
           <div className="bg-accent/10 absolute -top-24 -right-24 h-[420px] w-[420px] rounded-full blur-3xl" />

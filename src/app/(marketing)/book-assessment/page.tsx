@@ -4,6 +4,7 @@ import { getLocations, getTestimonialsByIds } from "@/lib/content/collections";
 import { getBookAssessmentPageContent } from "@/lib/content/pages";
 import { getAllPrograms } from "@/lib/content/programs";
 import { getAllTestPrep } from "@/lib/content/testPrep";
+import { buildPageMetadata } from "@/lib/seo";
 
 import { BookAssessmentPageClient } from "./BookAssessmentPageClient";
 
@@ -21,19 +22,12 @@ const programOptions = [
   })),
 ];
 
-function buildPageMetadata(): Metadata {
-  return {
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata({
     title: pageContent.seo.title,
     description: pageContent.seo.description,
-    openGraph: {
-      title: pageContent.seo.title,
-      description: pageContent.seo.description,
-    },
-  };
-}
-
-export async function generateMetadata(): Promise<Metadata> {
-  return buildPageMetadata();
+    path: "/book-assessment",
+  });
 }
 
 export default function BookAssessmentPage() {

@@ -206,3 +206,11 @@ Trinity implemented Morpheus's JSON-first content layer foundation and migrated 
 - Built static-export-safe `/locations` and `/pricing` marketing pages with shared `PageHero`, `CTASection`, `Reveal`, and `FAQAccordion` patterns, including DFW location cards, transportation callouts, a trust-first pricing table, and pricing FAQ content.
 - Added three Cedar-branded location illustration SVGs under `public/images/locations/` and rendered them via `imagePath()` to stay aligned with the content-layer image contract.
 - Validation: `npm run build` ✅; `npm run lint` still fails only on pre-existing `.squad/templates/ralph-triage.js` issues unrelated to Slice 6.
+
+### SEO & Polish — Slice 8 (2026-05-03T16:38:38.337-05:00)
+**Status:** ✅ COMPLETED  
+- Added shared SEO helpers in `src/lib/seo.ts` and upgraded `src/app/layout.tsx` with GitHub Pages `metadataBase`, default OG/Twitter metadata, canonical defaults, and the Cedar brand title template.
+- Updated all marketing, programs, and test-prep routes to use canonical metadata with per-page titles/descriptions, GitHub Pages URLs, and shared social image wiring.
+- Added structured data coverage for the homepage (`EducationalOrganization`), FAQ (`FAQPage`), reviews (`AggregateRating` + `Review`), locations (`LocalBusiness`), and pricing (`Service` + `Offer`) via a reusable `JsonLd` helper.
+- Created static-export-safe `src/app/sitemap.ts` and `src/app/robots.ts`, updated SEO copy in the JSON content layer to 150–160 character descriptions, and confirmed sitemap/robots export output.
+- Validation: `npm run build` ✅; `npm run lint` still fails only on pre-existing `.squad/templates/ralph-triage.js` issues unrelated to Slice 8.

@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Newsreader } from "next/font/google";
+
+import { SITE_CONFIG } from "@/lib/constants";
+import { absoluteUrl, DEFAULT_DESCRIPTION, DEFAULT_OG_IMAGE } from "@/lib/seo";
+
 import "./globals.css";
 
 const inter = Inter({
@@ -18,12 +22,28 @@ const newsreader = Newsreader({
 
 export const metadata: Metadata = {
   title: {
-    default: "Cedar Tutoring Academy | K-12 Tutoring in Plano, TX",
-    template: "%s | Cedar Tutoring Academy",
+    default: SITE_CONFIG.name,
+    template: `%s | ${SITE_CONFIG.name}`,
   },
-  description:
-    "Personalized K-12 tutoring in Math, Reading, Writing, Science, and Test Prep. Small groups, real teachers, measurable results. Serving families in Plano, TX.",
-  metadataBase: new URL("https://cedartutoring.com"),
+  description: DEFAULT_DESCRIPTION,
+  metadataBase: new URL(SITE_CONFIG.url),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: SITE_CONFIG.name,
+    description: DEFAULT_DESCRIPTION,
+    url: SITE_CONFIG.url,
+    siteName: SITE_CONFIG.name,
+    type: "website",
+    images: [absoluteUrl(DEFAULT_OG_IMAGE)],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_CONFIG.name,
+    description: DEFAULT_DESCRIPTION,
+    images: [absoluteUrl(DEFAULT_OG_IMAGE)],
+  },
 };
 
 export default function RootLayout({

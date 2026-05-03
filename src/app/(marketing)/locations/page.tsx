@@ -5,38 +5,56 @@ import { Bus, CarFront, Clock3, MapPin, Phone } from "lucide-react";
 import type { LocationContent } from "@/types/content";
 
 import { CTASection } from "@/components/shared/CTASection";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { PageHero } from "@/components/shared/PageHero";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { getLocations } from "@/lib/content/collections";
 import { getLocationsPageContent } from "@/lib/content/pages";
+import { SITE_CONFIG } from "@/lib/constants";
 import { imagePath } from "@/lib/image-path";
+import { absoluteUrl, buildPageMetadata } from "@/lib/seo";
 
 const locationsPageContent = getLocationsPageContent();
 const locations = getLocations();
 
-function buildPageMetadata(): Metadata {
-  return {
-    title: locationsPageContent.seo.title,
-    description: locationsPageContent.seo.description,
-    openGraph: {
-      title: locationsPageContent.seo.title,
-      description: locationsPageContent.seo.description,
+const locationsPageStructuredData = {
+  "@context": "https://schema.org",
+  "@graph": locations.map((location) => ({
+    "@type": "LocalBusiness",
+    name: `${SITE_CONFIG.name} - ${location.name}`,
+    url: absoluteUrl("/locations"),
+    telephone: location.phone,
+    image: location.image ? absoluteUrl(location.image.src) : undefined,
+    areaServed: location.serviceAreas,
+    hasMap: location.mapUrl,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: location.addressLine1,
+      addressLocality: location.city,
+      addressRegion: location.state,
+      postalCode: location.zip,
+      addressCountry: "US",
     },
-  };
-}
+  })),
+};
 
 function formatAddress(location: LocationContent): string {
   return `${location.addressLine1}, ${location.city}, ${location.state} ${location.zip}`;
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildPageMetadata();
+  return buildPageMetadata({
+    title: locationsPageContent.seo.title,
+    description: locationsPageContent.seo.description,
+    path: "/locations",
+  });
 }
 
 export default function LocationsPage() {
   return (
     <>
+      <JsonLd data={locationsPageStructuredData} />
       <PageHero
         eyebrow={locationsPageContent.hero.eyebrow}
         heading={locationsPageContent.hero.heading}

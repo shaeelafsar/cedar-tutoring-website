@@ -1,34 +1,43 @@
 import type { Metadata } from "next";
 
 import { CTASection } from "@/components/shared/CTASection";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { getFaqItems } from "@/lib/content/collections";
 import { getFaqPageContent } from "@/lib/content/pages";
+import { buildPageMetadata } from "@/lib/seo";
 
 import { FaqExplorer } from "./FaqExplorer";
 
 const faqPageContent = getFaqPageContent();
 const faqItems = getFaqItems();
 
-function buildPageMetadata(): Metadata {
-  return {
-    title: faqPageContent.seo.title,
-    description: faqPageContent.seo.description,
-    openGraph: {
-      title: faqPageContent.seo.title,
-      description: faqPageContent.seo.description,
+const faqPageStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer.replace(/\n+/g, " "),
     },
-  };
-}
+  })),
+};
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildPageMetadata();
+  return buildPageMetadata({
+    title: faqPageContent.seo.title,
+    description: faqPageContent.seo.description,
+    path: "/faq",
+  });
 }
 
 export default function FAQPage() {
   return (
     <>
+      <JsonLd data={faqPageStructuredData} />
       <PageHero
         eyebrow={faqPageContent.hero.eyebrow}
         heading={faqPageContent.hero.heading}

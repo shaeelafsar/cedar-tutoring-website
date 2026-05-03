@@ -1,7 +1,7 @@
 {
   "seo": {
-    "title": "Book a Free Learning Assessment | Cedar Tutoring Academy",
-    "description": "Book a free learning assessment with Cedar Tutoring Academy. We'll learn about your child, recommend the right support, and follow up within 24 hours."
+    "title": "Book a Free Assessment | Cedar Tutoring Academy",
+    "description": "Book a free assessment with Cedar Tutoring Academy to discuss your child's goals, get a tutoring recommendation, and hear back within 24 hours for next steps."
   },
   "hero": {
     "eyebrow": "Free assessment • No obligation • Personalized plan",
@@ -46,8 +46,16 @@
       }
     ]
   },
-  "trustSignals": ["No obligation", "Free assessment", "Personalized plan"],
-  "testimonialIds": ["home-layla-routine", "math-2", "sat-1"],
+  "trustSignals": [
+    "No obligation",
+    "Free assessment",
+    "Personalized plan"
+  ],
+  "testimonialIds": [
+    "home-layla-routine",
+    "math-2",
+    "sat-1"
+  ],
   "faqSection": {
     "eyebrow": "Assessment FAQ",
     "heading": "Questions parents ask before booking.",

@@ -8,14 +8,16 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 import { getTestPrepHubPageContent } from "@/lib/content/pages";
 import { getAllTestPrep } from "@/lib/content/testPrep";
 import { getIcon } from "@/lib/icons";
+import { buildPageMetadata } from "@/lib/seo";
 
 const testPrepPrograms = getAllTestPrep();
 const testPrepHubContent = getTestPrepHubPageContent();
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: testPrepHubContent.seo.title,
   description: testPrepHubContent.seo.description,
-};
+  path: "/test-prep",
+});
 
 export default function TestPrepHubPage() {
   return (

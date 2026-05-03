@@ -3,33 +3,51 @@ import { ArrowRight, Check, CircleDollarSign } from "lucide-react";
 
 import { CTASection } from "@/components/shared/CTASection";
 import { FAQAccordion } from "@/components/shared/FAQAccordion";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { PageHero } from "@/components/shared/PageHero";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { getPricingTiers } from "@/lib/content/collections";
 import { getPricingPageContent } from "@/lib/content/pages";
+import { SITE_CONFIG } from "@/lib/constants";
+import { absoluteUrl, buildPageMetadata } from "@/lib/seo";
 
 const pricingPageContent = getPricingPageContent();
 const pricingTiers = getPricingTiers();
 
-function buildPageMetadata(): Metadata {
-  return {
-    title: pricingPageContent.seo.title,
-    description: pricingPageContent.seo.description,
-    openGraph: {
-      title: pricingPageContent.seo.title,
-      description: pricingPageContent.seo.description,
-    },
-  };
-}
+const pricingPageStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: `${SITE_CONFIG.name} Tutoring Services`,
+  serviceType: "K-12 tutoring and test prep",
+  provider: {
+    "@type": "EducationalOrganization",
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+  },
+  areaServed: "Dallas-Fort Worth, Texas",
+  offers: pricingTiers.map((tier) => ({
+    "@type": "Offer",
+    name: tier.name,
+    description: tier.description,
+    price: tier.priceLabel.replace(/[^\d.]/g, ""),
+    priceCurrency: "USD",
+    url: absoluteUrl("/pricing"),
+  })),
+};
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildPageMetadata();
+  return buildPageMetadata({
+    title: pricingPageContent.seo.title,
+    description: pricingPageContent.seo.description,
+    path: "/pricing",
+  });
 }
 
 export default function PricingPage() {
   return (
     <>
+      <JsonLd data={pricingPageStructuredData} />
       <PageHero
         eyebrow={pricingPageContent.hero.eyebrow}
         heading={pricingPageContent.hero.heading}

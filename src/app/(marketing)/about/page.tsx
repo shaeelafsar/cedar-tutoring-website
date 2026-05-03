@@ -9,6 +9,7 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 import { getTeamMembers } from "@/lib/content/collections";
 import { getAboutPageContent } from "@/lib/content/pages";
 import { imagePath } from "@/lib/image-path";
+import { buildPageMetadata } from "@/lib/seo";
 
 const aboutPageContent = getAboutPageContent();
 const teamMembers = getTeamMembers();
@@ -20,19 +21,12 @@ const iconMap = {
   award: Award,
 } as const;
 
-function buildPageMetadata(): Metadata {
-  return {
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata({
     title: aboutPageContent.seo.title,
     description: aboutPageContent.seo.description,
-    openGraph: {
-      title: aboutPageContent.seo.title,
-      description: aboutPageContent.seo.description,
-    },
-  };
-}
-
-export async function generateMetadata(): Promise<Metadata> {
-  return buildPageMetadata();
+    path: "/about",
+  });
 }
 
 export default function AboutPage() {

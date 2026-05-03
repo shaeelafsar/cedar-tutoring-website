@@ -15,6 +15,7 @@ import {
   getTestPrepBySlug,
 } from "@/lib/content/testPrep";
 import { getIcon } from "@/lib/icons";
+import { buildPageMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 const testPrepHubContent = getTestPrepHubPageContent();
@@ -33,10 +34,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const program = getTestPrepBySlug(slug);
   if (!program) return {};
-  return {
+  return buildPageMetadata({
     title: program.seo.title,
     description: program.seo.description,
-  };
+    path: `/test-prep/${slug}`,
+  });
 }
 
 function formatTestimonialMeta(relation: string, location?: string): string {

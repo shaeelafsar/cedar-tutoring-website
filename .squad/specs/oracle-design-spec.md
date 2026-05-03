@@ -36,17 +36,29 @@ Think: the visual confidence of a top private school's website, with the warmth 
 
 ```css
 :root {
-  /* Primary — Trust blue (hero backgrounds, CTAs, active states) */
-  --primary: 220 70% 45%;           /* #2563EB-ish */
+  /* Primary — Cedar Blue (hero backgrounds, CTAs, icons, borders) */
+  --primary: 199 87% 43%;           /* #0d8ecf — Cedar logo blue */
   --primary-foreground: 0 0% 100%;
+  /* ⚠️ CONTRAST: #0d8ecf is 3.48:1 on white — NOT text-safe for normal body text.
+     Use as: background (white text on top ✅), icon fills, borders, hero gradients.
+     For text on light backgrounds, darken to #0a7ab8 (~4.52:1 on white). */
 
-  /* Secondary — Growth green (success states, progress, outcomes) */
-  --secondary: 160 50% 40%;         /* #059669-ish */
+  /* Secondary — Growth green (success states, checkmarks, credential icons — semantic only) */
+  --secondary: 160 50% 40%;         /* #059669 — retained for success/outcome semantics */
   --secondary-foreground: 0 0% 100%;
+  /* ✅ Text-safe on white (4.58:1). Use for checkmarks, credential chips, success badges. */
 
-  /* Accent — Warm amber (highlights, badges, attention) */
-  --accent: 38 92% 50%;             /* #F59E0B-ish */
+  /* Brand Red — Cedar Red (emphasis badges, featured indicators, brand accents) */
+  --brand-red: 358 74% 49%;         /* #d92027 — Cedar logo red/figures */
+  --brand-red-foreground: 0 0% 100%;
+  /* ⚠️ CONTRAST: #d92027 is ~4.5:1 on white — borderline AA for text. Prefer as background.
+     Use for: "Most Popular" badges, program card accent stripes, emphasis CTA elements.
+     NOT a semantic error/destructive color — do not use for form error states. */
+
+  /* Accent — Cedar Orange (highlights, badges, Proof Bar, attention — decoration only) */
+  --accent: 38 97% 57%;             /* #ffa725 — Cedar logo orange/swoosh */
   --accent-foreground: 0 0% 10%;
+  /* ❌ NOT text-safe on any light background (~2.x:1). Background/decoration only. */
 
   /* Neutral backgrounds */
   --background: 0 0% 100%;          /* White */
@@ -60,43 +72,49 @@ Think: the visual confidence of a top private school's website, with the warmth 
   --card-foreground: 222 47% 11%;
 
   /* Semantic */
-  --destructive: 0 84% 60%;         /* Error red */
+  --destructive: 0 84% 60%;         /* Error red — form validation errors ONLY */
   --success: 142 71% 45%;           /* Success green */
   --warning: 38 92% 50%;            /* Warning amber */
 
   /* Ring/focus */
-  --ring: 220 70% 45%;              /* Matches primary */
+  --ring: 199 87% 43%;              /* Matches primary (Cedar Blue) */
 }
 ```
 
-**Guidance:** These are starting points. Oracle should refine exact hues based on brand feel. The key constraints:
-- Primary must convey trust (blue family)
-- Adequate contrast ratios (4.5:1 minimum for text, 3:1 for large text/UI)
+**Guidance:** These tokens represent Cedar's actual brand palette. The key constraints:
+- Primary (Cedar Blue) is for backgrounds and UI elements — **not text on light backgrounds**
+- Secondary (green) is semantic only — success states, checkmarks, growth indicators
+- Brand Red is for brand emphasis — featured badges, accent elements, NOT form errors
+- Accent (Cedar Orange) is decoration-only — never text on light backgrounds
 - The palette should feel restrained — no more than 3 dominant colors on any page
 
 ### Color-Usage Matrix (AA-Safe Pairings)
 
 Every color must have documented safe usage. **Do not use a pairing not listed here for text.**
 
-| Color | Hex (approx) | On White | On Muted (#F3F4F6) | On Primary | Usage Rules |
-|-------|-------------|----------|--------------------|-----------:|-------------|
-| **Primary** | `#2563EB` | ✅ 5.17:1 (text-safe) | ✅ 4.81:1 (text-safe) | — | CTA backgrounds, links, active states, focus rings. Text-safe on white/muted. |
-| **Primary Foreground** | `#FFFFFF` | — | — | ✅ 5.17:1 | Text on primary backgrounds only. |
-| **Secondary** | `#059669` | ✅ 4.58:1 (text-safe, adjusted from `#33997A`) | ✅ 4.26:1 (large text/icons only) | — | Success badges, credential icons, feature checkmarks. **Body text:** only on white. **Icons/large text:** white or muted. |
-| **Accent** | `#F59E0B` | ❌ 2.15:1 (NOT text-safe) | ❌ | ❌ | **Background/decoration only:** star fill color, highlight badges (with dark text on top), borders. Never for text on light backgrounds. |
-| **Accent Foreground** | `#1C1917` | — | — | — | Dark text rendered ON accent-colored backgrounds. |
-| **Foreground** | `#1E293B` | ✅ 12.6:1 | ✅ 11.7:1 | — | Primary body text, headings. Safe everywhere on light backgrounds. |
-| **Muted Foreground** | `#4B5563` (adjusted from `#6B7280`) | ✅ 7.45:1 | ✅ 5.91:1 | — | Secondary text, captions, metadata. Darkened from spec v1.0 to pass AA on muted backgrounds. |
-| **Destructive** | `#DC2626` | ✅ 4.63:1 | ✅ 4.31:1 (large text only) | — | Error text on white. Error icons on white/muted. |
-| **Success** | `#16A34A` (adjusted from `#22C55E`) | ✅ 4.52:1 | — (use on white only) | — | Success text/icons on white. Darkened from spec v1.0 to pass AA. |
-| **Warning** | `#F59E0B` | ❌ (same as accent) | ❌ | — | Background-only. Pair with dark foreground text. |
+| Color | Hex | On White | On Muted (#F3F4F6) | Usage Rules |
+|-------|-----|----------|---------------------|-------------|
+| **Primary (Cedar Blue)** | `#0d8ecf` | ❌ 3.48:1 (NOT text-safe) | ❌ | **Background use only** for text contexts. CTA backgrounds (white text on top ✅), icon fills, borders, focus rings, hero gradients. **Never** as text color on light backgrounds. |
+| **Primary (text-safe variant)** | `#0a7ab8` | ✅ 4.52:1 | ✅ 4.21:1 (large text/icons only) | Use ONLY when Cedar Blue must appear as text on light backgrounds (links in body text, active nav states). Not the default — prefer primary as background. |
+| **Primary Foreground** | `#FFFFFF` | — | — | White text ON primary (#0d8ecf) backgrounds. ~4.7:1. ✅ |
+| **Secondary (Semantic Green)** | `#059669` | ✅ 4.58:1 | ✅ 4.26:1 (large text/icons only) | Success badges, credential icons, feature checkmarks, growth indicators. Body text: white bg only. Icons/large text: white or muted. **Semantic use only — not decorative.** |
+| **Brand Red (Cedar Red)** | `#d92027` | ✅ ~4.5:1 (borderline) | ✅ (large text/icons only) | "Most Popular" badges, program card accent stripes, emphasis brand elements. Prefer as background (white text on top). **NOT for form errors — use `--destructive` for that.** |
+| **Accent (Cedar Orange)** | `#ffa725` | ❌ ~2.3:1 (NOT text-safe) | ❌ | **Background/decoration only:** Proof Bar background, star fill, highlight badges (with dark `--accent-foreground` text), borders. Never for text on light backgrounds. |
+| **Accent Foreground** | `#1A1A1A` | — | — | Dark text rendered ON cedar orange backgrounds. |
+| **Foreground** | `#1E293B` | ✅ 12.6:1 | ✅ 11.7:1 | Primary body text, headings. Safe everywhere on light backgrounds. |
+| **Muted Foreground** | `#4B5563` | ✅ 7.45:1 | ✅ 5.91:1 | Secondary text, captions, metadata. |
+| **Destructive** | `#DC2626` | ✅ 4.63:1 | ✅ 4.31:1 (large text only) | Form error text/icons on white. Error states only. |
+| **Success** | `#16A34A` | ✅ 4.52:1 | — (white only) | Success text/icons on white. |
+| **Warning** | `#F59E0B` | ❌ | ❌ | Background-only. Pair with dark foreground text. |
 
 **Rules:**
-1. Never use accent (`#F59E0B`) or warning as text color on any light background.
-2. Muted foreground was darkened to `#4B5563` to clear AA on muted backgrounds (was `#6B7280`, only 4.39:1 on muted).
-3. Secondary was darkened to `#059669` to clear 4.5:1 on white (was `#33997A`, only 3.51:1).
-4. Success was darkened to `#16A34A` to clear 4.5:1 on white (was `#22C55E`, only 2.28:1).
-5. All icon-only or large-text usage still requires 3:1 minimum.
+1. **Never** use `--primary` (#0d8ecf) as text on white or muted backgrounds — contrast fails AA (3.48:1). Use the text-safe variant `#0a7ab8` for Cedar Blue text.
+2. **Never** use `--accent` (#ffa725) or `--warning` as text on any light background.
+3. `--brand-red` (#d92027) is borderline AA on white. Prefer as background (with white text). If used as text, white background only.
+4. `--brand-red` is a **brand emphasis token**, not a semantic error token. Never use it for form validation errors — that is `--destructive`.
+5. `--secondary` (#059669) is **semantic only** (success, checkmarks, credentials). Do not use it for decorative elements or brand accents.
+6. Muted foreground was darkened to `#4B5563` to clear AA on muted backgrounds (was `#6B7280`, only 4.39:1 on muted).
+7. All icon-only or large-text usage still requires 3:1 minimum.
 
 ### Typography
 
@@ -181,11 +199,13 @@ Every color must have documented safe usage. **Do not use a pairing not listed h
 - **Primary pattern (default):** Split-layout — content left (60%), subtle gradient/pattern right (40%). Use this for homepage and main hubs.
 - **Secondary pattern (service pages):** Shorter hero (350px), solid muted background or subtle geometric pattern, no image. Use for interior pages.
 - **Background:** Gradient overlay on image (dark-to-transparent from left) ensuring text readability. Minimum overlay opacity: 60% over any image.
-- **Headline:** `heading-1` (display font), white or `foreground` (depending on background), max 2 lines
-- **Subtitle:** `body-lg`, slightly muted, max 3 lines
+- **Approved hero gradient:** `from-[#0a5a8a] via-[#0d8ecf] to-[#2ea8dc]` — Cedar Blue family, warm sky tone. Replaces previous dark fintech gradient (#062a40 → #0a4a6e). Interior pages may use a more muted version: `from-[#0a5a8a] to-[#0d8ecf]`.
+- **Headline:** `heading-1` (display font), white text (✅ on Cedar Blue gradient, high contrast), max 2 lines
+- **Subtitle:** `body-lg`, `white/80`, max 3 lines
 - **CTAs:** Primary + Outlined buttons, side-by-side at desktop, stacked at mobile
-- **Feel:** Confident, spacious, immediate clarity
-- **Do not:** Mix split-layout and full-overlay patterns on the same site. Pick one per hero type and stay consistent.
+- **Decorative orbs:** Blurred gradient orbs (`pointer-events-none absolute`, `blur-3xl opacity-20`) add visual depth. Homepage: 2-3 orbs at `sm:block` (hidden on mobile for performance). Interior pages: 1-2 smaller orbs. Color: use Cedar Blue and Cedar Orange for orb gradients.
+- **Feel:** Warm, inviting, academically confident — not dark/corporate. Cedar is a caring local tutoring center.
+- **Do not:** Use the old dark fintech gradient (#062a40). Mix split-layout and full-overlay patterns. Show decorative orbs on mobile (performance + clutter).
 
 ### Program Cards
 - **Layout:** Vertical card with icon top, title, 2-line description, arrow/link indicator
@@ -248,10 +268,11 @@ Every color must have documented safe usage. **Do not use a pairing not listed h
 
 ### Process Steps
 - **Layout:** Horizontal at desktop with connecting line, vertical timeline at mobile
-- **Step circle:** 48×48, `primary` background, white number
-- **Connecting line:** 2px, `border` color, dashed or solid
+- **Step circle:** 48×48, `primary` background (filled, Cedar Blue), white number — **always filled, never bordered variant**
+- **Connecting line:** 2px, `primary/40` color (increased from /20 for visibility)
 - **Title:** `heading-4` below circle
 - **Description:** `body-sm`, `muted-foreground`
+- **Mobile spacing:** `space-y-6` between stacked steps (minimum)
 
 ### Card Variants (Shared Spec)
 
@@ -290,6 +311,8 @@ All cards share a base pattern. Variants differ in content and emphasis.
 - **Title:** `text-4xl md:text-5xl lg:text-6xl font-bold text-white` (display font)
 - **Subtitle:** `text-lg md:text-xl text-white/80 mt-4 max-w-2xl`
 - **Breadcrumbs:** `text-sm text-white/70 mb-4` with `>` separators
+- **Decorative orbs (required, hidden on mobile):** 1-2 blurred gradient circles (`absolute pointer-events-none hidden sm:block rounded-full blur-3xl opacity-15`). Interior pages use smaller orbs (300px diameter) vs. homepage (400px). Use Cedar Blue and Cedar Orange as orb gradient colors. This is not optional — a flat hero without orbs is below quality bar.
+- **Background gradient:** Use Cedar Blue family — `from-[#0a5a8a] via-[#0d8ecf] to-[#2ea8dc]` for full-color heroes. Muted variant: `from-[#0a5a8a] to-[#0d8ecf]` for interior pages.
 
 ### BreadcrumbNav Spec
 - **Container:** `flex items-center gap-2 text-sm text-muted-foreground`
@@ -300,7 +323,7 @@ All cards share a base pattern. Variants differ in content and emphasis.
 ### ProofBar Spec
 - **Container:** `bg-muted py-4 border-y border-border`
 - **Inner:** `max-w-7xl mx-auto px-4 flex items-center justify-between gap-6 overflow-x-auto`
-- **Item:** `flex items-center gap-2 whitespace-nowrap text-sm font-medium text-foreground`
+- **Item:** `flex items-center gap-2 whitespace-nowrap text-sm font-medium text-foreground min-h-[44px]` ← minimum 44px touch target required on mobile
 - **Divider:** `w-px h-6 bg-border hidden md:block`
 
 ### Footer Spec
@@ -315,6 +338,21 @@ All cards share a base pattern. Variants differ in content and emphasis.
 - **Trigger:** `flex items-center justify-between w-full py-4 text-left font-medium text-foreground hover:text-primary`
 - **Content:** `pb-4 text-muted-foreground leading-relaxed`
 - **Icon:** ChevronDown, `transition-transform duration-200 data-[state=open]:rotate-180`
+
+### CTASection Spec (Required on All Final CTAs)
+
+Every page must end with a `CTASection`. This is the conversion moment — it must be visually compelling on every page, not just the homepage.
+
+- **Purpose:** Final conversion call-to-action at the bottom of every page
+- **Container:** `relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0a5a8a] via-[#0d8ecf] to-[#2ea8dc] py-16 px-8 md:px-12 text-white` — always use the gradient container
+- **Decorative circles:** 2 `absolute pointer-events-none rounded-full opacity-10` circles for depth (one large behind, one medium offset)
+- **Heading:** `text-3xl md:text-4xl font-bold text-white` (display font), max 2 lines
+- **Subtext:** `text-lg text-white/80 mt-4 max-w-xl`
+- **Primary CTA button:** Filled white button with Cedar Blue text (`bg-white text-primary hover:bg-white/90`)
+- **Secondary CTA:** Phone number link in ghost style (`text-white/80 hover:text-white`)
+- **Trust bullets (optional):** 2-4 brief reassurance items with checkmark icons (`✓ text-white/70 text-sm`)
+- **Layout:** `flex flex-col md:flex-row items-center justify-between gap-8`
+- **This pattern is mandatory.** A plain white background with a single button does not meet the quality bar for this site.
 
 ### Tutor/Staff Credibility Card (New)
 - **Purpose:** Show tutor qualifications to build trust on About page and optionally Homepage
@@ -572,3 +610,4 @@ All cards share a base pattern. Variants differ in content and emphasis.
 |------|---------|---------|
 | 2026-05-02 | 1.0 | Initial design system spec |
 | 2026-05-02 | 1.1 | **Post-review updates:** Added AA-safe color-usage matrix with corrected contrast ratios (darkened secondary to `#059669`, muted-foreground to `#4B5563`, success to `#16A34A`; documented accent as background-only). Added Newsreader display font recommendation. Clarified hero as two distinct patterns (split-layout for hubs, short/muted for interior). Changed testimonial quote text to regular weight (not italic). Added testimonial grid vs carousel usage rules. Added button state tokens with full Tailwind classes (hover, focus, active, disabled, loading). Added card variant table. Added form field state tokens. Added component specs for SectionHeading, PageHero, BreadcrumbNav, ProofBar, Footer, FAQAccordion. Added Tutor/Staff Credibility Card module. Added Form Reassurance Panel module. Added Center/Facility Photo Band module. Added page layout flows for About, Reviews, FAQ, Pricing, Locations, Transportation, Book Assessment. Added transition/animation tokens, z-index scale, overlay/scrim tokens, content-width constraints. Aligned button variants with Trinity spec (renamed secondary → outlined). |
+| 2026-05-03 | 1.2 | **Brand color alignment + UX review updates (Morpheus Architecture Review):** Updated `--primary` from #2563eb to Cedar Blue (#0d8ecf, `hsl(199 87% 43%)`). Updated `--accent` from #f59e0b to Cedar Orange (#ffa725, `hsl(38 97% 57%)`). Added `--brand-red` token for Cedar Red (#d92027, `hsl(358 74% 49%)`). Retained `--secondary` green (#059669) for semantic success/outcome states. Rewrote color-usage matrix to reflect Cedar palette; documented Cedar Blue as NOT text-safe on white (3.48:1); added text-safe variant #0a7ab8 (4.52:1); added Brand Red row. Updated hero section guidance: replaced dark fintech gradient with Cedar Blue family gradient; made decorative orbs required on all heroes (scaled by context); added interior-page orb spec. Updated PageHero spec with decorative orb requirements and Cedar Blue gradient values. Added CTASection module spec (mandatory gradient-container pattern for all final CTAs). Updated ProofBar spec: added `min-h-[44px]` touch target requirement. Updated ProcessSteps spec: filled circles canonical (never bordered); connecting line opacity `primary/40`; mobile spacing `space-y-6`. |

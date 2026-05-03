@@ -6,12 +6,31 @@ interface BreadcrumbItem {
   href?: string;
 }
 
-export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
+export function Breadcrumbs({
+  items,
+  variant = "default",
+}: {
+  items: BreadcrumbItem[];
+  variant?: "default" | "inverse";
+}) {
+  const isInverse = variant === "inverse";
+
   return (
     <nav aria-label="Breadcrumb" className="mb-4">
-      <ol className="flex flex-wrap items-center gap-1.5 text-sm text-muted-foreground">
+      <ol
+        className={[
+          "flex flex-wrap items-center gap-1.5 text-sm",
+          isInverse ? "text-white/75" : "text-muted-foreground",
+        ].join(" ")}
+      >
         <li>
-          <Link href="/" className="hover:text-foreground transition-colors">
+          <Link
+            href="/"
+            className={[
+              "transition-colors",
+              isInverse ? "hover:text-white" : "hover:text-foreground",
+            ].join(" ")}
+          >
             Home
           </Link>
         </li>
@@ -21,12 +40,23 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
             {item.href ? (
               <Link
                 href={item.href}
-                className="hover:text-foreground transition-colors"
+                className={[
+                  "transition-colors",
+                  isInverse ? "hover:text-white" : "hover:text-foreground",
+                ].join(" ")}
               >
                 {item.label}
               </Link>
             ) : (
-              <span className="text-foreground font-medium">{item.label}</span>
+              <span
+                className={
+                  isInverse
+                    ? "font-medium text-white"
+                    : "text-foreground font-medium"
+                }
+              >
+                {item.label}
+              </span>
             )}
           </li>
         ))}

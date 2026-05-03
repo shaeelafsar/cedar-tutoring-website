@@ -7,10 +7,10 @@ export function Footer() {
 
   return (
     <footer className="border-t border-border bg-foreground text-white">
-      <div className="mx-auto max-w-7xl px-4 py-16 md:px-6 lg:px-8">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto max-w-7xl px-4 py-14 md:px-6 lg:px-8">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand Column */}
-          <div className="sm:col-span-2 lg:col-span-1">
+          <div className="md:col-span-2 lg:col-span-1">
             <Link
               href="/"
               className="inline-flex items-center gap-3 no-underline"
@@ -28,22 +28,22 @@ export function Footer() {
               </span>
             </Link>
 
-            <div className="mt-6 space-y-3 text-sm text-white/70">
+            <div className="mt-6 space-y-1 text-sm text-white/70">
               <a
                 href={`tel:${SITE_CONFIG.phone.replace(/\D/g, "")}`}
-                className="flex items-center gap-2 transition-colors hover:text-white"
+                className="inline-flex min-h-11 items-center gap-2 rounded-md py-2 transition-colors hover:text-white"
               >
                 <Phone className="h-4 w-4" />
                 {SITE_CONFIG.phone}
               </a>
               <a
                 href={`mailto:${SITE_CONFIG.email}`}
-                className="flex items-center gap-2 transition-colors hover:text-white"
+                className="inline-flex min-h-11 items-center gap-2 rounded-md py-2 transition-colors hover:text-white"
               >
                 <Mail className="h-4 w-4" />
                 {SITE_CONFIG.email}
               </a>
-              <span className="flex items-center gap-2">
+              <span className="flex min-h-11 items-center gap-2 py-2">
                 <MapPin className="h-4 w-4 shrink-0" />
                 {SITE_CONFIG.address.full}
               </span>
@@ -55,12 +55,12 @@ export function Footer() {
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/90">
               Programs
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-0.5">
               {FOOTER_NAV.programs.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/60 transition-colors hover:text-white"
+                    className="inline-flex min-h-11 items-center rounded-md py-2 text-sm text-white/60 transition-colors hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -74,12 +74,12 @@ export function Footer() {
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/90">
               Test Prep
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-0.5">
               {FOOTER_NAV.testPrep.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/60 transition-colors hover:text-white"
+                    className="inline-flex min-h-11 items-center rounded-md py-2 text-sm text-white/60 transition-colors hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -90,12 +90,12 @@ export function Footer() {
             <h3 className="mb-4 mt-8 text-sm font-semibold uppercase tracking-wider text-white/90">
               Company
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-0.5">
               {FOOTER_NAV.company.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/60 transition-colors hover:text-white"
+                    className="inline-flex min-h-11 items-center rounded-md py-2 text-sm text-white/60 transition-colors hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -115,7 +115,7 @@ export function Footer() {
             </p>
             <Link
               href="/book-assessment"
-              className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-primary/90 hover:-translate-y-px"
+              className="inline-flex w-full min-h-11 items-center justify-center rounded-md bg-primary px-6 text-sm font-semibold text-white transition-all hover:bg-primary/90 hover:-translate-y-px md:w-auto"
             >
               Book a Free Assessment
             </Link>
@@ -123,15 +123,15 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/50 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/50 md:flex-row">
           <span>
             © {currentYear} {SITE_CONFIG.name}. All rights reserved.
           </span>
           <div className="flex gap-6">
-            <Link href="/privacy" className="transition-colors hover:text-white">
+            <Link href="/privacy" className="inline-flex min-h-11 items-center transition-colors hover:text-white md:min-h-0">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="transition-colors hover:text-white">
+            <Link href="/terms" className="inline-flex min-h-11 items-center transition-colors hover:text-white md:min-h-0">
               Terms of Service
             </Link>
           </div>

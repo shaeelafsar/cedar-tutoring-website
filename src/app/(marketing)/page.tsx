@@ -1,24 +1,22 @@
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
 import {
   ArrowRight,
-  Star,
-  Clock,
-  Bus,
-  MapPin,
-  GraduationCap,
   BarChart3,
-  Shield,
-  Users,
+  Bus,
   Calendar,
   Check,
+  GraduationCap,
+  MapPin,
+  Shield,
+  Star,
+  Users,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { SITE_CONFIG } from "@/lib/constants";
+
+import { CTASection } from "@/components/shared/CTASection";
+import { buttonVariants } from "@/components/ui/button";
 import { PROGRAMS } from "@/content/programs/data";
 import { getIcon } from "@/lib/icons";
-
-/* ─── Homepage program card outcomes (supplements canonical data) ─── */
+import { cn } from "@/lib/utils";
 
 const PROGRAM_OUTCOMES: Record<string, string> = {
   reading: "Build confidence and stronger school performance.",
@@ -50,7 +48,7 @@ const STEPS = [
     title: "Progress reviews",
     desc: "Parents stay informed through thoughtful updates, visible wins, and clear next-step recommendations.",
   },
-];
+] as const;
 
 const FEATURES = [
   {
@@ -89,7 +87,7 @@ const FEATURES = [
       "Transportation support within the service radius",
     ],
   },
-];
+] as const;
 
 const TESTIMONIALS = [
   {
@@ -119,485 +117,167 @@ const TESTIMONIALS = [
     badge: "Visible results",
     rating: 5,
   },
-];
+] as const;
 
-/* ─── Page ──────────────────────────────────────────────── */
+const PROOF_ITEMS = [
+  { icon: Star, label: "5.0 Google Rating" },
+  { icon: GraduationCap, label: "K–12 Programs" },
+  { icon: BarChart3, label: "1:3 Ratio" },
+  { icon: Bus, label: "Transportation Available" },
+  { icon: MapPin, label: "Plano, TX" },
+] as const;
 
 export default function HomePage() {
   return (
     <>
-      {/* ══════ HERO ══════ */}
-      <section className="px-4 pt-10 pb-7 md:px-6 lg:px-8">
-        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[28px] border border-border/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(248,250,252,0.98))] shadow-[0_24px_80px_rgba(15,23,42,0.08)]">
-          {/* Subtle gradient overlay */}
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.14),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(5,150,105,0.12),transparent_26%)]" />
+      <section className="via-primary relative overflow-hidden bg-gradient-to-br from-[#0a5a8a] to-[#2ea8dc] px-4 pt-14 pb-12 text-white sm:py-24 md:px-6 md:py-28 lg:px-8 lg:py-36">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="bg-accent/10 absolute -top-24 -right-24 h-[420px] w-[420px] rounded-full blur-3xl" />
+          <div className="absolute -bottom-32 -left-20 h-[360px] w-[360px] rounded-full bg-white/8 blur-3xl" />
+          <div className="absolute top-[20%] right-[10%] hidden h-48 w-48 rounded-full border border-white/10 sm:block" />
+          <div className="absolute bottom-[15%] left-[5%] hidden h-32 w-32 rounded-full border border-white/8 sm:block" />
+        </div>
 
-          <div className="relative z-[1] grid items-center gap-10 p-8 md:p-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:p-20">
-            {/* Copy */}
-            <div className="max-w-[640px]">
-              <span className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary/8 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
-                Plano, TX • K–12 tutoring &amp; test prep
-              </span>
+        <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-[0.14em] text-white/90 uppercase backdrop-blur-sm">
+            <span className="bg-accent h-1.5 w-1.5 rounded-full" />
+            Plano, TX • K–12 tutoring &amp; test prep
+          </span>
 
-              <h1 className="font-heading text-[clamp(2.5rem,5vw,4.75rem)] leading-[1.08] font-extrabold tracking-[-0.03em] text-[#0f172a]">
-                Build skills, confidence, and results with tutoring that feels{" "}
-                <span className="text-primary">personal.</span>
-              </h1>
+          <h1 className="font-heading mt-6 max-w-3xl text-[2.125rem] leading-[1.08] font-bold tracking-[-0.03em] sm:text-5xl lg:text-6xl">
+            Build skills, confidence, and results with tutoring that feels{" "}
+            <span className="relative inline-block">
+              personal
+              <span className="bg-accent absolute -bottom-1 left-0 h-1 w-full rounded-full" />
+            </span>
+            .
+          </h1>
 
-              <p className="mt-5 text-lg leading-relaxed text-muted-foreground md:text-[1.125rem]">
-                Personalized support in reading, math, writing, science, Arabic,
-                homework help, and SAT/ACT prep — with caring teachers, flexible
-                scheduling, and measurable progress parents can actually see.
-              </p>
+          <p className="mt-5 max-w-2xl text-base leading-7 text-white/75 sm:mt-7 md:text-lg md:leading-8">
+            Personalized support in reading, math, writing, science, Arabic,
+            homework help, and test prep — with caring teachers, flexible
+            scheduling, and progress parents can actually see.
+          </p>
 
-              {/* CTAs */}
-              <div className="mt-7 flex flex-wrap gap-3.5">
-                <Link
-                  href="/book-assessment"
-                  className={cn(
-                    buttonVariants({ size: "lg" }),
-                    "bg-gradient-to-b from-primary to-[#1d4ed8] px-6 py-3 text-base font-semibold shadow-[0_10px_25px_rgba(37,99,235,0.18)] transition-all hover:-translate-y-px hover:shadow-[0_14px_30px_rgba(37,99,235,0.24)]"
-                  )}
-                >
-                  Book a Free Assessment
-                </Link>
-                <Link
-                  href="/programs"
-                  className={cn(
-                    buttonVariants({ variant: "outline", size: "lg" }),
-                    "border-primary/22 bg-white/80 px-6 py-3 text-base font-semibold text-primary shadow-sm transition-all hover:-translate-y-px hover:border-primary hover:bg-primary hover:text-white"
-                  )}
-                >
-                  Explore Programs
-                </Link>
-              </div>
+          <div className="mt-7 flex w-full flex-col items-stretch gap-3 sm:mt-9 sm:w-auto sm:flex-row sm:items-center">
+            <Link
+              href="/book-assessment"
+              className={cn(
+                buttonVariants({ size: "lg" }),
+                "bg-accent text-accent-foreground shadow-accent/25 hover:bg-accent/90 hover:shadow-accent/30 w-full justify-center px-6 font-bold shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-xl sm:w-auto sm:px-7"
+              )}
+            >
+              Book a Free Assessment
+              <ArrowRight className="size-4" />
+            </Link>
+            <Link
+              href="/programs"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "w-full justify-center border-white/25 bg-white/5 px-6 font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/15 hover:text-white sm:w-auto sm:px-7"
+              )}
+            >
+              Explore Programs
+            </Link>
+          </div>
 
-              {/* Trust pills */}
-              <div className="mt-7 flex flex-wrap gap-3">
-                {[
-                  { icon: Star, label: "122 Five-Star Reviews" },
-                  { icon: Clock, label: "Flexible after-school scheduling" },
-                  { icon: Bus, label: "Transportation available" },
-                ].map(({ icon: Icon, label }) => (
-                  <span
-                    key={label}
-                    className="inline-flex items-center gap-2 rounded-full border border-border/95 bg-white/84 px-3.5 py-2 text-sm font-semibold shadow-sm"
-                  >
-                    <Icon className="h-4 w-4 text-primary" />
-                    {label}
-                  </span>
-                ))}
-              </div>
-
-              {/* Stat row */}
-              <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3">
-                {[
-                  {
-                    stat: "5.0 Google Rating",
-                    detail:
-                      "Trusted by local parents who want both warmth and results.",
-                  },
-                  {
-                    stat: "1:3 Student-Tutor Ratio",
-                    detail:
-                      "Small-group support that stays personal and attentive.",
-                  },
-                  {
-                    stat: "K–12 Programs",
-                    detail:
-                      "From elementary reading support to high school test prep.",
-                  },
-                ].map(({ stat, detail }) => (
-                  <div
-                    key={stat}
-                    className="rounded-xl border border-border/95 bg-white/74 p-4 shadow-sm"
-                  >
-                    <strong className="block text-lg text-foreground">
-                      {stat}
-                    </strong>
-                    <span className="text-[0.92rem] text-muted-foreground">
-                      {detail}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Visual — decorative proof panel */}
-            <div className="relative hidden min-h-[520px] lg:block" aria-hidden="true">
-              {/* Dark gradient stage */}
-              <div className="absolute inset-0 overflow-hidden rounded-[32px] bg-[linear-gradient(160deg,#0f172a_0%,#1d4ed8_45%,#059669_110%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_24px_80px_rgba(15,23,42,0.28)]">
-                <div className="absolute -right-20 -top-[70px] h-[280px] w-[280px] rounded-full bg-white/8" />
-                <div className="absolute -bottom-[90px] -left-20 h-[240px] w-[240px] rounded-full bg-white/8" />
-              </div>
-
-              {/* Rating card */}
-              <div className="absolute left-20 top-8 z-10 flex items-center gap-3 rounded-3xl border border-white/60 bg-white/95 px-4 py-3.5 shadow-[0_24px_50px_rgba(15,23,42,0.18)] backdrop-blur-sm">
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-primary/12 to-secondary/14 text-primary">
-                  <Star className="h-5 w-5 fill-current" />
-                </span>
-                <div>
-                  <strong className="block text-base">5.0 rating</strong>
-                  <span className="text-sm text-muted-foreground">
-                    Google Reviews
-                  </span>
+          <div className="mt-10 grid w-full max-w-lg grid-cols-3 gap-2 sm:gap-4">
+            {[
+              { value: "5.0", label: "Google rating", color: "bg-accent" },
+              { value: "1:3", label: "Tutor ratio", color: "bg-secondary" },
+              { value: "K–12", label: "All grades", color: "bg-white" },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="rounded-xl border border-white/15 bg-white/8 px-3 py-3 backdrop-blur-sm sm:rounded-2xl sm:px-5 sm:py-5"
+              >
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <span className={cn("h-2 w-2 rounded-full", item.color)} />
+                  <p className="text-lg font-bold text-white sm:text-2xl">
+                    {item.value}
+                  </p>
                 </div>
-              </div>
-
-              {/* Lesson card */}
-              <div className="absolute right-9 top-[52px] z-10 w-[min(100%,380px)] rounded-3xl border border-white/60 bg-white/93 p-6 shadow-[0_24px_50px_rgba(15,23,42,0.18)] backdrop-blur-sm">
-                <div className="mb-5 flex items-center justify-between gap-3.5">
-                  <div>
-                    <div className="mb-2 text-[0.8rem] font-bold uppercase tracking-[0.12em] text-secondary">
-                      Today at Cedar
-                    </div>
-                    <h3 className="text-xl font-semibold text-foreground">
-                      Free assessment → custom learning plan
-                    </h3>
-                    <p className="mt-1 text-sm text-muted-foreground">
-                      Parents get a calm, clear next step — not a confusing
-                      sales pitch.
-                    </p>
-                  </div>
-                  <div className="flex -space-x-2.5">
-                    <span className="grid h-[42px] w-[42px] place-items-center rounded-full border-2 border-white bg-gradient-to-br from-primary to-blue-400 text-[0.82rem] font-bold text-white">
-                      MA
-                    </span>
-                    <span className="grid h-[42px] w-[42px] place-items-center rounded-full border-2 border-white bg-gradient-to-br from-secondary to-emerald-400 text-[0.82rem] font-bold text-white">
-                      RD
-                    </span>
-                    <span className="grid h-[42px] w-[42px] place-items-center rounded-full border-2 border-white bg-gradient-to-br from-accent to-amber-300 text-[0.82rem] font-bold text-accent-foreground">
-                      WR
-                    </span>
-                  </div>
-                </div>
-                {/* Progress snapshot */}
-                <div className="rounded-[20px] border border-primary/14 bg-gradient-to-b from-[#eef4ff] to-[#f8fbff] p-4">
-                  <div className="mb-4 flex items-center justify-between">
-                    <strong className="text-sm">Progress snapshot</strong>
-                    <span className="text-sm font-bold text-secondary">
-                      On track
-                    </span>
-                  </div>
-                  <div className="space-y-3">
-                    {[82, 68, 91].map((pct) => (
-                      <div
-                        key={pct}
-                        className="relative h-3 overflow-hidden rounded-full bg-primary/10"
-                      >
-                        <div
-                          className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-primary to-secondary"
-                          style={{ width: `${pct}%` }}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Result card */}
-              <div className="absolute bottom-[70px] left-6 z-10 w-[240px] rounded-3xl border border-white/60 bg-white/93 p-4.5 shadow-[0_24px_50px_rgba(15,23,42,0.18)] backdrop-blur-sm">
-                <div className="mb-1 text-[0.8rem] font-bold uppercase tracking-[0.12em] text-secondary">
-                  Parent-friendly proof
-                </div>
-                <div className="mb-2.5 flex items-center justify-between">
-                  <strong className="text-3xl leading-none text-foreground">
-                    122+
-                  </strong>
-                  <div className="flex gap-1 text-accent">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="h-3.5 w-3.5 fill-current" />
-                    ))}
-                  </div>
-                </div>
-                <p className="text-[0.85rem] text-muted-foreground">
-                  Families consistently mention confidence growth, flexible
-                  scheduling, safety, and thoughtful communication.
+                <p className="mt-1 text-xs leading-4 text-white/60 sm:mt-2">
+                  {item.label}
                 </p>
               </div>
-
-              {/* Schedule card (dark) */}
-              <div className="absolute bottom-5 right-5 z-10 w-[190px] rounded-3xl border border-white/16 bg-[rgba(15,23,42,0.88)] p-4.5 shadow-[0_24px_50px_rgba(15,23,42,0.18)] backdrop-blur-sm">
-                <h4 className="mb-2.5 text-sm font-semibold text-white/92">
-                  Built for busy families
-                </h4>
-                <ul className="space-y-2 pl-4 text-[0.82rem] text-white/74">
-                  <li>After-school and weekend options</li>
-                  <li>Transportation within 5 miles</li>
-                  <li>Progress updates parents can understand</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════ PROOF BAR ══════ */}
-      <section className="px-4 pb-2 md:px-6 lg:px-8" aria-label="Proof bar">
-        <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {[
-            {
-              icon: Star,
-              title: "5.0 Google Rating",
-              desc: "Real parent reviews, not generic marketing copy.",
-            },
-            {
-              icon: GraduationCap,
-              title: "K–12 Programs",
-              desc: "Support for foundational gaps, confidence, and growth.",
-            },
-            {
-              icon: BarChart3,
-              title: "1:3 Ratio",
-              desc: "Small-group attention that still feels personal.",
-            },
-            {
-              icon: Bus,
-              title: "Transportation Available",
-              desc: "Practical support that reduces after-school stress.",
-            },
-            {
-              icon: MapPin,
-              title: "Plano, TX",
-              desc: "Local, community-rooted, and parent-trusted.",
-            },
-          ].map(({ icon: Icon, title, desc }) => (
-            <div
-              key={title}
-              className="flex items-start gap-3.5 rounded-xl border border-border/95 bg-white p-4 shadow-sm"
-            >
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-primary/12 to-secondary/14 text-primary">
-                <Icon className="h-5 w-5" />
-              </span>
-              <div>
-                <strong className="block text-sm text-foreground">
-                  {title}
-                </strong>
-                <span className="text-[0.85rem] text-muted-foreground">
-                  {desc}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ══════ PROGRAMS ══════ */}
-      <section
-        id="programs"
-        className="border-y border-border/70 bg-gradient-to-b from-[#f8fafc] to-[#f3f4f6] py-24"
-      >
-        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-          <div className="mx-auto mb-12 max-w-[720px] text-center">
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/8 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-primary">
-              Programs overview
-            </span>
-            <h2 className="font-heading text-[clamp(2.25rem,4vw,3.25rem)] font-bold tracking-[-0.03em] text-foreground">
-              Academic support designed for catch-up, confidence, and momentum.
-            </h2>
-            <p className="mt-4 text-muted-foreground">
-              Parents can self-identify quickly, compare options with ease, and
-              move toward the right next step without feeling buried in dense
-              copy.
-            </p>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {PROGRAMS.map((program) => {
-              const Icon = getIcon(program.icon);
-              const outcome = PROGRAM_OUTCOMES[program.slug] ?? "";
-              return (
-                <article
-                  key={program.slug}
-                  className="group relative overflow-hidden rounded-2xl border border-border/95 bg-white/96 p-7 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
-                >
-                  {/* Top gradient bar on hover */}
-                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent opacity-0 transition-opacity group-hover:opacity-100" />
-
-                  <div className="mb-4 flex items-start justify-between gap-4">
-                    <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-primary/12 to-secondary/14 text-primary shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
-                      <Icon className="h-5 w-5" />
-                    </span>
-                    <span className="inline-flex items-center rounded-full border border-secondary/16 bg-secondary/8 px-2.5 py-1 text-[0.76rem] font-bold text-secondary">
-                      {program.grades}
-                    </span>
-                  </div>
-
-                  <h3 className="mb-2.5 text-xl font-semibold text-foreground">
-                    {program.shortTitle}
-                  </h3>
-                  <p className="mb-4 text-[0.95rem] text-muted-foreground">
-                    {program.shortDescription}
-                  </p>
-
-                  <div className="flex items-center justify-between gap-3 border-t border-border/80 pt-4 text-[0.9rem] text-muted-foreground">
-                    <span>{outcome}</span>
-                    <Link
-                      href={`/programs/${program.slug}`}
-                      className="inline-flex shrink-0 items-center gap-2 font-semibold text-primary transition-all hover:gap-2.5"
-                    >
-                      Learn more
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </Link>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════ HOW IT WORKS ══════ */}
-      <section id="how-it-works" className="py-24">
-        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-          <div className="mx-auto mb-12 max-w-[720px] text-center">
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/8 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-primary">
-              How it works
-            </span>
-            <h2 className="font-heading text-[clamp(2.25rem,4vw,3.25rem)] font-bold tracking-[-0.03em] text-foreground">
-              A simple enrollment journey that feels organized, supportive, and
-              low-pressure.
-            </h2>
-            <p className="mt-4 text-muted-foreground">
-              Parents should know what happens next before they click. Clear
-              process builds confidence and reduces hesitation.
-            </p>
-          </div>
-
-          <div className="relative grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {/* Connecting line (desktop only) */}
-            <div className="pointer-events-none absolute left-[84px] right-[84px] top-[46px] hidden h-0.5 bg-gradient-to-r from-primary/20 to-secondary/22 lg:block" />
-
-            {STEPS.map(({ num, title, desc }) => (
-              <article
-                key={num}
-                className="relative z-[1] rounded-2xl border border-border/95 bg-gradient-to-b from-white to-[#f8fbff] p-7 shadow-sm"
-              >
-                <div className="mb-4 grid h-12 w-12 place-items-center rounded-full bg-gradient-to-b from-primary to-[#1d4ed8] text-base font-extrabold text-white shadow-[0_10px_18px_rgba(37,99,235,0.18)]">
-                  {num}
-                </div>
-                <h3 className="mb-2.5 text-xl font-semibold text-foreground">
-                  {title}
-                </h3>
-                <p className="text-[0.95rem] text-muted-foreground">{desc}</p>
-              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══════ WHY CEDAR ══════ */}
       <section
-        id="why-cedar"
-        className="border-y border-border/70 bg-gradient-to-b from-[#f8fafc] to-[#f3f4f6] py-24"
+        aria-label="Proof bar"
+        className="bg-accent px-0 py-3 sm:px-4 sm:py-4 md:px-6 lg:px-8"
       >
-        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-          <div className="mx-auto mb-12 max-w-[720px] text-center">
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/8 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-primary">
-              Why Cedar
-            </span>
-            <h2 className="font-heading text-[clamp(2.25rem,4vw,3.25rem)] font-bold tracking-[-0.03em] text-foreground">
-              The differentiators parents actually care about, surfaced clearly
-              and intentionally.
-            </h2>
-            <p className="mt-4 text-muted-foreground">
-              Cedar&apos;s strongest value is not just tutoring — it&apos;s the
-              combination of warmth, structure, trust, and practical support for
-              real family life.
-            </p>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {FEATURES.map(({ icon: Icon, title, desc, checks }) => (
-              <article
-                key={title}
-                className="rounded-2xl border border-border/95 bg-gradient-to-b from-white/98 to-[#f8fafc]/96 p-7 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
+        <div className="mx-auto max-w-7xl">
+          <div className="-mx-0 flex flex-nowrap gap-3 overflow-x-auto px-4 sm:mx-0 sm:flex-wrap sm:justify-between sm:gap-x-8 sm:gap-y-3 sm:overflow-visible sm:px-0">
+            {PROOF_ITEMS.map(({ icon: Icon, label }) => (
+              <div
+                key={label}
+                className="text-accent-foreground flex min-h-[44px] shrink-0 items-center gap-2 rounded-full bg-black/8 px-3 py-3 text-sm font-semibold whitespace-nowrap sm:rounded-none sm:bg-transparent sm:px-0 sm:py-0"
               >
-                <span className="mb-4 grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-primary/12 to-secondary/14 text-primary">
-                  <Icon className="h-5 w-5" />
-                </span>
-                <h3 className="mb-2.5 text-xl font-semibold text-foreground">
-                  {title}
-                </h3>
-                <p className="text-[0.95rem] text-muted-foreground">{desc}</p>
-                <ul className="mt-4 space-y-2.5">
-                  {checks.map((c) => (
-                    <li
-                      key={c}
-                      className="flex items-start gap-2.5 text-[0.95rem] text-muted-foreground"
-                    >
-                      <span className="mt-0.5 grid h-[22px] w-[22px] shrink-0 place-items-center rounded-full bg-secondary/12 text-secondary">
-                        <Check className="h-3.5 w-3.5" />
-                      </span>
-                      <span>{c}</span>
-                    </li>
-                  ))}
-                </ul>
-              </article>
+                <Icon className="size-4" />
+                <span>{label}</span>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══════ TESTIMONIALS ══════ */}
-      <section id="testimonials" className="py-24">
-        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-          <div className="mx-auto mb-12 max-w-[720px] text-center">
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/8 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+      <section
+        id="testimonials"
+        className="bg-foreground relative overflow-hidden px-4 py-14 text-white sm:py-20 md:px-6 md:py-24 lg:px-8"
+      >
+        <div className="pointer-events-none absolute inset-0">
+          <div className="bg-primary/15 absolute top-0 -right-20 h-64 w-64 rounded-full blur-3xl" />
+          <div className="bg-accent/10 absolute bottom-0 -left-20 h-48 w-48 rounded-full blur-3xl" />
+        </div>
+
+        <div className="relative mx-auto max-w-7xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-4 py-1.5 text-xs font-semibold tracking-[0.14em] text-white/80 uppercase">
               Parent proof
             </span>
-            <h2 className="font-heading text-[clamp(2.25rem,4vw,3.25rem)] font-bold tracking-[-0.03em] text-foreground">
-              What parents describe most often: confidence, communication, and
-              visible progress.
+            <h2 className="font-heading mt-4 text-[1.75rem] leading-8 font-bold tracking-[-0.03em] sm:text-4xl sm:leading-tight lg:text-5xl">
+              What families notice most: calmer routines, clearer progress, and
+              growing confidence.
             </h2>
-            <p className="mt-4 text-muted-foreground">
-              Cedar&apos;s testimonials are one of its strongest brand assets, so
-              this section feels warm, specific, and grounded in real parent
-              concerns.
-            </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="-mx-4 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 sm:mt-12 md:mx-0 md:grid md:snap-none md:grid-cols-2 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3">
             {TESTIMONIALS.map(
               ({ quote, author, relation, initials, badge, rating }) => (
                 <article
                   key={author}
-                  className="relative rounded-2xl border border-border/95 bg-gradient-to-b from-white/94 to-[#f8fafc]/94 p-7 shadow-sm"
+                  className="relative min-w-[85%] max-w-[85%] shrink-0 snap-start overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm sm:min-w-[340px] sm:max-w-[340px] md:min-w-0 md:max-w-none md:p-6"
                 >
-                  {/* Decorative quote mark */}
-                  <span className="pointer-events-none absolute right-5 top-4 font-heading text-[5rem] leading-none text-primary/12 select-none">
-                    &ldquo;
-                  </span>
+                  <div className="from-primary via-accent to-secondary absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r" />
 
-                  {/* Stars & badge */}
-                  <div className="mb-4 flex items-center justify-between gap-3">
-                    <div className="flex gap-1 text-accent">
-                      {Array.from({ length: rating }).map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-current" />
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div className="text-accent flex gap-1">
+                      {Array.from({ length: rating }).map((_, index) => (
+                        <Star key={index} className="size-4 fill-current" />
                       ))}
                     </div>
-                    {badge && (
-                      <span className="rounded-full border border-accent/28 bg-accent/16 px-2.5 py-1 text-[0.75rem] font-bold text-accent-foreground">
+                    {badge ? (
+                      <span className="bg-accent/20 text-accent rounded-full px-3 py-1 text-xs font-semibold">
                         {badge}
                       </span>
-                    )}
+                    ) : null}
                   </div>
 
-                  <p className="mb-5 text-[0.95rem] leading-relaxed text-muted-foreground">
-                    {quote}
+                  <p className="mt-4 break-words text-sm leading-7 text-white/80 sm:mt-5">
+                    &ldquo;{quote}&rdquo;
                   </p>
 
-                  <div className="flex items-center gap-3 border-t border-border/82 pt-4">
-                    <span className="grid h-11 w-11 place-items-center rounded-full bg-gradient-to-br from-primary to-secondary text-sm font-bold text-white">
+                  <div className="mt-5 flex items-center gap-3 border-t border-white/10 pt-4 sm:mt-6 sm:pt-5">
+                    <span className="from-primary to-secondary flex size-10 items-center justify-center rounded-full bg-gradient-to-br text-sm font-bold text-white sm:size-11">
                       {initials}
                     </span>
                     <div>
-                      <strong className="block text-sm text-foreground">
-                        {author}
-                      </strong>
-                      <span className="text-[0.82rem] text-muted-foreground">
-                        {relation}
-                      </span>
+                      <p className="font-semibold text-white">{author}</p>
+                      <p className="text-sm text-white/70">{relation}</p>
                     </div>
                   </div>
                 </article>
@@ -607,102 +287,186 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══════ FINAL CTA ══════ */}
       <section
-        id="contact"
-        className="border-y border-border/70 bg-gradient-to-b from-[#f8fafc] to-[#f3f4f6] py-24"
+        id="programs"
+        className="bg-background px-4 py-14 sm:py-20 md:px-6 md:py-24 lg:px-8"
       >
-        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-[28px] bg-[linear-gradient(135deg,#0f172a_0%,#1d4ed8_58%,#059669_140%)] p-10 shadow-[0_30px_80px_rgba(15,23,42,0.18)] md:p-12">
-            {/* Decorative circles */}
-            <div className="pointer-events-none absolute -right-20 -top-[120px] h-80 w-80 rounded-full bg-white/8" />
-            <div className="pointer-events-none absolute -bottom-[100px] -left-[60px] h-[220px] w-[220px] rounded-full bg-white/8" />
+        <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="bg-primary/10 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold tracking-[0.14em] text-[hsl(var(--primary-text))] uppercase">
+              Programs overview
+            </span>
+            <h2 className="font-heading text-foreground mt-4 text-[1.75rem] leading-8 font-bold tracking-[-0.03em] sm:text-4xl sm:leading-tight lg:text-5xl">
+              Academic support designed for clarity, confidence, and steady
+              progress.
+            </h2>
+            <p className="text-muted-foreground mt-4 text-base leading-7 md:text-lg">
+              Explore the programs families use most often to close gaps, reduce
+              stress, and build momentum.
+            </p>
+          </div>
 
-            <div className="relative z-[1] grid items-center gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-              {/* Copy */}
-              <div className="text-white">
-                <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-white/90">
-                  Final call to action
-                </span>
-                <h2 className="font-heading text-[clamp(2rem,4vw,3rem)] font-bold tracking-[-0.03em] leading-tight">
-                  Ready to find the right support for your child?
-                </h2>
-                <p className="mt-4 max-w-xl text-lg text-white/72">
-                  Book a free assessment to identify learning gaps, recommend the
-                  best-fit program, and map next steps with clarity.
-                </p>
-                <div className="mt-8 flex flex-wrap gap-3.5">
-                  <Link
-                    href="/book-assessment"
-                    className={cn(
-                      buttonVariants({ size: "lg" }),
-                      "bg-white px-6 py-3 text-base font-semibold text-primary shadow-[0_10px_25px_rgba(37,99,235,0.18)] transition-all hover:-translate-y-px hover:bg-white/90"
-                    )}
-                  >
-                    Book a Free Assessment
-                  </Link>
-                  <a
-                    href={`mailto:${SITE_CONFIG.email}`}
-                    className={cn(
-                      buttonVariants({ variant: "outline", size: "lg" }),
-                      "border-white/22 bg-transparent px-6 py-3 text-base font-semibold text-white transition-all hover:-translate-y-px hover:border-white/40 hover:bg-white/10"
-                    )}
-                  >
-                    Email Cedar
-                  </a>
-                </div>
-              </div>
+          <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+            {PROGRAMS.map((program) => {
+              const Icon = getIcon(program.icon);
+              const outcome = PROGRAM_OUTCOMES[program.slug] ?? "";
 
-              {/* Checklist card */}
-              <aside className="rounded-3xl border border-white/16 bg-white/10 p-8 backdrop-blur-sm">
-                <h3 className="mb-2 text-lg font-semibold text-white">
-                  What families can expect next
-                </h3>
-                <p className="mb-6 text-sm text-white/60">
-                  Designed to feel reassuring, practical, and easy to say yes
-                  to.
-                </p>
-                <ul className="space-y-3">
-                  {[
-                    "Response within 24 hours",
-                    "No obligation — just a free assessment",
-                    "Support for K–12 programs, test prep, and homework help",
-                    "Plano, TX center with transportation availability",
-                  ].map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-2.5 text-sm text-white/80"
-                    >
-                      <span className="mt-0.5 grid h-[22px] w-[22px] shrink-0 place-items-center rounded-full bg-white/12 text-white">
-                        <Check className="h-3.5 w-3.5" />
+              return (
+                <Link
+                  key={program.slug}
+                  href={`/programs/${program.slug}`}
+                  className="group border-border bg-card hover:shadow-primary/8 relative mx-auto flex h-full w-full max-w-md flex-col overflow-hidden rounded-2xl border transition-all hover:-translate-y-1 hover:shadow-lg sm:max-w-none"
+                >
+                  <div className="from-primary to-accent absolute inset-x-0 top-0 h-1 bg-gradient-to-r via-[hsl(var(--brand-red))]" />
+                  <div className="from-primary to-accent absolute inset-x-0 top-0 h-1 bg-gradient-to-r opacity-0 transition-opacity group-hover:opacity-100" />
+
+                  <div className="flex flex-1 flex-col p-4 sm:p-5 md:p-6">
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <span className="bg-primary/10 text-primary group-hover:bg-primary flex size-11 items-center justify-center rounded-xl transition-colors group-hover:text-white sm:size-12">
+                        <Icon className="size-5" />
                       </span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-6 grid grid-cols-2 gap-4 border-t border-white/12 pt-6">
-                  <div>
-                    <strong className="block text-sm text-white">
-                      {SITE_CONFIG.email}
-                    </strong>
-                    <span className="text-xs text-white/50">
-                      Email for availability and next steps
-                    </span>
+                      <span className="bg-accent/15 text-accent-foreground rounded-full px-3 py-1 text-xs font-bold">
+                        {program.grades}
+                      </span>
+                    </div>
+
+                    <h3 className="text-foreground mt-4 text-lg font-bold sm:mt-5 sm:text-xl">
+                      {program.shortTitle}
+                    </h3>
+                    <p className="text-muted-foreground mt-2 flex-1 text-sm leading-6">
+                      {program.shortDescription}
+                    </p>
+
+                    <div className="border-border mt-4 border-t pt-3 sm:mt-5 sm:pt-4">
+                      <p className="text-foreground/70 text-sm leading-6">
+                        {outcome}
+                      </p>
+                      <span className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-[hsl(var(--primary-text))]">
+                        Learn more
+                        <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                      </span>
+                    </div>
                   </div>
-                  <div>
-                    <strong className="block text-sm text-white">
-                      {SITE_CONFIG.phone}
-                    </strong>
-                    <span className="text-xs text-white/50">
-                      Call for immediate questions
-                    </span>
-                  </div>
-                </div>
-              </aside>
-            </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
+
+      <section
+        id="how-it-works"
+        className="bg-primary/5 relative overflow-hidden px-4 py-14 sm:py-20 md:px-6 md:py-24 lg:px-8"
+      >
+        <div className="bg-primary/8 pointer-events-none absolute top-0 -right-40 h-80 w-80 rounded-full blur-3xl" />
+
+        <div className="relative mx-auto max-w-7xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="bg-primary/10 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold tracking-[0.14em] text-[hsl(var(--primary-text))] uppercase">
+              How it works
+            </span>
+            <h2 className="font-heading text-foreground mt-4 text-[1.75rem] leading-8 font-bold tracking-[-0.03em] sm:text-4xl sm:leading-tight lg:text-5xl">
+              A straightforward process for getting the right support in place.
+            </h2>
+          </div>
+
+          <div className="relative mt-10 grid gap-6 sm:mt-14 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+            <div className="from-primary/40 via-primary/40 to-primary/40 absolute top-8 right-[12.5%] left-[12.5%] hidden h-0.5 bg-gradient-to-r lg:block" />
+
+            {STEPS.map(({ num, title, desc }) => (
+              <article
+                key={num}
+                className="group border-border relative rounded-2xl border bg-white p-4 transition-all hover:-translate-y-1 hover:shadow-md sm:p-5 md:p-6"
+              >
+                <div className="from-primary shadow-primary/20 relative z-10 flex size-12 items-center justify-center rounded-full bg-gradient-to-br to-[#0a6da8] text-lg font-bold text-white shadow-md sm:size-14">
+                  {num}
+                </div>
+                <h3 className="text-foreground mt-4 text-lg font-bold sm:mt-5 sm:text-xl">
+                  {title}
+                </h3>
+                <p className="text-muted-foreground mt-2 text-sm leading-6 sm:mt-3">
+                  {desc}
+                </p>
+                <div className="bg-accent mt-3 h-1 w-10 rounded-full sm:mt-4" />
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="why-cedar"
+        className="bg-background px-4 py-14 sm:py-20 md:px-6 md:py-24 lg:px-8"
+      >
+        <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="bg-primary/10 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold tracking-[0.14em] text-[hsl(var(--primary-text))] uppercase">
+              Why Cedar
+            </span>
+            <h2 className="font-heading text-foreground mt-4 text-[1.75rem] leading-8 font-bold tracking-[-0.03em] sm:text-4xl sm:leading-tight lg:text-5xl">
+              The value parents care about most, presented simply.
+            </h2>
+            <p className="text-muted-foreground mt-4 text-base leading-7 md:text-lg">
+              Cedar combines academic support, thoughtful communication, and
+              practical family logistics.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-4 sm:mt-12 sm:gap-6 lg:grid-cols-2">
+            {FEATURES.map(({ icon: Icon, title, desc, checks }) => (
+              <article
+                key={title}
+                className="group border-border bg-card relative overflow-hidden rounded-2xl border transition-all hover:shadow-md"
+              >
+                <div className="bg-primary absolute inset-y-0 left-0 w-1" />
+
+                <div className="p-4 pl-5 sm:p-6 sm:pl-7">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-4">
+                    <span className="bg-primary flex size-11 shrink-0 items-center justify-center rounded-xl text-white sm:size-12">
+                      <Icon className="size-5" />
+                    </span>
+                    <div className="flex-1">
+                      <h3 className="text-foreground text-lg font-bold sm:text-xl">
+                        {title}
+                      </h3>
+                      <p className="text-muted-foreground mt-2 text-sm leading-6">
+                        {desc}
+                      </p>
+                    </div>
+                  </div>
+
+                  <ul className="mt-4 space-y-2.5 pl-0 sm:mt-5 sm:pl-16">
+                    {checks.map((check) => (
+                      <li
+                        key={check}
+                        className="text-muted-foreground flex items-start gap-2.5 text-sm leading-6"
+                      >
+                        <Check className="text-accent mt-0.5 size-4 shrink-0" />
+                        <span>{check}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CTASection
+        heading="Ready to find the right support for your child?"
+        subtext="Book a free assessment to identify learning gaps, match the right program, and plan clear next steps with confidence."
+        primaryCta={{
+          label: "Book a Free Assessment",
+          href: "/book-assessment",
+        }}
+        trustBullets={[
+          "Response within 24 hours",
+          "No-pressure free assessment",
+          "K–12 & test prep support",
+          "Transportation available",
+        ]}
+      />
     </>
   );
 }

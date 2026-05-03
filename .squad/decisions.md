@@ -253,3 +253,54 @@
 - All meaningful changes require team consensus
 - Document architectural decisions here
 - Keep history focused on work, decisions focused on direction
+
+### 2026-05-03: Root-level /content/ file-based CMS pattern
+**By:** Morpheus (Lead/Architect)
+**Requested by:** Shaeel Afsar
+**Status:** APPROVED
+**What:** 
+1. Adopt **JSON** as default format for structured marketing content.
+2. **MDX** reserved for long-form narrative bodies (starting with About page).
+3. Pages consume content through **typed server-side loaders** in `src/lib/content/*`.
+4. Content contracts in `src/types/content.ts`, enforced with **Zod validation**.
+5. All content image paths root-relative, normalized through `imagePath()` before rendering.
+**Scope — Move into /content/:**
+- Homepage shell content
+- Programs hub shell content
+- Program detail content
+- Test prep detail content
+- FAQ page content
+- Pricing tiers
+- Testimonials/reviews
+- Locations
+- Team bios
+- Navigation/footer content
+**Keep in TypeScript:**
+- Rendering logic
+- Component composition
+- Icon resolution helpers
+- API/form validation enums
+- Technical constants
+**Why:** 
+- Removes hardcoded copy from TSX without CMS overhead
+- Works cleanly with `output: 'export'` and GitHub Pages
+- Editing approachable for small-business workflow
+- Centralizes validation, filtering, slug handling
+- Clean seam for future CMS if needs grow
+**Consequences:**
+- Cleaner TSX, better type safety, easier copy review, straightforward `generateStaticParams()`
+- Trade-off: Copy edits still require commit/deploy, MDX requires minimal setup, file count increases
+**Implementation:** Trinity (Frontend Dev) — content/site, content/collections, content/pages, content/programs, content/test-prep. Expand src/types/content.ts. Add src/lib/content/schemas.ts and typed loaders.
+
+### 2026-05-03: Homepage program cards — reuse outcomes.items[0] for marketing line
+**By:** Trinity (Frontend Engineer)
+**Status:** IMPLEMENTATION DECISION
+**What:** Homepage program cards reuse each program record's first `outcomes.items` entry for lower supporting line instead of adding separate home-only field.
+**Why:** 
+- Keeps homepage marketing copy fully content-driven with zero hardcoded TSX copy
+- Avoids duplicating near-identical outcome messaging across `home.json` and `programs/*.json`
+- Preserves Morpheus's shared `ProgramContent` contract without one-off extensions
+**Impact:**
+- Program detail pages and homepage cards share source-of-truth outcome language
+- If future design needs distinct homepage-only line, team revisits schema intentionally
+- No schema extension required for Phase 1

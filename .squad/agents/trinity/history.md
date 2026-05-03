@@ -140,3 +140,38 @@ Deployment ready; site will build to static HTML/CSS/JS on GitHub Pages. Commit:
 7. Full accessibility sweep: 44px touch targets, ARIA labels, keyboard navigation, focus restoration on close, screen reader testing
 
 **Related:** Orchestration logs + Scribe batch processing. All work merged into canonical ledger.
+
+### Content Layer Infrastructure + Homepage Migration (2026-05-03T15:49:48.557-05:00)
+**Status:** ✅ COMPLETED  
+Trinity implemented Morpheus's JSON-first content layer foundation and migrated the homepage to typed content loaders.
+
+**Learnings:**
+- Canonical content now lives under `content/` with page shell copy in `content/pages/home.json`, reusable testimonials in `content/collections/testimonials.json`, site chrome seed data in `content/site/navigation.json`, and route-backed program records in `content/programs/*.json`.
+- Runtime validation is centralized in `src/lib/content/schemas.ts`, with typed loaders in `src/lib/content/pages.ts`, `src/lib/content/collections.ts`, and `src/lib/content/programs.ts` for build-time-safe static imports.
+- `src/types/content.ts` now matches Morpheus's shared contracts (`SeoMeta`, `HeroContent`, `CtaBlock`, `ProgramContent`, `HomePageContent`, etc.), so JSON content and TSX consumers stay aligned under strict TypeScript.
+- Homepage marketing copy was removed from `src/app/(marketing)/page.tsx`; the page now resolves hero, proof bar, testimonials, sections, and CTA content from loaders while preserving the existing layout/styling patterns.
+- Legacy `src/content/programs/data.ts` is now a thin compatibility wrapper around the new program loader instead of the source of truth.
+- Decision taken during migration: homepage program cards now source their secondary outcome line from each program's first `outcomes.items` entry rather than introducing a home-only duplicate marketing field, keeping content normalized to the shared program contract.
+
+## 2026-05-03 Batch: Content Layer Infrastructure (Session Log)
+
+**Outcome:** SUCCESS — content layer fully built, homepage migrated.
+
+**Delivered:**
+- `/content/` directory: pages, programs, collections (JSON)
+- `src/types/content.ts` + `src/lib/content/schemas.ts` (Zod validation)
+- Typed loaders for pages, programs, collections
+- `tsconfig.json` with `@content/*` alias
+- 12 content files (pages, testimonials, 6 programs)
+- Homepage JSON migration complete
+- Build passing
+
+**Decisions Encoded:**
+- Morpheus: Root-level `/content/` CMS pattern (JSON primary)
+- Trinity: Homepage cards reuse `outcomes.items[0]` (no schema extension)
+
+**Type Safety:** All content validated at load time via Zod.
+
+**Next:** Await frontend requests. Consider Phase 1.5 CMS expansion if editing volume grows.
+
+---

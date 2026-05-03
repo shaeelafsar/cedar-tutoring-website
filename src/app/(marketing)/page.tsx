@@ -11,69 +11,23 @@ import {
   Shield,
   Users,
   Calendar,
-  BookOpen,
-  Calculator,
-  PenTool,
-  FlaskConical,
-  Languages,
-  BookMarked,
   Check,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SITE_CONFIG } from "@/lib/constants";
+import { PROGRAMS } from "@/content/programs/data";
+import { getIcon } from "@/lib/icons";
 
-/* ─── Data ─────────────────────────────────────────────── */
+/* ─── Homepage program card outcomes (supplements canonical data) ─── */
 
-const PROGRAMS = [
-  {
-    title: "Reading",
-    grades: "K–8",
-    desc: "Support for fluency, comprehension, vocabulary, and confidence when school reading starts to feel frustrating.",
-    outcome: "Build confidence and stronger school performance.",
-    icon: BookOpen,
-    href: "/programs/reading",
-  },
-  {
-    title: "Math",
-    grades: "K–12",
-    desc: "Step-by-step support from foundational arithmetic to algebra, geometry, and beyond — at the student's real level.",
-    outcome: "Fewer tears, stronger understanding, better grades.",
-    icon: Calculator,
-    href: "/programs/math",
-  },
-  {
-    title: "Writing",
-    grades: "2–12",
-    desc: "Coaching for sentence structure, grammar, organization, and clearer academic writing across grade levels.",
-    outcome: "Better structure, stronger clarity, less homework stress.",
-    icon: PenTool,
-    href: "/programs/writing",
-  },
-  {
-    title: "Science",
-    grades: "5–12",
-    desc: "Concept clarity, study strategies, and skill-building for students who need science to feel less overwhelming.",
-    outcome: "Ideal for middle and high school support.",
-    icon: FlaskConical,
-    href: "/programs/science",
-  },
-  {
-    title: "Arabic",
-    grades: "K–12",
-    desc: "Reading, writing, vocabulary, and comprehension support for children learning Arabic with structure and consistency.",
-    outcome: "Warm, guided language support for growing learners.",
-    icon: Languages,
-    href: "/programs/arabic",
-  },
-  {
-    title: "Homework Help",
-    grades: "K–12",
-    desc: "Guided accountability, calmer evenings, and structured support for students who need consistency after school.",
-    outcome: "Ideal for busy families who want better routines.",
-    icon: BookMarked,
-    href: "/programs/homework-help",
-  },
-];
+const PROGRAM_OUTCOMES: Record<string, string> = {
+  reading: "Build confidence and stronger school performance.",
+  math: "Fewer tears, stronger understanding, better grades.",
+  writing: "Better structure, stronger clarity, less homework stress.",
+  science: "Ideal for middle and high school support.",
+  arabic: "Warm, guided language support for growing learners.",
+  "homework-help": "Ideal for busy families who want better routines.",
+};
 
 const STEPS = [
   {
@@ -449,10 +403,12 @@ export default function HomePage() {
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {PROGRAMS.map(
-              ({ title, grades, desc, outcome, icon: Icon, href }) => (
+            {PROGRAMS.map((program) => {
+              const Icon = getIcon(program.icon);
+              const outcome = PROGRAM_OUTCOMES[program.slug] ?? "";
+              return (
                 <article
-                  key={title}
+                  key={program.slug}
                   className="group relative overflow-hidden rounded-2xl border border-border/95 bg-white/96 p-7 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
                 >
                   {/* Top gradient bar on hover */}
@@ -463,21 +419,21 @@ export default function HomePage() {
                       <Icon className="h-5 w-5" />
                     </span>
                     <span className="inline-flex items-center rounded-full border border-secondary/16 bg-secondary/8 px-2.5 py-1 text-[0.76rem] font-bold text-secondary">
-                      {grades}
+                      {program.grades}
                     </span>
                   </div>
 
                   <h3 className="mb-2.5 text-xl font-semibold text-foreground">
-                    {title}
+                    {program.shortTitle}
                   </h3>
                   <p className="mb-4 text-[0.95rem] text-muted-foreground">
-                    {desc}
+                    {program.shortDescription}
                   </p>
 
                   <div className="flex items-center justify-between gap-3 border-t border-border/80 pt-4 text-[0.9rem] text-muted-foreground">
                     <span>{outcome}</span>
                     <Link
-                      href={href}
+                      href={`/programs/${program.slug}`}
                       className="inline-flex shrink-0 items-center gap-2 font-semibold text-primary transition-all hover:gap-2.5"
                     >
                       Learn more
@@ -485,8 +441,8 @@ export default function HomePage() {
                     </Link>
                   </div>
                 </article>
-              )
-            )}
+              );
+            })}
           </div>
         </div>
       </section>

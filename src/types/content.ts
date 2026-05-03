@@ -15,6 +15,52 @@ export interface ProgramFrontmatter {
   faq: { question: string; answer: string }[];
 }
 
+/** Full program page data — canonical source for hub cards, individual pages, and homepage */
+export interface ProgramPageData {
+  slug: string;
+  title: string;
+  shortTitle: string;
+  shortDescription: string;
+  icon: string;
+  grades: string;
+  tags: string[];
+  relatedPrograms: string[];
+  seo: {
+    title: string;
+    description: string;
+  };
+  hero: {
+    heading: string;
+    subtitle: string;
+  };
+  problem: {
+    heading: string;
+    paragraphs: string[];
+  };
+  approach: {
+    heading: string;
+    paragraphs: string[];
+    bullets: string[];
+  };
+  outcomes: {
+    heading: string;
+    items: string[];
+  };
+  testimonials: {
+    quote: string;
+    author: string;
+    relation: string;
+    rating: number;
+    badge?: string;
+  }[];
+  faq: { question: string; answer: string }[];
+  cta: {
+    heading: string;
+    description: string;
+    buttonText: string;
+  };
+}
+
 /** MDX frontmatter for test prep pages */
 export interface TestPrepFrontmatter {
   slug: string;

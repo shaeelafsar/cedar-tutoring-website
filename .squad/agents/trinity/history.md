@@ -175,3 +175,26 @@ Trinity implemented Morpheus's JSON-first content layer foundation and migrated 
 **Next:** Await frontend requests. Consider Phase 1.5 CMS expansion if editing volume grows.
 
 ---
+### Programs + Test Prep Content Migration (2026-05-03T15:51:16.373-05:00)
+**Status:** ✅ COMPLETED  
+- Programs hub and program detail pages now pull all page-shell marketing copy from `content/pages/programs-hub.json`, keeping `generateStaticParams()` and interior CTA/process/testimonial copy fully content-driven.
+- Added `content/test-prep/*.json`, typed test prep loaders, and new `/test-prep` hub/detail routes for SAT, ACT, and PSAT using the same static-export-safe content layer pattern as programs.
+- Expanded reusable testimonials with test-prep records so both subject tutoring and exam-prep pages can stay copy-light in TSX while preserving existing Cedar styling patterns.
+
+
+### Trust & Conversion Pages — Slice 5 (2026-05-03T15:51:16.373-05:00)
+**Status:** ✅ COMPLETED  
+- Added JSON-first content and typed loaders for the new About, Reviews, and FAQ marketing pages, plus reusable `team.json` and `faq.json` collections validated through Zod.
+- Built `/about`, `/reviews`, and `/faq` as static-export-safe routes with `generateMetadata`, Cedar-branded section layouts, shared CTA usage, and subtle Framer Motion reveals.
+- Extended shared UI by upgrading `PageHero` to support eyebrows, enriching `FAQAccordion` with accessible disclosure wiring plus basic formatted-answer rendering, and adding reusable team illustration assets normalized through `imagePath()`.
+- Expanded testimonials so homepage-origin reviews can also power the all-reviews page with relevant program/test-prep tags, while reviews filtering now supports both program and grade-level browsing.
+
+### Slice 5 Completion: About, Reviews, FAQ Pages (2026-05-03T20:55:00Z)
+**Status:** ✅ COMPLETED  
+- Delivered 3 new content-driven marketing pages: About (with team bios), Reviews (with grade-level filtering), FAQ (with accessible keyboard-navigable accordion)
+- Created 5 new JSON/MDX content files: `content/pages/about.json`, `content/pages/reviews.json`, `content/pages/faq.json`, `content/collections/team.json`, `content/collections/faq.json`
+- All pages use shared PageHero, CTASection, and Framer Motion patterns; build passed; no TypeScript or ESLint errors
+- **Key decision:** Reviews filtering derives grade-level from testimonial `relation` field (no new schema field) to keep schema lean and avoid duplication
+- All pages are static-export compatible and ready for E2E test coverage
+
+**Build Status:** ✅ PASSED

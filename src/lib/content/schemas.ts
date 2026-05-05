@@ -78,6 +78,8 @@ export const testimonialSchema = z.object({
   programSlugs: z.array(nonEmptyString).optional(),
   testPrepSlugs: z.array(nonEmptyString).optional(),
   source: z.enum(["google", "direct"]).optional(),
+  time: z.number().int().nonnegative().optional(),
+  profilePhotoUrl: nonEmptyString.optional(),
 });
 
 export const testimonialsSchema = z.array(testimonialSchema);

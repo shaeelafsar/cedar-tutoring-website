@@ -224,3 +224,10 @@ Trinity implemented Morpheus's JSON-first content layer foundation and migrated 
 - Validation: `npm run build` ✅; `npm run lint` still fails only on pre-existing `.squad/templates/ralph-triage.js` issues unrelated to this migration.
 
 **Decision Approved (Scribe merged from inbox):** Trinity's Markdown migration decision now recorded in canonical decisions ledger. Editorial interface now component-centric instead of JSON-document-centric. Next: Oracle to cross-validate content schema against running Next.js app.
+
+### Google Reviews Manual Sync Script (2026-05-04T19:31:56.214-05:00)
+**Status:** ✅ COMPLETED  
+- Added `scripts/fetch-google-reviews.ts` as a manual `npx tsx` workflow that reads `.env.local`, fetches Google Places legacy reviews, preserves manual testimonials, and rewrites Markdown content for the homepage testimonials section plus reviews hub.
+- Extended testimonial typing/Zod validation with optional Google metadata (`time`, `profilePhotoUrl`) so imported reviews can be stored in the Markdown frontmatter safely after the recent content migration.
+- Added `.env.local.example`, explicit `.env.local` ignore coverage, and a new README section documenting API key setup, Place ID lookup, dry runs, and live writes.
+- Validation: `npx tsx scripts/fetch-google-reviews.ts --dry-run` currently fails gracefully when `.env.local` is missing; `npm run build` ✅; `npm run lint` still fails only on pre-existing `.squad/templates/ralph-triage.js` issues unrelated to this work.

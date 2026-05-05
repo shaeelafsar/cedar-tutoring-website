@@ -15,6 +15,12 @@ import { ReviewsGrid } from "./ReviewsGrid";
 
 const reviewsPageContent = getReviewsPageContent();
 const testimonials = getTestimonials();
+const averageRating = testimonials.length
+  ? (
+      testimonials.reduce((total, testimonial) => total + testimonial.rating, 0) /
+      testimonials.length
+    ).toFixed(1)
+  : "0.0";
 const programTagMap = Object.fromEntries([
   ...getAllPrograms().map((program) => [
     program.slug,
@@ -40,7 +46,7 @@ const reviewsPageStructuredData = {
       itemReviewed: {
         "@id": absoluteUrl("/#organization"),
       },
-      ratingValue: "5.0",
+      ratingValue: averageRating,
       reviewCount: String(testimonials.length),
       bestRating: "5",
       worstRating: "1",
@@ -50,6 +56,7 @@ const reviewsPageStructuredData = {
       author: {
         "@type": "Person",
         name: testimonial.author,
+        ...(testimonial.profilePhotoUrl ? { image: testimonial.profilePhotoUrl } : {}),
       },
       reviewBody: testimonial.quote,
       reviewRating: {
@@ -57,6 +64,9 @@ const reviewsPageStructuredData = {
         ratingValue: String(testimonial.rating),
         bestRating: "5",
       },
+      ...(testimonial.time
+        ? { datePublished: new Date(testimonial.time * 1000).toISOString() }
+        : {}),
       itemReviewed: {
         "@id": absoluteUrl("/#organization"),
       },

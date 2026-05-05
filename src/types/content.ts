@@ -67,6 +67,8 @@ export interface Testimonial {
   programSlugs?: string[];
   testPrepSlugs?: string[];
   source?: "google" | "direct";
+  time?: number;
+  profilePhotoUrl?: string;
 }
 
 export interface FAQItem {

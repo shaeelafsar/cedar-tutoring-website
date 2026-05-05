@@ -240,3 +240,10 @@ Trinity implemented Morpheus's JSON-first content layer foundation and migrated 
 - Rewrote testimonial content to sound more authentic and varied, aligned pricing copy with Cedar's publicly visible tuition positioning, and consolidated location messaging around the Plano center.
 - Made `src/lib/content/pages.ts` more editor-friendly by reading pricing and locations sections by order instead of exact heading text, so copy edits in those Markdown bodies are less brittle.
 - Validation: `npm run build` ✅; `npm run lint` still fails only on pre-existing `.squad/templates/ralph-triage.js` issues unrelated to this work.
+
+### Comprehensive Project Documentation Refresh (2026-05-05T20:35:12Z)
+**Status:** ✅ COMPLETED  
+- Rewrote the root `README.md` into a full project guide covering overview, quick start, structure, commands, deployment, content editing, environment variables, stack details, contributing, and license status.
+- Expanded `content/README.md` into a clearer editor-facing handbook with page/file mapping, safer editing guidance, common tasks, preview instructions, and examples for homepage, FAQ, testimonials, pricing, navigation, and program updates.
+- Added `scripts/README.md` documenting the Google Reviews sync workflow, prerequisites, dry-run/write commands, updated files, and common failure modes.
+- Validation: `npm run build` ✅; `npx playwright test --project=mobile-chrome` ✅ (13 passed); `npm run lint` still fails only because of pre-existing `.squad/templates/ralph-triage.js` issues unrelated to this documentation work.

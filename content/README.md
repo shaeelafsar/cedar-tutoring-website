@@ -1,51 +1,57 @@
 # Cedar Content Editing Guide
 
-This folder controls most of the words shown on the Cedar Tutoring Academy website.
+This folder controls most of the text and structured marketing content on the Cedar Tutoring Academy website.
 
-If you are only updating copy, pricing, FAQs, testimonials, or navigation links, this is usually the only folder you need.
+If you are updating **headlines, paragraphs, FAQs, pricing, testimonials, contact details, navigation links, or program copy**, you will usually work only in `content/`.
 
-## 1) How the content folder is organized
+## Who this guide is for
 
-- `content/site/metadata.md`  
-  Controls site-wide details like the business name, phone number, email, address, main navigation, and footer links.
+This guide is written for:
+- business owners or staff updating wording
+- marketers refreshing offers or FAQs
+- developers who need a content map for the site
 
-- `content/pages/home/`  
-  Controls the homepage, one section per file.
+## Quick rules before you edit
 
-- `content/programs/`  
-  Controls the Programs page and each individual program page.
+### Usually safe to change
+- Headings and paragraphs
+- Button labels
+- FAQ questions and answers
+- Testimonial quotes and names
+- Pricing text
+- Hours, phone, email, and address
+- List items inside existing sections
 
-- `content/pages/test-prep/`  
-  Controls the Test Prep page and each test-prep detail page.
+### Usually **not** safe to change without a developer
+- File names or folder names
+- Frontmatter field names such as `component`, `seo`, `slug`, `href`, `primaryCta`, `faqItems`, `testimonialIds`, `iconName`
+- Existing testimonial `id` values unless you also update every reference
+- Existing program/test-prep `slug` values unless route links are updated too
+- Section heading conventions inside program/test-prep templates if a developer told you those headings are required
 
-- `content/pages/about/`  
-  Controls the About page sections.
+## How the content folder is organized
 
-- `content/pages/reviews/`  
-  Controls the Reviews page and the reusable testimonial library.
+| Path | What it controls |
+| --- | --- |
+| `content/site/metadata.md` | Business info, navigation, footer links, phone, email, address |
+| `content/pages/home/` | Homepage sections |
+| `content/programs/` | Programs hub and individual program pages |
+| `content/pages/test-prep/` | Test Prep hub and individual SAT/ACT/PSAT pages |
+| `content/pages/about/` | About page sections |
+| `content/pages/reviews/` | Reviews page plus reusable testimonial library |
+| `content/pages/pricing/_page.md` | Pricing page content, pricing tiers, pricing FAQ |
+| `content/pages/faq/_page.md` | FAQ page content |
+| `content/pages/locations/_page.md` | Locations page content, hours, service areas |
+| `content/pages/book-assessment/` | Book Assessment page content and trust panel |
 
-- `content/pages/pricing/_page.md`  
-  Controls the entire Pricing page, including pricing cards and pricing FAQ.
+## How each file works
 
-- `content/pages/faq/_page.md`  
-  Controls the entire FAQ page.
+Each content file has two parts:
 
-- `content/pages/locations/_page.md`  
-  Controls the Locations page and location cards.
+1. **YAML frontmatter** at the top between `---` lines
+2. **Markdown body** below it
 
-- `content/pages/book-assessment/`  
-  Controls the Book Assessment page and trust panel.
-
-## 2) Frontmatter vs. markdown body
-
-Every content file has **2 parts**:
-
-1. **YAML frontmatter** at the top (between `---` lines)  
-   This holds structured fields like buttons, prices, FAQ items, testimonial lists, and navigation links.
-2. **Markdown body** underneath  
-   This holds page headings, paragraphs, and section text.
-
-Example:
+### Example
 
 ```md
 ---
@@ -61,50 +67,71 @@ From early reading to SAT prep, Cedar pairs students with caring local tutors...
 ```
 
 In that example:
+- `eyebrow` and `primaryCta` are structured fields used by the page component
+- the `#` heading and paragraph are the visible page copy
 
-- `eyebrow`, `primaryCta.label`, and `primaryCta.href` are **frontmatter fields**
-- The `#` heading and paragraph are the **markdown body**
+## File-to-page mapping
 
-## 3) File-to-page mapping
+### Site-wide content
 
-| File | What it controls on the site |
+| File | Used on |
 | --- | --- |
-| `content/site/metadata.md` | Business name, phone, email, address, top navigation, footer links |
-| `content/pages/home/hero.md` | Homepage top headline, subheadline, hero buttons, hero stats |
-| `content/pages/home/proof-bar.md` | Small badge row under the homepage hero |
-| `content/pages/home/testimonials.md` | Homepage testimonial section heading + which testimonials are featured |
-| `content/pages/home/programs.md` | Homepage programs section heading |
-| `content/pages/home/how-it-works.md` | Homepage “How it works” steps |
-| `content/pages/home/why-cedar.md` | Homepage “Why Cedar” reasons/cards |
-| `content/pages/home/cta.md` | Homepage final call-to-action section |
-| `content/programs/_hub.md` | `/programs` page hero + section intro + final CTA |
-| `content/programs/math.md` | `/programs/math` page |
-| `content/programs/reading.md` | `/programs/reading` page |
-| `content/programs/writing.md` | `/programs/writing` page |
-| `content/programs/science.md` | `/programs/science` page |
-| `content/programs/arabic.md` | `/programs/arabic` page |
-| `content/programs/homework-help.md` | `/programs/homework-help` page |
-| `content/pages/test-prep/_hub.md` | `/test-prep` page hero + intro + final CTA |
-| `content/pages/test-prep/sat.md` | `/test-prep/sat` page |
-| `content/pages/test-prep/act.md` | `/test-prep/act` page |
-| `content/pages/test-prep/psat.md` | `/test-prep/psat` page |
+| `content/site/metadata.md` | Header, footer, contact details, global business metadata |
+
+### Homepage
+
+| File | Controls |
+| --- | --- |
+| `content/pages/home/hero.md` | Top headline, subheadline, hero buttons, hero stats |
+| `content/pages/home/proof-bar.md` | Trust badges below the hero |
+| `content/pages/home/testimonials.md` | Homepage testimonial heading and featured testimonial IDs |
+| `content/pages/home/programs.md` | Homepage programs section heading and intro |
+| `content/pages/home/how-it-works.md` | Homepage process steps |
+| `content/pages/home/why-cedar.md` | Homepage differentiators/cards |
+| `content/pages/home/cta.md` | Homepage final CTA section |
+
+### Programs
+
+| File | URL |
+| --- | --- |
+| `content/programs/_hub.md` | `/programs` |
+| `content/programs/math.md` | `/programs/math` |
+| `content/programs/reading.md` | `/programs/reading` |
+| `content/programs/writing.md` | `/programs/writing` |
+| `content/programs/science.md` | `/programs/science` |
+| `content/programs/arabic.md` | `/programs/arabic` |
+| `content/programs/homework-help.md` | `/programs/homework-help` |
+
+### Test Prep
+
+| File | URL |
+| --- | --- |
+| `content/pages/test-prep/_hub.md` | `/test-prep` |
+| `content/pages/test-prep/sat.md` | `/test-prep/sat` |
+| `content/pages/test-prep/act.md` | `/test-prep/act` |
+| `content/pages/test-prep/psat.md` | `/test-prep/psat` |
+
+### Other marketing pages
+
+| File | Controls |
+| --- | --- |
 | `content/pages/about/hero.md` | About page hero |
 | `content/pages/about/stats.md` | About page stats strip |
-| `content/pages/about/story.md` | About page story, mission, and values list |
+| `content/pages/about/story.md` | Story, mission, values intro |
 | `content/pages/about/values.md` | About page differentiator cards |
-| `content/pages/about/team.md` | About page team cards and bios |
+| `content/pages/about/team.md` | Team member cards and bios |
 | `content/pages/about/cta.md` | About page final CTA |
 | `content/pages/reviews/_page.md` | Reviews page hero, stats, filters, final CTA |
-| `content/pages/reviews/testimonials.md` | All reusable testimonials used across the site |
-| `content/pages/pricing/_page.md` | Pricing page hero, pricing cards, all-plan notes, pricing FAQ |
-| `content/pages/faq/_page.md` | FAQ page hero, categories, FAQ answers, final CTA |
-| `content/pages/locations/_page.md` | Locations page hero, location cards, hours, service areas |
-| `content/pages/book-assessment/_page.md` | Book Assessment hero, steps, booking FAQ |
-| `content/pages/book-assessment/trust.md` | Trust signals panel on the booking page |
+| `content/pages/reviews/testimonials.md` | Master testimonial library used across the site |
+| `content/pages/pricing/_page.md` | Pricing page hero, tier cards, notes, FAQ |
+| `content/pages/faq/_page.md` | FAQ page hero, categories, answers, CTA |
+| `content/pages/locations/_page.md` | Location cards, hours, service areas |
+| `content/pages/book-assessment/_page.md` | Booking page hero, steps, booking FAQ |
+| `content/pages/book-assessment/trust.md` | Trust panel shown on the booking page |
 
-## 4) Common editing tasks
+## Common editing tasks
 
-### Change the homepage headline
+### 1. Change the homepage headline
 
 Edit: `content/pages/home/hero.md`
 
@@ -120,11 +147,31 @@ After:
 # Personalized tutoring that helps Plano students feel capable, prepared, and less stressed after school.
 ```
 
-### Add a new FAQ
+### 2. Update a hero button label
+
+Edit the frontmatter in `content/pages/home/hero.md`.
+
+Before:
+
+```yaml
+primaryCta:
+  label: "Book a Free Assessment"
+  href: "/book-assessment"
+```
+
+After:
+
+```yaml
+primaryCta:
+  label: "Schedule a Free Assessment"
+  href: "/book-assessment"
+```
+
+### 3. Add a new FAQ item
 
 Edit: `content/pages/faq/_page.md`
 
-Add a new item inside `faqItems:`
+Add a new item inside `faqItems:`.
 
 ```yaml
 faqItems:
@@ -133,13 +180,13 @@ faqItems:
     answer: "Yes. Cedar offers Saturday sessions at the Plano center based on availability."
 ```
 
-Tip: keep the indentation exactly like the other FAQ items.
+Tip: keep indentation exactly aligned with the other items.
 
-### Add or remove a testimonial
+### 4. Add or remove a testimonial
 
 Edit: `content/pages/reviews/testimonials.md`
 
-Add a new item inside `testimonials:`
+Add a new block inside `testimonials:`.
 
 ```yaml
 - id: "math-3"
@@ -154,15 +201,32 @@ Add a new item inside `testimonials:`
   source: "direct"
 ```
 
-To remove a testimonial, delete that whole block.
+To remove a testimonial, delete the whole block.
 
-**Important:** if a testimonial ID is used somewhere else (for example in homepage featured testimonials), remove that ID there too.
+Important:
+- if the testimonial ID is featured on the homepage, remove it there too
+- do not casually rename existing `id` values
 
-### Update pricing
+### 5. Change which testimonials appear on the homepage
+
+Edit: `content/pages/home/testimonials.md`
+
+Look for the `featuredIds:` list.
+
+```yaml
+featuredIds:
+  - "math-1"
+  - "reading-2"
+  - "google-jane-doe-1735344000"
+```
+
+You can replace IDs in this list with other testimonial IDs that already exist in `content/pages/reviews/testimonials.md`.
+
+### 6. Update pricing
 
 Edit: `content/pages/pricing/_page.md`
 
-Example:
+Example fields you can safely change inside `pricingTiers:`:
 
 ```yaml
 pricingTiers:
@@ -170,68 +234,32 @@ pricingTiers:
     name: "As-Needed Tutoring"
     priceLabel: "$40"
     cadence: "per 60-minute session"
+    description: "Flexible support for families who want occasional tutoring help."
+    features:
+      - "One-on-one support"
+      - "Flexible scheduling"
 ```
 
-You can safely change:
-
+Safe pricing edits:
 - `name`
 - `priceLabel`
 - `cadence`
 - `description`
-- items under `features`
+- list items under `features`
 
-### Add a new program
+### 7. Update team bios
 
-This is the most advanced content task.
+Edit: `content/pages/about/team.md`
 
-1. Copy one of the existing files in `content/programs/`.
-2. Rename it, for example: `content/programs/study-skills.md`
-3. Update the content values inside it.
-4. If you want it in the menu, also update `content/site/metadata.md`.
+You can usually change:
+- names
+- roles/titles
+- bio text
+- credential text
 
-Safe fields to change in the copied file:
+Be careful not to change image keys or component field names unless a developer asks you to.
 
-- `slug`
-- `title`
-- `shortTitle`
-- `shortDescription`
-- `grades`
-- `faq`
-- page text in the markdown body
-
-For a new program icon, use one of the existing safe icon names already used by programs:
-
-- `book-open`
-- `calculator`
-- `pen-tool`
-- `flask-conical`
-- `languages`
-- `book-marked`
-
-If you are unsure, duplicate a similar program file and only change the text.
-
-### Change navigation links
-
-Edit: `content/site/metadata.md`
-
-Example:
-
-```yaml
-navigation:
-  - label: "Programs"
-    href: "/programs"
-```
-
-You can:
-
-- change a label
-- change a link
-- add a new navigation item
-- remove a navigation item
-
-The same file also controls footer links under `footerNav:`.
-
-### Update contact info
+### 8. Update hours, address, phone, or email
 
 Edit: `content/site/metadata.md`
 
@@ -248,56 +276,94 @@ site:
     zip: "75075"
 ```
 
-Update these values if the phone, email, or address changes.
+### 9. Change navigation or footer links
 
-## 5) What is safe to change?
+Edit: `content/site/metadata.md`
 
-**Safe to change:**
+Header links live under `navigation:` and footer links live under `footerNav:`.
 
-- Headings and paragraphs
-- Button labels
-- Prices
-- FAQ questions and answers
-- Testimonials
-- Team bios
-- Hours, address, phone, email
-- Items inside lists and arrays
+Example:
 
-**Do not change unless a developer tells you to:**
+```yaml
+navigation:
+  - label: "Programs"
+    href: "/programs"
+```
 
-- Frontmatter field names like `component`, `seo`, `primaryCta`, `faqItems`, `testimonialIds`, `iconName`, `slug`, `href`
-- File names and folder names
-- Program/Test Prep section labels like `## Problem`, `## Approach`, `## Outcomes`, `## Ideal For`, `## Focus Areas`, `## Format`
-- Testimonial `id` values that are already being used somewhere else, unless you also update every place that references them
-- Component names in quotes such as `component: "Hero"`
+Safe edits:
+- change a label
+- change a link
+- add a new item using the same structure
+- remove an item
 
-## 6) Tips
+### 10. Add a new program page
 
-- Keep indentation consistent. YAML spacing matters.
-- Put text with punctuation inside quotes if you are unsure.
-- Reuse existing examples. If one file already does what you want, copy its pattern.
-- Navigation + contact info live in **one place**: `content/site/metadata.md`.
-- All testimonials live in **one place**: `content/pages/reviews/testimonials.md`.
-- If you remove a program or test-prep page, also remove any navigation links pointing to it.
-- The program icon list is limited. For the safest result, reuse one of the existing icon names listed above.
-- To preview changes locally, run:
+This is a more advanced content task.
+
+1. Duplicate a similar file from `content/programs/`
+2. Rename the copy, for example `content/programs/study-skills.md`
+3. Update the text and frontmatter values
+4. If needed, add the new page to navigation in `content/site/metadata.md`
+
+Safe fields to update in the copied file:
+- `slug`
+- `title`
+- `shortTitle`
+- `shortDescription`
+- `grades`
+- `faq`
+- page copy in the Markdown body
+
+For the safest result, reuse one of the icon names already in use.
+
+## What is safe to change vs. what breaks things
+
+| Safe changes | Risky changes |
+| --- | --- |
+| Rewriting copy | Renaming files |
+| Updating buttons | Renaming frontmatter fields |
+| Editing FAQs | Changing slugs without updating routes/links |
+| Editing testimonial quotes | Renaming testimonial IDs that are referenced elsewhere |
+| Updating pricing text | Changing `component` values |
+| Updating hours/contact info | Inventing new field shapes that do not match nearby examples |
+
+## How to preview changes locally
+
+### Option 1: Local preview for editors or developers
+
+From the project root:
 
 ```bash
+npm install
 npm run dev
 ```
 
-Then open `http://localhost:3000`.
+Then open:
 
-- To do a final site check before publishing, run:
+```text
+http://localhost:3000
+```
+
+### Option 2: Final validation before publishing
 
 ```bash
 npm run build
 ```
 
-If the build passes, the content format is valid.
+If the build passes, the site content format is valid enough for production.
 
-## 7) Quick rule of thumb
+## Troubleshooting tips
+
+- **YAML indentation matters.** Keep spacing exactly aligned with nearby entries.
+- **When in doubt, copy an existing pattern.** If one file already does what you need, reuse that structure.
+- **Use quotes if punctuation looks risky.** This helps avoid YAML parsing mistakes.
+- **Testimonials live in one place.** The main testimonial library is `content/pages/reviews/testimonials.md`.
+- **Navigation and contact info live in one place.** Update `content/site/metadata.md`.
+- **Featured testimonial IDs must exist.** If an ID is missing, the homepage or reviews page can break.
+- **Slugs drive URLs.** Changing `slug: "math"` changes the page path for that item.
+
+## Rule of thumb
 
 If you are changing **words, prices, links, testimonials, FAQs, or contact details**, you are probably safe.
 
-If you are changing **field names, file names, IDs, icon names, or page structure**, pause and ask a developer.
+If you are changing **field names, file names, IDs, slugs, or page structure**, involve a developer.

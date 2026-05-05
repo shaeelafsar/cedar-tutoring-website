@@ -3,7 +3,7 @@ component: "TestPrepHub"
 sectionEyebrow: "Test prep programs"
 seo:
   title: "SAT, ACT & PSAT Prep | Cedar Tutoring Academy"
-  description: "Compare Cedar Tutoring Academy SAT, ACT, and PSAT prep with strategy coaching, timed practice, and targeted support for Dallas-Fort Worth students today."
+  description: "Compare Cedar Tutoring Academy SAT, ACT, and PSAT prep with strategy coaching, timed practice, and targeted support for Plano-area students."
 cardLinkLabel: "Learn more"
 detailPage:
   idealFor:
@@ -38,7 +38,7 @@ detailPage:
   outcomes:
     eyebrow: "What to expect"
     heading: "The gains families usually notice before and after test day."
-    subtitle: "Progress is about more than a score alone — students also become calmer, more strategic test takers."
+    subtitle: "Progress is about more than a score alone—students also become calmer, more strategic test takers."
   testimonials:
     eyebrow: "What parents say"
     heading: "Real feedback from Cedar families navigating test-prep season."
@@ -69,8 +69,8 @@ finalCta:
 
 # Test prep with strategy, structure, and less stress.
 
-Cedar helps high school students prepare for the SAT, ACT, and PSAT with targeted coaching, timed practice, and a plan families can actually follow.
+Cedar helps high-school students prepare for the SAT, ACT, and PSAT with targeted coaching, timed practice, and a plan families can actually follow.
 
 ## Focused preparation for the exams that shape next steps.
 
-Students build content mastery, pacing, and confidence through small-group support designed for real score growth — not cramming.
+Students build content mastery, pacing, and confidence through small-group support designed for real score growth—not last-minute cramming.

@@ -6,7 +6,7 @@ trustSignals:
   - "Personalized plan"
 highlights:
   - "Support for K–12 tutoring and test prep"
-  - "Plano, Frisco, and Richardson options"
+  - "One Plano center with transportation for qualifying nearby families"
   - "Flexible scheduling with family-friendly guidance"
 ---
 

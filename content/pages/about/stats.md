@@ -2,18 +2,18 @@
 component: "StatsStrip"
 order: 2
 stats:
-  - value: "12+"
-    label: "Years serving families"
-    detail: "Built locally around long-term relationships and steady results."
-  - value: "700+"
-    label: "Students supported"
-    detail: "From early reading to advanced high-school coursework and test prep."
+  - value: "10+"
+    label: "Years supporting students"
+    detail: "Local families have trusted Cedar for more than a decade of steady academic support."
+  - value: "2:1"
+    label: "Typical small-group ratio"
+    detail: "Students get more direct feedback, more questions answered, and more time to build confidence."
   - value: "9"
-    label: "Subjects & prep tracks"
+    label: "Programs & prep tracks"
     detail: "Core academics, homework help, Arabic, and major college-readiness exams."
-  - value: "98%"
-    label: "Family satisfaction"
-    detail: "Parents stay because communication, trust, and outcomes all matter here."
+  - value: "2"
+    label: "Free trial sessions"
+    detail: "New families can get a feel for Cedar's teaching approach before making a longer commitment."
 ---
 
 About page statistics strip.

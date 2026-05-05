@@ -231,3 +231,12 @@ Trinity implemented Morpheus's JSON-first content layer foundation and migrated 
 - Extended testimonial typing/Zod validation with optional Google metadata (`time`, `profilePhotoUrl`) so imported reviews can be stored in the Markdown frontmatter safely after the recent content migration.
 - Added `.env.local.example`, explicit `.env.local` ignore coverage, and a new README section documenting API key setup, Place ID lookup, dry runs, and live writes.
 - Validation: `npx tsx scripts/fetch-google-reviews.ts --dry-run` currently fails gracefully when `.env.local` is missing; `npm run build` ✅; `npm run lint` still fails only on pre-existing `.squad/templates/ralph-triage.js` issues unrelated to this work.
+
+### Content Editing Guide + Content Polish (2026-05-05T10:39:32.616-05:00)
+**Status:** ✅ COMPLETED  
+- Added `content/README.md`, a non-technical editing guide covering directory structure, frontmatter vs markdown, file-to-page mapping, common content tasks, editing rules, and preview/build tips.
+- Polished all marketing Markdown content under `content/` to feel more local, specific, and consistent for Cedar Tutoring Academy in Plano, TX.
+- Updated homepage/about/reviews/pricing/FAQ/locations/programs/test-prep copy to remove broader DFW framing, reduce generic marketing language, and align messaging with a teacher-led local tutoring center.
+- Rewrote testimonial content to sound more authentic and varied, aligned pricing copy with Cedar's publicly visible tuition positioning, and consolidated location messaging around the Plano center.
+- Made `src/lib/content/pages.ts` more editor-friendly by reading pricing and locations sections by order instead of exact heading text, so copy edits in those Markdown bodies are less brittle.
+- Validation: `npm run build` ✅; `npm run lint` still fails only on pre-existing `.squad/templates/ralph-triage.js` issues unrelated to this work.

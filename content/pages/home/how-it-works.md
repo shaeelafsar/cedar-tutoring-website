@@ -8,7 +8,7 @@ steps:
     description: "We learn where your child is now, what feels hard, and what goals matter most to your family."
   - number: "2"
     title: "Custom plan"
-    description: "We recommend the right program, schedule, and level of support based on actual needs — not a generic package."
+    description: "We recommend the right program, schedule, and support level based on your child's goals, current skills, and family routine."
   - number: "3"
     title: "Targeted tutoring"
     description: "Students get focused instruction, consistent encouragement, and practical strategies they can apply right away."

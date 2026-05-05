@@ -4,31 +4,31 @@ order: 6
 eyebrow: "Why Cedar"
 items:
   - iconName: "shield"
-    title: "Trust-heavy experience"
-    description: "Parents are choosing Cedar with real stakes in mind. The brand should feel calm, credible, and serious without losing warmth."
+    title: "Teacher-led and locally rooted"
+    description: "Cedar is a local academy built around thoughtful teaching, steady relationships, and honest recommendations instead of a one-size-fits-all script."
     checks:
-      - "Strong reviews and local reputation"
-      - "Clear, parent-friendly information architecture"
+      - "Teacher-owned approach"
+      - "Clear guidance based on what your child actually needs"
   - iconName: "users"
     title: "Small-group attention"
-    description: "The 1:3 student-tutor ratio keeps instruction personal, attentive, and more responsive to actual learning gaps."
+    description: "Most sessions stay around two students per tutor, so there is time for questions, feedback, and pacing that matches the student in the room."
     checks:
-      - "More feedback, less blending into the crowd"
-      - "Ideal for both catch-up and staying on track"
+      - "More direct support during each session"
+      - "Less chance of a student blending into the background"
   - iconName: "bar-chart-3"
-    title: "Progress parents can see"
-    description: "Assessment-led planning and progress reviews make Cedar feel like a measurable academic partner, not just extra time after school."
+    title: "Progress you can follow"
+    description: "Families get practical updates on skills, habits, and next steps, so tutoring feels connected to real school goals."
     checks:
-      - "Custom plans based on real needs"
-      - "Updates focused on growth and next steps"
+      - "Assessment-led starting point"
+      - "Updates that are clear enough to act on at home"
   - iconName: "calendar"
-    title: "Family-friendly logistics"
-    description: "Flexible scheduling and transportation make Cedar easier to fit into real life — a major differentiator parents remember."
+    title: "Built for real family schedules"
+    description: "After-school hours, Saturday availability, and transportation support for nearby families make it easier to stay consistent week after week."
     checks:
-      - "After-school and weekend options"
-      - "Transportation support within the service radius"
+      - "Flexible scheduling around school and activities"
+      - "Transportation options for qualifying Plano-area families"
 ---
 
-# The value parents care about most, presented simply.
+# Why Plano families choose Cedar.
 
-Cedar combines academic support, thoughtful communication, and practical family logistics.
+Cedar blends strong teaching, clear communication, and practical support so tutoring feels helpful from the very first week.

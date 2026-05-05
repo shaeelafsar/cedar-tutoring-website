@@ -9,7 +9,7 @@ tags:
   - "stem"
 seo:
   title: "Science Tutoring for Grades 5-12 | Cedar Tutoring Academy"
-  description: "Get science tutoring for biology, chemistry, physics, and more with Cedar Tutoring Academy support for Dallas-Fort Worth students in grades 5-12 locally."
+  description: "Get science tutoring for biology, chemistry, physics, and more with Cedar Tutoring Academy support for grades 5-12 in Plano and nearby communities."
 testimonialIds:
   - "science-1"
 relatedPrograms:
@@ -17,11 +17,11 @@ relatedPrograms:
   - "homework-help"
 faq:
   - question: "What science subjects do you cover?"
-    answer: "We support general science, biology, chemistry, physics, and earth science at middle and high school levels. Our assessment identifies where support is most needed."
+    answer: "We support general science, biology, chemistry, physics, and earth science at middle and high school levels. The assessment helps us see where support is most needed."
   - question: "Can Cedar help with AP science courses?"
-    answer: "Yes. We work with students in AP Biology, AP Chemistry, and AP Physics, focusing on concept mastery and exam preparation."
+    answer: "Yes. We work with students in AP Biology, AP Chemistry, and AP Physics when they need help with core understanding, pacing, or exam preparation."
   - question: "How do small groups work for science tutoring?"
-    answer: "Students are grouped by subject and level. Our 1:3 ratio means each student gets personalized attention while benefiting from peer discussion and collaborative problem-solving."
+    answer: "Students are grouped by subject and level so tutors can keep sessions relevant, but there is still enough flexibility to answer individual questions and revisit weak spots."
 cta:
   heading: "Ready to help your child master science?"
   subtext: "Start with a free assessment. We'll identify the concepts that need attention and build a focused plan."
@@ -32,33 +32,33 @@ cta:
 
 # Science tutoring that turns confusion into clarity.
 
-When science concepts feel overwhelming, students shut down. Cedar helps them understand, not just memorize — so they can keep up and feel capable.
+When science concepts feel overwhelming, students often memorize without understanding. Cedar helps them slow down, connect the ideas, and feel more capable in class.
 
 ## Problem
 
-### Science gets harder fast — and catching up feels impossible.
+### Science gets harder fast—and catching up can feel impossible.
 
-Science courses shift quickly from familiar topics to abstract concepts. A student who did fine in 5th-grade science can suddenly struggle in middle school biology or high school chemistry.
+Science courses move quickly from familiar topics to abstract ideas. A student who did fine in earlier classes can suddenly feel lost once the vocabulary, labs, or formulas become more demanding.
 
-The combination of dense vocabulary, multi-step problem solving, and lab-based application makes science uniquely challenging. Without structured support, many students fall into a pattern of memorizing without understanding.
+Without structured support, many students fall into a cycle of cramming, forgetting, and losing confidence before the next test.
 
 ## Approach
 
 ### How Cedar makes science manageable.
 
-We focus on concept clarity first. When students understand why something works — not just what to memorize — they can apply that understanding across topics and tests.
+We focus on concept clarity first so students understand why something works—not just what to memorize.
 
 - Concept-based instruction that builds real understanding
 - Study strategies for vocabulary-heavy subjects like biology
-- Problem-solving frameworks for physics and chemistry
-- Lab report and scientific writing support when needed
+- Problem-solving frameworks for chemistry and physics
+- Support with lab reports and scientific writing when needed
 
 ## Outcomes
 
 ### What parents can expect.
 
-- Stronger understanding of core science concepts
+- Stronger understanding of key science concepts
 - Better study habits and test preparation strategies
-- Improved grades and less last-minute cramming
+- Less last-minute cramming before exams
 - More confidence participating in class
 - Clear communication about progress and next steps

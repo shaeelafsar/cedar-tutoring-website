@@ -7,7 +7,7 @@ items:
   - iconName: "graduation-cap"
     label: "K–12 Programs"
   - iconName: "bar-chart-3"
-    label: "1:3 Ratio"
+    label: "2:1 Small Groups"
   - iconName: "bus"
     label: "Transportation Available"
   - iconName: "map-pin"

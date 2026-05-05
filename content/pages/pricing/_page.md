@@ -2,73 +2,73 @@
 component: "PricingPage"
 seo:
   title: "Tutoring Pricing | Cedar Tutoring Academy"
-  description: "Explore Cedar Tutoring Academy pricing for flexible tutoring plans, monthly packages, and intensive support with clear billing for Dallas-Fort Worth families."
+  description: "Explore Cedar Tutoring Academy pricing for flexible tutoring plans, monthly options, and clear billing for Plano-area families."
 eyebrow: "Transparent tuition guidance"
 introEyebrow: "A smart educational investment"
-introSubtitle: "Every Cedar recommendation starts with a free assessment, so families can make a confident decision without guessing what level of tutoring makes sense."
+introSubtitle: "Every Cedar recommendation starts with a free assessment, so families can choose the right level of support without guessing."
 comparisonEyebrow: "Family-first flexibility"
 comparisonHighlights:
-  - "Free assessment before enrollment"
-  - "No enrollment or registration fee"
-  - "24-hour reschedule window for most sessions"
-  - "10% sibling discount on the second active plan"
+  - "Two free trial sessions for new families"
+  - "No registration or diagnostic fee"
+  - "No long-term contract required"
+  - "48-hour notice for most session scheduling"
 tiersEyebrow: "Pricing options"
 pricingTiers:
   - id: "individual-sessions"
-    name: "Individual Sessions"
-    priceLabel: "$70"
+    name: "As-Needed Tutoring"
+    priceLabel: "$40"
     cadence: "per 60-minute session"
-    description: "Flexible pay-as-you-go tutoring for families who want targeted support around a specific class, skill gap, or test milestone."
+    description: "Flexible support for families who want help around a specific class, assignment stretch, or short-term academic goal."
     features:
-      - "One-on-one or small-group placement based on need"
-      - "Ideal for short-term reinforcement or busy schedules"
-      - "Free assessment before the first paid session"
-      - "Simple online invoicing with no enrollment fee"
+      - "Reserve only the sessions you need"
+      - "Great for a tough unit, exam week, or targeted skill work"
+      - "Most sessions can be booked with 48 hours' notice"
+      - "No registration or diagnostic fee"
     badge: "Flexible"
   - id: "weekly-growth-plan"
-    name: "Weekly Growth Plan"
-    priceLabel: "$260"
+    name: "Monthly Learning Plan"
+    priceLabel: "$150"
     cadence: "4 sessions each month"
-    description: "Cedar's most popular option for families who want steady weekly momentum, consistent routines, and visible progress over time."
+    description: "A steady weekly rhythm for families who want consistent support without overloading the schedule."
     features:
-      - "Best value for consistent weekly tutoring"
-      - "Priority after-school scheduling"
-      - "Progress updates and family check-ins"
-      - "One rescheduled session rollover each month"
+      - "Popular starting point for one core subject or homework help"
+      - "Sessions can be shared across registered siblings"
+      - "Consistent tutor notes and progress updates"
+      - "Best fit for families building a weekly routine"
     badge: "Most popular"
     highlighted: true
   - id: "intensive-achievement-plan"
-    name: "Intensive Achievement Plan"
-    priceLabel: "$520"
+    name: "Expanded Support Plan"
+    priceLabel: "$280"
     cadence: "8 sessions each month"
-    description: "Higher-frequency support for students preparing for major exams, recovering from gaps quickly, or managing especially demanding coursework."
+    description: "Higher-frequency support for students balancing tougher coursework, multiple subjects, or a focused test-prep season."
     features:
-      - "Twice-weekly tutoring rhythm for faster gains"
-      - "Recommended for AP classes, finals, or SAT/ACT stretches"
-      - "Priority tutor matching and schedule coordination"
-      - "Monthly strategy review with updated goals"
-    badge: "High-touch"
+      - "Twice-weekly rhythm for faster progress"
+      - "Strong fit for catch-up seasons or SAT/ACT prep"
+      - "Extra flexibility during busy grading periods"
+      - "Monthly check-in on goals, pacing, and next steps"
+    badge: "High-support"
 allPlansEyebrow: "Every Cedar plan includes"
 allPlansItems:
-  - "A free academic assessment before enrollment"
-  - "Tutor matching based on goals, grade level, and subject needs"
-  - "Progress updates that keep parents in the loop"
-  - "Flexible after-school and weekend scheduling options"
-  - "A personalized support recommendation instead of a one-size-fits-all package"
-  - "Friendly local guidance if your child needs to adjust plans mid-semester"
-allPlansFootnote: "Need transportation support or a custom exam-prep cadence? We'll talk through those logistics during your assessment."
+  - "A free academic assessment before recommendations are made"
+  - "Two free trial sessions for new families"
+  - "No long-term contract required"
+  - "Tutor matching based on subject, grade level, and learning needs"
+  - "Clear communication with parents about progress and next steps"
+  - "Transportation support for qualifying families near the Plano center"
+allPlansFootnote: "Need a different mix of subjects, siblings, or test-prep sessions? Cedar can suggest the simplest plan during your assessment."
 faqEyebrow: "Pricing FAQ"
 faqItems:
   - question: "When are families billed?"
-    answer: "Monthly plans are billed at the start of each cycle, and individual sessions are invoiced based on the sessions scheduled. You'll always know the cadence before you enroll."
+    answer: "As-needed sessions are paid for only when you book them. Monthly plans are billed at the start of each monthly cycle, so families know exactly what they are committing to."
   - question: "Can we change plans later if our schedule or goals change?"
-    answer: "Yes. Many families adjust support during exam seasons, summer, or especially demanding grading periods. Cedar can help you move between plans when a different rhythm makes more sense."
+    answer: "Yes. Many families start with one rhythm and adjust during report-card seasons, test prep, or heavier homework months. Cedar can help you move up or down as needed."
   - question: "What happens if we need to cancel or reschedule a session?"
-    answer: "With at least 24 hours' notice, Cedar can usually reschedule a session or apply the session according to your plan terms. We'll explain the details clearly during enrollment so there are no surprises."
+    answer: "Cedar usually asks for 48 hours' notice so the right tutor can be scheduled and the session can be adjusted cleanly. We'll walk you through the exact policy before you enroll."
   - question: "Do you offer discounts for siblings?"
-    answer: "Yes. Families with a second active tutoring plan receive a 10% sibling discount on that additional plan. If you're coordinating multiple students, we'll help you build the cleanest option."
+    answer: "Yes. Monthly family plans can be a good fit when more than one child is attending, and registered siblings can share sessions from the same monthly package."
   - question: "Is there a long-term contract?"
-    answer: "Cedar focuses on clarity, not lock-in. We'll recommend a plan length that makes sense for your child's goals, and we'll be transparent about any expectations before you commit."
+    answer: "No. Cedar focuses on the right support plan, not locking families in. We'll recommend a rhythm that makes sense and explain it clearly before you decide."
 finalCta:
   heading: "Want help choosing the right tutoring plan?"
   subtext: "Book a free assessment and we'll recommend a support level that makes sense academically, logistically, and financially for your family."
@@ -81,32 +81,32 @@ finalCta:
   trustBullets:
     - "Transparent pricing guidance"
     - "No-pressure recommendations"
-    - "Sibling savings available"
+    - "Two free trial sessions"
     - "Plans that flex with school demands"
 ---
 
-# Flexible pricing built around real academic goals.
+# Clear pricing for families who want good help without surprises.
 
-Cedar's pricing is designed to feel clear, professional, and worth the investment—whether your child needs a single weekly touchpoint or a more intensive support plan.
+Cedar keeps pricing straightforward so parents can focus on what their child needs instead of trying to decode fees, contracts, or confusing package language.
 
 ## Choose the support level that matches your child's pace, schedule, and priorities.
 
-Our pricing reflects experienced tutors, personalized planning, and the kind of communication parents expect from a premium local program—not surprise fees or vague promises.
+Some students need one steady weekly session. Others need a short burst during a tough grading period, a new school transition, or test-prep season.
 
-If a student needs less support than you expected, we'll say so. Cedar's goal is the right plan, not the biggest package.
+Cedar starts with a free assessment so families can hear an honest recommendation before committing to anything bigger than they need.
 
-## Clear billing, thoughtful policies, and room to adjust as goals evolve.
+## Clear billing and flexible monthly options.
 
-Most families start with a plan that fits their current season, then scale up or down as school demands change. Cedar keeps pricing straightforward so your decision can stay focused on what helps your child most.
+Families can pay as they go or choose a monthly plan that creates a more regular tutoring routine. Either way, the goal is the same: keep support simple, clear, and easy to adjust.
 
-## Straightforward packages for steady support or high-focus seasons.
+## Tutoring plans that fit different seasons of school.
 
-All tutoring plans include Cedar's personalized recommendations, caring instruction, and a schedule designed for real family life.
+Whether your child needs occasional subject help or more frequent weekly support, Cedar offers plans that feel manageable for real family life.
 
-## The essentials families expect from a premium tutoring experience.
+## What every family gets at Cedar.
 
-No matter which package you choose, Cedar keeps the experience structured, personal, and easy to understand.
+No matter which plan you choose, Cedar keeps the experience structured, personal, and easy to understand.
 
-## Common questions families ask before enrolling.
+## Common questions before you enroll.
 
-If you're comparing options or planning around a school semester, these answers can help.
+If you're comparing options or trying to plan around the school calendar, these are the questions families usually ask first.

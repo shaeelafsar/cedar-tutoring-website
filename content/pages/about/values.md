@@ -5,30 +5,30 @@ eyebrow: "Why families choose Cedar"
 items:
   - iconName: "users"
     title: "Small-group attention"
-    description: "Our low student-to-tutor ratio gives students more feedback, more encouragement, and more chances to ask questions in the moment."
+    description: "Our low student-to-tutor ratio gives students more chances to ask questions, get corrected in the moment, and work at a pace that actually fits them."
     bullets:
-      - "Focused instruction instead of blending into a large group"
-      - "Responsive pacing based on actual learning gaps"
+      - "Focused support instead of getting lost in a large group"
+      - "Pacing that can slow down or speed up as needed"
   - iconName: "heart-handshake"
     title: "Relationships that build trust"
-    description: "We believe academic growth happens faster when students feel safe, supported, and genuinely understood by the adults teaching them."
+    description: "Students learn better when they feel safe, respected, and encouraged. Cedar tutors work hard to build that kind of trust from day one."
     bullets:
-      - "Warm, encouraging tutors who still hold a high bar"
-      - "Parent communication that feels proactive and practical"
+      - "Warm teachers who still keep expectations high"
+      - "A calmer experience for students who shut down easily"
   - iconName: "bar-chart-3"
-    title: "Progress parents can see"
-    description: "Cedar uses assessments, planning, and regular check-ins to make progress visible instead of vague."
+    title: "Progress parents can follow"
+    description: "Cedar keeps communication clear so parents understand what is improving, where a student still needs support, and what comes next."
     bullets:
-      - "Custom recommendations before tutoring begins"
-      - "Clear updates on wins, gaps, and next steps"
+      - "Assessment-based recommendations"
+      - "Practical updates instead of vague progress comments"
   - iconName: "award"
-    title: "A premium local experience"
-    description: "Everything from scheduling to session quality is designed to reduce family stress and make support feel worth the investment."
+    title: "A calm, reliable experience"
+    description: "From scheduling to tutoring quality, Cedar is designed to reduce family stress and make support feel steady and worth your time."
     bullets:
       - "Flexible scheduling and transportation support"
-      - "Programs spanning K–12 tutoring and test prep"
+      - "Programs that cover everyday school needs and test prep"
 ---
 
-# What makes Cedar feel different from typical tutoring options.
+# What makes Cedar feel different from bigger tutoring centers.
 
-Families come to Cedar for results, but they stay because the experience feels calm, responsive, and deeply personal.
+Families come to Cedar for academic help, but they stay because the experience feels personal, steady, and easy to trust.

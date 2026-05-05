@@ -7,7 +7,7 @@ iconName: "book-open"
 grades: "10–12"
 seo:
   title: "ACT Prep Tutoring | Cedar Tutoring Academy"
-  description: "Get ACT prep from Cedar Tutoring Academy with timed practice, strategy coaching, and focused content review for Dallas-Fort Worth high school students."
+  description: "Get ACT prep from Cedar Tutoring Academy with timed practice, strategy coaching, and focused content review for Plano-area high-school students."
 testimonialIds:
   - "act-1"
 relatedTests:
@@ -15,7 +15,7 @@ relatedTests:
   - "psat"
 faq:
   - question: "How do we know whether the ACT or SAT is a better fit?"
-    answer: "We look at the student's strengths, pace, and goals. During the assessment, we can help families compare the exams and decide which prep path makes the most sense."
+    answer: "We look at the student's strengths, pace, and goals. During the assessment, we can help your family compare both exams and decide which prep path makes the most sense."
   - question: "Can Cedar help with pacing on the ACT?"
     answer: "Yes. Pacing is one of the biggest reasons families seek ACT prep. We coach students on section timing, question selection, and how to recover when a section starts slipping."
   - question: "Do students only take practice tests?"

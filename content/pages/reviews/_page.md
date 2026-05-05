@@ -2,19 +2,19 @@
 component: "ReviewsPage"
 seo:
   title: "Parent & Student Reviews | Cedar Tutoring Academy"
-  description: "Read parent and student reviews of Cedar Tutoring Academy to see how Dallas-Fort Worth families describe stronger confidence, calmer routines, and results."
+  description: "Read parent and student reviews of Cedar Tutoring Academy to see how Plano-area families describe calmer routines, stronger skills, and growing confidence."
 eyebrow: "Trusted by local families"
 filtersEyebrow: "Browse by fit"
 stats:
   - value: "5.0 / 5"
     label: "Average rating"
-    detail: "Consistently strong feedback across academics and test prep."
+    detail: "Families often mention calmer routines, clearer communication, and progress they can actually see."
   - value: "15"
     label: "Published reviews"
-    detail: "Every story on this page comes from a Cedar family experience."
-  - value: "98%"
-    label: "Satisfaction rate"
-    detail: "Families most often mention trust, communication, and confidence growth."
+    detail: "Collected across homework help, subject tutoring, and test prep."
+  - value: "10+"
+    label: "Years serving local students"
+    detail: "Cedar has supported Plano-area families for more than a decade."
 filterGroups:
   - id: "program"
     label: "Program"
@@ -70,8 +70,8 @@ finalCta:
 
 # What parents and students say after working with Cedar.
 
-These reviews reflect the experience families care about most: calmer homework routines, clearer communication, stronger confidence, and progress that feels real.
+These reviews reflect the moments families care about most: calmer evenings, clearer communication, stronger confidence, and progress that feels real.
 
 ## Find stories that feel closest to your child's goals.
 
-Use the filters to narrow reviews by program focus or grade level so you can see the experiences most relevant to your family.
+Use the filters to narrow reviews by program focus or grade level so you can quickly find experiences that sound most like your family's situation.

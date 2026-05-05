@@ -133,8 +133,8 @@ export function getHomePageContent(): HomePageContent {
 export function getLocationsPageContent(): LocationsPageContent {
   const doc = readMarkdownFile("pages/locations/_page.md", locationsPageFrontmatterSchema);
   const page = parseMarkdownPage(doc.content);
-  const introSection = getSection(page.sections, "Local centers designed to make strong academic support easier to reach.");
-  const locationsSection = getSection(page.sections, "Three Cedar locations, each built for steady after-school support.");
+  const introSection = page.sections[0];
+  const locationsSection = page.sections[1];
 
   return locationsPageContentSchema.parse({
     seo: doc.data.seo,
@@ -162,11 +162,11 @@ export function getLocationsPageContent(): LocationsPageContent {
 export function getPricingPageContent(): PricingPageContent {
   const doc = readMarkdownFile("pages/pricing/_page.md", pricingPageFrontmatterSchema);
   const page = parseMarkdownPage(doc.content);
-  const introSection = getSection(page.sections, "Choose the support level that matches your child's pace, schedule, and priorities.");
-  const comparisonSection = getSection(page.sections, "Clear billing, thoughtful policies, and room to adjust as goals evolve.");
-  const tiersSection = getSection(page.sections, "Straightforward packages for steady support or high-focus seasons.");
-  const allPlansSection = getSection(page.sections, "The essentials families expect from a premium tutoring experience.");
-  const faqSection = getSection(page.sections, "Common questions families ask before enrolling.");
+  const introSection = page.sections[0];
+  const comparisonSection = page.sections[1];
+  const tiersSection = page.sections[2];
+  const allPlansSection = page.sections[3];
+  const faqSection = page.sections[4];
 
   return pricingPageContentSchema.parse({
     seo: doc.data.seo,

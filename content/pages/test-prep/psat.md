@@ -7,7 +7,7 @@ iconName: "book-marked"
 grades: "8–11"
 seo:
   title: "PSAT Prep Tutoring | Cedar Tutoring Academy"
-  description: "Build PSAT confidence with Cedar Tutoring Academy through early strategy coaching, timed practice, and skill review for Dallas-Fort Worth students locally."
+  description: "Build PSAT confidence with Cedar Tutoring Academy through early strategy coaching, timed practice, and skill review for Plano-area students."
 testimonialIds:
   - "psat-1"
 relatedTests:
@@ -15,11 +15,11 @@ relatedTests:
   - "act"
 faq:
   - question: "Is PSAT prep worth it if my child is not taking the SAT yet?"
-    answer: "For many families, yes. The PSAT can be a helpful way to build confidence, identify early gaps, and make future SAT prep more efficient when the stakes get higher."
+    answer: "For many families, yes. The PSAT can build confidence, reveal early gaps, and make future SAT prep more efficient once the stakes are higher."
   - question: "Do you work with younger students preparing for the PSAT 8/9 or PSAT 10?"
     answer: "Yes. Cedar can support students earlier in high school when families want a gradual, age-appropriate introduction to test-prep skills and expectations."
   - question: "Can PSAT prep help with scholarship goals?"
-    answer: "PSAT preparation can help students approach the exam more strategically, especially when scholarship pathways matter. We focus on readiness and performance habits without making unrealistic promises."
+    answer: "It can. We focus on helping students approach the exam more strategically and build the habits that matter for stronger performance, without making unrealistic promises."
 cta:
   heading: "Ready to use PSAT prep as a smart head start?"
   subtext: "Start with a free assessment. We'll help your family decide how PSAT prep fits your student's timeline and long-term goals."
@@ -34,7 +34,7 @@ Cedar helps students use the PSAT as a smart starting point for stronger habits,
 
 ## Ideal For
 
-- Students who want early exposure to high school test-prep expectations
+- Students who want early exposure to high-school test-prep expectations
 - Families who see the PSAT as a way to build readiness before the SAT
 - Students aiming to strengthen pacing, reading, writing, and math foundations
 - High schoolers who want thoughtful coaching before junior-year testing pressure peaks

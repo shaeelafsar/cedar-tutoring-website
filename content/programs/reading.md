@@ -10,7 +10,7 @@ tags:
   - "literacy"
 seo:
   title: "Reading Tutoring for K-8 Students | Cedar Tutoring Academy"
-  description: "Build fluency, comprehension, and vocabulary with Cedar Tutoring Academy reading tutoring for K-8 students in Dallas-Fort Worth and nearby communities."
+  description: "Build fluency, comprehension, and vocabulary with Cedar Tutoring Academy reading tutoring for K-8 students in Plano and nearby communities."
 testimonialIds:
   - "reading-1"
   - "reading-2"
@@ -19,11 +19,11 @@ relatedPrograms:
   - "homework-help"
 faq:
   - question: "What reading levels do you support?"
-    answer: "We work with students from pre-reading and early phonics through 8th-grade comprehension and vocabulary. Our assessment identifies the exact starting point."
+    answer: "We work with students from pre-reading and early phonics through 8th-grade comprehension and vocabulary. The assessment helps us identify the exact starting point."
   - question: "How quickly will I see results?"
-    answer: "Most families see noticeable improvement in fluency and confidence within 8–12 weeks of consistent sessions. We provide progress updates along the way."
+    answer: "Most families notice early signs of progress—like smoother reading, less avoidance, or better comprehension—within 8 to 12 weeks of consistent sessions."
   - question: "Does Cedar use a specific reading curriculum?"
-    answer: "We use research-backed approaches tailored to each student. Instruction covers phonics, fluency, comprehension, and vocabulary — adjusted to match their needs, not a rigid program."
+    answer: "We use research-backed methods and materials matched to the student's level. That often includes phonics, fluency, vocabulary, and comprehension work in a sequence that makes sense for the child."
 cta:
   heading: "Ready to help your child become a stronger reader?"
   subtext: "Start with a free reading assessment. We'll identify where your child stands and recommend a clear path forward."
@@ -34,33 +34,33 @@ cta:
 
 # Reading tutoring that builds fluency, comprehension, and real confidence.
 
-When reading feels hard, everything else in school gets harder too. Cedar helps students close gaps, build skills, and actually enjoy reading again.
+When reading feels hard, everything else in school gets harder too. Cedar helps students close gaps, build skills, and feel less intimidated by books, assignments, and classroom reading.
 
 ## Problem
 
 ### When reading falls behind, everything else follows.
 
-Parents often notice the signs early — guessing at words, avoiding books, struggling with homework that requires reading across subjects. By 3rd grade, these gaps can compound into frustration that affects confidence in every class.
+Parents often notice the signs early: guessing at words, avoiding books, or struggling with homework that depends on reading across subjects. Over time, those gaps can affect confidence far beyond language arts.
 
-Many families try extra practice at home but hit a wall. Without targeted instruction that meets the student where they actually are, reading struggles tend to grow quietly until they become urgent.
+Many families try more practice at home, but what students usually need is targeted instruction that matches the exact skill they are missing.
 
 ## Approach
 
 ### How Cedar builds stronger readers.
 
-We start with an honest assessment of where each student stands — not where their grade level says they should be. From there, we build a plan that targets the specific skills holding them back.
+We start with an honest look at where the student is now and then build a plan around the skills holding them back.
 
-- Phonics and decoding for early readers who need foundational support
-- Fluency practice that builds speed and expression naturally
+- Phonics and decoding for students who need foundational support
+- Fluency practice that builds smoother, more confident reading
 - Comprehension strategies for understanding what they read, not just saying the words
-- Vocabulary building tied to grade-level expectations and real reading material
+- Vocabulary support tied to grade-level expectations and real reading material
 
 ## Outcomes
 
 ### What parents can expect.
 
-- Improved reading fluency and accuracy within the first 8–12 weeks
-- Stronger comprehension across school subjects
+- Better reading fluency and accuracy over time
+- Stronger comprehension across subjects
 - More willingness to read independently
-- Calmer homework routines involving reading
-- Regular progress updates with clear next steps
+- Less frustration during homework and class reading
+- Regular updates with specific next steps

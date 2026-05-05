@@ -3,19 +3,19 @@ component: "StorySection"
 order: 3
 eyebrow: "Our story"
 missionTitle: "Our mission"
-missionText: "Help every student build confidence, close skill gaps, and grow with instruction that is personal enough to adapt and structured enough to produce real results."
+missionText: "Help students grow into confident, independent learners through patient teaching, clear structure, and support that fits real family life."
 valuesTitle: "What guides our work"
 values:
-  - "Personalized plans that start with assessment, goals, and the student's pace"
-  - "Warm, high-expectation teaching that builds confidence without lowering standards"
-  - "Clear communication so parents always understand progress and next steps"
-  - "Flexible support designed for real family schedules and long-term growth"
+  - "Start with the student in front of us, not a preset package"
+  - "Teach with warmth, patience, and high expectations"
+  - "Keep parents informed with honest, practical communication"
+  - "Build routines and skills that last beyond this week's homework"
 ---
 
-# Cedar started with a simple belief: students grow fastest when they feel known.
+# Cedar started with a simple goal: give local families a place where their child would truly be known.
 
-Cedar was founded to give local families an option that felt more personal than crowded tutoring chains and more structured than occasional homework help. From the beginning, the goal was to combine strong teaching with the kind of consistency parents can trust.
+Cedar grew out of years of working closely with students and seeing how many families were stuck between crowded tutoring centers and trying to handle everything alone at home. The idea was simple: create one dependable place in Plano where students could get real academic help and parents could get honest guidance.
 
-Today, Cedar serves students across core academics and test prep with small groups, clear plans, and thoughtful communication. Every recommendation starts with understanding the student in front of us, not forcing them into a generic package.
+From the beginning, Cedar focused on small groups, careful assessment, and tutors who know how to teach without overwhelming students. That means meeting a child where they are, building trust first, and then working steadily toward stronger skills and more confidence.
 
-That local, relationship-first approach still shapes every session. We want students to leave feeling more capable, parents to feel more informed, and progress to feel visible week after week.
+Today, families come to Cedar for reading, math, writing, science, Arabic, homework help, and test prep. What keeps them coming back is the feeling that someone truly notices their child, communicates clearly, and cares about the small wins as much as the big ones.

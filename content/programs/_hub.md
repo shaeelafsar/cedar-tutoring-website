@@ -3,7 +3,7 @@ component: "ProgramsHub"
 sectionEyebrow: "Our programs"
 seo:
   title: "K-12 Tutoring Programs | Cedar Tutoring Academy"
-  description: "Explore Cedar Tutoring Academy programs in reading, math, writing, science, Arabic, and homework help for K-12 students and families across Dallas-Fort Worth."
+  description: "Explore Cedar Tutoring Academy programs in reading, math, writing, science, Arabic, and homework help for K-12 students in Plano and nearby communities."
 cardLinkLabel: "Learn more"
 detailPage:
   problemEyebrow: "The challenge"
@@ -55,8 +55,8 @@ finalCta:
 
 # Academic programs built around your child's real needs.
 
-Every student learns differently. Cedar offers focused, small-group tutoring across core subjects — each built to meet students where they are and move them forward with confidence.
+Cedar offers focused tutoring in the subjects families ask for most, with small groups, patient instruction, and clear next steps after the first assessment.
 
 ## Focused support across every core subject.
 
-Each program is designed to close real skill gaps — not just cover curriculum. Students get personalized instruction in small groups of three or fewer, with assessment-led planning and progress parents can actually see.
+Each program is designed to address real gaps, reduce frustration, and help students feel more capable in school—not just finish another worksheet.

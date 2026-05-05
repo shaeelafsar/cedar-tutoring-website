@@ -222,3 +222,5 @@ Trinity implemented Morpheus's JSON-first content layer foundation and migrated 
 - Migrated reusable testimonials, FAQs, pricing tiers, locations, team members, and site navigation/footer metadata into Markdown-backed content sources; deleted all legacy `content/**/*.json` files.
 - Updated server/client integration so site metadata now originates from Markdown while remaining safe for client-rendered header and assessment form components.
 - Validation: `npm run build` ✅; `npm run lint` still fails only on pre-existing `.squad/templates/ralph-triage.js` issues unrelated to this migration.
+
+**Decision Approved (Scribe merged from inbox):** Trinity's Markdown migration decision now recorded in canonical decisions ledger. Editorial interface now component-centric instead of JSON-document-centric. Next: Oracle to cross-validate content schema against running Next.js app.

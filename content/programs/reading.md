@@ -2,7 +2,7 @@
 slug: "reading"
 title: "Reading Tutoring"
 shortTitle: "Reading"
-shortDescription: "Support for fluency, comprehension, vocabulary, and confidence when school reading starts to feel frustrating."
+shortDescription: "Reading support that builds strong foundations students can use in the classroom and beyond."
 iconName: "book-open"
 grades: "K–8"
 tags:
@@ -10,10 +10,10 @@ tags:
   - "literacy"
 seo:
   title: "Reading Tutoring for K-8 Students | Cedar Tutoring Academy"
-  description: "Build fluency, comprehension, and vocabulary with Cedar Tutoring Academy reading tutoring for K-8 students in Plano and nearby communities."
+  description: "Reading tutoring that helps students build a strong foundation they can use in the classroom and beyond."
 testimonialIds:
-  - "reading-1"
-  - "reading-2"
+  - "m-abuelhawa"
+  - "candice-joseph"
 relatedPrograms:
   - "writing"
   - "homework-help"
@@ -32,35 +32,33 @@ cta:
     href: "/book-assessment"
 ---
 
-# Reading tutoring that builds fluency, comprehension, and real confidence.
+# Reading tutoring that builds a strong foundation for lifelong learning.
 
-When reading feels hard, everything else in school gets harder too. Cedar helps students close gaps, build skills, and feel less intimidated by books, assignments, and classroom reading.
+Reading & Writing allow students to prosper in classroom and beyond. Building a strong foundation at an early age is essential for your child to enable them to build upon what they already know, and to advance throughout each subsequent grade level. Cedar helps your child reach their full potential by instilling a strong foundation of reading & writing that can be applied not only in the classroom, but beyond as well.
 
 ## Problem
 
-### When reading falls behind, everything else follows.
+### When foundational reading skills are weak, every grade becomes harder.
 
-Parents often notice the signs early: guessing at words, avoiding books, or struggling with homework that depends on reading across subjects. Over time, those gaps can affect confidence far beyond language arts.
-
-Many families try more practice at home, but what students usually need is targeted instruction that matches the exact skill they are missing.
+Students who struggle with reading often have a harder time keeping up across subjects. Without a strong early foundation, it becomes more difficult to build on what they already know as school demands increase.
 
 ## Approach
 
-### How Cedar builds stronger readers.
+### How Cedar helps students grow as readers.
 
-We start with an honest look at where the student is now and then build a plan around the skills holding them back.
+Building a strong foundation at an early age is essential for your child to enable them to build upon what they already know, and to advance throughout each subsequent grade level.
 
-- Phonics and decoding for students who need foundational support
-- Fluency practice that builds smoother, more confident reading
-- Comprehension strategies for understanding what they read, not just saying the words
-- Vocabulary support tied to grade-level expectations and real reading material
+- Foundational reading support matched to the student's current level
+- Skill-building that helps students prosper in classroom and beyond
+- Instruction focused on helping students build on what they already know
+- Support designed to help your child reach their full potential
 
 ## Outcomes
 
-### What parents can expect.
+### What families can expect from reading tutoring.
 
-- Better reading fluency and accuracy over time
-- Stronger comprehension across subjects
-- More willingness to read independently
-- Less frustration during homework and class reading
-- Regular updates with specific next steps
+- Stronger foundational reading skills
+- Better readiness for each subsequent grade level
+- More confidence in the classroom and beyond
+- Greater ability to build on existing knowledge
+- Progress that supports long-term academic growth

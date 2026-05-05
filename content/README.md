@@ -215,9 +215,9 @@ Look for the `featuredIds:` list.
 
 ```yaml
 featuredIds:
-  - "math-1"
-  - "reading-2"
-  - "google-jane-doe-1735344000"
+  - "malak-ibrahim"
+  - "m-abuelhawa"
+  - "jen-lopez"
 ```
 
 You can replace IDs in this list with other testimonial IDs that already exist in `content/pages/reviews/testimonials.md`.

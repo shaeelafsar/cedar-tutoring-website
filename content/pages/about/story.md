@@ -12,10 +12,10 @@ values:
   - "Build routines and skills that last beyond this week's homework"
 ---
 
-# Cedar started with a simple goal: give local families a place where their child would truly be known.
+# Cedar Tutoring Academy® was founded by Asmah to give local families the kind of academic support she wanted students to truly feel.
 
-Cedar grew out of years of working closely with students and seeing how many families were stuck between crowded tutoring centers and trying to handle everything alone at home. The idea was simple: create one dependable place in Plano where students could get real academic help and parents could get honest guidance.
+Asmah built Cedar Tutoring Academy® to be a welcoming place in Plano where students could get expert help in Reading, Science, Math, and Writing while families received honest guidance and flexible support. As director and founder, she shaped Cedar around the idea that students learn best when they are known, encouraged, and taught with purpose.
 
-From the beginning, Cedar focused on small groups, careful assessment, and tutors who know how to teach without overwhelming students. That means meeting a child where they are, building trust first, and then working steadily toward stronger skills and more confidence.
+From the beginning, Cedar focused on one-to-one and small group instruction, active learning, and efficient plans that identify a child's weaknesses from day one. That approach gives students individualized attention, helps them build confidence, and creates steady progress without overwhelming family schedules.
 
-Today, families come to Cedar for reading, math, writing, science, Arabic, homework help, and test prep. What keeps them coming back is the feeling that someone truly notices their child, communicates clearly, and cares about the small wins as much as the big ones.
+Today, families come to Cedar for reading, writing, science, math, history support, ACT & SAT prep, and homework help. What keeps them coming back is the caring environment Asmah and her team have created—one where students feel safe, challenged, and proud of the progress they are making.

@@ -8,8 +8,7 @@ grades: "8–11"
 seo:
   title: "PSAT Prep Tutoring | Cedar Tutoring Academy"
   description: "Build PSAT confidence with Cedar Tutoring Academy through early strategy coaching, timed practice, and skill review for Plano-area students."
-testimonialIds:
-  - "psat-1"
+testimonialIds: []
 relatedTests:
   - "sat"
   - "act"

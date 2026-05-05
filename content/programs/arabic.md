@@ -11,7 +11,7 @@ seo:
   title: "Arabic Tutoring for K-12 Students | Cedar Tutoring Academy"
   description: "Build Arabic reading, writing, and comprehension with Cedar Tutoring Academy tutoring for K-12 students in Plano and nearby communities."
 testimonialIds:
-  - "arabic-1"
+  - "rubba-salhi"
 relatedPrograms:
   - "reading"
   - "writing"
@@ -38,27 +38,24 @@ Whether your child is learning Arabic for the first time or strengthening what t
 
 ### Learning Arabic without structure often leads to slow, frustrating progress.
 
-Many families want their children to learn Arabic but struggle to find instruction that is both consistent and age-appropriate. Short weekly exposure alone is often not enough, and practicing at home without a clear sequence can feel scattered.
-
-Children need regular review, patient guidance, and a learning path that builds week by week.
+Students need repetition, clear teaching, and regular practice to build confidence in a second language. Without that consistency, it becomes easy to forget what they learned or feel stuck at the same level.
 
 ## Approach
 
-### How Cedar teaches Arabic effectively.
+### How Cedar builds Arabic skills over time.
 
-We combine structured instruction with a warm teaching style so students build skills in a logical sequence.
+We use structured instruction to help students grow in reading, writing, vocabulary, and comprehension.
 
-- Letter recognition, reading, and writing foundations for beginners
-- Vocabulary growth tied to practical, age-appropriate contexts
-- Grammar and sentence structure for developing learners
-- Comprehension practice through stories, conversation, and guided reading
+- Instruction matched to the student's level and goals
+- Practice in reading and writing, not just memorization
+- A steady pace that builds familiarity and confidence
+- Support that helps families stay consistent week to week
 
 ## Outcomes
 
-### What parents can expect.
+### What families can expect.
 
-- Consistent progress in Arabic reading and writing
-- Growing vocabulary and comprehension confidence
-- A clearer learning path from one level to the next
-- Warm, culturally respectful instruction
-- Regular updates on skill growth and next steps
+- Stronger Arabic reading and writing skills
+- Better vocabulary retention and comprehension
+- More confidence using Arabic regularly
+- Clear progress through steady, structured support

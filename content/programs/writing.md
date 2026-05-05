@@ -2,7 +2,7 @@
 slug: "writing"
 title: "Writing Tutoring"
 shortTitle: "Writing"
-shortDescription: "Coaching for sentence structure, grammar, organization, and clearer academic writing across grade levels."
+shortDescription: "Writing support that helps students build a strong foundation they can use in the classroom and beyond."
 iconName: "pen-tool"
 grades: "2–12"
 tags:
@@ -10,9 +10,10 @@ tags:
   - "literacy"
 seo:
   title: "Writing Tutoring for Grades 2-12 | Cedar Tutoring Academy"
-  description: "Improve grammar, organization, and academic writing with Cedar Tutoring Academy support for students in Plano and nearby communities."
+  description: "Writing tutoring that helps students build a strong foundation they can use in the classroom and beyond."
 testimonialIds:
-  - "writing-1"
+  - "anna-galan"
+  - "mukesh-singh"
 relatedPrograms:
   - "reading"
   - "homework-help"
@@ -31,35 +32,33 @@ cta:
     href: "/book-assessment"
 ---
 
-# Writing tutoring that builds structure, clarity, and confidence on paper.
+# Writing tutoring that helps students prosper in the classroom and beyond.
 
-When students can organize their thoughts and express them clearly, school gets easier. Cedar helps make that happen one skill at a time.
+Reading & Writing allow students to prosper in classroom and beyond. Building a strong foundation at an early age is essential for your child to enable them to build upon what they already know, and to advance throughout each subsequent grade level. Cedar helps your child reach their full potential by instilling a strong foundation of reading & writing that can be applied not only in the classroom, but beyond as well.
 
 ## Problem
 
-### Writing struggles often hide behind other frustrations.
+### Writing gaps make it harder for students to show what they know.
 
-Some students can explain an idea out loud but freeze when it is time to write. Others spend hours on a short assignment because they do not know how to start, organize, or revise what they wrote.
-
-Because writing shows up in every subject, weak writing skills can quietly affect grades far beyond English class.
+When students do not have a strong writing foundation, they can struggle to organize ideas, express themselves clearly, and keep pace with the expectations of each new grade level.
 
 ## Approach
 
-### How Cedar develops stronger writers.
+### How Cedar helps students become stronger writers.
 
-We focus on the building blocks students need most: sentence structure, organization, grammar, and the ability to explain ideas clearly.
+Cedar helps your child reach their full potential by instilling a strong foundation of reading & writing that can be applied not only in the classroom, but beyond as well.
 
-- Sentence-level instruction for students building foundational skills
-- Paragraph and essay organization using repeatable structures
-- Grammar and mechanics taught in context, not isolation
-- Academic writing help for reports, essays, and response questions
+- Foundational writing support matched to grade level and current skill
+- Practice that helps students build on what they already know
+- Writing instruction that supports success in classroom and beyond
+- A steady focus on helping each child reach their full potential
 
 ## Outcomes
 
-### What parents can expect.
+### What families can expect from writing tutoring.
 
-- Clearer, more organized writing across subjects
-- Stronger grammar and sentence construction
-- Less avoidance around essays and written assignments
-- Better performance on classroom writing tasks
-- Regular feedback and writing samples when helpful
+- Stronger foundational writing skills
+- Better readiness for essays, responses, and classroom assignments
+- More confidence expressing ideas clearly
+- Progress that supports each subsequent grade level
+- Writing skills students can apply beyond the classroom

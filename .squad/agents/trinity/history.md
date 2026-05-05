@@ -247,3 +247,10 @@ Trinity implemented Morpheus's JSON-first content layer foundation and migrated 
 - Expanded `content/README.md` into a clearer editor-facing handbook with page/file mapping, safer editing guidance, common tasks, preview instructions, and examples for homepage, FAQ, testimonials, pricing, navigation, and program updates.
 - Added `scripts/README.md` documenting the Google Reviews sync workflow, prerequisites, dry-run/write commands, updated files, and common failure modes.
 - Validation: `npm run build` ✅; `npx playwright test --project=mobile-chrome` ✅ (13 passed); `npm run lint` still fails only because of pre-existing `.squad/templates/ralph-triage.js` issues unrelated to this documentation work.
+
+### Live WordPress Content Migration (2026-05-05T18:05:56.453-05:00)
+**Status:** ✅ COMPLETED  
+- Replaced homepage, programs, reviews, metadata, and about-story Markdown copy with real cedartutoring.com messaging, including the live hero welcome text, differentiators, success expectations, programs intro, proof bar, and Cedar tagline.
+- Swapped the testimonial collection from placeholder/direct quotes to 18 real Google reviews, updated homepage featured review IDs, and refreshed dependent content references so program, homework help, Arabic, assessment, and test-prep pages no longer point at removed placeholder IDs.
+- Updated math, science, reading, and writing program bodies to use the live Cedar subject descriptions while preserving the existing Markdown/YAML content model.
+- Validation: `npm run build` ✅.

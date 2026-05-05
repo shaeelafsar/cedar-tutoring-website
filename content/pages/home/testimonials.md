@@ -1,13 +1,13 @@
 ---
 component: "Testimonials"
 order: 3
-eyebrow: "Parent proof"
+eyebrow: "Google reviews"
 featuredIds:
-  - "home-layla-routine"
-  - "home-maria-logistics"
-  - "home-samir-results"
+  - "malak-ibrahim"
+  - "m-abuelhawa"
+  - "jen-lopez"
 ---
 
-# What families notice most: calmer routines, clearer progress, and growing confidence.
+# Real stories from Cedar's 5.0-rated Google reviews.
 
-Real stories from families who found steady support, clearer communication, and learning that feels more manageable at home.
+Featured feedback from Plano families who have seen stronger skills, higher confidence, and caring support at Cedar Tutoring Academy®.

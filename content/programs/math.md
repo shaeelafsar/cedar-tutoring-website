@@ -2,7 +2,7 @@
 slug: "math"
 title: "Math Tutoring"
 shortTitle: "Math"
-shortDescription: "Step-by-step support from foundational arithmetic to algebra, geometry, and beyond—at the student's real level."
+shortDescription: "Math tutoring for elementary school through high school, including Algebra, Geometry, and Calculus."
 iconName: "calculator"
 grades: "K–12"
 tags:
@@ -10,10 +10,10 @@ tags:
   - "stem"
 seo:
   title: "Math Tutoring for K-12 Students | Cedar Tutoring Academy"
-  description: "Strengthen math skills from arithmetic through algebra and higher-level courses with Cedar Tutoring Academy support for Plano-area K-12 students."
+  description: "We offer math tutoring for elementary school to high school levels including Algebra, Geometry, and Calculus tutoring."
 testimonialIds:
-  - "math-1"
-  - "math-2"
+  - "malak-ibrahim"
+  - "rawan-shalan"
 relatedPrograms:
   - "science"
   - "homework-help"
@@ -32,35 +32,33 @@ cta:
     href: "/book-assessment"
 ---
 
-# Math tutoring that meets students where they actually are.
+# Math tutoring that helps students build strong foundations and lasting confidence.
 
-From foundational arithmetic to algebra and beyond, Cedar builds understanding step by step so math stops feeling impossible and starts feeling manageable.
+We offer math tutoring for elementary school to high school levels including Algebra, Geometry, and Calculus tutoring. We help students build the foundations in math so that they are able to continue building upon these skills and applying them inside and outside of the classroom. We are dedicated to helping your child understand and succeed in math.
 
 ## Problem
 
-### When math gaps go unaddressed, frustration grows fast.
+### When math foundations are weak, every new topic feels harder.
 
-Math builds on itself. A shaky foundation in fractions shows up again in algebra. A gap in number sense becomes a wall in later classes. Parents often watch confidence drop long before they know exactly where the real gap is.
-
-Many students are not “bad at math”—they are stuck on skills that were never fully mastered. Without targeted support, that frustration compounds from one unit to the next.
+Many students struggle in math because earlier skills were never fully mastered. As new units build on old ones, confusion grows, homework takes longer, and confidence starts to fall.
 
 ## Approach
 
-### How Cedar builds mathematical confidence.
+### How Cedar supports math growth.
 
-We assess where students actually are—not just their grade level—and build sessions around the specific skills they need most.
+We help students build the foundations in math so that they are able to continue building upon these skills and applying them inside and outside of the classroom.
 
-- Foundational skills like number sense, operations, and fact fluency for younger students
-- Concept-based instruction for fractions, decimals, and pre-algebra readiness
-- Algebra, geometry, and higher math with step-by-step problem solving
-- Strategy support for quizzes, unit tests, and standardized test math
+- Elementary school math support tailored to foundational skills
+- Algebra, Geometry, and Calculus tutoring for older students
+- Step-by-step instruction that helps students understand what they are doing
+- Practical support students can apply inside and outside of the classroom
 
 ## Outcomes
 
-### What parents can expect.
+### What families can expect from math tutoring.
 
-- Stronger problem-solving skills and fewer careless errors
-- More confidence starting homework without shutting down
-- Better grades and a clearer understanding of core concepts
-- Less tension around math at home
-- Regular updates on what is improving and what still needs support
+- Stronger math foundations
+- Better understanding of current coursework
+- More confidence during homework and classwork
+- Skills students can keep building on over time
+- Support focused on helping your child understand and succeed in math

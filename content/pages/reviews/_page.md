@@ -2,16 +2,16 @@
 component: "ReviewsPage"
 seo:
   title: "Parent & Student Reviews | Cedar Tutoring Academy"
-  description: "Read parent and student reviews of Cedar Tutoring Academy to see how Plano-area families describe calmer routines, stronger skills, and growing confidence."
-eyebrow: "Trusted by local families"
+  description: "Read real Google reviews for Cedar Tutoring Academy and see why Plano families trust Cedar for reading, math, writing, science, homework help, and more."
+eyebrow: "Trusted on Google"
 filtersEyebrow: "Browse by fit"
 stats:
   - value: "5.0 / 5"
     label: "Average rating"
-    detail: "Families often mention calmer routines, clearer communication, and progress they can actually see."
-  - value: "15"
+    detail: "Based on 122 Google reviews from Cedar families."
+  - value: "122"
     label: "Published reviews"
-    detail: "Collected across homework help, subject tutoring, and test prep."
+    detail: "Collected from Cedar Tutoring Academy's Google Business Profile."
   - value: "10+"
     label: "Years serving local students"
     detail: "Cedar has supported Plano-area families for more than a decade."
@@ -68,9 +68,9 @@ finalCta:
     - "Support across K–12 and test prep"
 ---
 
-# What parents and students say after working with Cedar.
+# Real Google reviews from Cedar families.
 
-These reviews reflect the moments families care about most: calmer evenings, clearer communication, stronger confidence, and progress that feels real.
+These reviews reflect the moments families care about most: stronger skills, growing confidence, flexible support, and progress that feels real.
 
 ## Find stories that feel closest to your child's goals.
 

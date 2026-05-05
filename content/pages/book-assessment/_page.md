@@ -29,9 +29,9 @@ stepsSection:
       title: "4. Custom learning plan"
       description: "You'll leave with a personalized recommendation for program mix, location, schedule, and next steps — with no pressure to enroll."
 testimonialIds:
-  - "home-layla-routine"
-  - "math-2"
-  - "sat-1"
+  - "malak-ibrahim"
+  - "jen-lopez"
+  - "nathan-suarez"
 faqItems:
   - question: "Is the assessment really free?"
     answer: "Yes. The initial learning assessment and follow-up recommendation are completely free, with no obligation to enroll afterward."

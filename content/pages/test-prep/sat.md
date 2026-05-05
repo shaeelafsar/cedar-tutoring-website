@@ -8,9 +8,7 @@ grades: "9–12"
 seo:
   title: "SAT Prep Tutoring | Cedar Tutoring Academy"
   description: "Prepare for the Digital SAT with Cedar Tutoring Academy through timed practice, strategy coaching, and targeted review for Plano-area students."
-testimonialIds:
-  - "sat-1"
-  - "sat-2"
+testimonialIds: []
 relatedTests:
   - "psat"
   - "act"

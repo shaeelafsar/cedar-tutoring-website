@@ -11,7 +11,7 @@ seo:
   title: "Homework Help for K-12 Students | Cedar Tutoring Academy"
   description: "Create calmer routines with Cedar Tutoring Academy homework help for K-12 students in Plano and nearby communities who need structure, accountability, and support."
 testimonialIds:
-  - "homework-help-1"
+  - "jen-lopez"
 relatedPrograms:
   - "reading"
   - "math"
@@ -38,27 +38,24 @@ Cedar's homework help gives students the structure and support they need to fini
 
 ### Homework battles drain families every evening.
 
-The after-school struggle is familiar: assignments that should take 30 minutes turn into two hours, students shut down, and parents end up feeling like frustrated backup teachers.
-
-Most students do not need someone to hand them answers. They need support with organization, starting tasks, staying focused, and pushing through the hard parts.
+Students often know some of the material, but they still need help getting started, staying focused, and working through assignments without shutting down.
 
 ## Approach
 
-### How Cedar makes homework manageable.
+### How Cedar supports daily school success.
 
-Our homework help sessions are designed to build executive-function skills and consistency, not just get the worksheet done.
+Homework help focuses on daily assignments, organization, and follow-through so students can use tutoring time to make school work more manageable.
 
-- Structured after-school sessions with clear start and end routines
-- Task prioritization and time-management support
-- Subject-specific help when students get stuck
-- Accountability and encouragement that build independent habits over time
+- Support across core classroom assignments
+- Help building routines around school work and deadlines
+- Guided accountability that keeps students moving forward
+- A calmer, more consistent after-school rhythm
 
 ## Outcomes
 
-### What parents can expect.
+### What families can expect.
 
-- Calmer, more predictable after-school routines
-- Homework completed more independently and consistently
-- Better organization and time management
-- Less parent-child conflict over schoolwork
-- Regular updates on homework habits and emerging skill gaps
+- Less stress around homework at home
+- Better follow-through on assignments
+- More independent work habits
+- Stronger confidence with day-to-day school routines

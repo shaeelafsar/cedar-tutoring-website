@@ -1,10 +1,10 @@
 ---
 component: "Hero"
 order: 1
-eyebrow: "Plano, TX • K–12 tutoring & test prep"
+eyebrow: "Affordable Tutoring, Guaranteed Results"
 seo:
-  title: "Personalized K-12 Tutoring in Plano, TX | Cedar Tutoring Academy"
-  description: "Explore personalized K-12 tutoring in Plano, TX for reading, math, writing, science, Arabic, homework help, and test prep with caring local teachers."
+  title: "Affordable Tutoring, Guaranteed Results | Cedar Tutoring Academy"
+  description: "Cedar Tutoring Academy® strengthens your child's academic abilities in Reading, Science, Math, and Writing—efficiently and effectively. Our renowned methods help your child foster a love of learning while giving them the tools and confidence to perform at their best."
 primaryCta:
   label: "Book a Free Assessment"
   href: "/book-assessment"
@@ -20,6 +20,6 @@ stats:
     label: "All grades"
 ---
 
-# Personalized tutoring that helps Plano students catch up, keep up, and feel confident again.
+# WELCOME TO CEDAR TUTORING ACADEMY!
 
-From early reading to SAT prep, Cedar pairs students with caring local tutors, small-group instruction, flexible scheduling, and progress updates parents can actually use.
+Cedar Tutoring Academy® strengthens your child's academic abilities in Reading, Science, Math, and Writing—efficiently and effectively. Our renowned methods help your child foster a love of learning while giving them the tools and confidence to perform at their best.

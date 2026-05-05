@@ -2,16 +2,15 @@
 slug: "science"
 title: "Science Tutoring"
 shortTitle: "Science"
-shortDescription: "Concept clarity, study strategies, and skill-building for students who need science to feel less overwhelming."
+shortDescription: "Science tutoring for a wide range of subjects, including biology, chemistry, anatomy, physics, and more."
 iconName: "flask-conical"
 grades: "5–12"
 tags:
   - "stem"
 seo:
   title: "Science Tutoring for Grades 5-12 | Cedar Tutoring Academy"
-  description: "Get science tutoring for biology, chemistry, physics, and more with Cedar Tutoring Academy support for grades 5-12 in Plano and nearby communities."
-testimonialIds:
-  - "science-1"
+  description: "Science tutoring that helps students in earth science, biology, chemistry, anatomy, physics, and more."
+testimonialIds: []
 relatedPrograms:
   - "math"
   - "homework-help"
@@ -30,35 +29,33 @@ cta:
     href: "/book-assessment"
 ---
 
-# Science tutoring that turns confusion into clarity.
+# Science tutoring that makes challenging subjects more approachable and fun.
 
-When science concepts feel overwhelming, students often memorize without understanding. Cedar helps them slow down, connect the ideas, and feel more capable in class.
+Science is an integral part of learning and can be a tricky subject for many students. At Cedar, we help students of all ages with a variety of science courses, including earth science, biology, chemistry, anatomy, physics, and more. Keeping up with all the information your child is given inside the classroom can be overwhelming. At Cedar, we help make the subject more approachable and fun.
 
 ## Problem
 
-### Science gets harder fast—and catching up can feel impossible.
+### Science can feel overwhelming when students are asked to absorb too much, too quickly.
 
-Science courses move quickly from familiar topics to abstract ideas. A student who did fine in earlier classes can suddenly feel lost once the vocabulary, labs, or formulas become more demanding.
-
-Without structured support, many students fall into a cycle of cramming, forgetting, and losing confidence before the next test.
+Between vocabulary, labs, formulas, and fast-moving lessons, many students fall behind because the subject starts to feel bigger than they can manage on their own.
 
 ## Approach
 
-### How Cedar makes science manageable.
+### How Cedar makes science easier to understand.
 
-We focus on concept clarity first so students understand why something works—not just what to memorize.
+At Cedar, we help students of all ages with a variety of science courses, including earth science, biology, chemistry, anatomy, physics, and more.
 
-- Concept-based instruction that builds real understanding
-- Study strategies for vocabulary-heavy subjects like biology
-- Problem-solving frameworks for chemistry and physics
-- Support with lab reports and scientific writing when needed
+- Support across multiple science subjects and grade levels
+- Clear explanations that help students keep up with classroom information
+- Focused help when science starts to feel tricky or overwhelming
+- Instruction designed to make the subject more approachable and fun
 
 ## Outcomes
 
-### What parents can expect.
+### What families can expect from science tutoring.
 
-- Stronger understanding of key science concepts
-- Better study habits and test preparation strategies
-- Less last-minute cramming before exams
-- More confidence participating in class
-- Clear communication about progress and next steps
+- Better understanding of science concepts
+- More confidence keeping up in class
+- Less overwhelm with tests, homework, and assignments
+- Stronger readiness across current and future science courses
+- A learning experience that feels more approachable and fun

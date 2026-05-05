@@ -1,20 +1,20 @@
 ---
 component: "HowItWorks"
 order: 5
-eyebrow: "How it works"
+eyebrow: "What to Expect"
 steps:
   - number: "1"
-    title: "Free assessment"
-    description: "We learn where your child is now, what feels hard, and what goals matter most to your family."
+    title: "Progress through each topic with confidence"
+    description: "We track your child's progress through each topic. Since your child will be seeing the same tutor every week, we can quickly identify any problems that arise. Short assessments and progress reports will keep you in the loop."
   - number: "2"
-    title: "Custom plan"
-    description: "We recommend the right program, schedule, and support level based on your child's goals, current skills, and family routine."
+    title: "Understand the value of quality homework"
+    description: "Homework is often considered a burden, but at Cedar®, we encourage our students to take advantage of their homework. Students will use homework as an opportunity to identify their weaknesses and build on their strengths. We teach our students to appreciate the value of homework done right!"
   - number: "3"
-    title: "Targeted tutoring"
-    description: "Students get focused instruction, consistent encouragement, and practical strategies they can apply right away."
+    title: "Learn lifelong study skills"
+    description: "Your child is growing up so fast! Soon, he or she will take flight into the world. At Cedar®, we strive to teach our students learning skills that will carry them through middle school, high school, college, and beyond. These lifelong skills will build their confidence and help them succeed on any path they take."
   - number: "4"
-    title: "Progress reviews"
-    description: "Parents stay informed through thoughtful updates, visible wins, and clear next-step recommendations."
+    title: "Gain Positive Results"
+    description: "Our results speak for themselves! With the mix of motivated tutors, enjoyable curriculums, and efficient learning plans, your child will begin to experience grade improvement that translates into more confidence and an increased love of learning."
 ---
 
-# A straightforward process for getting the right support in place.
+# What to Expect: Success!

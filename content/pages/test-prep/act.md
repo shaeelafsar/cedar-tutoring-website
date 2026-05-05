@@ -8,8 +8,7 @@ grades: "10–12"
 seo:
   title: "ACT Prep Tutoring | Cedar Tutoring Academy"
   description: "Get ACT prep from Cedar Tutoring Academy with timed practice, strategy coaching, and focused content review for Plano-area high-school students."
-testimonialIds:
-  - "act-1"
+testimonialIds: []
 relatedTests:
   - "sat"
   - "psat"

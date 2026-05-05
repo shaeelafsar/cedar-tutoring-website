@@ -1,7 +1,7 @@
 ---
 site:
   name: "Cedar Tutoring Academy"
-  tagline: "Where Learning Takes Root"
+  tagline: "Affordable Tutoring, Guaranteed Results"
   url: "https://shaeelafsar.github.io/cedar-tutoring-website"
   phone: "(469) 757-2220"
   email: "info@cedartutoring.com"

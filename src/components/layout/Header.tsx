@@ -29,7 +29,7 @@ import {
 import { useState } from "react";
 import { buttonVariants } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { NAV_ITEMS, SITE_CONFIG, type NavItem } from "@/lib/constants";
+import type { NavItem, SiteConfig } from "@/lib/content/site";
 import { imagePath } from "@/lib/image-path";
 import { cn } from "@/lib/utils";
 
@@ -329,11 +329,16 @@ function BrandLink({ className }: { className?: string }) {
   );
 }
 
-export function Header() {
+interface HeaderProps {
+  navItems: NavItem[];
+  siteConfig: SiteConfig;
+}
+
+export function Header({ navItems, siteConfig }: HeaderProps) {
   const pathname = usePathname();
   const prefersReducedMotion = useReducedMotion() ?? false;
   const [mobileOpen, setMobileOpen] = useState(false);
-  const phoneHref = `tel:+1${SITE_CONFIG.phone.replace(/\D/g, "")}`;
+  const phoneHref = `tel:+1${siteConfig.phone.replace(/\D/g, "")}`;
 
   return (
     <header className="border-border/60 sticky top-0 z-30 border-b bg-white/90 backdrop-blur-lg">
@@ -370,7 +375,7 @@ export function Header() {
                   />
                 </Link>
                 <p className="mt-2 text-xs tracking-wide text-muted-foreground">
-                  {SITE_CONFIG.tagline}
+                  {siteConfig.tagline}
                 </p>
               </div>
 
@@ -381,7 +386,7 @@ export function Header() {
                 initial={prefersReducedMotion ? false : "hidden"}
                 animate={prefersReducedMotion ? undefined : "visible"}
               >
-                {NAV_ITEMS.map((item) => (
+                {navItems.map((item) => (
                   <MobileNavLink
                     key={`${item.href}-${isPathActive(pathname, item.href) ? "active" : "inactive"}`}
                     item={item}
@@ -411,16 +416,16 @@ export function Header() {
                     href={phoneHref}
                     className="rounded-sm transition-colors hover:text-[hsl(var(--primary-text))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2"
                   >
-                    {SITE_CONFIG.phone}
+                    {siteConfig.phone}
                   </a>
                 </div>
                 <div className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
                   <Mail className="h-4 w-4 shrink-0" />
                   <a
-                    href={`mailto:${SITE_CONFIG.email}`}
+                    href={`mailto:${siteConfig.email}`}
                     className="rounded-sm transition-colors hover:text-[hsl(var(--primary-text))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2"
                   >
-                    {SITE_CONFIG.email}
+                    {siteConfig.email}
                   </a>
                 </div>
               </div>
@@ -436,7 +441,7 @@ export function Header() {
             className="hidden items-center gap-6 lg:flex"
             aria-label="Primary navigation"
           >
-            {NAV_ITEMS.map((item) => (
+            {navItems.map((item) => (
               <NavLink key={item.href} item={item} pathname={pathname} />
             ))}
           </nav>

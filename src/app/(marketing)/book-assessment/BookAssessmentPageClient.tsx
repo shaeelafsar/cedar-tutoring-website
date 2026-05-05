@@ -26,7 +26,7 @@ import type {
 import { FAQAccordion } from "@/components/shared/FAQAccordion";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { SITE_CONFIG } from "@/lib/constants";
+import type { SiteConfig } from "@/lib/content/site";
 import { imagePath } from "@/lib/image-path";
 import { cn } from "@/lib/utils";
 
@@ -39,6 +39,7 @@ interface BookAssessmentPageClientProps {
   pageContent: BookAssessmentPageContent;
   locations: LocationContent[];
   programOptions: ProgramOption[];
+  siteConfig: SiteConfig;
   testimonials: Testimonial[];
 }
 
@@ -164,6 +165,7 @@ export function BookAssessmentPageClient({
   pageContent,
   locations,
   programOptions,
+  siteConfig,
   testimonials,
 }: BookAssessmentPageClientProps) {
   const prefersReducedMotion = useReducedMotion();
@@ -318,10 +320,10 @@ export function BookAssessmentPageClient({
                     {pageContent.formIntro.reassurance}
                   </span>{" "}
                   <a
-                    href={formatPhoneHref(SITE_CONFIG.phone)}
+                    href={formatPhoneHref(siteConfig.phone)}
                     className="font-semibold text-[hsl(var(--primary-text))] underline-offset-4 hover:underline"
                   >
-                    {SITE_CONFIG.phone}
+                    {siteConfig.phone}
                   </a>
                 </p>
               </div>
@@ -374,7 +376,7 @@ export function BookAssessmentPageClient({
 
                       <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                         <a
-                          href={formatPhoneHref(SITE_CONFIG.phone)}
+                          href={formatPhoneHref(siteConfig.phone)}
                           className="bg-accent hover:bg-accent/90 text-accent-foreground inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold transition-colors"
                         >
                           Call Cedar now
@@ -947,14 +949,14 @@ export function BookAssessmentPageClient({
 
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                   <a
-                    href={formatPhoneHref(SITE_CONFIG.phone)}
+                    href={formatPhoneHref(siteConfig.phone)}
                     className="bg-accent text-accent-foreground hover:bg-accent/90 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold transition-colors"
                   >
-                    Call {SITE_CONFIG.phone}
+                    Call {siteConfig.phone}
                     <PhoneCall className="size-4" />
                   </a>
                   <a
-                    href={`mailto:${SITE_CONFIG.email}`}
+                    href={`mailto:${siteConfig.email}`}
                     className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/8 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/14"
                   >
                     Email Cedar

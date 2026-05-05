@@ -214,3 +214,11 @@ Trinity implemented Morpheus's JSON-first content layer foundation and migrated 
 - Added structured data coverage for the homepage (`EducationalOrganization`), FAQ (`FAQPage`), reviews (`AggregateRating` + `Review`), locations (`LocalBusiness`), and pricing (`Service` + `Offer`) via a reusable `JsonLd` helper.
 - Created static-export-safe `src/app/sitemap.ts` and `src/app/robots.ts`, updated SEO copy in the JSON content layer to 150–160 character descriptions, and confirmed sitemap/robots export output.
 - Validation: `npm run build` ✅; `npm run lint` still fails only on pre-existing `.squad/templates/ralph-triage.js` issues unrelated to Slice 8.
+
+### Markdown Content Layer Migration (2026-05-04T19:26:14.937-05:00)
+**Status:** ✅ COMPLETED  
+- Replaced the JSON content layer with structured Markdown + YAML frontmatter under `content/pages/**`, `content/programs/**`, and `content/site/metadata.md`, using page-section filenames that map directly to rendered components.
+- Added filesystem-based Markdown loaders with `gray-matter` + `remark`, kept Zod validation in the content layer, and preserved the existing typed page/program/test-prep interfaces so route components stayed mostly unchanged.
+- Migrated reusable testimonials, FAQs, pricing tiers, locations, team members, and site navigation/footer metadata into Markdown-backed content sources; deleted all legacy `content/**/*.json` files.
+- Updated server/client integration so site metadata now originates from Markdown while remaining safe for client-rendered header and assessment form components.
+- Validation: `npm run build` ✅; `npm run lint` still fails only on pre-existing `.squad/templates/ralph-triage.js` issues unrelated to this migration.

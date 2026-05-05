@@ -4,6 +4,7 @@ import { getLocations, getTestimonialsByIds } from "@/lib/content/collections";
 import { getBookAssessmentPageContent } from "@/lib/content/pages";
 import { getAllPrograms } from "@/lib/content/programs";
 import { getAllTestPrep } from "@/lib/content/testPrep";
+import { SITE_CONFIG } from "@/lib/constants";
 import { buildPageMetadata } from "@/lib/seo";
 
 import { BookAssessmentPageClient } from "./BookAssessmentPageClient";
@@ -36,6 +37,7 @@ export default function BookAssessmentPage() {
       pageContent={pageContent}
       locations={locations}
       programOptions={programOptions}
+      siteConfig={SITE_CONFIG}
       testimonials={testimonials}
     />
   );

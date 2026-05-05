@@ -1,0 +1,65 @@
+---
+slug: "writing"
+title: "Writing Tutoring"
+shortTitle: "Writing"
+shortDescription: "Coaching for sentence structure, grammar, organization, and clearer academic writing across grade levels."
+iconName: "pen-tool"
+grades: "2–12"
+tags:
+  - "core"
+  - "literacy"
+seo:
+  title: "Writing Tutoring for Grades 2-12 | Cedar Tutoring Academy"
+  description: "Improve grammar, structure, and academic writing with Cedar Tutoring Academy tutoring for students in Dallas-Fort Worth who need clearer, stronger work."
+testimonialIds:
+  - "writing-1"
+relatedPrograms:
+  - "reading"
+  - "homework-help"
+faq:
+  - question: "What grade levels do you support for writing?"
+    answer: "We work with students from 2nd grade (sentence and paragraph basics) through 12th grade (academic essays, research writing, and test prep writing)."
+  - question: "Will my child work on their actual school assignments?"
+    answer: "When appropriate, yes. We often use real assignments as teaching opportunities while also building the underlying skills that transfer across all writing tasks."
+  - question: "How is writing tutoring structured?"
+    answer: "Sessions follow a consistent cycle: skill instruction, guided practice, independent writing, and feedback. This builds both skill and confidence over time."
+cta:
+  heading: "Ready to help your child write with confidence?"
+  subtext: "Start with a free assessment. We'll evaluate where your child stands and create a plan for clearer, stronger writing."
+  primaryCta:
+    label: "Book a Free Writing Assessment"
+    href: "/book-assessment"
+---
+
+# Writing tutoring that builds structure, clarity, and confidence on paper.
+
+When students can organize their thoughts and express them clearly, every subject gets easier. Cedar helps make that happen.
+
+## Problem
+
+### Writing struggles often hide behind other frustrations.
+
+A student who can explain an idea out loud but freezes when it's time to write it down. Homework that takes three times longer than it should. Essays that come back with vague feedback but no clear path to improvement.
+
+Writing is tested in every subject, but it's rarely taught with the structure and repetition students need. Without direct instruction in organization, grammar, and revision, writing anxiety grows quietly.
+
+## Approach
+
+### How Cedar develops stronger writers.
+
+We focus on the building blocks: sentence structure, paragraph organization, grammar, and the ability to express ideas clearly and completely. Each session builds on the last.
+
+- Sentence-level instruction for students building foundational writing skills
+- Paragraph and essay organization with clear frameworks
+- Grammar and mechanics taught in context, not isolation
+- Academic writing support for reports, essays, and research assignments
+
+## Outcomes
+
+### What parents can expect.
+
+- Clearer, more organized writing across all subjects
+- Stronger grammar and sentence structure
+- Less frustration and avoidance around writing assignments
+- Improved scores on written portions of tests and assignments
+- Regular samples and progress notes from tutors

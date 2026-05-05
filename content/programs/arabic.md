@@ -1,0 +1,64 @@
+---
+slug: "arabic"
+title: "Arabic Language Tutoring"
+shortTitle: "Arabic"
+shortDescription: "Reading, writing, vocabulary, and comprehension support for children learning Arabic with structure and consistency."
+iconName: "languages"
+grades: "K–12"
+tags:
+  - "language"
+seo:
+  title: "Arabic Tutoring for K-12 Students | Cedar Tutoring Academy"
+  description: "Build Arabic reading, writing, and comprehension with Cedar Tutoring Academy tutoring for K-12 students across Dallas-Fort Worth and nearby communities."
+testimonialIds:
+  - "arabic-1"
+relatedPrograms:
+  - "reading"
+  - "writing"
+faq:
+  - question: "Does my child need prior Arabic knowledge?"
+    answer: "No. We work with complete beginners through advanced learners. Our assessment places each student at the right starting point."
+  - question: "What curriculum do you use for Arabic?"
+    answer: "We use a structured, skills-based approach covering reading, writing, vocabulary, and comprehension. Materials are selected based on the student's level and goals."
+  - question: "Can Cedar help with Quran reading as well?"
+    answer: "Our Arabic program focuses on Modern Standard Arabic language skills. For Quran-specific instruction, we recommend complementing our program with a dedicated Quran teacher."
+cta:
+  heading: "Ready to give your child structured Arabic instruction?"
+  subtext: "Start with a free assessment. We'll evaluate their current level and recommend the right path forward."
+  primaryCta:
+    label: "Book a Free Arabic Assessment"
+    href: "/book-assessment"
+---
+
+# Arabic tutoring with structure, warmth, and real progress.
+
+Whether your child is learning Arabic for the first time or strengthening what they know, Cedar provides the consistency and encouragement they need.
+
+## Problem
+
+### Learning Arabic without structure leads to slow, frustrating progress.
+
+Many families want their children to learn Arabic but struggle to find consistent, structured instruction. Weekend programs alone often aren't enough, and practicing at home without a curriculum can feel scattered.
+
+Children need regular exposure, clear skill progression, and patient guidance. Without that structure, motivation fades and progress stalls — even when the desire to learn is strong.
+
+## Approach
+
+### How Cedar teaches Arabic effectively.
+
+We combine structured curriculum with warm, patient instruction. Students build skills in a logical sequence — from letter recognition and reading through vocabulary, grammar, and conversational comprehension.
+
+- Letter recognition, reading, and writing foundations for beginners
+- Vocabulary building tied to practical, age-appropriate contexts
+- Grammar and sentence structure for intermediate and advanced learners
+- Comprehension practice through stories, conversation, and guided reading
+
+## Outcomes
+
+### What parents can expect.
+
+- Consistent progress in Arabic reading and writing skills
+- Growing vocabulary and comprehension confidence
+- A structured learning path that builds week over week
+- Warm, culturally sensitive instruction
+- Regular updates on progress and skill development

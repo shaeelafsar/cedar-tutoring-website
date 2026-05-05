@@ -1,435 +1,655 @@
 import { z } from "zod";
 
-import type {
-  AboutPageContent,
-  BookAssessmentPageContent,
-  CategorizedFAQItem,
-  ContentImage,
-  CtaBlock,
-  FAQItem,
-  FaqPageContent,
-  FilterGroup,
-  HeroContent,
-  HomePageContent,
-  LinkItem,
-  LocationContent,
-  LocationsPageContent,
-  PricingPageContent,
-  PricingTier,
-  ProgramContent,
-  ProgramDetailPageContent,
-  ProgramsHubPageContent,
-  ReviewsPageContent,
-  SeoMeta,
-  TeamMember,
-  Testimonial,
-  TestPrepContent,
-  TestPrepDetailPageContent,
-  TestPrepHubPageContent,
-  ValueCard,
-} from "@/types/content";
+const nonEmptyString = z.string().min(1);
 
-const heroStatSchema = z.object({
-  value: z.string(),
-  label: z.string(),
-  detail: z.string().optional(),
+export const linkItemSchema = z.object({
+  label: nonEmptyString,
+  href: nonEmptyString,
 });
 
-const hourSchema = z.object({
-  label: z.string(),
-  time: z.string(),
+export const seoMetaSchema = z.object({
+  title: nonEmptyString,
+  description: nonEmptyString,
+  ogImage: nonEmptyString.optional(),
 });
 
-const proofBarItemSchema = z.object({
-  iconName: z.string(),
-  label: z.string(),
+export const contentImageSchema = z.object({
+  src: nonEmptyString,
+  alt: nonEmptyString,
 });
 
-const howItWorksStepSchema = z.object({
-  number: z.string(),
-  title: z.string(),
-  description: z.string(),
-});
-
-const iconStepSchema = z.object({
-  iconName: z.string(),
-  title: z.string(),
-  description: z.string(),
-});
-
-const whyCedarItemSchema = z.object({
-  iconName: z.string(),
-  title: z.string(),
-  description: z.string(),
-  checks: z.array(z.string()),
-});
-
-const valueCardSchema: z.ZodType<ValueCard> = z.object({
-  iconName: z.string(),
-  title: z.string(),
-  description: z.string(),
-  bullets: z.array(z.string()).optional(),
-});
-
-const richTextSectionSchema = z.object({
-  heading: z.string(),
-  paragraphs: z.array(z.string()),
-});
-
-const storySectionSchema = z.object({
-  eyebrow: z.string(),
-  heading: z.string(),
-  paragraphs: z.array(z.string()),
-  missionTitle: z.string(),
-  missionText: z.string(),
-  valuesTitle: z.string(),
-  values: z.array(z.string()),
-});
-
-const approachSectionSchema = richTextSectionSchema.extend({
-  bullets: z.array(z.string()),
-});
-
-const outcomesSectionSchema = z.object({
-  heading: z.string(),
-  items: z.array(z.string()),
-});
-
-const sectionShellSchema = z.object({
-  eyebrow: z.string(),
-  heading: z.string(),
-  subtitle: z.string().optional(),
-});
-
-const cardGridSectionSchema = sectionShellSchema.extend({
-  cardLinkLabel: z.string(),
-});
-
-const processSectionSchema = sectionShellSchema.extend({
-  steps: z.array(howItWorksStepSchema),
-});
-
-const faqShellSchema = z.object({
-  eyebrow: z.string(),
-  headingTemplate: z.string(),
-});
-
-const relatedLinksSectionSchema = z.object({
-  eyebrow: z.string(),
-  heading: z.string(),
-  linkLabel: z.string(),
-});
-
-const filterOptionSchema = z.object({
-  id: z.string(),
-  label: z.string(),
-});
-
-const filterGroupSchema: z.ZodType<FilterGroup> = z.object({
-  id: z.string(),
-  label: z.string(),
-  options: z.array(filterOptionSchema),
-});
-
-export const seoMetaSchema: z.ZodType<SeoMeta> = z.object({
-  title: z.string(),
-  description: z.string(),
-  ogImage: z.string().optional(),
-});
-
-export const contentImageSchema: z.ZodType<ContentImage> = z.object({
-  src: z.string(),
-  alt: z.string(),
-});
-
-export const linkItemSchema: z.ZodType<LinkItem> = z.object({
-  label: z.string(),
-  href: z.string(),
-});
-
-export const ctaBlockSchema: z.ZodType<CtaBlock> = z.object({
-  heading: z.string(),
-  subtext: z.string(),
+export const ctaBlockSchema = z.object({
+  heading: nonEmptyString,
+  subtext: nonEmptyString,
   primaryCta: linkItemSchema,
   secondaryCta: linkItemSchema.optional(),
-  trustBullets: z.array(z.string()).optional(),
+  trustBullets: z.array(nonEmptyString).optional(),
 });
 
-export const heroContentSchema: z.ZodType<HeroContent> = z.object({
-  eyebrow: z.string().optional(),
-  heading: z.string(),
-  subtitle: z.string(),
+export const heroContentSchema = z.object({
+  eyebrow: nonEmptyString.optional(),
+  heading: nonEmptyString,
+  subtitle: nonEmptyString,
   primaryCta: linkItemSchema.optional(),
   secondaryCta: linkItemSchema.optional(),
-  stats: z.array(heroStatSchema).optional(),
+  stats: z
+    .array(
+      z.object({
+        value: nonEmptyString,
+        label: nonEmptyString,
+      }),
+    )
+    .optional(),
 });
 
-export const testimonialSchema: z.ZodType<Testimonial> = z.object({
-  id: z.string(),
-  quote: z.string(),
-  author: z.string(),
-  relation: z.string(),
-  location: z.string().optional(),
+export const statItemSchema = z.object({
+  value: nonEmptyString,
+  label: nonEmptyString,
+  detail: nonEmptyString.optional(),
+});
+
+export const collectionOptionSchema = z.object({
+  id: nonEmptyString,
+  label: nonEmptyString,
+});
+
+export const filterGroupSchema = z.object({
+  id: nonEmptyString,
+  label: nonEmptyString,
+  options: z.array(collectionOptionSchema),
+});
+
+export const valueCardSchema = z.object({
+  iconName: nonEmptyString,
+  title: nonEmptyString,
+  description: nonEmptyString,
+  bullets: z.array(nonEmptyString).optional(),
+});
+
+export const testimonialSchema = z.object({
+  id: nonEmptyString,
+  quote: nonEmptyString,
+  author: nonEmptyString,
+  relation: nonEmptyString,
+  location: nonEmptyString.optional(),
   rating: z.number().int().min(1).max(5),
-  badge: z.string().optional(),
+  badge: nonEmptyString.optional(),
   featured: z.boolean().optional(),
-  programSlugs: z.array(z.string()).optional(),
-  testPrepSlugs: z.array(z.string()).optional(),
+  programSlugs: z.array(nonEmptyString).optional(),
+  testPrepSlugs: z.array(nonEmptyString).optional(),
   source: z.enum(["google", "direct"]).optional(),
 });
 
-const faqItemObjectSchema = z.object({
-  question: z.string(),
-  answer: z.string(),
+export const testimonialsSchema = z.array(testimonialSchema);
+
+export const faqItemSchema = z.object({
+  question: nonEmptyString,
+  answer: nonEmptyString,
 });
 
-export const faqItemSchema: z.ZodType<FAQItem> = faqItemObjectSchema;
+export const categorizedFaqItemSchema = faqItemSchema.extend({
+  category: nonEmptyString,
+});
 
-export const categorizedFaqItemSchema: z.ZodType<CategorizedFAQItem> =
-  faqItemObjectSchema.extend({
-    category: z.string(),
-  });
+export const categorizedFaqItemsSchema = z.array(categorizedFaqItemSchema);
 
-export const teamMemberSchema: z.ZodType<TeamMember> = z.object({
-  id: z.string(),
-  name: z.string(),
-  role: z.string(),
-  credentials: z.array(z.string()).optional(),
-  bio: z.string(),
+export const teamMemberSchema = z.object({
+  id: nonEmptyString,
+  name: nonEmptyString,
+  role: nonEmptyString,
+  credentials: z.array(nonEmptyString).optional(),
+  bio: nonEmptyString,
   image: contentImageSchema.optional(),
 });
 
-export const locationContentSchema: z.ZodType<LocationContent> = z.object({
-  id: z.string(),
-  name: z.string(),
-  addressLine1: z.string(),
-  city: z.string(),
-  state: z.string(),
-  zip: z.string(),
-  phone: z.string(),
-  hours: z.array(hourSchema),
-  serviceAreas: z.array(z.string()),
+export const teamMembersSchema = z.array(teamMemberSchema);
+
+export const locationContentSchema = z.object({
+  id: nonEmptyString,
+  name: nonEmptyString,
+  addressLine1: nonEmptyString,
+  city: nonEmptyString,
+  state: nonEmptyString,
+  zip: nonEmptyString,
+  phone: nonEmptyString,
+  hours: z.array(
+    z.object({
+      label: nonEmptyString,
+      time: nonEmptyString,
+    }),
+  ),
+  serviceAreas: z.array(nonEmptyString),
   transportationAvailable: z.boolean().optional(),
-  mapUrl: z.string().optional(),
+  mapUrl: nonEmptyString.optional(),
   image: contentImageSchema.optional(),
 });
 
-export const pricingTierSchema: z.ZodType<PricingTier> = z.object({
-  id: z.string(),
-  name: z.string(),
-  priceLabel: z.string(),
-  cadence: z.string(),
-  description: z.string(),
-  features: z.array(z.string()),
-  badge: z.string().optional(),
+export const locationContentsSchema = z.array(locationContentSchema);
+
+export const pricingTierSchema = z.object({
+  id: nonEmptyString,
+  name: nonEmptyString,
+  priceLabel: nonEmptyString,
+  cadence: nonEmptyString,
+  description: nonEmptyString,
+  features: z.array(nonEmptyString),
+  badge: nonEmptyString.optional(),
   highlighted: z.boolean().optional(),
 });
 
-export const programContentSchema: z.ZodType<ProgramContent> = z.object({
-  slug: z.string(),
-  title: z.string(),
-  shortTitle: z.string(),
-  shortDescription: z.string(),
-  iconName: z.string(),
-  grades: z.string(),
-  tags: z.array(z.string()),
-  seo: seoMetaSchema,
-  hero: heroContentSchema,
-  problem: richTextSectionSchema,
-  approach: approachSectionSchema,
-  outcomes: outcomesSectionSchema,
-  faq: z.array(faqItemSchema),
-  testimonialIds: z.array(z.string()).optional(),
-  relatedPrograms: z.array(z.string()),
-  cta: ctaBlockSchema,
+export const pricingTiersSchema = z.array(pricingTierSchema);
+
+export const sectionShellContentSchema = z.object({
+  eyebrow: nonEmptyString,
+  heading: nonEmptyString,
+  subtitle: nonEmptyString.optional(),
 });
 
-const programDetailPageContentSchema: z.ZodType<ProgramDetailPageContent> =
-  z.object({
-    problemEyebrow: z.string(),
-    approachEyebrow: z.string(),
-    process: processSectionSchema,
-    outcomesEyebrow: z.string(),
-    testimonials: sectionShellSchema,
-    faq: faqShellSchema,
-    related: relatedLinksSectionSchema,
-    ctaTrustBullets: z.array(z.string()),
-  });
-
-export const programsHubPageContentSchema: z.ZodType<ProgramsHubPageContent> =
-  z.object({
-    seo: seoMetaSchema,
-    hero: heroContentSchema,
-    programsSection: cardGridSectionSchema,
-    finalCta: ctaBlockSchema,
-    detailPage: programDetailPageContentSchema,
-  });
-
-export const testPrepContentSchema: z.ZodType<TestPrepContent> = z.object({
-  slug: z.string(),
-  title: z.string(),
-  shortTitle: z.string(),
-  shortDescription: z.string(),
-  iconName: z.string(),
-  grades: z.string(),
-  seo: seoMetaSchema,
-  hero: heroContentSchema,
-  idealFor: z.array(z.string()),
-  focusAreas: z.array(z.string()),
-  format: z.array(z.string()),
-  outcomes: z.array(z.string()),
-  faq: z.array(faqItemSchema),
-  testimonialIds: z.array(z.string()).optional(),
-  relatedTests: z.array(z.string()),
-  cta: ctaBlockSchema,
+export const cardGridSectionContentSchema = sectionShellContentSchema.extend({
+  cardLinkLabel: nonEmptyString,
 });
 
-const testPrepDetailPageContentSchema: z.ZodType<TestPrepDetailPageContent> =
-  z.object({
-    idealFor: sectionShellSchema,
-    focusAreas: sectionShellSchema,
-    process: processSectionSchema,
-    format: sectionShellSchema,
-    outcomes: sectionShellSchema,
-    testimonials: sectionShellSchema,
-    faq: faqShellSchema,
-    related: relatedLinksSectionSchema,
-    ctaTrustBullets: z.array(z.string()),
-  });
-
-export const testPrepHubPageContentSchema: z.ZodType<TestPrepHubPageContent> =
-  z.object({
-    seo: seoMetaSchema,
-    hero: heroContentSchema,
-    testPrepSection: cardGridSectionSchema,
-    finalCta: ctaBlockSchema,
-    detailPage: testPrepDetailPageContentSchema,
-  });
-
-export const homePageContentSchema: z.ZodType<HomePageContent> = z.object({
-  seo: seoMetaSchema,
-  hero: heroContentSchema,
-  proofBar: z.array(proofBarItemSchema),
-  programsSection: z.object({
-    eyebrow: z.string(),
-    heading: z.string(),
-    subtitle: z.string(),
-  }),
-  testimonialsSection: z.object({
-    eyebrow: z.string(),
-    heading: z.string(),
-    subtitle: z.string(),
-    featuredIds: z.array(z.string()),
-  }),
-  howItWorks: z.object({
-    eyebrow: z.string(),
-    heading: z.string(),
-    steps: z.array(howItWorksStepSchema),
-  }),
-  whyCedar: z.object({
-    eyebrow: z.string(),
-    heading: z.string(),
-    subtitle: z.string(),
-    items: z.array(whyCedarItemSchema),
-  }),
-  finalCta: ctaBlockSchema,
+export const processStepContentSchema = z.object({
+  number: nonEmptyString,
+  title: nonEmptyString,
+  description: nonEmptyString,
 });
 
-export const aboutPageContentSchema: z.ZodType<AboutPageContent> = z.object({
+export const processSectionContentSchema = sectionShellContentSchema.extend({
+  steps: z.array(processStepContentSchema),
+});
+
+export const faqShellContentSchema = z.object({
+  eyebrow: nonEmptyString,
+  headingTemplate: nonEmptyString,
+});
+
+export const relatedLinksSectionContentSchema = z.object({
+  eyebrow: nonEmptyString,
+  heading: nonEmptyString,
+  linkLabel: nonEmptyString,
+});
+
+export const storySectionContentSchema = z.object({
+  eyebrow: nonEmptyString,
+  heading: nonEmptyString,
+  paragraphs: z.array(nonEmptyString),
+  missionTitle: nonEmptyString,
+  missionText: nonEmptyString,
+  valuesTitle: nonEmptyString,
+  values: z.array(nonEmptyString),
+});
+
+export const aboutPageContentSchema = z.object({
   seo: seoMetaSchema,
   hero: heroContentSchema,
-  story: storySectionSchema,
-  stats: z.array(heroStatSchema),
-  differentiators: sectionShellSchema.extend({
+  story: storySectionContentSchema,
+  stats: z.array(statItemSchema),
+  differentiators: sectionShellContentSchema.extend({
     items: z.array(valueCardSchema),
   }),
-  teamSection: sectionShellSchema,
+  teamSection: sectionShellContentSchema,
   finalCta: ctaBlockSchema,
 });
 
-export const reviewsPageContentSchema: z.ZodType<ReviewsPageContent> = z.object(
-  {
-    seo: seoMetaSchema,
-    hero: heroContentSchema,
-    stats: z.array(heroStatSchema),
-    filters: sectionShellSchema.extend({
-      groups: z.array(filterGroupSchema),
-    }),
-    finalCta: ctaBlockSchema,
-  }
-);
-
-export const faqPageContentSchema: z.ZodType<FaqPageContent> = z.object({
+export const reviewsPageContentSchema = z.object({
   seo: seoMetaSchema,
   hero: heroContentSchema,
-  faqSection: sectionShellSchema,
-  categories: z.array(z.string()),
+  stats: z.array(statItemSchema),
+  filters: sectionShellContentSchema.extend({
+    groups: z.array(filterGroupSchema),
+  }),
   finalCta: ctaBlockSchema,
 });
 
-export const locationsPageContentSchema: z.ZodType<LocationsPageContent> =
-  z.object({
-    seo: seoMetaSchema,
-    hero: heroContentSchema,
-    intro: sectionShellSchema.extend({
-      paragraphs: z.array(z.string()),
-      transportationNote: z.string(),
-    }),
-    locationsSection: sectionShellSchema,
-    finalCta: ctaBlockSchema,
-  });
+export const faqPageContentSchema = z.object({
+  seo: seoMetaSchema,
+  hero: heroContentSchema,
+  faqSection: sectionShellContentSchema,
+  categories: z.array(nonEmptyString),
+  finalCta: ctaBlockSchema,
+});
 
-export const pricingPageContentSchema: z.ZodType<PricingPageContent> = z.object(
-  {
-    seo: seoMetaSchema,
-    hero: heroContentSchema,
-    intro: sectionShellSchema.extend({
-      paragraphs: z.array(z.string()),
+export const locationsPageContentSchema = z.object({
+  seo: seoMetaSchema,
+  hero: heroContentSchema,
+  intro: sectionShellContentSchema.extend({
+    paragraphs: z.array(nonEmptyString),
+    transportationNote: nonEmptyString,
+  }),
+  locationsSection: sectionShellContentSchema,
+  finalCta: ctaBlockSchema,
+});
+
+export const pricingPageContentSchema = z.object({
+  seo: seoMetaSchema,
+  hero: heroContentSchema,
+  intro: sectionShellContentSchema.extend({
+    paragraphs: z.array(nonEmptyString),
+  }),
+  comparisonNote: sectionShellContentSchema.extend({
+    body: nonEmptyString,
+    highlights: z.array(nonEmptyString),
+  }),
+  tiersSection: sectionShellContentSchema,
+  allPlansInclude: sectionShellContentSchema.extend({
+    items: z.array(nonEmptyString),
+    footnote: nonEmptyString.optional(),
+  }),
+  faqSection: sectionShellContentSchema.extend({
+    items: z.array(faqItemSchema),
+  }),
+  finalCta: ctaBlockSchema,
+});
+
+export const bookAssessmentPageContentSchema = z.object({
+  seo: seoMetaSchema,
+  hero: heroContentSchema,
+  heroImage: contentImageSchema,
+  formIntro: sectionShellContentSchema.extend({
+    reassurance: nonEmptyString,
+    responsePromise: nonEmptyString,
+  }),
+  stepsSection: sectionShellContentSchema.extend({
+    items: z.array(
+      z.object({
+        iconName: nonEmptyString,
+        title: nonEmptyString,
+        description: nonEmptyString,
+      }),
+    ),
+  }),
+  trustSignals: z.array(nonEmptyString),
+  testimonialIds: z.array(nonEmptyString),
+  faqSection: sectionShellContentSchema.extend({
+    items: z.array(faqItemSchema),
+  }),
+  closing: z.object({
+    heading: nonEmptyString,
+    body: nonEmptyString,
+    highlights: z.array(nonEmptyString),
+  }),
+});
+
+export const programContentSchema = z.object({
+  slug: nonEmptyString,
+  title: nonEmptyString,
+  shortTitle: nonEmptyString,
+  shortDescription: nonEmptyString,
+  iconName: nonEmptyString,
+  grades: nonEmptyString,
+  tags: z.array(nonEmptyString),
+  seo: seoMetaSchema,
+  hero: heroContentSchema,
+  problem: z.object({
+    heading: nonEmptyString,
+    paragraphs: z.array(nonEmptyString),
+  }),
+  approach: z.object({
+    heading: nonEmptyString,
+    paragraphs: z.array(nonEmptyString),
+    bullets: z.array(nonEmptyString),
+  }),
+  outcomes: z.object({
+    heading: nonEmptyString,
+    items: z.array(nonEmptyString),
+  }),
+  faq: z.array(faqItemSchema),
+  testimonialIds: z.array(nonEmptyString).optional(),
+  relatedPrograms: z.array(nonEmptyString),
+  cta: ctaBlockSchema,
+});
+
+export const programContentsSchema = z.array(programContentSchema);
+
+export const programsHubPageContentSchema = z.object({
+  seo: seoMetaSchema,
+  hero: heroContentSchema,
+  programsSection: cardGridSectionContentSchema,
+  finalCta: ctaBlockSchema,
+  detailPage: z.object({
+    problemEyebrow: nonEmptyString,
+    approachEyebrow: nonEmptyString,
+    process: processSectionContentSchema,
+    outcomesEyebrow: nonEmptyString,
+    testimonials: sectionShellContentSchema,
+    faq: faqShellContentSchema,
+    related: relatedLinksSectionContentSchema,
+    ctaTrustBullets: z.array(nonEmptyString),
+  }),
+});
+
+export const testPrepContentSchema = z.object({
+  slug: nonEmptyString,
+  title: nonEmptyString,
+  shortTitle: nonEmptyString,
+  shortDescription: nonEmptyString,
+  iconName: nonEmptyString,
+  grades: nonEmptyString,
+  seo: seoMetaSchema,
+  hero: heroContentSchema,
+  idealFor: z.array(nonEmptyString),
+  focusAreas: z.array(nonEmptyString),
+  format: z.array(nonEmptyString),
+  outcomes: z.array(nonEmptyString),
+  faq: z.array(faqItemSchema),
+  testimonialIds: z.array(nonEmptyString).optional(),
+  relatedTests: z.array(nonEmptyString),
+  cta: ctaBlockSchema,
+});
+
+export const testPrepContentsSchema = z.array(testPrepContentSchema);
+
+export const testPrepHubPageContentSchema = z.object({
+  seo: seoMetaSchema,
+  hero: heroContentSchema,
+  testPrepSection: cardGridSectionContentSchema,
+  finalCta: ctaBlockSchema,
+  detailPage: z.object({
+    idealFor: sectionShellContentSchema,
+    focusAreas: sectionShellContentSchema,
+    process: processSectionContentSchema,
+    format: sectionShellContentSchema,
+    outcomes: sectionShellContentSchema,
+    testimonials: sectionShellContentSchema,
+    faq: faqShellContentSchema,
+    related: relatedLinksSectionContentSchema,
+    ctaTrustBullets: z.array(nonEmptyString),
+  }),
+});
+
+export const homePageContentSchema = z.object({
+  seo: seoMetaSchema,
+  hero: heroContentSchema,
+  proofBar: z.array(
+    z.object({
+      iconName: nonEmptyString,
+      label: nonEmptyString,
     }),
-    comparisonNote: sectionShellSchema.extend({
-      body: z.string(),
-      highlights: z.array(z.string()),
+  ),
+  programsSection: z.object({
+    eyebrow: nonEmptyString,
+    heading: nonEmptyString,
+    subtitle: nonEmptyString,
+  }),
+  testimonialsSection: z.object({
+    eyebrow: nonEmptyString,
+    heading: nonEmptyString,
+    subtitle: nonEmptyString,
+    featuredIds: z.array(nonEmptyString),
+  }),
+  howItWorks: z.object({
+    eyebrow: nonEmptyString,
+    heading: nonEmptyString,
+    steps: z.array(processStepContentSchema),
+  }),
+  whyCedar: z.object({
+    eyebrow: nonEmptyString,
+    heading: nonEmptyString,
+    subtitle: nonEmptyString,
+    items: z.array(
+      z.object({
+        iconName: nonEmptyString,
+        title: nonEmptyString,
+        description: nonEmptyString,
+        checks: z.array(nonEmptyString),
+      }),
+    ),
+  }),
+  finalCta: ctaBlockSchema,
+});
+
+export const homeHeroFrontmatterSchema = z.object({
+  component: nonEmptyString.optional(),
+  order: z.number().int().optional(),
+  eyebrow: nonEmptyString.optional(),
+  seo: seoMetaSchema,
+  primaryCta: linkItemSchema.optional(),
+  secondaryCta: linkItemSchema.optional(),
+  stats: z
+    .array(
+      z.object({
+        value: nonEmptyString,
+        label: nonEmptyString,
+      }),
+    )
+    .optional(),
+});
+
+export const proofBarFrontmatterSchema = z.object({
+  component: nonEmptyString.optional(),
+  order: z.number().int().optional(),
+  items: z.array(
+    z.object({
+      iconName: nonEmptyString,
+      label: nonEmptyString,
     }),
-    tiersSection: sectionShellSchema,
-    allPlansInclude: sectionShellSchema.extend({
-      items: z.array(z.string()),
-      footnote: z.string().optional(),
+  ),
+});
+
+export const sectionHeadingFrontmatterSchema = z.object({
+  component: nonEmptyString.optional(),
+  order: z.number().int().optional(),
+  eyebrow: nonEmptyString,
+});
+
+export const ctaFrontmatterSchema = z.object({
+  component: nonEmptyString.optional(),
+  order: z.number().int().optional(),
+  primaryCta: linkItemSchema,
+  secondaryCta: linkItemSchema.optional(),
+  trustBullets: z.array(nonEmptyString).optional(),
+});
+
+export const homeTestimonialsFrontmatterSchema = sectionHeadingFrontmatterSchema.extend({
+  featuredIds: z.array(nonEmptyString),
+});
+
+export const stepsFrontmatterSchema = sectionHeadingFrontmatterSchema.extend({
+  steps: z.array(processStepContentSchema),
+});
+
+export const whyCedarFrontmatterSchema = sectionHeadingFrontmatterSchema.extend({
+  items: z.array(
+    z.object({
+      iconName: nonEmptyString,
+      title: nonEmptyString,
+      description: nonEmptyString,
+      checks: z.array(nonEmptyString),
     }),
-    faqSection: sectionShellSchema.extend({
-      items: z.array(faqItemSchema),
-    }),
-    finalCta: ctaBlockSchema,
-  }
+  ),
+});
+
+export const aboutStatsFrontmatterSchema = z.object({
+  component: nonEmptyString.optional(),
+  order: z.number().int().optional(),
+  stats: z.array(statItemSchema),
+});
+
+export const aboutStoryFrontmatterSchema = sectionHeadingFrontmatterSchema.extend({
+  missionTitle: nonEmptyString,
+  missionText: nonEmptyString,
+  valuesTitle: nonEmptyString,
+  values: z.array(nonEmptyString),
+});
+
+export const aboutValuesFrontmatterSchema = sectionHeadingFrontmatterSchema.extend({
+  items: z.array(valueCardSchema),
+});
+
+export const aboutTeamFrontmatterSchema = z.object({
+  component: nonEmptyString.optional(),
+  order: z.number().int().optional(),
+  eyebrow: nonEmptyString,
+  members: teamMembersSchema,
+});
+
+export const reviewsPageFrontmatterSchema = z.object({
+  component: nonEmptyString.optional(),
+  seo: seoMetaSchema,
+  eyebrow: nonEmptyString,
+  filtersEyebrow: nonEmptyString,
+  stats: z.array(statItemSchema),
+  filterGroups: z.array(filterGroupSchema),
+  finalCta: ctaBlockSchema,
+});
+
+export const testimonialsCollectionFrontmatterSchema = z.object({
+  component: nonEmptyString.optional(),
+  testimonials: testimonialsSchema,
+});
+
+export const faqPageFrontmatterSchema = z.object({
+  component: nonEmptyString.optional(),
+  seo: seoMetaSchema,
+  eyebrow: nonEmptyString,
+  faqEyebrow: nonEmptyString,
+  categories: z.array(nonEmptyString),
+  faqItems: categorizedFaqItemsSchema,
+  finalCta: ctaBlockSchema,
+});
+
+export const locationsPageFrontmatterSchema = z.object({
+  component: nonEmptyString.optional(),
+  seo: seoMetaSchema,
+  eyebrow: nonEmptyString,
+  introEyebrow: nonEmptyString,
+  introSubtitle: nonEmptyString,
+  locationsEyebrow: nonEmptyString,
+  transportationNote: nonEmptyString,
+  locations: locationContentsSchema,
+  finalCta: ctaBlockSchema,
+});
+
+export const pricingPageFrontmatterSchema = z.object({
+  component: nonEmptyString.optional(),
+  seo: seoMetaSchema,
+  eyebrow: nonEmptyString,
+  introEyebrow: nonEmptyString,
+  introSubtitle: nonEmptyString,
+  comparisonEyebrow: nonEmptyString,
+  comparisonHighlights: z.array(nonEmptyString),
+  tiersEyebrow: nonEmptyString,
+  pricingTiers: pricingTiersSchema,
+  allPlansEyebrow: nonEmptyString,
+  allPlansItems: z.array(nonEmptyString),
+  allPlansFootnote: nonEmptyString.optional(),
+  faqEyebrow: nonEmptyString,
+  faqItems: z.array(faqItemSchema),
+  finalCta: ctaBlockSchema,
+});
+
+export const bookAssessmentPageFrontmatterSchema = z.object({
+  component: nonEmptyString.optional(),
+  seo: seoMetaSchema,
+  heroEyebrow: nonEmptyString,
+  heroImage: contentImageSchema,
+  formEyebrow: nonEmptyString,
+  formReassurance: nonEmptyString,
+  responsePromise: nonEmptyString,
+  faqEyebrow: nonEmptyString,
+  stepsSection: z.object({
+    eyebrow: nonEmptyString,
+    heading: nonEmptyString,
+    subtitle: nonEmptyString,
+    items: z.array(
+      z.object({
+        iconName: nonEmptyString,
+        title: nonEmptyString,
+        description: nonEmptyString,
+      }),
+    ),
+  }),
+  testimonialIds: z.array(nonEmptyString),
+  faqItems: z.array(faqItemSchema),
+});
+
+export const assessmentTrustFrontmatterSchema = z.object({
+  component: nonEmptyString.optional(),
+  trustSignals: z.array(nonEmptyString),
+  highlights: z.array(nonEmptyString),
+});
+
+export const programsHubFrontmatterSchema = z.object({
+  component: nonEmptyString.optional(),
+  sectionEyebrow: nonEmptyString,
+  seo: seoMetaSchema,
+  cardLinkLabel: nonEmptyString,
+  detailPage: programsHubPageContentSchema.shape.detailPage,
+  finalCta: ctaBlockSchema,
+});
+
+export const testPrepHubFrontmatterSchema = z.object({
+  component: nonEmptyString.optional(),
+  sectionEyebrow: nonEmptyString,
+  seo: seoMetaSchema,
+  cardLinkLabel: nonEmptyString,
+  detailPage: testPrepHubPageContentSchema.shape.detailPage,
+  finalCta: ctaBlockSchema,
+});
+
+export const programFrontmatterSchema = z.object({
+  slug: nonEmptyString,
+  title: nonEmptyString,
+  shortTitle: nonEmptyString,
+  shortDescription: nonEmptyString,
+  iconName: nonEmptyString,
+  grades: nonEmptyString,
+  tags: z.array(nonEmptyString),
+  seo: seoMetaSchema,
+  testimonialIds: z.array(nonEmptyString).optional(),
+  relatedPrograms: z.array(nonEmptyString),
+  faq: z.array(faqItemSchema),
+  cta: ctaBlockSchema,
+});
+
+export const testPrepFrontmatterSchema = z.object({
+  slug: nonEmptyString,
+  title: nonEmptyString,
+  shortTitle: nonEmptyString,
+  shortDescription: nonEmptyString,
+  iconName: nonEmptyString,
+  grades: nonEmptyString,
+  seo: seoMetaSchema,
+  testimonialIds: z.array(nonEmptyString).optional(),
+  relatedTests: z.array(nonEmptyString),
+  faq: z.array(faqItemSchema),
+  cta: ctaBlockSchema,
+});
+
+type NavItemValue = {
+  label: string;
+  href: string;
+  children?: NavItemValue[];
+};
+
+const navItemSchema: z.ZodType<NavItemValue> = z.lazy(() =>
+  z.object({
+    label: nonEmptyString,
+    href: nonEmptyString,
+    children: z.array(navItemSchema).optional(),
+  }),
 );
 
-export const bookAssessmentPageContentSchema: z.ZodType<BookAssessmentPageContent> =
-  z.object({
-    seo: seoMetaSchema,
-    hero: heroContentSchema,
-    heroImage: contentImageSchema,
-    formIntro: sectionShellSchema.extend({
-      reassurance: z.string(),
-      responsePromise: z.string(),
+export const siteMetadataSchema = z.object({
+  site: z.object({
+    name: nonEmptyString,
+    tagline: nonEmptyString,
+    url: nonEmptyString,
+    phone: nonEmptyString,
+    email: nonEmptyString,
+    address: z.object({
+      street: nonEmptyString,
+      city: nonEmptyString,
+      state: nonEmptyString,
+      zip: nonEmptyString,
+      full: nonEmptyString,
     }),
-    stepsSection: sectionShellSchema.extend({
-      items: z.array(iconStepSchema),
-    }),
-    trustSignals: z.array(z.string()),
-    testimonialIds: z.array(z.string()),
-    faqSection: sectionShellSchema.extend({
-      items: z.array(faqItemSchema),
-    }),
-    closing: z.object({
-      heading: z.string(),
-      body: z.string(),
-      highlights: z.array(z.string()),
-    }),
-  });
-
-export const testimonialsSchema = z.array(testimonialSchema);
-export const teamMembersSchema = z.array(teamMemberSchema);
-export const categorizedFaqItemsSchema = z.array(categorizedFaqItemSchema);
-export const locationContentsSchema = z.array(locationContentSchema);
-export const pricingTiersSchema = z.array(pricingTierSchema);
-export const programContentsSchema = z.array(programContentSchema);
-export const testPrepContentsSchema = z.array(testPrepContentSchema);
+  }),
+  navigation: z.array(navItemSchema),
+  footerNav: z.object({
+    programs: z.array(navItemSchema),
+    testPrep: z.array(navItemSchema),
+    company: z.array(navItemSchema),
+  }),
+});

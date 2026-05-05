@@ -1,0 +1,63 @@
+---
+slug: "sat"
+title: "SAT Prep"
+shortTitle: "SAT"
+shortDescription: "Strategic SAT prep with timed practice, targeted review, and calm coaching for students aiming to raise scores."
+iconName: "calculator"
+grades: "9–12"
+seo:
+  title: "SAT Prep Tutoring | Cedar Tutoring Academy"
+  description: "Prepare for the Digital SAT with Cedar Tutoring Academy through timed practice, strategy coaching, and targeted review for Dallas-Fort Worth students."
+testimonialIds:
+  - "sat-1"
+  - "sat-2"
+relatedTests:
+  - "psat"
+  - "act"
+faq:
+  - question: "When should my student start SAT prep?"
+    answer: "Many families start several months before the student's target test date so there is time for diagnostic review, targeted practice, and steady improvement without burnout."
+  - question: "Do you help with the Digital SAT format?"
+    answer: "Yes. Cedar prepares students for the current digital testing format, including pacing, navigation, and the kinds of strategy adjustments students need on test day."
+  - question: "How do you balance content review and test strategy?"
+    answer: "We focus on both. Students work on the academic skills behind missed questions while also learning how to manage time, approach hard items, and avoid repeating the same errors."
+cta:
+  heading: "Ready to make SAT prep feel more focused and manageable?"
+  subtext: "Start with a free assessment. We'll review your student's current performance, timeline, and goals to build the right SAT prep plan."
+  primaryCta:
+    label: "Book a Free Test Prep Assessment"
+    href: "/book-assessment"
+---
+
+# SAT prep with a clear plan, targeted practice, and less test-day pressure.
+
+Cedar helps students prepare for the Digital SAT with skill review, pacing strategies, and coaching that keeps progress steady instead of stressful.
+
+## Ideal For
+
+- Students planning for college admissions and scholarship opportunities
+- High schoolers who know the content but need stronger pacing and strategy
+- Students who want accountable prep instead of last-minute cramming
+- Families looking for local SAT tutoring in Plano with consistent feedback
+
+## Focus Areas
+
+- Timed Digital SAT practice for reading, writing, and math sections
+- Score-driven review of algebra, problem solving, grammar, and reading comprehension
+- Strategy coaching for pacing, question selection, and eliminating common traps
+- Review cycles that turn mistakes into a clear next-step study plan
+
+## Format
+
+- Diagnostic review to identify current strengths and score barriers
+- Small-group instruction with room for individualized coaching and questions
+- Practice between sessions so students build stamina without feeling overloaded
+- Regular check-ins with families on focus areas, effort, and upcoming milestones
+
+## Outcomes
+
+- Stronger familiarity with the Digital SAT format and question flow
+- Better pacing across longer reading and math sections
+- More confidence using proven strategies under timed conditions
+- Clearer understanding of which content gaps need the most attention
+- A more organized, less emotional prep season for students and parents

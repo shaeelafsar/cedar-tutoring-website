@@ -14,7 +14,7 @@ values:
 
 # Cedar Tutoring Academy® was founded by Asmah to give local families the kind of academic support she wanted students to truly feel.
 
-Asmah built Cedar Tutoring Academy® to be a welcoming place in Plano where students could get expert help in Reading, Science, Math, and Writing while families received honest guidance and flexible support. As director and founder, she shaped Cedar around the idea that students learn best when they are known, encouraged, and taught with purpose.
+Asmah built Cedar Tutoring Academy® to be a welcoming place in Worth, IL where students could get expert help in Reading, Science, Math, and Writing while families received honest guidance and flexible support. As director and founder, she shaped Cedar around the idea that students learn best when they are known, encouraged, and taught with purpose.
 
 From the beginning, Cedar focused on one-to-one and small group instruction, active learning, and efficient plans that identify a child's weaknesses from day one. That approach gives students individualized attention, helps them build confidence, and creates steady progress without overwhelming family schedules.
 

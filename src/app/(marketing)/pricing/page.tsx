@@ -25,7 +25,7 @@ const pricingPageStructuredData = {
     name: SITE_CONFIG.name,
     url: SITE_CONFIG.url,
   },
-  areaServed: "Dallas-Fort Worth, Texas",
+  areaServed: "South Suburbs of Chicago, Illinois",
   offers: pricingTiers.map((tier) => ({
     "@type": "Offer",
     name: tier.name,

@@ -10,7 +10,7 @@ secondaryCta:
 trustBullets:
   - "No-pressure first conversation"
   - "Clear program recommendation"
-  - "Trusted by Plano-area families"
+  - "Trusted by South Suburbs families"
   - "Flexible scheduling support"
 ---
 

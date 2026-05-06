@@ -6,7 +6,7 @@ trustSignals:
   - "Personalized plan"
 highlights:
   - "Support for K–12 tutoring and test prep"
-  - "One Plano center with transportation for qualifying nearby families"
+  - "One Worth, IL center with transportation for qualifying nearby families"
   - "Flexible scheduling with family-friendly guidance"
 ---
 

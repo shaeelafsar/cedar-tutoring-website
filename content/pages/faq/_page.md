@@ -2,7 +2,7 @@
 component: "FaqPage"
 seo:
   title: "FAQ | Cedar Tutoring Academy"
-  description: "Get answers about Cedar Tutoring Academy tutoring programs, pricing, scheduling, test prep, transportation, and what Plano-area families can expect."
+  description: "Get answers about Cedar Tutoring Academy tutoring programs, pricing, scheduling, test prep, transportation, and what South Suburbs families can expect."
 eyebrow: "Helpful answers before you commit"
 faqEyebrow: "FAQ library"
 categories:
@@ -21,7 +21,7 @@ faqItems:
     answer: "We start with a free assessment and a real conversation about what school currently feels like for your child. That helps us recommend the right subject support, weekly rhythm, and tutoring format instead of guessing from a website menu."
   - category: "General"
     question: "Do you offer online tutoring, in-person tutoring, or both?"
-    answer: "Cedar can support families through in-person and remote-friendly options depending on the student's needs. Most Plano-area families use the in-person program, but we can talk through the best fit during your assessment."
+    answer: "Cedar can support families through in-person and remote-friendly options depending on the student's needs. Most South Suburbs families use the in-person program, but we can talk through the best fit during your assessment."
   - category: "General"
     question: "What makes Cedar different from a large tutoring chain?"
     answer: "Cedar is smaller, more personal, and more flexible than a typical chain center. Families usually notice three differences right away:\n\n- More direct attention in small groups\n- Recommendations based on assessment, not preset sales packages\n- Clear communication that helps parents understand progress and next steps"
@@ -51,13 +51,13 @@ faqItems:
     answer: "Once a week is a common starting point, especially for ongoing homework help or one core subject. Students with bigger gaps, multiple subjects, or active test-prep goals may come more often."
   - category: "Scheduling"
     question: "Do you offer after-school and weekend appointments?"
-    answer: "Yes. Cedar offers after-school hours during the week and Saturday availability at the Plano center, based on space and tutor schedules."
+    answer: "Yes. Cedar offers after-school hours during the week and Saturday availability at the Worth, IL center, based on space and tutor schedules."
   - category: "Scheduling"
     question: "What is your cancellation or rescheduling policy?"
     answer: "Cedar usually asks for 48 hours' notice so tutors and rooms can be scheduled well. We'll explain the exact expectations during enrollment so there are no surprises."
   - category: "Scheduling"
     question: "Do you provide transportation support?"
-    answer: "Transportation support is available for qualifying families near the Plano center, including some homes within roughly a 5-mile radius. Mention it during your assessment so we can confirm whether your address is covered."
+    answer: "Transportation support is available for qualifying families near the Worth, IL center, including some homes within roughly a 5-mile radius. Mention it during your assessment so we can confirm whether your address is covered."
   - category: "Test Prep"
     question: "Which test prep programs does Cedar offer?"
     answer: "Cedar currently supports the SAT, ACT, and PSAT. Test-prep plans focus on content review, pacing, strategy, confidence, and building a realistic weekly study rhythm."
@@ -75,7 +75,7 @@ finalCta:
     href: "/book-assessment"
   secondaryCta:
     label: "Call Cedar"
-    href: "tel:+14697572220"
+    href: "tel:+17088904400"
   trustBullets:
     - "Friendly, no-pressure guidance"
     - "Personalized recommendations"

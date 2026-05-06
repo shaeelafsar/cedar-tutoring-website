@@ -55,13 +55,13 @@ Each content file has two parts:
 
 ```md
 ---
-eyebrow: "Plano, TX • K–12 tutoring & test prep"
+eyebrow: "Worth, IL • K–12 tutoring & test prep"
 primaryCta:
   label: "Book a Free Assessment"
   href: "/book-assessment"
 ---
 
-# Personalized tutoring that helps Plano students catch up, keep up, and feel confident again.
+# Personalized tutoring that helps South Suburbs students catch up, keep up, and feel confident again.
 
 From early reading to SAT prep, Cedar pairs students with caring local tutors...
 ```
@@ -138,13 +138,13 @@ Edit: `content/pages/home/hero.md`
 Before:
 
 ```md
-# Personalized tutoring that helps Plano students catch up, keep up, and feel confident again.
+# Personalized tutoring that helps South Suburbs students catch up, keep up, and feel confident again.
 ```
 
 After:
 
 ```md
-# Personalized tutoring that helps Plano students feel capable, prepared, and less stressed after school.
+# Personalized tutoring that helps South Suburbs students feel capable, prepared, and less stressed after school.
 ```
 
 ### 2. Update a hero button label
@@ -177,7 +177,7 @@ Add a new item inside `faqItems:`.
 faqItems:
   - category: "Scheduling"
     question: "Do you offer Saturday tutoring?"
-    answer: "Yes. Cedar offers Saturday sessions at the Plano center based on availability."
+    answer: "Yes. Cedar offers Saturday sessions at the Worth, IL center based on availability."
 ```
 
 Tip: keep indentation exactly aligned with the other items.
@@ -193,7 +193,7 @@ Add a new block inside `testimonials:`.
   quote: "Cedar helped our daughter slow down, ask better questions, and stop shutting down during math homework."
   author: "Sara M."
   relation: "Parent of a 6th grader"
-  location: "Plano, TX"
+  location: "Worth, IL"
   rating: 5
   badge: "More confidence"
   programSlugs:
@@ -267,13 +267,13 @@ Example:
 
 ```yaml
 site:
-  phone: "(469) 757-2220"
+  phone: "(708) 890-4400"
   email: "info@cedartutoring.com"
   address:
-    street: "3100 Independence Pkwy #311"
-    city: "Plano"
-    state: "TX"
-    zip: "75075"
+    street: "11136 Harlem Ave"
+    city: "Worth"
+    state: "IL"
+    zip: "60482"
 ```
 
 ### 9. Change navigation or footer links

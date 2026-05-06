@@ -2,7 +2,7 @@
 component: "ReviewsPage"
 seo:
   title: "Parent & Student Reviews | Cedar Tutoring Academy"
-  description: "Read real Google reviews for Cedar Tutoring Academy and see why Plano families trust Cedar for reading, math, writing, science, homework help, and more."
+  description: "Read real Google reviews for Cedar Tutoring Academy and see why South Suburb families trust Cedar for reading, math, writing, science, homework help, and more."
 eyebrow: "Trusted on Google"
 filtersEyebrow: "Browse by fit"
 stats:
@@ -14,7 +14,7 @@ stats:
     detail: "Collected from Cedar Tutoring Academy's Google Business Profile."
   - value: "10+"
     label: "Years serving local students"
-    detail: "Cedar has supported Plano-area families for more than a decade."
+    detail: "Cedar has supported South Suburbs families for more than a decade."
 filterGroups:
   - id: "program"
     label: "Program"

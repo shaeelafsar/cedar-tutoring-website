@@ -2,7 +2,7 @@
 component: "PricingPage"
 seo:
   title: "Plans | Cedar Tutoring Academy"
-  description: "Explore Cedar Tutoring Academy plans including As-Needed Tutoring, Family Plans, Academic Coaching, and Transportation."
+  description: "Explore Cedar Tutoring Academy plans including As-Needed Tutoring, Family Plans, and Academic Coaching."
 eyebrow: "Plans"
 introEyebrow: "Flexible tutoring options"
 introSubtitle: "Choose the tutoring support that fits your family best."
@@ -11,7 +11,7 @@ comparisonHighlights:
   - "$40 hourly rate for as-needed tutoring"
   - "48-hour notice required for scheduling"
   - "Monthly family plans can be used by any registered child"
-  - "Free transportation may be available within a 5-mile radius"
+  - "Free diagnostic assessment"
 tiersEyebrow: "Plan options"
 pricingTiers:
   - id: "as-needed-tutoring"
@@ -40,20 +40,13 @@ pricingTiers:
       - "We offer help in subject areas including math, reading, writing, science, and Arabic."
       - "Our goal is to guide your child through their homework, and help them become independent learners."
     badge: "Support"
-  - id: "transportation"
-    name: "Transportation"
-    priceLabel: "Available"
-    cadence: "set scheduled time"
-    description: "Our facility will offer a transportation service that will have your child dropped off right at home at a set scheduled time."
-    features:
-      - "Your child may be eligible for free transportation if he or she resides within a 5-mile radius from the Cedar® location."
-    badge: "Logistics"
+
 allPlansEyebrow: "Included information"
 allPlansItems:
   - "As-Needed Tutoring is $40 per hour."
   - "Family Plans reserve monthly sessions that can be used any time within that month."
   - "Academic Coaching is available for elementary, middle school, and high school grade levels."
-  - "Transportation may be available, including free transportation within a 5-mile radius for eligible students."
+
 faqEyebrow: "Plans FAQ"
 faqItems:
   - question: "How much is As-Needed Tutoring?"
@@ -64,8 +57,7 @@ faqItems:
     answer: "We only need a 48-hour notice in advance of your session to reserve it and to schedule the appropriate tutor for your child."
   - question: "Who can use Family Plan hours?"
     answer: "Family Plans can be used any time within that month, to send any registered child of yours at Cedar to use those hours as you see fit."
-  - question: "When is transportation free?"
-    answer: "Your child may be eligible for free transportation if he or she resides within a 5-mile radius from the Cedar® location."
+
 finalCta:
   heading: "Interested in Cedar's plans?"
   subtext: "Claim your free sessions today by booking your appointment below."
@@ -79,29 +71,29 @@ finalCta:
     - "$40 as-needed tutoring"
     - "Flexible family plans"
     - "Academic coaching"
-    - "Transportation available"
+    - "No contracts required"
 ---
 
 # Plans
 
-Explore Cedar Tutoring Academy's flexible plans for as-needed tutoring, monthly family sessions, academic coaching, and transportation support.
+Explore Cedar Tutoring Academy's flexible plans for as-needed tutoring, monthly family sessions, and academic coaching.
 
-## As-Needed Tutoring
+## Choose the support level that matches your child's pace, schedule, and priorities.
 
-The Cedar hourly rate is $40. Parents/Students do not need to reserve any sessions in advance, and instead you may reserve only the sessions you need. We only need a 48-hour notice in advance of your session to reserve it and to schedule the appropriate tutor for your child.
+Cedar offers flexible options — from as-needed hourly sessions to monthly family plans that let you use reserved hours across all your enrolled children.
 
-## Family Plans
+## Clear billing and flexible monthly options.
 
-Cedar Tutoring offers flexible family plans that allows you to reserve monthly sessions that can be used any time within that month, to send any registered child of yours at Cedar to use those hours as you see fit. We only need a 48-hour notice in advance of any session to allow for scheduling.
+Our pricing is straightforward: $40/hr for as-needed sessions, or choose a monthly family plan for reserved hours. No hidden fees, no contracts, and free diagnostic assessments.
 
-## Academic Coaching
+## Tutoring plans that fit different seasons of school.
 
-Cedar Tutoring provides specialized help for elementary, middle school, and high school grade levels. We offer help in subject areas including math, reading, writing, science, and Arabic. Our goal is to guide your child through their homework, and help them become independent learners.
+Whether your child needs ongoing weekly support or intensive help before exams, our plans adapt to your schedule. We only need 48-hour notice to book sessions.
 
-## Transportation
+## What every family gets at Cedar.
 
-Our facility will offer a transportation service that will have your child dropped off right at home at a set scheduled time. Your child may be eligible for free transportation if he or she resides within a 5-mile radius from the Cedar® location.
+Every Cedar family gets individualized learning plans, weekly progress updates, open communication with tutors, and a caring environment where your child builds confidence alongside academics.
 
-## Questions parents ask about plans.
+## Common questions before you enroll.
 
 These are the key details families usually want to confirm before enrolling.

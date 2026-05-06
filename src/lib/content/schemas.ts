@@ -394,7 +394,7 @@ export const homePageContentSchema = z.object({
         iconName: nonEmptyString,
         title: nonEmptyString,
         description: nonEmptyString,
-        checks: z.array(nonEmptyString),
+        checks: z.array(nonEmptyString).optional(),
       }),
     ),
   }),
@@ -454,12 +454,42 @@ export const stepsFrontmatterSchema = sectionHeadingFrontmatterSchema.extend({
 export const whyCedarFrontmatterSchema = sectionHeadingFrontmatterSchema.extend({
   items: z.array(
     z.object({
-      iconName: nonEmptyString,
       title: nonEmptyString,
-      description: nonEmptyString,
-      checks: z.array(nonEmptyString),
+      iconName: nonEmptyString.optional(),
+      description: nonEmptyString.optional(),
+      checks: z.array(nonEmptyString).optional(),
     }),
   ),
+  comparison: z
+    .object({
+      cedar: z.object({
+        label: nonEmptyString,
+        ratio: nonEmptyString,
+        rate: nonEmptyString,
+        diagnostics: nonEmptyString,
+        contracts: nonEmptyString,
+        ownership: nonEmptyString,
+        financing: nonEmptyString,
+      }),
+      competitors: z.array(
+        z.object({
+          label: nonEmptyString,
+          ratio: nonEmptyString,
+          rate: nonEmptyString,
+          diagnostics: nonEmptyString,
+          contracts: nonEmptyString,
+          ownership: nonEmptyString,
+          financing: nonEmptyString,
+        }),
+      ),
+    })
+    .optional(),
+  button: z
+    .object({
+      label: nonEmptyString,
+      href: nonEmptyString,
+    })
+    .optional(),
 });
 
 export const aboutStatsFrontmatterSchema = z.object({

@@ -7,9 +7,11 @@ import {
   Calendar,
   Check,
   GraduationCap,
+  Heart,
   MapPin,
   Shield,
   Star,
+  TrendingUp,
   Users,
 } from "lucide-react";
 
@@ -33,6 +35,8 @@ const homeIconMap = {
   "graduation-cap": GraduationCap,
   "bar-chart-3": BarChart3,
   bus: Bus,
+  heart: Heart,
+  "trending-up": TrendingUp,
   "map-pin": MapPin,
   shield: Shield,
   users: Users,
@@ -426,6 +430,7 @@ export default function HomePage() {
                       </div>
                     </div>
 
+                    {item.checks && item.checks.length > 0 && (
                     <ul className="mt-4 space-y-2.5 pl-0 sm:mt-5 sm:pl-16">
                       {item.checks.map((check) => (
                         <li
@@ -437,6 +442,7 @@ export default function HomePage() {
                         </li>
                       ))}
                     </ul>
+                    )}
                   </div>
                 </article>
               );

@@ -346,7 +346,7 @@ export interface HomePageContent {
       iconName: string;
       title: string;
       description: string;
-      checks: string[];
+      checks?: string[];
     }>;
   };
   finalCta: CtaBlock;

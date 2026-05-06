@@ -2,22 +2,64 @@
 component: "WhyCedar"
 order: 6
 eyebrow: "Why Cedar?"
+heading: "Top Ten Reasons Why Parents Choose Cedar"
 items:
-  - iconName: "users"
-    title: "2:1 ratio"
-    description: "Cedar's comparison table highlights a 2:1 ratio for focused support."
+  - iconName: "heart"
+    title: "Caring, experienced tutors"
+    description: "Our tutors are not only expert teachers, but expert learners themselves who genuinely care about your child's success."
     checks:
-      - "See the full Why Us page at /why-us/"
-  - iconName: "bar-chart-3"
-    title: "$27-$40/hr"
-    description: "Cedar's comparison table highlights affordable hourly pricing."
+      - "Individualized learning plans"
+      - "Small group discussions and peer learning"
+  - iconName: "trending-up"
+    title: "Results that speak for themselves"
+    description: "With motivated tutors, enjoyable curriculums, and efficient learning plans, your child will experience real grade improvement."
     checks:
-      - "See the full Why Us page at /why-us/"
+      - "Lifelong learning skills that build confidence"
+      - "Weekly assessments and open communication with parents"
   - iconName: "shield"
-    title: "Teachers Owned"
-    description: "Cedar's comparison table highlights that Cedar is teachers owned."
+    title: "We are NOT a franchise"
+    description: "Cedar is teachers owned — not a franchise. We offer a 2:1 student-to-teacher ratio at just $27-$40/hr with free diagnostics."
     checks:
-      - "See the full Why Us page at /why-us/"
+      - "NO contracts to sign – ever"
+      - "NO enrollment fees – ever"
+      - "NO diagnostic fees – ever"
+  - iconName: "users"
+    title: "2:1 Student-to-Teacher Ratio"
+    description: "While franchises offer 5:1 ratios at $50-$65/hr with $100-$150 diagnostic fees, Cedar provides focused 2:1 attention at affordable rates."
+    checks:
+      - "$27-$40/hr vs. competitors' $43-$65/hr"
+      - "Free diagnostics vs. competitors' $100-$150 fees"
+comparison:
+  cedar:
+    label: "Cedar"
+    ratio: "2 to 1"
+    rate: "$27-$40"
+    diagnostics: "Free"
+    contracts: "Not Required"
+    ownership: "Teachers Owned"
+    financing: "Not Available"
+  competitors:
+    - label: "Competitor A"
+      ratio: "5 to 1"
+      rate: "$50-$65"
+      diagnostics: "$150"
+      contracts: "May Apply"
+      ownership: "Franchise"
+      financing: "Available"
+    - label: "Competitor B"
+      ratio: "5 to 1"
+      rate: "$47-$55"
+      diagnostics: "$100"
+      contracts: "May Apply"
+      ownership: "Franchise"
+      financing: "Available"
+    - label: "Competitor C"
+      ratio: "5 to 1"
+      rate: "$43-$65"
+      diagnostics: "$100"
+      contracts: "May Apply"
+      ownership: "Franchise"
+      financing: "Available"
 button:
   label: "Why Cedar?"
   href: "/why-us/"
@@ -25,4 +67,4 @@ button:
 
 # Why Cedar?
 
-Use the "Why Cedar?" button to visit /why-us/ for the full Cedar vs Others comparison, parent reasons, and Google reviews.
+Cedar Tutoring Academy is teacher-owned, not a franchise. We provide focused 2:1 instruction at affordable rates with no contracts, no enrollment fees, and no diagnostic fees — ever.

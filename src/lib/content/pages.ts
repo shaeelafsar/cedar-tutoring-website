@@ -1,13 +1,17 @@
 import type {
   AboutPageContent,
   BookAssessmentPageContent,
+  ContactPageContent,
   FaqPageContent,
+  FreeTrialPageContent,
   HomePageContent,
   LocationsPageContent,
   PricingPageContent,
   ProgramsHubPageContent,
   ReviewsPageContent,
+  SummerProgramsPageContent,
   TestPrepHubPageContent,
+  WhyUsPageContent,
 } from "@/types/content";
 
 import {
@@ -26,9 +30,13 @@ import {
   bookAssessmentPageContentSchema,
   bookAssessmentPageFrontmatterSchema,
   assessmentTrustFrontmatterSchema,
+  contactPageContentSchema,
+  contactPageFrontmatterSchema,
   ctaFrontmatterSchema,
   faqPageContentSchema,
   faqPageFrontmatterSchema,
+  freeTrialPageContentSchema,
+  freeTrialPageFrontmatterSchema,
   homeHeroFrontmatterSchema,
   homePageContentSchema,
   homeTestimonialsFrontmatterSchema,
@@ -43,9 +51,13 @@ import {
   reviewsPageFrontmatterSchema,
   sectionHeadingFrontmatterSchema,
   stepsFrontmatterSchema,
+  summerProgramsPageContentSchema,
+  summerProgramsPageFrontmatterSchema,
   testPrepHubFrontmatterSchema,
   testPrepHubPageContentSchema,
   whyCedarFrontmatterSchema,
+  whyUsPageContentSchema,
+  whyUsPageFrontmatterSchema,
 } from "./schemas";
 
 function readCta(path: string) {
@@ -383,6 +395,144 @@ export function getFaqPageContent(): FaqPageContent {
       subtitle: getFirstParagraph(faqSection?.content ?? ""),
     },
     categories: doc.data.categories,
+    finalCta: doc.data.finalCta,
+  });
+}
+
+export function getWhyUsPageContent(): WhyUsPageContent {
+  const doc = readMarkdownFile("pages/why-us/_page.md", whyUsPageFrontmatterSchema);
+  const page = parseMarkdownPage(doc.content);
+
+  return whyUsPageContentSchema.parse({
+    seo: doc.data.seo,
+    hero: {
+      eyebrow: doc.data.eyebrow,
+      heading: page.heading,
+      subtitle: getFirstParagraph(page.intro),
+    },
+    intro: {
+      eyebrow: doc.data.introEyebrow,
+      heading: doc.data.introHeading,
+      paragraphs: doc.data.introParagraphs,
+    },
+    comparison: {
+      eyebrow: doc.data.comparisonEyebrow,
+      heading: doc.data.comparisonHeading,
+      subtitle: doc.data.comparisonSubtitle,
+      columns: doc.data.comparisonColumns,
+      rows: doc.data.comparisonRows,
+    },
+    reasons: {
+      eyebrow: doc.data.reasonsEyebrow,
+      heading: doc.data.reasonsHeading,
+      subtitle: doc.data.reasonsSubtitle,
+      items: doc.data.reasons,
+    },
+    valueProps: {
+      eyebrow: doc.data.valuePropsEyebrow,
+      heading: doc.data.valuePropsHeading,
+      items: doc.data.valueProps,
+    },
+    finalCta: doc.data.finalCta,
+  });
+}
+
+export function getSummerProgramsPageContent(): SummerProgramsPageContent {
+  const doc = readMarkdownFile(
+    "pages/summer-programs/_page.md",
+    summerProgramsPageFrontmatterSchema,
+  );
+  const page = parseMarkdownPage(doc.content);
+
+  return summerProgramsPageContentSchema.parse({
+    seo: doc.data.seo,
+    hero: {
+      eyebrow: doc.data.eyebrow,
+      heading: page.heading,
+      subtitle: getFirstParagraph(page.intro),
+    },
+    intro: {
+      eyebrow: doc.data.introEyebrow,
+      heading: doc.data.introHeading,
+      paragraphs: doc.data.introParagraphs,
+    },
+    packages: {
+      eyebrow: doc.data.packagesEyebrow,
+      heading: doc.data.packagesHeading,
+      subtitle: doc.data.packagesSubtitle,
+      items: doc.data.packages,
+    },
+    fields: {
+      eyebrow: doc.data.fieldsEyebrow,
+      heading: doc.data.fieldsHeading,
+      subtitle: doc.data.fieldsSubtitle,
+      items: doc.data.fields,
+    },
+    finalCta: doc.data.finalCta,
+  });
+}
+
+export function getFreeTrialPageContent(): FreeTrialPageContent {
+  const doc = readMarkdownFile(
+    "pages/free-trial/_page.md",
+    freeTrialPageFrontmatterSchema,
+  );
+  const page = parseMarkdownPage(doc.content);
+
+  return freeTrialPageContentSchema.parse({
+    seo: doc.data.seo,
+    hero: {
+      eyebrow: doc.data.eyebrow,
+      heading: page.heading,
+      subtitle: getFirstParagraph(page.intro),
+    },
+    intro: {
+      eyebrow: doc.data.introEyebrow,
+      heading: doc.data.introHeading,
+      paragraphs: doc.data.introParagraphs,
+    },
+    tracks: {
+      eyebrow: doc.data.tracksEyebrow,
+      heading: doc.data.tracksHeading,
+      subtitle: doc.data.tracksSubtitle,
+      items: doc.data.tracks,
+    },
+    reassurance: {
+      eyebrow: doc.data.reassuranceEyebrow,
+      heading: doc.data.reassuranceHeading,
+      items: doc.data.reassurances,
+    },
+    finalCta: doc.data.finalCta,
+  });
+}
+
+export function getContactPageContent(): ContactPageContent {
+  const doc = readMarkdownFile(
+    "pages/contact-us/_page.md",
+    contactPageFrontmatterSchema,
+  );
+  const page = parseMarkdownPage(doc.content);
+
+  return contactPageContentSchema.parse({
+    seo: doc.data.seo,
+    hero: {
+      eyebrow: doc.data.eyebrow,
+      heading: page.heading,
+      subtitle: getFirstParagraph(page.intro),
+    },
+    contactCard: {
+      heading: doc.data.contactCardHeading,
+      details: doc.data.contactDetails,
+      hoursHeading: doc.data.hoursHeading,
+      hours: doc.data.hours,
+      mapEmbedUrl: doc.data.mapEmbedUrl,
+    },
+    cities: {
+      eyebrow: doc.data.citiesEyebrow,
+      heading: doc.data.citiesHeading,
+      subtitle: doc.data.citiesSubtitle,
+      items: doc.data.cities,
+    },
     finalCta: doc.data.finalCta,
   });
 }

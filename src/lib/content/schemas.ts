@@ -685,3 +685,207 @@ export const siteMetadataSchema = z.object({
     company: z.array(navItemSchema),
   }),
 });
+
+const comparisonRowSchema = z.object({
+  name: nonEmptyString,
+  highlighted: z.boolean().optional(),
+  values: z.array(nonEmptyString),
+});
+
+const valuePropCardSchema = z.object({
+  iconName: nonEmptyString,
+  title: nonEmptyString,
+  description: nonEmptyString,
+  bullets: z.array(nonEmptyString).optional(),
+});
+
+export const whyUsPageFrontmatterSchema = z.object({
+  component: nonEmptyString.optional(),
+  seo: seoMetaSchema,
+  eyebrow: nonEmptyString,
+  introEyebrow: nonEmptyString,
+  introHeading: nonEmptyString,
+  introParagraphs: z.array(nonEmptyString),
+  comparisonEyebrow: nonEmptyString,
+  comparisonHeading: nonEmptyString,
+  comparisonSubtitle: nonEmptyString,
+  comparisonColumns: z.array(nonEmptyString),
+  comparisonRows: z.array(comparisonRowSchema),
+  reasonsEyebrow: nonEmptyString,
+  reasonsHeading: nonEmptyString,
+  reasonsSubtitle: nonEmptyString,
+  reasons: z.array(nonEmptyString),
+  valuePropsEyebrow: nonEmptyString,
+  valuePropsHeading: nonEmptyString,
+  valueProps: z.array(valuePropCardSchema),
+  finalCta: ctaBlockSchema,
+});
+
+export const whyUsPageContentSchema = z.object({
+  seo: seoMetaSchema,
+  hero: heroContentSchema,
+  intro: z.object({
+    eyebrow: nonEmptyString,
+    heading: nonEmptyString,
+    paragraphs: z.array(nonEmptyString),
+  }),
+  comparison: sectionShellContentSchema.extend({
+    columns: z.array(nonEmptyString),
+    rows: z.array(comparisonRowSchema),
+  }),
+  reasons: sectionShellContentSchema.extend({
+    items: z.array(nonEmptyString),
+  }),
+  valueProps: sectionShellContentSchema.extend({
+    items: z.array(valuePropCardSchema),
+  }),
+  finalCta: ctaBlockSchema,
+});
+
+const summerPackageSchema = z.object({
+  id: nonEmptyString,
+  name: nonEmptyString,
+  description: nonEmptyString,
+  badge: nonEmptyString.optional(),
+  highlighted: z.boolean().optional(),
+  features: z.array(nonEmptyString),
+});
+
+const summerFieldSchema = z.object({
+  iconName: nonEmptyString,
+  title: nonEmptyString,
+  description: nonEmptyString,
+});
+
+export const summerProgramsPageFrontmatterSchema = z.object({
+  component: nonEmptyString.optional(),
+  seo: seoMetaSchema,
+  eyebrow: nonEmptyString,
+  introEyebrow: nonEmptyString,
+  introHeading: nonEmptyString,
+  introParagraphs: z.array(nonEmptyString),
+  packagesEyebrow: nonEmptyString,
+  packagesHeading: nonEmptyString,
+  packagesSubtitle: nonEmptyString,
+  packages: z.array(summerPackageSchema),
+  fieldsEyebrow: nonEmptyString,
+  fieldsHeading: nonEmptyString,
+  fieldsSubtitle: nonEmptyString,
+  fields: z.array(summerFieldSchema),
+  finalCta: ctaBlockSchema,
+});
+
+export const summerProgramsPageContentSchema = z.object({
+  seo: seoMetaSchema,
+  hero: heroContentSchema,
+  intro: z.object({
+    eyebrow: nonEmptyString,
+    heading: nonEmptyString,
+    paragraphs: z.array(nonEmptyString),
+  }),
+  packages: sectionShellContentSchema.extend({
+    items: z.array(summerPackageSchema),
+  }),
+  fields: sectionShellContentSchema.extend({
+    items: z.array(summerFieldSchema),
+  }),
+  finalCta: ctaBlockSchema,
+});
+
+const freeTrialTrackSchema = z.object({
+  id: nonEmptyString,
+  name: nonEmptyString,
+  description: nonEmptyString,
+  badge: nonEmptyString.optional(),
+  highlighted: z.boolean().optional(),
+  features: z.array(nonEmptyString),
+});
+
+const freeTrialReassuranceSchema = z.object({
+  iconName: nonEmptyString,
+  title: nonEmptyString,
+  description: nonEmptyString,
+});
+
+export const freeTrialPageFrontmatterSchema = z.object({
+  component: nonEmptyString.optional(),
+  seo: seoMetaSchema,
+  eyebrow: nonEmptyString,
+  introEyebrow: nonEmptyString,
+  introHeading: nonEmptyString,
+  introParagraphs: z.array(nonEmptyString),
+  tracksEyebrow: nonEmptyString,
+  tracksHeading: nonEmptyString,
+  tracksSubtitle: nonEmptyString,
+  tracks: z.array(freeTrialTrackSchema),
+  reassuranceEyebrow: nonEmptyString,
+  reassuranceHeading: nonEmptyString,
+  reassurances: z.array(freeTrialReassuranceSchema),
+  finalCta: ctaBlockSchema,
+});
+
+export const freeTrialPageContentSchema = z.object({
+  seo: seoMetaSchema,
+  hero: heroContentSchema,
+  intro: z.object({
+    eyebrow: nonEmptyString,
+    heading: nonEmptyString,
+    paragraphs: z.array(nonEmptyString),
+  }),
+  tracks: sectionShellContentSchema.extend({
+    items: z.array(freeTrialTrackSchema),
+  }),
+  reassurance: z.object({
+    eyebrow: nonEmptyString,
+    heading: nonEmptyString,
+    items: z.array(freeTrialReassuranceSchema),
+  }),
+  finalCta: ctaBlockSchema,
+});
+
+const contactDetailSchema = z.object({
+  iconName: nonEmptyString,
+  label: nonEmptyString,
+  primary: nonEmptyString,
+  secondary: nonEmptyString.optional(),
+  href: nonEmptyString.optional(),
+});
+
+const contactHourSchema = z.object({
+  label: nonEmptyString,
+  time: nonEmptyString,
+});
+
+export const contactPageFrontmatterSchema = z.object({
+  component: nonEmptyString.optional(),
+  seo: seoMetaSchema,
+  eyebrow: nonEmptyString,
+  introHeading: nonEmptyString,
+  introSubtitle: nonEmptyString,
+  contactCardHeading: nonEmptyString,
+  contactDetails: z.array(contactDetailSchema),
+  hoursHeading: nonEmptyString,
+  hours: z.array(contactHourSchema),
+  mapEmbedUrl: nonEmptyString.optional(),
+  citiesEyebrow: nonEmptyString,
+  citiesHeading: nonEmptyString,
+  citiesSubtitle: nonEmptyString,
+  cities: z.array(nonEmptyString),
+  finalCta: ctaBlockSchema,
+});
+
+export const contactPageContentSchema = z.object({
+  seo: seoMetaSchema,
+  hero: heroContentSchema,
+  contactCard: z.object({
+    heading: nonEmptyString,
+    details: z.array(contactDetailSchema),
+    hoursHeading: nonEmptyString,
+    hours: z.array(contactHourSchema),
+    mapEmbedUrl: nonEmptyString.optional(),
+  }),
+  cities: sectionShellContentSchema.extend({
+    items: z.array(nonEmptyString),
+  }),
+  finalCta: ctaBlockSchema,
+});

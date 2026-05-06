@@ -245,6 +245,135 @@ export interface BookAssessmentPageContent {
   };
 }
 
+export interface ComparisonRow {
+  name: string;
+  highlighted?: boolean;
+  values: string[];
+}
+
+export interface ValuePropCard {
+  iconName: string;
+  title: string;
+  description: string;
+  bullets?: string[];
+}
+
+export interface WhyUsPageContent {
+  seo: SeoMeta;
+  hero: HeroContent;
+  intro: {
+    eyebrow: string;
+    heading: string;
+    paragraphs: string[];
+  };
+  comparison: SectionShellContent & {
+    columns: string[];
+    rows: ComparisonRow[];
+  };
+  reasons: SectionShellContent & {
+    items: string[];
+  };
+  valueProps: SectionShellContent & {
+    items: ValuePropCard[];
+  };
+  finalCta: CtaBlock;
+}
+
+export interface SummerPackage {
+  id: string;
+  name: string;
+  description: string;
+  badge?: string;
+  highlighted?: boolean;
+  features: string[];
+}
+
+export interface SummerField {
+  iconName: string;
+  title: string;
+  description: string;
+}
+
+export interface SummerProgramsPageContent {
+  seo: SeoMeta;
+  hero: HeroContent;
+  intro: {
+    eyebrow: string;
+    heading: string;
+    paragraphs: string[];
+  };
+  packages: SectionShellContent & {
+    items: SummerPackage[];
+  };
+  fields: SectionShellContent & {
+    items: SummerField[];
+  };
+  finalCta: CtaBlock;
+}
+
+export interface FreeTrialTrack {
+  id: string;
+  name: string;
+  description: string;
+  badge?: string;
+  highlighted?: boolean;
+  features: string[];
+}
+
+export interface FreeTrialReassurance {
+  iconName: string;
+  title: string;
+  description: string;
+}
+
+export interface FreeTrialPageContent {
+  seo: SeoMeta;
+  hero: HeroContent;
+  intro: {
+    eyebrow: string;
+    heading: string;
+    paragraphs: string[];
+  };
+  tracks: SectionShellContent & {
+    items: FreeTrialTrack[];
+  };
+  reassurance: {
+    eyebrow: string;
+    heading: string;
+    items: FreeTrialReassurance[];
+  };
+  finalCta: CtaBlock;
+}
+
+export interface ContactDetail {
+  iconName: string;
+  label: string;
+  primary: string;
+  secondary?: string;
+  href?: string;
+}
+
+export interface ContactHour {
+  label: string;
+  time: string;
+}
+
+export interface ContactPageContent {
+  seo: SeoMeta;
+  hero: HeroContent;
+  contactCard: {
+    heading: string;
+    details: ContactDetail[];
+    hoursHeading: string;
+    hours: ContactHour[];
+    mapEmbedUrl?: string;
+  };
+  cities: SectionShellContent & {
+    items: string[];
+  };
+  finalCta: CtaBlock;
+}
+
 export interface ProgramContent {
   slug: string;
   title: string;

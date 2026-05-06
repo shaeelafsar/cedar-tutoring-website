@@ -16,6 +16,10 @@ const staticRoutes = [
   "/book-assessment",
   "/test-prep",
   "/programs",
+  "/why-us",
+  "/summer-programs",
+  "/free-trial",
+  "/contact-us",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

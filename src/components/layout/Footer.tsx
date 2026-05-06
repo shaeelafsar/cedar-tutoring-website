@@ -127,14 +127,6 @@ export function Footer() {
           <span>
             © {currentYear} {SITE_CONFIG.name}. All rights reserved.
           </span>
-          <div className="flex gap-6">
-            <Link href="/privacy" className="inline-flex min-h-11 items-center transition-colors hover:text-white md:min-h-0">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="inline-flex min-h-11 items-center transition-colors hover:text-white md:min-h-0">
-              Terms of Service
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

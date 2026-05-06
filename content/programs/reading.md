@@ -2,63 +2,58 @@
 slug: "reading"
 title: "Reading Tutoring"
 shortTitle: "Reading"
-shortDescription: "Reading support that builds strong foundations students can use in the classroom and beyond."
+shortDescription: "Reading tutoring for grades KG-high school that helps students build a strong foundation in the classroom and beyond."
 iconName: "book-open"
-grades: "K–8"
+grades: "KG–High School"
 tags:
   - "core"
   - "literacy"
 seo:
-  title: "Reading Tutoring for K-8 Students | Cedar Tutoring Academy"
-  description: "Reading tutoring that helps students build a strong foundation they can use in the classroom and beyond."
+  title: "Reading Tutoring for All Levels | Cedar Tutoring Academy"
+  description: "Cedar Tutoring Academy offers reading tutoring for grades KG-high school and helps students raise their reading and comprehension levels."
 testimonialIds:
   - "m-abuelhawa"
   - "candice-joseph"
 relatedPrograms:
   - "writing"
-  - "homework-help"
+  - "arabic"
 faq:
   - question: "What reading levels do you support?"
-    answer: "We work with students from pre-reading and early phonics through 8th-grade comprehension and vocabulary. The assessment helps us identify the exact starting point."
-  - question: "How quickly will I see results?"
-    answer: "Most families notice early signs of progress—like smoother reading, less avoidance, or better comprehension—within 8 to 12 weeks of consistent sessions."
-  - question: "Does Cedar use a specific reading curriculum?"
-    answer: "We use research-backed methods and materials matched to the student's level. That often includes phonics, fluency, vocabulary, and comprehension work in a sequence that makes sense for the child."
+    answer: "Cedar Tutoring Academy offers reading tutoring for grades KG-high school."
+  - question: "What does Cedar assess first?"
+    answer: "We will assess your child's strengths and weaknesses to obtain a full understanding of your child's needs, learning style, and goals."
+  - question: "What skills can Cedar help with in reading?"
+    answer: "We provide tutoring that ranges from the most basic skills such as word recognition and letters, to more complex concepts such as advanced literacy and symbolism."
 cta:
-  heading: "Ready to help your child become a stronger reader?"
-  subtext: "Start with a free reading assessment. We'll identify where your child stands and recommend a clear path forward."
+  heading: "Interested in reading tutoring?"
+  subtext: "Claim your free sessions today by booking your appointment below."
   primaryCta:
-    label: "Book a Free Reading Assessment"
-    href: "/book-assessment"
+    label: "Free Trial"
+    href: "/free-trial/"
 ---
 
-# Reading tutoring that builds a strong foundation for lifelong learning.
+# READING TUTORING FOR ALL LEVELS
 
-Reading & Writing allow students to prosper in classroom and beyond. Building a strong foundation at an early age is essential for your child to enable them to build upon what they already know, and to advance throughout each subsequent grade level. Cedar helps your child reach their full potential by instilling a strong foundation of reading & writing that can be applied not only in the classroom, but beyond as well.
+Reading is a skill that allows students to prosper in the classroom and beyond. Building a strong reading foundation at an early age is essential for your child to enable them to build upon what they already know, and to then advance throughout each subsequent grade level.
+
+Cedar Tutoring Academy offers reading tutoring for grades KG-high school. Our tutors will help your child reach their full potential by instilling a strong foundation of reading that can be applied not only in the classroom, but beyond as well. We will help students explore the world in a meaningful way.
 
 ## Problem
 
-### When foundational reading skills are weak, every grade becomes harder.
+### Building a strong reading foundation at an early age is essential.
 
-Students who struggle with reading often have a harder time keeping up across subjects. Without a strong early foundation, it becomes more difficult to build on what they already know as school demands increase.
+Reading is a skill that allows students to prosper in the classroom and beyond.
 
 ## Approach
 
-### How Cedar helps students grow as readers.
+### CEDAR READING TUTORING PROCESS
 
-Building a strong foundation at an early age is essential for your child to enable them to build upon what they already know, and to advance throughout each subsequent grade level.
+At Cedar, we are dedicated to providing quality reading tutors to your child. We will assess your child's strengths and weaknesses to obtain a full understanding of your child's needs, learning style, and goals.
 
-- Foundational reading support matched to the student's current level
-- Skill-building that helps students prosper in classroom and beyond
-- Instruction focused on helping students build on what they already know
-- Support designed to help your child reach their full potential
+We provide tutoring that ranges from the most basic skills such as word recognition and letters, to more complex concepts such as advanced literacy and symbolism. Our reading tutors are equipped to work with your child's academic needs so that your child can become successful.
 
 ## Outcomes
 
-### What families can expect from reading tutoring.
+### Helping your child raise their reading and comprehension levels.
 
-- Stronger foundational reading skills
-- Better readiness for each subsequent grade level
-- More confidence in the classroom and beyond
-- Greater ability to build on existing knowledge
-- Progress that supports long-term academic growth
+- We are dedicated to helping your child raise their reading and comprehension levels.

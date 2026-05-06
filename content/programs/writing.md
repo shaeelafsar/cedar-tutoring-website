@@ -2,63 +2,56 @@
 slug: "writing"
 title: "Writing Tutoring"
 shortTitle: "Writing"
-shortDescription: "Writing support that helps students build a strong foundation they can use in the classroom and beyond."
+shortDescription: "Writing tutoring for all levels that helps students express their ideas clearly and confidently."
 iconName: "pen-tool"
-grades: "2–12"
+grades: "All Levels"
 tags:
   - "core"
   - "literacy"
 seo:
-  title: "Writing Tutoring for Grades 2-12 | Cedar Tutoring Academy"
-  description: "Writing tutoring that helps students build a strong foundation they can use in the classroom and beyond."
+  title: "Writing Tutoring for All Levels | Cedar Tutoring Academy"
+  description: "Our writing tutors at Cedar are trained to help your child reach their full potential when it comes to writing."
 testimonialIds:
   - "anna-galan"
   - "mukesh-singh"
 relatedPrograms:
   - "reading"
-  - "homework-help"
+  - "math"
 faq:
-  - question: "What grade levels do you support for writing?"
-    answer: "We work with students from 2nd grade writing foundations through high-school essays, research writing, and written test responses."
-  - question: "Will my child work on their actual school assignments?"
-    answer: "Yes, when it makes sense. We often use real assignments as teaching opportunities while also building the underlying skills that transfer to future writing."
-  - question: "How is writing tutoring structured?"
-    answer: "Sessions usually include skill instruction, guided practice, independent writing, and feedback. That steady cycle helps students improve without feeling overwhelmed."
+  - question: "Who can benefit from Cedar's writing tutoring?"
+    answer: "Writing is a necessary and fundamental skill needed for students of all ages in becoming successful."
+  - question: "How do Cedar writing tutors help students?"
+    answer: "Our writing tutors at Cedar are trained to help your child reach their full potential when it comes to writing."
+  - question: "What does Cedar's writing program focus on?"
+    answer: "Our writing program at Cedar is designed to guide your child through developing strong writing skills that go beyond the classroom."
 cta:
-  heading: "Ready to help your child write with confidence?"
-  subtext: "Start with a free assessment. We'll evaluate where your child stands and create a plan for clearer, stronger writing."
+  heading: "Interested in writing tutoring?"
+  subtext: "Claim your free sessions today by booking your appointment below."
   primaryCta:
-    label: "Book a Free Writing Assessment"
-    href: "/book-assessment"
+    label: "Free Trial"
+    href: "/free-trial/"
 ---
 
-# Writing tutoring that helps students prosper in the classroom and beyond.
+# WRITING TUTORING FOR ALL LEVELS
 
-Reading & Writing allow students to prosper in classroom and beyond. Building a strong foundation at an early age is essential for your child to enable them to build upon what they already know, and to advance throughout each subsequent grade level. Cedar helps your child reach their full potential by instilling a strong foundation of reading & writing that can be applied not only in the classroom, but beyond as well.
+Writing is a necessary and fundamental skill needed for students of all ages in becoming successful. Through writing, students can express themselves and their unique ideas in the classroom and beyond. Writing allows your child to communicate their ideas in a structured and organized manner.
+
+Our writing tutors at Cedar are trained to help your child reach their full potential when it comes to writing. We have diverse tutors who can help your child at all stages. By working with a writing tutor, your child will learn how to convey their ideas effectively and properly.
 
 ## Problem
 
-### Writing gaps make it harder for students to show what they know.
+### THE IMPORTANCE OF WRITING TUTORING
 
-When students do not have a strong writing foundation, they can struggle to organize ideas, express themselves clearly, and keep pace with the expectations of each new grade level.
+Our writing program at Cedar is designed to guide your child through developing strong writing skills that go beyond the classroom. We help your child build their confidence in writing and guide them in finding their unique, individual voice.
 
 ## Approach
 
-### How Cedar helps students become stronger writers.
+### CEDAR'S WRITING TUTORING PROGRAMS
 
-Cedar helps your child reach their full potential by instilling a strong foundation of reading & writing that can be applied not only in the classroom, but beyond as well.
-
-- Foundational writing support matched to grade level and current skill
-- Practice that helps students build on what they already know
-- Writing instruction that supports success in classroom and beyond
-- A steady focus on helping each child reach their full potential
+Cedar tutoring is designed to help your child conquer their writing goals. Our tutors work with your child and equip them in building a strong foundation in writing. We also guide your child in preparing for essays, quizzes, and tests.
 
 ## Outcomes
 
-### What families can expect from writing tutoring.
+### Writing allows your child to communicate their ideas in a structured and organized manner.
 
-- Stronger foundational writing skills
-- Better readiness for essays, responses, and classroom assignments
-- More confidence expressing ideas clearly
-- Progress that supports each subsequent grade level
-- Writing skills students can apply beyond the classroom
+- We help your child build their confidence in writing and guide them in finding their unique, individual voice.

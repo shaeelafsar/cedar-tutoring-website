@@ -2,60 +2,55 @@
 slug: "arabic"
 title: "Arabic Language Tutoring"
 shortTitle: "Arabic"
-shortDescription: "Reading, writing, vocabulary, and comprehension support for children learning Arabic with structure and consistency."
+shortDescription: "Arabic tutoring that helps students with reading, writing, and speaking Arabic the proper way."
 iconName: "languages"
-grades: "K–12"
+grades: "All Levels"
 tags:
   - "language"
 seo:
-  title: "Arabic Tutoring for K-12 Students | Cedar Tutoring Academy"
-  description: "Build Arabic reading, writing, and comprehension with Cedar Tutoring Academy tutoring for K-12 students in Plano and nearby communities."
+  title: "Arabic Tutoring | Cedar Tutoring Academy"
+  description: "Cedar Tutoring Academy also offers Arabic tutoring to meet the needs of the large Arab community in our surrounding areas."
 testimonialIds:
   - "rubba-salhi"
 relatedPrograms:
   - "reading"
   - "writing"
 faq:
-  - question: "Does my child need prior Arabic knowledge?"
-    answer: "No. We work with complete beginners through advanced learners. The assessment helps us place each student at the right starting point."
-  - question: "What curriculum do you use for Arabic?"
-    answer: "We use a structured, skills-based approach that covers reading, writing, vocabulary, and comprehension. Materials are chosen based on the student's level and goals."
-  - question: "Can Cedar help with Quran reading as well?"
-    answer: "Cedar's Arabic program focuses on Modern Standard Arabic language skills. If your family wants Quran-specific instruction too, we can explain where Cedar fits best and where an additional teacher may help."
+  - question: "Why does Cedar offer Arabic tutoring?"
+    answer: "Cedar Tutoring Academy also offers Arabic tutoring to meet the needs of the large Arab community in our surrounding areas."
+  - question: "Why can Arabic be challenging to learn?"
+    answer: "We understand the fact that it is challenging to learn Arabic because the grammar structure is way too difficult to grasp."
+  - question: "How does Cedar approach Arabic tutoring?"
+    answer: "We give special attention to each student's demands because we know for a fact that each child operates on a different cognitive, emotional and intellectual plane."
 cta:
-  heading: "Ready to give your child structured Arabic instruction?"
-  subtext: "Start with a free assessment. We'll evaluate their current level and recommend the right path forward."
+  heading: "Interested in Arabic tutoring?"
+  subtext: "Claim your free sessions today by booking your appointment below."
   primaryCta:
-    label: "Book a Free Arabic Assessment"
-    href: "/book-assessment"
+    label: "Free Trial"
+    href: "/free-trial/"
 ---
 
-# Arabic tutoring with structure, warmth, and real progress.
+# Learning Arabic Cannot Get Easier Than This
 
-Whether your child is learning Arabic for the first time or strengthening what they already know, Cedar provides the consistency and encouragement needed to keep progress going.
+Cedar Tutoring Academy also offers Arabic tutoring to meet the needs of the large Arab community in our surrounding areas. We assist students with reading, writing, and speaking arabic the proper way.
 
 ## Problem
 
-### Learning Arabic without structure often leads to slow, frustrating progress.
+### We understand the fact that it is challenging to learn Arabic because the grammar structure is way too difficult to grasp.
 
-Students need repetition, clear teaching, and regular practice to build confidence in a second language. Without that consistency, it becomes easy to forget what they learned or feel stuck at the same level.
+But our highly educated and experienced tutors and our scientific method prove to be the best learning tool.
 
 ## Approach
 
-### How Cedar builds Arabic skills over time.
+### We give special attention to each student's demands because we know for a fact that each child operates on a different cognitive, emotional and intellectual plane.
 
-We use structured instruction to help students grow in reading, writing, vocabulary, and comprehension.
+Hence, we assess the cognitive capability of each kid before imparting training.
 
-- Instruction matched to the student's level and goals
-- Practice in reading and writing, not just memorization
-- A steady pace that builds familiarity and confidence
-- Support that helps families stay consistent week to week
+We do not just impart linguistic training. In fact, ours is a holistic approach towards building emotional intelligence. The problems can be solved only when you respond to the problems appropriately.
 
 ## Outcomes
 
-### What families can expect.
+### Therefore, we teach kids to respond to linguistic and learning challenges correctly.
 
-- Stronger Arabic reading and writing skills
-- Better vocabulary retention and comprehension
-- More confidence using Arabic regularly
-- Clear progress through steady, structured support
+- They can develop the ability to respond to real life's problems.
+- For us, education is not about improving intellectual capability only, it is also about having the ability to respond.

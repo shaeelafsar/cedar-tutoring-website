@@ -2,63 +2,58 @@
 slug: "math"
 title: "Math Tutoring"
 shortTitle: "Math"
-shortDescription: "Math tutoring for elementary school through high school, including Algebra, Geometry, and Calculus."
+shortDescription: "Math tutoring from elementary to high school that helps students conquer and understand math."
 iconName: "calculator"
-grades: "K–12"
+grades: "Elementary–High School"
 tags:
   - "core"
   - "stem"
 seo:
-  title: "Math Tutoring for K-12 Students | Cedar Tutoring Academy"
-  description: "We offer math tutoring for elementary school to high school levels including Algebra, Geometry, and Calculus tutoring."
+  title: "Math Tutoring for All Levels | Cedar Tutoring Academy"
+  description: "At Cedar, we offer qualified math tutors that can help your child conquer and understand math."
 testimonialIds:
   - "malak-ibrahim"
   - "rawan-shalan"
 relatedPrograms:
   - "science"
-  - "homework-help"
+  - "reading"
 faq:
-  - question: "What math levels do you cover?"
-    answer: "We support students from early arithmetic and number sense through algebra, geometry, pre-calculus, and standardized test math. The assessment helps us find the right starting point."
-  - question: "My child is in advanced math but struggling. Can Cedar help?"
-    answer: "Absolutely. We often work with students in honors, pre-AP, and accelerated tracks who understand some of the material but need help with pacing, multi-step problem solving, or test confidence."
-  - question: "How do you handle different learning styles in math?"
-    answer: "Our small-group format gives tutors room to slow down, use visual models, and explain the same concept in more than one way until it clicks."
+  - question: "What levels of math does Cedar support?"
+    answer: "We offer math tutoring from elementary to high school."
+  - question: "Why is math tutoring important?"
+    answer: "Math tutoring is crucial for students who have gaps or a weak foundation in their math knowledge."
+  - question: "What is a Cedar math session like?"
+    answer: "Computational Fluency - At Cedar, students master basic mathematical operations. The math tutor guides the students by helping them learn past concepts that they may still be struggling with."
 cta:
-  heading: "Ready to turn math frustration into confidence?"
-  subtext: "Start with a free math assessment. We'll pinpoint the exact gaps and build a plan that moves your child forward."
+  heading: "Interested in math tutoring?"
+  subtext: "Claim your free sessions today by booking your appointment below."
   primaryCta:
-    label: "Book a Free Math Assessment"
-    href: "/book-assessment"
+    label: "Free Trial"
+    href: "/free-trial/"
 ---
 
-# Math tutoring that helps students build strong foundations and lasting confidence.
+# MATH TUTORING FOR ALL LEVELS
 
-We offer math tutoring for elementary school to high school levels including Algebra, Geometry, and Calculus tutoring. We help students build the foundations in math so that they are able to continue building upon these skills and applying them inside and outside of the classroom. We are dedicated to helping your child understand and succeed in math.
+Math can be challenging and stressful for many students. At Cedar, we understand that and we offer qualified math tutors that can help your child conquer and understand math. We offer math tutoring from elementary to high school.
+
+We help students build the foundations in math so that they are able to continue building upon these skills and applying them inside and outside of the classroom. We are dedicated to helping your child understand and succeed in math.
 
 ## Problem
 
-### When math foundations are weak, every new topic feels harder.
+### THE IMPORTANCE OF MATH TUTORING
 
-Many students struggle in math because earlier skills were never fully mastered. As new units build on old ones, confusion grows, homework takes longer, and confidence starts to fall.
+Students often struggle with math because each new topic they learn is built upon a previous concept. If one concept is unclear, it will be extremely difficult and frustrating for the student to move forward to develop more advanced math skills.
+
+Math tutoring is crucial for students who have gaps or a weak foundation in their math knowledge. Tutoring is also important for students who need to challenge themselves to grasp more advanced math problems.
 
 ## Approach
 
-### How Cedar supports math growth.
+### WHAT IS A CEDAR MATH SESSION LIKE?
 
-We help students build the foundations in math so that they are able to continue building upon these skills and applying them inside and outside of the classroom.
-
-- Elementary school math support tailored to foundational skills
-- Algebra, Geometry, and Calculus tutoring for older students
-- Step-by-step instruction that helps students understand what they are doing
-- Practical support students can apply inside and outside of the classroom
+Computational Fluency - At Cedar, students master basic mathematical operations. The math tutor guides the students by helping them learn past concepts that they may still be struggling with.
 
 ## Outcomes
 
-### What families can expect from math tutoring.
+### Helping your child understand and succeed in math.
 
-- Stronger math foundations
-- Better understanding of current coursework
-- More confidence during homework and classwork
-- Skills students can keep building on over time
-- Support focused on helping your child understand and succeed in math
+- We are dedicated to helping your child understand and succeed in math.

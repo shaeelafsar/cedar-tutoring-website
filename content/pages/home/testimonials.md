@@ -10,4 +10,4 @@ featuredIds:
 
 # Real stories from Cedar's 5.0-rated Google reviews.
 
-Featured feedback from Plano families who have seen stronger skills, higher confidence, and caring support at Cedar Tutoring Academy®.
+Featured feedback from Cedar families who have seen stronger skills, higher confidence, and caring support at Cedar Tutoring Academy®.

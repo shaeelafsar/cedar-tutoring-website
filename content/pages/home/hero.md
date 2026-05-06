@@ -1,25 +1,35 @@
 ---
 component: "Hero"
 order: 1
-eyebrow: "Affordable Tutoring, Guaranteed Results"
+eyebrow: "WELCOME TO CEDAR TUTORING ACADEMY!"
 seo:
-  title: "Affordable Tutoring, Guaranteed Results | Cedar Tutoring Academy"
+  title: "Cedar Tutoring Academy | Worth, IL Tutoring & Test Prep"
   description: "Cedar Tutoring Academy® strengthens your child's academic abilities in Reading, Science, Math, and Writing—efficiently and effectively. Our renowned methods help your child foster a love of learning while giving them the tools and confidence to perform at their best."
 primaryCta:
-  label: "Book a Free Assessment"
-  href: "/book-assessment"
+  label: "Why Cedar?"
+  href: "/why-us/"
 secondaryCta:
-  label: "Explore Programs"
-  href: "/programs"
+  label: "Free Trial"
+  href: "/free-trial/"
 stats:
   - value: "5.0"
     label: "Google rating"
   - value: "2:1"
-    label: "Small groups"
-  - value: "K–12"
-    label: "All grades"
+    label: "Student-to-tutor ratio"
+  - value: "KG–High School"
+    label: "Grades served"
+slides:
+  - "READING Gives Life MORE LIFE"
+  - "Education is the most POWERFUL weapon which you can use to change the world"
+  - "INTELLIGENCE plus CHARACTER That is the goal of TRUE EDUCATION"
 ---
 
 # WELCOME TO CEDAR TUTORING ACADEMY!
 
 Cedar Tutoring Academy® strengthens your child's academic abilities in Reading, Science, Math, and Writing—efficiently and effectively. Our renowned methods help your child foster a love of learning while giving them the tools and confidence to perform at their best.
+
+## Hero Slider Quotes
+
+- "READING Gives Life MORE LIFE"
+- "Education is the most POWERFUL weapon which you can use to change the world"
+- "INTELLIGENCE plus CHARACTER That is the goal of TRUE EDUCATION"

@@ -1,76 +1,75 @@
 ---
 component: "TestPrepHub"
-sectionEyebrow: "Test prep programs"
+sectionEyebrow: "Test Prep"
 seo:
-  title: "SAT, ACT & PSAT Prep | Cedar Tutoring Academy"
-  description: "Compare Cedar Tutoring Academy SAT, ACT, and PSAT prep with strategy coaching, timed practice, and targeted support for Plano-area students."
+  title: "ACT & SAT Prep | Cedar Tutoring Academy"
+  description: "Prep Programs for the ACT and SAT with tailored support from Cedar Tutoring Academy."
 cardLinkLabel: "Learn more"
 detailPage:
   idealFor:
-    eyebrow: "Who it's for"
-    heading: "Built for students who need structure, clarity, and a realistic plan."
-    subtitle: "Each Cedar test prep program is designed to meet students where they are and keep preparation steady."
+    eyebrow: "Why Cedar test prep works"
+    heading: "Tailored Prep Program for Excellent Results"
+    subtitle: "Cedar learns how each student learns, what they need to learn, and when they can learn."
   focusAreas:
-    eyebrow: "What we focus on"
-    heading: "Targeted coaching around the skills that move scores and confidence."
-    subtitle: "Students work on the academic and strategic habits that matter most for exam day."
+    eyebrow: "What Cedar focuses on"
+    heading: "Tailored support aligned with SAT and ACT demands."
+    subtitle: "Cedar works with students every step of the way toward a high score and advancement in knowledge."
   process:
     eyebrow: "How it works"
-    heading: "A calm, strategic process from baseline to test day."
-    subtitle: "Families get a clear plan instead of guessing what kind of prep to do next."
+    heading: "A tailored process for ACT and SAT prep."
+    subtitle: "Cedar begins by learning how you learn, what you need to learn and when you can learn."
     steps:
       - number: "1"
-        title: "Baseline review"
-        description: "We look at current performance, target schools or scholarship goals, and the student's timeline."
+        title: "Learn how you learn"
+        description: "We would first learn how you learn, what you need to learn and when you can learn."
       - number: "2"
-        title: "Prep plan"
-        description: "We set priorities for content review, pacing, and strategy based on where the biggest opportunities are."
+        title: "Streamline your tutoring"
+        description: "This allows us to streamline better your tutoring to bring greater and desired results."
       - number: "3"
-        title: "Coached practice"
-        description: "Students build skills through guided instruction, timed work, and feedback that explains what to change next."
+        title: "Work every step of the way"
+        description: "Our teachers are experienced and are actual teachers who care for the future of our students. We would work with you every step of the way."
       - number: "4"
-        title: "Test-day readiness"
-        description: "We refine pacing, confidence, and routines so students walk in feeling prepared instead of rushed."
+        title: "Build a solid ground"
+        description: "Together create a solid ground for you to garner an excellent score in your SAT and ACT exams!"
   format:
     eyebrow: "Program format"
-    heading: "What families can expect from Cedar's test prep approach."
-    subtitle: "Sessions stay focused, accountable, and realistic for busy high school schedules."
+    heading: "Tailored tutoring, not set programs."
+    subtitle: "Here at Cedar Tutoring, the curriculum we use is both tailored to your needs and aligned with SAT and ACT demands."
   outcomes:
     eyebrow: "What to expect"
-    heading: "The gains families usually notice before and after test day."
-    subtitle: "Progress is about more than a score alone—students also become calmer, more strategic test takers."
+    heading: "A high score and advancement in knowledge."
+    subtitle: "Cedar encourages students and works with them toward the desired result."
   testimonials:
-    eyebrow: "What parents say"
-    heading: "Real feedback from Cedar families navigating test-prep season."
+    eyebrow: "Google reviews"
+    heading: "Real feedback from Cedar families."
   faq:
     eyebrow: "Common questions"
     headingTemplate: "Frequently asked questions about Cedar's {{program}} prep."
   related:
     eyebrow: "Related test prep"
-    heading: "Other test prep options families often compare or combine."
+    heading: "Explore Cedar's other test prep options."
     linkLabel: "Learn more"
   ctaTrustBullets:
-    - "Builds confidence before test day"
-    - "Balances strategy and content review"
-    - "Designed for high school schedules"
-    - "Clear communication for families"
+    - "ACT prep"
+    - "SAT prep"
+    - "Tailored tutoring"
+    - "Experienced teachers"
 finalCta:
-  heading: "Not sure which test prep path fits your student best?"
-  subtext: "Start with a free assessment. We'll review goals, current performance, and timeline so your family can choose the right prep plan with confidence."
+  heading: "Interested in ACT or SAT Prep?"
+  subtext: "Claim your free sessions today by booking your appointment below."
   primaryCta:
-    label: "Book a Free Assessment"
-    href: "/book-assessment"
-  trustBullets:
-    - "SAT, ACT, and PSAT guidance"
-    - "Local support for Plano-area families"
-    - "Flexible scheduling around school and activities"
-    - "Clear next steps after the first conversation"
+    label: "Free Trial"
+    href: "/free-trial/"
 ---
 
-# Test prep with strategy, structure, and less stress.
+# PREP PROGRAMS FOR THE ACT and SAT
 
-Cedar helps high-school students prepare for the SAT, ACT, and PSAT with targeted coaching, timed practice, and a plan families can actually follow.
+Cedar Tutoring Academy is a platform created by well-meaning and versatile teachers for students who want to get ahead. Our test prep services include SAT prep and ACT prep. We get to know our students and work with them to get the desired result— a high score and advancement in knowledge!
 
-## Focused preparation for the exams that shape next steps.
+## Why Our Test Preps Works - Tailored Prep Program for Excellent Results
 
-Students build content mastery, pacing, and confidence through small-group support designed for real score growth—not last-minute cramming.
+At Cedar Tutoring Academy, we don't just dish out set programs to our students. That will be going against what we stand for and limiting your success. Over our 10 years of existence, we have proven that a tailored program works best. We would first learn how you learn, what you need to learn and when you can learn. This allows us to streamline better your tutoring to bring greater and desired results.
+
+Our teachers are experienced and are actual teachers who care for the future of our students. We would work with you every step of the way. We would encourage you and together create a solid ground for you to garner an excellent score in your SAT and ACT exams!
+
+Here at Cedar Tutoring, the curriculum we use is both tailored to your needs and aligned with SAT and ACT demands.

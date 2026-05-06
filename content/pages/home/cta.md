@@ -2,15 +2,10 @@
 component: "CTA"
 order: 7
 primaryCta:
-  label: "Book a Free Assessment"
-  href: "/book-assessment"
-trustBullets:
-  - "Response within 24 hours"
-  - "No-pressure free assessment"
-  - "K–12 & test prep support"
-  - "Transportation available"
+  label: "Admission Form"
+  href: "/admission/"
 ---
 
-# Ready to find the right support for your child?
+# How to Enroll Your Child in a Class
 
-Book a free assessment to identify learning gaps, match the right program, and plan clear next steps with confidence.
+Interested in effective supplemental education for your child? Cedar Tutoring Academy® is the right choice!

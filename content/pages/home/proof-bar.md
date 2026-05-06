@@ -3,15 +3,15 @@ component: "ProofBar"
 order: 2
 items:
   - iconName: "star"
-    label: "5.0 (122 Reviews)"
-  - iconName: "graduation-cap"
-    label: "K–12 Programs"
+    label: "5.0 Google Rating"
+  - iconName: "users"
+    label: "2:1 Student-to-Tutor Ratio"
   - iconName: "bar-chart-3"
-    label: "2:1 Small Groups"
-  - iconName: "bus"
-    label: "Transportation Available"
+    label: "$27-$40/hr"
+  - iconName: "shield"
+    label: "Free Diagnostics"
   - iconName: "map-pin"
-    label: "Plano, TX"
+    label: "Worth, IL"
 ---
 
 Proof bar badges shown on the homepage.

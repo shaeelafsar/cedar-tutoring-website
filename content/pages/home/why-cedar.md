@@ -1,28 +1,28 @@
 ---
 component: "WhyCedar"
 order: 6
-eyebrow: "Why Cedar"
+eyebrow: "Why Cedar?"
 items:
   - iconName: "users"
-    title: "One-To-One Instructions"
-    description: "With our integrated one-to-one and small group instruction model, your child will have the benefit of our expert tutor's undivided attention and the opportunity to learn from and discuss problems with peers. We provide a welcoming and individualized learning atmosphere, a safe-place for your child to identify his or her strengths and weaknesses, and to learn to love learning as much as we love teaching!!"
+    title: "2:1 ratio"
+    description: "Cedar's comparison table highlights a 2:1 ratio for focused support."
     checks:
-      - "Integrated one-to-one and small group instruction model"
-      - "A welcoming and individualized learning atmosphere"
-  - iconName: "shield"
-    title: "Active Learning"
-    description: "At Cedar Tutoring Academy®, we take a multimodal approach to learning. Our tutors are not only expert teachers, but also expert learners themselves. They can provide your child with active learning skills that will benefit them for the rest of their educational careers. Our tutors engage your child and encourage them to take ownership of their own future, giving them the tools and confidence they need to succeed."
-    checks:
-      - "A multimodal approach to learning"
-      - "Giving them the tools and confidence they need to succeed"
+      - "See the full Why Us page at /why-us/"
   - iconName: "bar-chart-3"
-    title: "Unparalleled Results"
-    description: "We understand that this is a crucial time in the life of your child. Between after-school activities, sporting engagements, and family obligations, there's no time to waste! At Cedar®, your child will experience unparalleled results with only two or three 60-minute sessions per week. Our approach is efficient. We identify your child's weaknesses from day one and use a focused and individualized plan to help them overcome them."
+    title: "$27-$40/hr"
+    description: "Cedar's comparison table highlights affordable hourly pricing."
     checks:
-      - "Only two or three 60-minute sessions per week"
-      - "A focused and individualized plan"
+      - "See the full Why Us page at /why-us/"
+  - iconName: "shield"
+    title: "Teachers Owned"
+    description: "Cedar's comparison table highlights that Cedar is teachers owned."
+    checks:
+      - "See the full Why Us page at /why-us/"
+button:
+  label: "Why Cedar?"
+  href: "/why-us/"
 ---
 
-# Three reasons families choose Cedar Tutoring Academy®.
+# Why Cedar?
 
-One-to-one attention, active learning, and efficient support help students build confidence and make measurable progress.
+Use the "Why Cedar?" button to visit /why-us/ for the full Cedar vs Others comparison, parent reasons, and Google reviews.

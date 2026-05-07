@@ -22,6 +22,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function FreeTrialRedirectPage() {
@@ -39,20 +40,20 @@ export default function FreeTrialRedirectPage() {
       <div className="text-center">
         <p className="text-muted-foreground text-base">
           Redirecting to{" "}
-          <a
+          <Link
             href="/book-assessment"
             className="text-primary font-semibold underline underline-offset-4"
           >
             Book a Free Assessment
-          </a>
+          </Link>
           …
         </p>
         {/* No-JS fallback: render a direct link for users without JavaScript */}
         <noscript>
           <p className="mt-4 text-sm text-muted-foreground">
-            <a href="/book-assessment" className="text-primary underline">
+            <Link href="/book-assessment" className="text-primary underline">
               Click here
-            </a>{" "}
+            </Link>{" "}
             if you are not redirected automatically.
           </p>
         </noscript>

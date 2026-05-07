@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 
 import type { PricingSubTier } from "@/types/content";
@@ -114,7 +115,7 @@ export function PricingCardInteractive({
       </ul>
 
       <div className="mt-auto pt-8">
-        <a
+        <Link
           href="/book-assessment/"
           className={[
             "inline-flex w-full items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-semibold transition-all",
@@ -125,7 +126,7 @@ export function PricingCardInteractive({
         >
           Book a Free Assessment
           <ArrowRight className="size-4" />
-        </a>
+        </Link>
       </div>
     </article>
   );

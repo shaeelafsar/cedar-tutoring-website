@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 
 import { CTASection } from "@/components/shared/CTASection";
@@ -152,7 +153,7 @@ export default function PricingPage() {
                     </ul>
 
                     <div className="mt-auto pt-8">
-                      <a
+                      <Link
                         href="/book-assessment/"
                         className={[
                           "inline-flex w-full items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-semibold transition-all",
@@ -163,7 +164,7 @@ export default function PricingPage() {
                       >
                         Book a Free Assessment
                         <ArrowRight className="size-4" />
-                      </a>
+                      </Link>
                     </div>
                   </article>
                 </Reveal>

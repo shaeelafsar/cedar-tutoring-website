@@ -64,7 +64,7 @@ const homePageStructuredData = {
   name: SITE_CONFIG.name,
   url: SITE_CONFIG.url,
   description:
-    "Personalized tutoring in Reading, Math, Writing, Science, Arabic, and Test Prep in the Dallas-Fort Worth area",
+    "Personalized tutoring in Reading, Math, Writing, Science, Arabic, and Test Prep serving Worth, IL and the South Suburbs of Chicago",
   areaServed: "South Suburbs of Chicago, Illinois",
   telephone: SITE_CONFIG.phone,
   email: SITE_CONFIG.email,

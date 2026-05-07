@@ -2,8 +2,8 @@
 component: "CTA"
 order: 7
 primaryCta:
-  label: "Admission Form"
-  href: "/admission/"
+  label: "Book a Free Assessment"
+  href: "/book-assessment/"
 ---
 
 # How to Enroll Your Child in a Class

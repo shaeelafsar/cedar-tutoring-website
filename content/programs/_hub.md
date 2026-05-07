@@ -44,8 +44,8 @@ finalCta:
   heading: "How to Enroll Your Child in a Class"
   subtext: "Interested in effective supplemental education for your child? Cedar Tutoring Academy® is the right choice!"
   primaryCta:
-    label: "Admission Form"
-    href: "/admission/"
+    label: "Book a Free Assessment"
+    href: "/book-assessment/"
 ---
 
 # In Search Of Excellence? See How We Can Help You

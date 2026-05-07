@@ -6,7 +6,7 @@ export const SITE_URL = SITE_CONFIG.url;
 export const SITE_NAME = SITE_CONFIG.name;
 export const DEFAULT_OG_IMAGE = "/images/logos/cedar-logo-original.jpg";
 export const DEFAULT_DESCRIPTION =
-  "Explore personalized K-12 tutoring in reading, math, writing, science, Arabic, homework help, and test prep with caring teachers for Dallas-Fort Worth students.";
+  "Explore personalized K-12 tutoring in reading, math, writing, science, Arabic, homework help, and test prep with caring teachers for families in Worth, IL and the South Suburbs of Chicago.";
 
 export function withTrailingSlash(path: string): string {
   if (!path || path === "/") {

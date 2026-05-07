@@ -8,6 +8,33 @@
 
 ---
 
+## Wave 3 Scope (revised 2026-05-07)
+
+**Wave 3 is now the full Calendly replacement project.** Shaeel's pivot to Calendly-only on `/book-assessment` (via `.squad/decisions/inbox/coordinator-pivot-calendly-only.md`) rescopes Wave 3 from "form backend only" to a coherent, atomic replacement of Calendly's entire booking experience.
+
+**Three deliverables ship TOGETHER in Wave 3** (no half-replacement):
+
+1. **Custom assessment form** (scaffolded in `BookAssessmentPageClient.tsx` — ready, currently dormant)
+   - Server-side Azure Function backend (this spec)
+   - Resend email integration
+2. **Custom calendar/scheduling solution** (NEW — needs design + implementation)
+   - Replaces Calendly's inline booking widget
+   - Handles slot booking, availability management, reminder emails
+   - TBD: build from scratch, use OSS library (Cal.com self-hosted? React-big-calendar?), or fork Calendly-like SaaS
+3. **Azure Static Web Apps migration** (already planned)
+   - Static site hosting + managed Function backend
+   - DNS + custom domain routing
+
+**Rationale:** Shipping the form alone (without replacing Calendly's calendar) created the duplicate-fields UX wart — when a parent picked a date+time on Calendly's widget, Calendly's own booking form appeared alongside Cedar's form, doubling the intake friction. Replacing both atomically (form + calendar as a unit) avoids the intermediate awkward state and keeps the intake flow coherent.
+
+**Unblock criteria (changed from Wave 2 pause):**
+- OLD: "Resend ready + Azure provisioned"
+- NEW: "Cedar ready to phase out Calendly + Resend ready + Azure provisioned + custom calendar plan/architecture agreed"
+
+The implementation contract below (Azure Function payload, honeypot, validation, Resend integration) remains the form-side work — still required, just one of three deliverables now.
+
+---
+
 ## Overview
 
 A single Azure Function, managed by Azure Static Web Apps, receives assessment-request form submissions from `BookAssessmentPageClient.tsx`, validates them server-side, and forwards a formatted email to `Info@cedartutoring.com` via the Resend API. The function lives in the repo at `api/submit-assessment/index.ts` and auto-deploys with the SWA.
@@ -352,3 +379,38 @@ Trinity updates `BookAssessmentPageClient.tsx`:
 10. ☐ Shaeel: DNS cutover — cedartutoring.com → SWA
 11. ☐ Trinity: Retire `deploy-pages.yml` after cutover verified
 12. ☐ Shaeel: Make repo private (post-cutover)
+
+---
+
+## 14. Open Questions for Wave 3 Expanded Scope
+
+These questions must be answered before Wave 3 unblocks. They are **not** part of this spec but are dependencies for the full Calendly replacement.
+
+1. **Custom calendar implementation:**
+   - Build from scratch (Node.js/React calendar component)?
+   - Pick an OSS scheduling library (React-big-calendar, Temporal, etc.)?
+   - Fork or self-host a Calendly-like SaaS (Cal.com, Formbricks, Prenotify)?
+   - **Owned by:** Shaeel + Cedar (architecture decision required before Wave 3 kickoff)
+
+2. **Availability management & sync:**
+   - How does Cedar handle availability today? (Asmah auto-syncs with Google Calendar via Calendly? Manual availability blocks in Calendly?)
+   - Will the custom calendar need Google Calendar API integration, iCal sync, or manual availability entry?
+   - **Owned by:** Asmah + Shaeel (Cedar's current booking workflow mapping needed)
+
+3. **Slot booking concurrency:**
+   - How do we prevent two parents from booking the same slot simultaneously? (database transactions? pessimistic locking? optimistic concurrency with conflict retry?)
+   - What's the acceptable race-condition window? (milliseconds? minutes?)
+   - **Owned by:** Trinity (backend engineering decision during implementation)
+
+4. **Reminder emails & follow-up automation:**
+   - Calendly sends automated reminders (24h before, day-of). Wave 3 must replicate this.
+   - Mechanism: Resend template + cron job? Azure Logic Apps? Scheduled Function?
+   - Content: same as Calendly's default, or customize?
+   - **Owned by:** Trinity + Shaeel (implementation planning during Wave 3 scope)
+
+5. **Calendar data persistence:**
+   - Where do we store bookings, availability blocks, and history? (Azure Table Storage, CosmosDB, PostgreSQL?)
+   - Do we need to migrate existing Calendly bookings as part of the cutover?
+   - **Owned by:** Trinity (architecture during Wave 3 kickoff)
+
+**Decision owner:** Shaeel. **Timeline:** decide before Wave 3 unblocks (not in this spec's scope — this is Wave 3 pre-work).

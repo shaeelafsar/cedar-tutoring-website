@@ -165,11 +165,19 @@ These three close in roughly an hour and remove three of the most embarrassing u
 - P0 #9: approve the new home-hero copy
 - P0 #3: privacy-policy template draft for legal review
 
-**Wave 3 — form backend + Azure migration** (decisions locked 2026-05-07):
-- P0 #1: **Wire assessment form to Azure SWA managed Function + Resend.** Architecture spec at `.squad/specs/azure-function-submit-assessment.md`. Research at `.squad/research/form-solutions-comparison.md`. Web3Forms is dropped entirely.
+**Wave 3 — full Calendly replacement** (rescoped 2026-05-07 per coordinator-pivot-calendly-only.md):
+- Wave 3 is now the atomic replacement of Calendly's entire booking experience (form + custom calendar + Resend backend), not just the form backend.
+- Rationale: Calendly-only was an intermediate state; replacing both form + calendar together avoids the duplicate-fields UX wart and keeps intake coherent.
+- Three deliverables ship TOGETHER:
+  1. Custom assessment form (scaffolded in `BookAssessmentPageClient.tsx` — ready, dormant)
+  2. Custom calendar/scheduling solution (NEW — needs design + implementation, TBD on OSS vs. build vs. self-hosted SaaS approach)
+  3. Resend email backend via Azure Function (spec: `.squad/specs/azure-function-submit-assessment.md`)
+- P0 #1: Wire assessment form to Azure SWA managed Function + Resend (form-side work, unchanged from prior Wave 3 spec)
   - Trinity: scaffold `api/submit-assessment/index.ts`, rewire `BookAssessmentPageClient.tsx` to POST `/api/submit-assessment`, remove `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`
   - Mouse: test plan against SWA preview deployment (API-level + browser E2E)
   - Shaeel: provision Azure SWA, Resend account, DNS cutover, add env vars to SWA Application Settings
+- **Unblock criteria changed:** "Cedar ready to phase out Calendly + Resend ready + Azure provisioned + custom calendar plan/architecture agreed"
+- **Prior status note (2026-05-07 08:00):** Wave 3 was paused pending form + backend completion. Now rescoped as full Calendly replacement; pause continues until calendar architecture is decided.
 - Retire `deploy-pages.yml` workflow AFTER cutover verified end-to-end
 - Make repo private (post-cutover only)
 

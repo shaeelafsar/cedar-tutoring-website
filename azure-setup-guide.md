@@ -7,6 +7,8 @@
 
 ## What You're Building
 
+Azure hosts both the static site and the Wave 3 backend. **Wave 3 is now scoped as the full Calendly replacement project** — custom assessment form + custom calendar/scheduling solution + Resend email backend, shipping together as a coherent intake replacement.
+
 Two halves, one deployment:
 
 - **Azure Static Web Apps (SWA):** hosts the Next.js static export (HTML/CSS/JS) from the `out/` directory. No server to manage.

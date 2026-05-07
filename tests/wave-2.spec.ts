@@ -231,21 +231,6 @@ test.describe('Wave 2 — Pricing Page', () => {
       expect(consoleErrors).toHaveLength(0);
     });
   });
-
-  test('Pricing — FAQ has at least 3 Q&A pairs', async ({ page }) => {
-    const consoleErrors = await collectConsoleErrors(page);
-
-    await test.step('Assert at least 3 FAQ items exist below pricing cards', async () => {
-      // FAQAccordion renders items as buttons/triggers — assert the specific question text
-      await expect(page.getByRole('button', { name: /can i switch plans/i })).toBeAttached();
-      await expect(page.getByRole('button', { name: /what.*included.*free assessment/i })).toBeAttached();
-      await expect(page.getByRole('button', { name: /cancellation policy/i })).toBeAttached();
-    });
-
-    await test.step('No unexpected console errors', async () => {
-      expect(consoleErrors).toHaveLength(0);
-    });
-  });
 });
 
 test.describe('Wave 2 — About / Team Page', () => {

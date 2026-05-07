@@ -65,6 +65,12 @@ test.describe('Wave 2 — Footer', () => {
       await expect(footer.locator('a[href="/blog"]')).toHaveCount(0);
     });
 
+    await test.step('Assert footer has NO "Free Trial" link (CTA unification)', async () => {
+      // All Free Trial CTAs were unified to /book-assessment in Wave 2.
+      const footer = page.getByRole('contentinfo');
+      await expect(footer.getByRole('link', { name: /free trial/i })).toHaveCount(0);
+    });
+
     await test.step('Assert "Privacy policy" link exists in footer and points to /privacy-policy/', async () => {
       const footer = page.getByRole('contentinfo');
       const privacyLink = footer.getByRole('link', { name: /privacy policy/i });
@@ -98,6 +104,12 @@ test.describe('Wave 2 — Home Hero', () => {
     await test.step('Assert H1 contains Wave 2 headline text', async () => {
       const h1 = page.getByRole('heading', { level: 1 });
       await expect(h1).toContainText('Personalized tutoring that helps your child feel confident again');
+    });
+
+    await test.step('Hero secondary CTA "Book Free Assessment" points to /book-assessment', async () => {
+      // Site-wide CTA unification: all assessment CTAs point to /book-assessment (not /free-trial).
+      const bookCta = page.getByRole('link', { name: /book free assessment/i }).first();
+      await expect(bookCta).toHaveAttribute('href', /\/book-assessment/);
     });
 
     await test.step('No unexpected console errors', async () => {
@@ -260,8 +272,13 @@ test.describe('Wave 2 — About / Team Page', () => {
   });
 });
 
-test.describe('Wave 2 — Book Assessment Form', () => {
-  test('Form renders with honeypot field in DOM', async ({ page }) => {
+test.describe('Wave 2 — Book Assessment (Calendly-only)', () => {
+  // The /book-assessment page pivoted to Calendly-only (no form) per:
+  // .squad/decisions/inbox/coordinator-pivot-calendly-only.md
+  // BookAssessmentPageClient.tsx (form) is Wave 3 scaffolding — not mounted.
+  // Form tests are deferred to Wave 3: see tests/wave-3-deferred.md.
+
+  test('/book-assessment loads — no form, Calendly embed container present', async ({ page }) => {
     const consoleErrors = await collectConsoleErrors(page);
 
     await test.step('Navigate to /book-assessment/', async () => {
@@ -269,14 +286,18 @@ test.describe('Wave 2 — Book Assessment Form', () => {
       expect(response?.status()).toBe(200);
     });
 
-    await test.step('Form element is present', async () => {
-      await expect(page.locator('form')).toBeAttached();
+    await test.step('H1 heading is present', async () => {
+      await expect(
+        page.getByRole('heading', { level: 1, name: "Let's Find the Right Fit for Your Child" })
+      ).toBeAttached();
     });
 
-    await test.step('Botcheck honeypot input exists in DOM (hidden)', async () => {
-      // Web3Forms anti-spam field — must be in DOM but not visible to users
-      const honeypot = page.locator('input[name="botcheck"]');
-      await expect(honeypot).toBeAttached();
+    await test.step('No <form> element — BookAssessmentPageClient is not mounted', async () => {
+      await expect(page.locator('form')).toHaveCount(0);
+    });
+
+    await test.step('Calendly embed container (.cedar-calendly-host) is in DOM', async () => {
+      await expect(page.locator('.cedar-calendly-host')).toHaveCount(1);
     });
 
     await test.step('No unexpected console errors', async () => {

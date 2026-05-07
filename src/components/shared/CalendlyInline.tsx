@@ -154,7 +154,7 @@ export function CalendlyInline({
 
   return (
     <div className={className}>
-      <div className="relative w-full overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
+      <div className="relative w-full overflow-hidden rounded-2xl border border-border bg-white shadow-sm h-[1100px] md:h-[720px]">
         {/*
           Plain ref'd div — NOT marked with the .calendly-inline-widget class
           and NOT given a data-url attribute, both of which would trigger
@@ -162,10 +162,16 @@ export function CalendlyInline({
           explicit initInlineWidget call. We also avoid React children &
           dangerouslySetInnerHTML so React's reconciler never wipes the
           iframe Calendly injects.
+
+          The cedar-calendly-host class targets the iframe Calendly injects
+          (via globals.css) so it actually fills the container — without
+          this, Calendly sets iframe height="100%" but parent has no
+          explicit height (only min-height), and the iframe falls back to
+          the browser default ~150px, leaving most of the card empty.
         */}
         <div
           ref={containerRef}
-          className="block w-full min-h-[1150px] md:min-h-[720px]"
+          className="cedar-calendly-host block h-full w-full"
           style={{ minWidth: "320px" }}
           aria-describedby={status !== "ready" ? noticeId : undefined}
         />

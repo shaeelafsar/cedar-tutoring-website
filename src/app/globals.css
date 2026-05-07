@@ -102,3 +102,17 @@
     @apply scroll-smooth font-sans;
   }
 }
+
+/*
+ * Calendly inline-embed iframe sizing.
+ * Calendly's widget.js sets iframe height="100%" but its parent must have
+ * an explicit height (not just min-height) for that percentage to resolve.
+ * Force the iframe inside our marker div to fill the container regardless.
+ */
+.cedar-calendly-host iframe {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  border: 0 !important;
+  display: block !important;
+}

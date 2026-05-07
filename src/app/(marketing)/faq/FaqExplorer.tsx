@@ -13,7 +13,9 @@ interface FaqExplorerProps {
 }
 
 export function FaqExplorer({ categories, items }: FaqExplorerProps) {
-  const [activeCategory, setActiveCategory] = useState(categories[0] ?? "All");
+  const [activeCategory, setActiveCategory] = useState(
+    categories.includes("General") ? "General" : (categories[0] ?? "All"),
+  );
 
   const visibleItems = useMemo(() => {
     if (activeCategory === "All") {

@@ -33,6 +33,11 @@
 
 ## Learnings
 
+- **Framer Motion `whileInView` + screenshot tools (2026-05-07):** Every section wrapped in `<Reveal>` (or any `motion.*` component with `whileInView`) starts at `opacity: 0`. Static screenshot tools (Playwright full-page without scroll, Oracle's audit tool) capture pages without triggering scroll events, so ALL below-fold Reveal-wrapped content appears blank. This is NOT a rendering bug — content is in the DOM and visible to real users who scroll. Oracle's 4 flagged blank sections (about team, summer fields, reviews grid, locations cards) were ALL this artifact. Diagnosis method: source-check if the section uses `<Reveal>` → artifact; if it doesn't → real bug.
+- **`/reviews` ReviewsGrid filter default (2026-05-07):** Default state is `Object.fromEntries(groups.map(g => [g.id, g.options[0].id]))`. Both groups' first option is `id: "all"` so default shows all 18 reviews. The "empty grid" in Oracle's screenshot was the Framer Motion artifact (cards use `motion.article whileInView`), not a filter bug.
+- **`/faq` FaqExplorer filter wiring (2026-05-07):** `activeCategory` state initialized to `categories[0]` (was "All" → 18 items). Changed to `categories.includes("General") ? "General" : categories[0]` to default to the most-focused first category. Filter logic: "All" bypasses filter; any other category filters `item.category === activeCategory`. Correct behavior verified in build.
+- **`/why-us` reasons grouping pattern (2026-05-07):** 10 flat reasons regrouped into 3 themes at render-time in page.tsx without touching content. Pattern: define `{ theme, indices }` array as a constant co-located in the section JSX, then map over it to render group headers + sub-lists using the original `whyUsContent.reasons.items[idx]` values. Numbers kept (1-indexed per original position) so readers can still reference "reason 7." Content file unchanged.
+
 - **User-facing setup checklists pattern:** Lead with "two halves" mental model (host + backend). Pre-flight checklist before steps. Use `📝 Capture this:` blocks with blank fill-ins. Callout admonitions for warnings/done-conditions/tips. Troubleshooting at end.
 - **Azure SWA gotchas:**
   1. basePath must not be NODE_ENV=production-gated (SWA builds always run production)

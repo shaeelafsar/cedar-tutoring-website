@@ -155,20 +155,38 @@ export default function WhyUsPage() {
             subtitle={whyUsContent.reasons.subtitle}
           />
 
-          <ol className="grid gap-3 md:grid-cols-2">
-            {whyUsContent.reasons.items.map((reason, index) => (
-              <Reveal key={reason} delay={index * 0.03}>
-                <li className="border-border bg-card flex items-start gap-3 rounded-2xl border p-4 shadow-sm">
-                  <span className="bg-primary/10 text-primary inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold">
-                    {index + 1}
-                  </span>
-                  <span className="text-foreground text-sm leading-7 sm:text-base">
-                    {reason}
-                  </span>
-                </li>
+          {/* Reasons grouped into 3 themes for easier scanning (Hick's Law) */}
+          {[
+            { theme: "Personalized Learning", indices: [0, 1, 2] },
+            { theme: "Real Results", indices: [3, 4, 5] },
+            { theme: "No-Strings Affordability", indices: [6, 7, 8, 9] },
+          ].map(({ theme, indices }) => (
+            <div key={theme} className="mb-10 last:mb-0">
+              <Reveal>
+                <h3 className="text-foreground mb-4 text-base font-bold tracking-wide uppercase text-[hsl(var(--primary-text))]">
+                  {theme}
+                </h3>
               </Reveal>
-            ))}
-          </ol>
+              <ol className="grid gap-3 md:grid-cols-2">
+                {indices.map((idx) => {
+                  const reason = whyUsContent.reasons.items[idx];
+                  if (!reason) return null;
+                  return (
+                    <Reveal key={reason} delay={idx * 0.03}>
+                      <li className="border-border bg-card flex items-start gap-3 rounded-2xl border p-4 shadow-sm">
+                        <span className="bg-primary/10 text-primary inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold">
+                          {idx + 1}
+                        </span>
+                        <span className="text-foreground text-sm leading-7 sm:text-base">
+                          {reason}
+                        </span>
+                      </li>
+                    </Reveal>
+                  );
+                })}
+              </ol>
+            </div>
+          ))}
         </div>
       </section>
 

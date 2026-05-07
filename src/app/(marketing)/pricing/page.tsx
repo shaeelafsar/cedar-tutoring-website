@@ -61,9 +61,8 @@ export default function PricingPage() {
       <section className="px-4 py-12 md:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-muted-foreground text-lg leading-8">
-            Choose the plan that fits your family. All plans include certified
-            tutors, in-person sessions at our Worth, IL location, and a free
-            initial assessment.
+            Here&apos;s how to choose the right plan for your family. All plans
+            include a free initial assessment with no obligation.
           </p>
         </div>
       </section>

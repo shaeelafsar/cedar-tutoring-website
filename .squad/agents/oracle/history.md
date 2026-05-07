@@ -38,6 +38,10 @@ Trinity completed content layer migration for programs and test-prep sections.
 **Captured by:** Coordinator (Copilot Directive)  
 Shaeel Afsar captured a team directive: whenever designing/UX/UI, ensure the team is always thinking from the target audience perspective. For Cedar, treat parents/guardians choosing tutoring for their child as the primary audience. This directive is now recorded in `.squad/decisions.md` for team reference.
 
+### Wave 1 P0 Execution: CTA & Local SEO Standardization (2026-05-07T11:31:02-05:00)
+**Status Update:** ✅ CLOSED (3 of 10 P0 items)  
+Trinity closed P0 #2 (CTA standardization "Book a Free Assessment" → `/book-assessment/`), P0 #4 (local SEO "Worth, IL and the South Suburbs of Chicago"), and P0 #10 (contact cities status). All design review findings for these items have been implemented. Decisions captured in `.squad/decisions.md`. Oracle's UX findings for remaining P0 items (#1, #3, #5–#9) remain active for future waves.
+
 ### Synthesis: P0 Launch Blockers Approved (2026-05-07T10:22:32.063-05:00)
 **Approved by:** Morpheus (Lead/Architect) + Mouse (Final Reviewer)  
 Morpheus synthesized all Oracle/Mouse/Morpheus findings into `prd-ready-review-gpt.md` and proposed a decision: the site should not launch until P0 blockers are resolved, including real assessment-form submission, fixing stale `/admission/` CTAs, adding privacy policy, correcting local SEO to Worth, IL / Chicago South Suburbs only, removing unfinished pricing/contact sections, fixing mobile navigation, and passing production Lighthouse/axe gates. Mouse approved the final deliverable as meeting all quality and completeness criteria. Decision recorded in `.squad/decisions.md`.

@@ -166,3 +166,8 @@ Morpheus synthesized all Oracle/Mouse/Morpheus findings into `prd-ready-review-g
 **Reviewed by:** Mouse (sync reviewer gate) — APPROVED  
 Morpheus distilled `prd-ready-review-gpt.md` into a concise owner-facing action brief, surfacing five P0 launch blockers as immediate priorities and framing P1/P2/P3 work as post-P0 improvements. Mouse approved the brief as business-readable, focused, and consistent with full audit. Decision captured in `.squad/decisions.md` and merged by Scribe. Team now has canonical owner escalation path with clear fix order.
 
+### Wave 1 P0 Execution: CTA & Local SEO Standardization (2026-05-07T11:31:02-05:00)
+**Executed by:** Trinity (Frontend Dev)  
+**Status:** ✅ CLOSED (3 of 10 P0 items)  
+Trinity closed P0 #2 (CTA standardization), P0 #4 (local SEO geography), and P0 #10 (contact cities status). All "Admission Form" wording retired across content/ + src/; canonical CTA is "Book a Free Assessment" → `/book-assessment/`. All "Dallas-Fort Worth" references replaced with "Worth, IL and the South Suburbs of Chicago" in metadata and visible copy. Contact cities section verified complete. Grep verification confirms zero remaining instances of retired text/paths. tsc --noEmit clean. Decisions captured in `.squad/decisions.md`. Team should proceed to P0 #1, #3, #5–#9 in next waves.
+

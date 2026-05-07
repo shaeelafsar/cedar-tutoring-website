@@ -68,6 +68,30 @@
 **Basis:** File exists at repo root with exact required name. Parent/guardian target-audience mental model is explicit and central. Required lenses covered. Launch blockers and prioritized recommendations grounded in source notes. Raw appendices preserve three source-note artifacts verbatim.
 **Gate implication:** This approval is for the review deliverable only. The deliverable correctly states the website should not launch until P0 blockers are resolved.
 
+### 2026-05-07T11:31:02-05:00: Site-wide CTA standardization to "Book a Free Assessment"
+**By:** Trinity (Frontend Dev) — Wave 1 P0 execution
+**Status:** APPROVED
+**Source:** combined-review.md P0 #2; converged Opus + GPT consensus
+**Decision:** Site-wide primary CTA standardized as **"Book a Free Assessment"** linking to `/book-assessment/`. The **"Admission Form"** CTA wording is retired across the active site (content/ + src/).
+**What changed:** `content/pages/home/cta.md` lines 4–6: "Admission Form" → "Book a Free Assessment", `/admission/` → `/book-assessment/` | `content/programs/_hub.md` lines 46–48: same CTA swap in finalCta.primaryCta | All CTA references now point to `/book-assessment/` endpoint
+**Verification:** Grep across `src/` and `content/` confirms zero remaining instances of "Admission Form" text and zero remaining references to `/admission/` path in active code. The `/admission` and `/admission/` paths remain 404 by design — static export to GitHub Pages cannot do server-side redirects.
+**Rationale:** Converged decision across Opus and GPT reviews. "Book a Free Assessment" is the canonical first step in the parent/guardian conversion funnel; all first-order CTAs must be consistent.
+
+### 2026-05-07T11:31:02-05:00: Local SEO geography canonical phrasing
+**By:** Trinity (Frontend Dev) — Wave 1 P0 execution
+**Status:** APPROVED
+**Source:** combined-review.md P0 #4; verified across src/ and content/
+**Decision:** Local SEO geography canonical phrasing is **"Worth, IL and the South Suburbs of Chicago"** (or **"serving Worth, IL and the South Suburbs of Chicago"** in JSON-LD descriptions). All "Dallas-Fort Worth" references removed from active site code/content.
+**What changed:** `src/lib/seo.ts` line 9: DEFAULT_DESCRIPTION updated to use "serving Worth, IL and the South Suburbs of Chicago" instead of "Dallas-Fort Worth" | `src/app/(marketing)/page.tsx` line 67: JSON-LD description aligned to "serving Worth, IL and the South Suburbs of Chicago"
+**Verification:** Grep across `src/` and `content/` confirms zero remaining instances of "Dallas-Fort Worth" in any variant. SEO metadata validation: tsc --noEmit clean. Lint clean (9 pre-existing failures in unrelated files unchanged).
+**Rationale:** Parent/guardians in the Worth, IL and Chicago South Suburbs area need accurate local geography in both visible copy and SEO metadata to build trust and ensure correct search indexing.
+
+### 2026-05-07T11:31:02-05:00: Contact page — Cities we serve section status update
+**By:** Scribe (Wave 1 P0 execution)
+**Status:** VERIFIED-COMPLETE
+**Source:** combined-review.md P0 #10; pre-session verification
+**Note:** P0 #10 (Cities we serve section on Contact page) was already complete prior to this Wave 1 session. No edit required. `content/pages/contact-us/_page.md` already lists 15 cities; `src/app/(marketing)/contact-us/page.tsx` already renders the full cities list. The original review finding was based on a pre-fix snapshot. Capturing this note ensures Wave 1 execution correctly reflects current state and prevents duplicate analysis in future sessions.
+
 ## Governance
 
 - All meaningful changes require team consensus

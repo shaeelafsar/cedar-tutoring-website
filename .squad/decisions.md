@@ -148,6 +148,76 @@
 **Verification:** 0 remaining refs to Amina/Nora/Omar/Sarah in codebase. tsc ✅, lint ✅ (baseline unchanged).
 **Note:** `asmah.svg` remains placeholder; owner will supply real photo pre-launch.
 
+### 2026-05-07T14:00:00-05:00: Hosting target — migrate from GitHub Pages to Azure
+**By:** Shaeel Afsar (via Coordinator)
+**Status:** APPROVED
+**Decision:** Production deploy will move from GitHub Pages to Azure (likely Azure Static Web Apps + Azure Functions). Shaeel works at Azure and gets ~$100/month free credit, which makes Azure cheaper than GitHub Pages Pro (Pro is required to keep this repo private while still publishing Pages).
+**Why:**
+- Repo can stay private without paying for GitHub Pages Pro
+- Free Azure credit covers Static Web Apps + Functions for a low-traffic marketing site
+- Functions are needed to host a Web3Forms relay (see related decision)
+**Impact:**
+- GitHub Pages remains the deploy target for now (until Azure is provisioned)
+- Once Azure SWA is set up, we'll add `.github/workflows/azure-static-web-apps.yml` and retire `deploy-pages.yml`
+- DNS / domain decision still pending — call out in pre-production checklist
+
+### 2026-05-07T14:00:01-05:00: Web3Forms API key — never commit; relay through Azure Function
+**By:** Shaeel Afsar (via Coordinator)
+**Status:** APPROVED
+**Decision:** The Web3Forms access key MUST NOT be committed to the repo or stored in any client-readable env var (`NEXT_PUBLIC_*`). For Azure migration we will add an Azure Function relay that holds the key in Function App settings (server-side only); the client form will POST to our Function URL, the Function adds the secret key, then forwards to api.web3forms.com.
+**Why:**
+- `NEXT_PUBLIC_` env vars are inlined into the client bundle at build time — anyone can view-source the deployed site and harvest the key
+- Web3Forms' public-key model relies on origin checks + rate limits, but Shaeel does not want to accept that exposure
+- Azure Functions free tier (1M executions/mo) easily covers a tutoring contact form
+**Impact:**
+- Until Azure Function relay is built, the form remains in graceful-fallback mode (shows phone + email instead of submitting). This is intentional — better than leaking the key to make GitHub Pages work.
+- When Shaeel signs up at web3forms.com he will hold the key locally; coordinator will NOT receive it via chat.
+- Future implementation: Azure Function `cedar-form-relay` accepts POST from same-origin, validates honeypot, calls Web3Forms with key from Function App settings.
+- The current `BookAssessmentPageClient.tsx` Web3Forms wiring needs to be updated when relay is in place — endpoint changes from `https://api.web3forms.com/submit` to the Function URL, and the `access_key` field is dropped from the client payload.
+
+### 2026-05-07T14:00:02-05:00: Privacy policy — stays generic for now
+**By:** Shaeel Afsar (via Coordinator)
+**Status:** APPROVED
+**Decision:** The 10-section privacy policy at `/privacy-policy/` stays as-is, with the amber lawyer-review banner. No revision pass is needed before launch; a real lawyer review will happen when business operations require it (paid traffic, integrations with payment processors, etc.).
+**Why:** Generic-but-accurate is sufficient for a low-risk static marketing site with a simple contact form. The amber banner sets expectations.
+**Impact:**
+- Pre-production checklist item "🔒 Privacy policy lawyer review" is downgraded from blocker to "post-launch / when business needs it"
+- Banner stays until lawyer review happens
+
+### 2026-05-07T14:00:03-05:00: /pricing FAQ — removed for now
+**By:** Shaeel Afsar (via Coordinator)
+**Status:** APPROVED
+**Decision:** The FAQ section on /pricing is being removed entirely (4 placeholder Q&As) until real answers are available. Trinity is implementing the removal.
+**What changed:** 
+- Removed `faqEyebrow`, `faqItems` from `content/pages/pricing/_page.md` frontmatter
+- Removed the 5th H2 section ("## Common questions before you enroll.") from markdown body
+- Removed FAQ rendering block from `src/app/(marketing)/pricing/page.tsx`
+- Removed `FAQAccordion` import from pricing/page.tsx
+- Removed `Pricing — FAQ has at least 3 Q&A pairs` test from `tests/wave-2.spec.ts` (11 → 10 tests)
+- Made schema fields `.optional()` in `src/lib/content/schemas.ts`
+- Updated `src/types/content.ts` to make `faqSection` optional in `PricingPageContent`
+**Why:** Placeholder copy hurts trust on a pricing page; better to have no FAQ than a fake one.
+**Impact:**
+- Schema for pricing page made `.optional()` for FAQ — re-adding is a content-only change later
+- Wave 2 test count drops from 11 to 10 (FAQ test removed)
+- Shaeel still owes 4 answers eventually (plan switching, free assessment scope, sibling discounts, cancellation policy) — tracked in pre-production checklist under "Deferred" rather than "Blocker"
+**How to Re-Add:** Add YAML frontmatter + markdown H2 section back to `_page.md`, restore `FAQAccordion` rendering to page.tsx, and re-add test to wave-2.spec.ts (all schema fields still support it).
+
+### 2026-05-07T14:00:04-05:00: Wave 2 Verdict — All verification points passed (Chromium)
+**By:** Mouse (Tester/QA)
+**Status:** APPROVED
+**Decision:** Approve Wave 2 test suite for commit. All 11 verification points passed on Chromium. No real bugs found; three in-session test-authoring issues (strict-mode locator precision) were corrected and are NOT application defects.
+**Verified:** Top Nav, Footer, Home Hero, Privacy Policy page, Pricing tiers (As-Needed/Family/Homework Help), Pricing FAQ ≥3 Q&As, About/Team, Book-Assessment form, Mobile viewport (375×812).
+**Non-blocking caveats:** FAQ answers flagged for owner verification (plan switching, free assessment scope, sibling discounts, cancellation policy). `asmah.svg` is placeholder. Web3Forms key not provisioned (expected).
+
+### 2026-05-07T14:00:05-05:00: Wave 2 Verdict — Firefox compatibility verified
+**By:** Mouse (Tester/QA) — instance mouse-4
+**Status:** APPROVED
+**Decision:** Approve Wave 2 test suite for Firefox. All 11 verification points passed on Firefox. No real bugs found. No Chromium-specific APIs present in spec — already browser-agnostic.
+**Browser testing:** Desktop Firefox + mobile Firefox projects added to `playwright.config.ts`. Added `firefox` and `mobile-firefox` device profiles.
+**Note:** Two earlier strict-mode locator precision issues (from older spec revision) had already been fixed in current spec on disk by Mouse-3.
+**Impact:** Test suite is cross-browser ready. `mobile-firefox` project added but not tested in this run; future use case available.
+
 ## Governance
 
 - All meaningful changes require team consensus

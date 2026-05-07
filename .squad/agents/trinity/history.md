@@ -72,3 +72,9 @@
 - **Pricing card sub-tier pattern:** Server Component loads all tier data from markdown frontmatter (including `subTiers` array). For cards with `subTiers`, render `PricingCardInteractive` (Client Component) — pass typed props, manage `useState` for selectedIndex client-side. For static cards, render inline JSX in the Server Component.
 - **Content data source for pricing:** `content/pages/pricing/_page.md` YAML frontmatter holds the full tier/sub-tier/price/FAQ/CTA data. The markdown body needs exactly 5 H2 sections for the `getPricingPageContent()` loader to not throw on section index reads.
 - **Sub-tier schema extension:** Add `pricingSubTierSchema` (sessionsPerWeek: number, price: string) and make `subTiers`/`defaultSubTierIndex` optional on `pricingTierSchema` — no breaking change to existing content that doesn't have these fields.
+- **Schema-as-optional pattern for deferred content:** When removing a content section that may be re-added later, make its schema fields `.optional()` rather than deleting them. This way the future re-add is purely a content-layer change (editing `_page.md`) — no schema, type, or code changes needed. Applied to `faqEyebrow`, `faqItems` in `pricingPageFrontmatterSchema` and `faqSection` in `pricingPageContentSchema` + `PricingPageContent` interface when removing the pricing FAQ on 2026-05-07.
+
+## Cross-team updates
+
+- **Azure migration target (2026-05-07):** Production deploy will move from GitHub Pages to Azure Static Web Apps + Functions (decision: coordinator). Free Azure credit covers low-traffic marketing site. Functions will host Web3Forms relay (secrets managed server-side). GitHub Pages remains staging target until Azure provisioned. Remember: Functions free tier = 1M executions/month, plenty for contact form.
+

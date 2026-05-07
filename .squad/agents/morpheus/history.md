@@ -163,3 +163,45 @@ Shaeel paused Wave 3 pending Azure SWA + Resend provisioning. Analyzed remaining
 
 **Output:** `.squad/decisions/inbox/morpheus-wave3-paused-shortlist.md` — full ordered backlog with dispatch phases.
 
+---
+
+## Session 2026-05-07 (continued): Wave 3 Rescope + Calendly-only Pivot (17:30–17:50Z)
+
+**Lesson:** Rescope decisions must surface pre-work blockers early. Wave 3 shifted from "form backend only" to atomic replacement of both form + calendar together.
+
+### Wave 3 Rescope Trigger
+
+Shaeel discovered duplicate-fields UX bug: Cedar's form above Calendly's form created friction. Directive: drop Cedar's form, use Calendly alone until Wave 3.
+
+### Rescope Decision: Full Calendly Replacement
+
+**Rationale:** Intermediate state (form but still Calendly calendar) recreates the duplicate-fields wart. Replacing both as a unit keeps intake flow coherent.
+
+**New scope:**
+- Custom form (Azure Function, Resend backend, honeypot validation) — unchanged contract from `.squad/specs/azure-function-submit-assessment.md` §1–13
+- Custom calendar — NEW and REQUIRED for Wave 3 unblock (TBD approach: build, OSS lib, or self-hosted SaaS)
+- Both ship together; Wave 3 pause continues until calendar architecture is decided
+
+**Five open questions surfaced for Shaeel + Cedar (Wave 3 pre-work):**
+1. **Custom calendar implementation approach** — Build from scratch? OSS library (React-big-calendar, Temporal, etc.)? Self-host Calendly-like SaaS (Cal.com)?
+2. **Availability & sync strategy** — How does Asmah manage availability today? Will custom calendar need Google Calendar API, iCal, or manual entry?
+3. **Concurrent slot booking prevention** — How to prevent race conditions? Database transactions? Pessimistic locking? Optimistic concurrency?
+4. **Reminder email automation** — Replicate Calendly's reminders (24h before, day-of)? Use Resend templates + cron? Azure Logic Apps? Scheduled Function?
+5. **Data storage & migration** — Where to persist bookings, availability, history? (Azure Table Storage, CosmosDB, PostgreSQL?) Migrate existing Calendly bookings as part of cutover?
+
+**Spec Updates:**
+- `.squad/specs/azure-function-submit-assessment.md` — Added "Wave 3 Scope (revised 2026-05-07)" section explaining three deliverables ship together, new unblock criteria, rationale; added §14 "Open Questions for Wave 3 Expanded Scope" surfacing 5 unanswered questions
+- `combined-review.md` — Updated Wave 3 section to reflect rescope, new unblock criteria, appendix rescope date/status
+- `azure-setup-guide.md` — Added context in "What You're Building" section explaining Wave 3 as full Calendly replacement project
+
+**Anti-Drift Check:** Calendly-only honors Wave 1 P0 #2 (canonical CTA `/book-assessment`). When Wave 3 ships, same URL endpoint serves custom form + calendar; no CTA redirect needed.
+
+**Commits:** fe9f9ab (Wave 3 rescope spec docs)
+
+### Concurrent Decision: Calendly-only Path (Trinity Implementation)
+
+Form code (`BookAssessmentPageClient.tsx`) preserved in repo dormant for Wave 3 custom form foundation. `/book-assessment` now Calendly-only + supporting sections; CTA unification, nav cleanup, page structure survive.
+
+**Commits:** fb3c5f7 (Calendly-only pivot)  
+**Deployment:** GitHub Pages run 25526377501 (verified live)
+

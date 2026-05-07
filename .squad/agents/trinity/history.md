@@ -62,3 +62,23 @@
   - Phase 4: Mobile polish (CTA bar, click-to-call, micro-interactions)
 - **Phase 3 blockers:** Asmah Free Trial nav confirmation (minor), **Shaeel nav structure decision** (logo-as-home, 6-item flat nav, Reviews added, Free Trial removed from main nav)
 - **basePath GO:** Ready to land independently; both local dev and GH Pages behavior verified; Azure SWA will serve from domain root ✓
+
+---
+
+## Session 2026-05-07 (continued): Form-first → Calendly-only Pivot (17:30–17:50Z)
+
+**Lesson:** When product UX hits a dead-end, prefer pivot-in-place over revert.
+
+Shaeel discovered duplicate-fields bug: Cedar's form above Calendly's form created friction. Rather than revert the entire form-first merge, Shaeel pivoted to Calendly-only `/book-assessment` while preserving the supporting work (CTA unification, nav cleanup, page structure). Form code (`BookAssessmentPageClient.tsx`) stays in repo dormant as Wave 3 custom form foundation.
+
+**What survived:**
+- Site-wide CTA standardization to "Book Free Assessment" → `/book-assessment` (Wave 1 P0 #2)
+- Nav cleanup (removed "Free Trial" from primary + mobile nav)
+- `/free-trial` → `/book-assessment` redirect
+- Page structure + sections (hero, What to Expect, social proof, FAQ)
+- Footer reference updates
+- Azure Function spec, Resend integration contract, honeypot validation — all Wave 3 foundation
+
+**Commits:** 1c0d348 (form-first, superseded for `/book-assessment` only), fe9f9ab (Wave 3 rescope docs), fb3c5f7 (Calendly-only pivot)
+
+**Deployment:** GitHub Pages run 25526377501 (Calendly-only shape verified live)

@@ -144,3 +144,31 @@ The WP page calls these **"Plans Available"** under the /homework/ URL, NOT "Aca
 **Recommendation:** **Option B—Merge to one canonical path.** Consolidate to "Book a Free Assessment" → `/book-assessment/`, embed Calendly within form (post-submit or optional fast-track). Free Trial page 301-redirects. Home page secondary CTA changes to "Book a Free Assessment". Reduces choice friction, aligns Wave 4 plan, simplifies parent mental model.
 
 **Status:** Decision approved. Awaiting Shaeel + Morpheus synthesis (Morpheus evaluating same question from content-strategy/IA angle). Deliverable: `.squad/decisions/inbox/oracle-free-trial-vs-book-assessment.md`
+
+---
+
+## Session 2026-05-07 (continued): Form-First Mockup Superseded by Calendly-Only Pivot (17:30–17:50Z)
+
+**Lesson:** Design thinking must remain flexible when product reality (UX friction) overtakes design assumptions.
+
+### Pivot Context
+
+Shaeel's form-first mockup (Oracle recommendation: "Free Trial / Book Assessment merge with assessment form to capture parent deliberation") met a real product wart during testing: duplicate-fields UX bug (Cedar's form above Calendly's form). Rather than attempt a three-tier form redesign (form + Calendly embed + post-submit logic), Shaeel pivoted to **Calendly-only** until Wave 3 (custom form + custom calendar replacement).
+
+### What Was Right in the Mockup
+
+- **Page structure:** Hero copy, What to Expect section, social proof (testimonials), FAQ section → **SURVIVES** on Calendly-only `/book-assessment`
+- **Section ordering:** Intentional fold sequencing to build parent confidence before booking → **SURVIVES**
+- **Supporting content:** Context about assessment process, tutor match criteria, post-assessment workflow → **SURVIVES**
+
+### What Got Rethought
+
+- **Form vs Calendly-only:** Oracle's hypothesis (form deliberately captures parent decision-making) was valid theory, but Calendly's UX created implementation friction. Shaeel's call: Calendly-only removes the wart; Calendly's no-credit-card-required framing + free assessment copy handles most of Oracle's anxiety-capture concern
+- **Intake funneling:** Oracle designed form as deliberate friction point (70% who fill a form commit more). Calendly replaces form friction with "book directly" simplicity. Tradeoff: fewer richer fields vs faster conversion
+- **Custom questions:** Oracle's form captured program interest, location, additional notes. Calendly's custom questions field (configurable by Asmah in Calendly UI) can provide same data without code changes
+
+### Mockup Artifacts
+
+Oracle's `/book-assessment` mockup remains a valid reference for page structure + section copy. The form rendering layer was the transient piece; the architectural shape (hero → context → booking widget → proof → FAQ) survives Calendly-only pivot.
+
+**Commits:** fb3c5f7 (Calendly-only pivot preserves Oracle's section structure, discards form layer)

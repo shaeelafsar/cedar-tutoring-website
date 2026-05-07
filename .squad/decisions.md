@@ -640,3 +640,65 @@ This is content/UX reorg, not backend change. Form payload schema, Azure Functio
 - **Trinity (sonnet 4.6):** Implementing merged page now. Estimate ~4.5–6 hours. Full structure per Oracle mockup; prefill logic per Constraint A; self-contained Calendly component per Constraint B.
 - **Mouse (sonnet 4.6):** Queued. Runs after Trinity confirms green local build to update Playwright test coverage (Wave 2 / Wave 4 scope).
 - **Scribe:** Running in parallel with Trinity to flush 5 pending inbox files (this entry) into decisions.md.
+
+---
+
+## Session 2026-05-07 (continued): Calendly-only pivot + Wave 3 rescope
+
+**Timeline:** 2026-05-07 17:30–17:50  
+**Agents:** Shaeel (coordinator), Morpheus (architect), Trinity (in-flight), Mouse (parallel QA), Scribe (merge + logs)
+
+### Pivot Trigger: Duplicate-Fields Bug
+
+While testing the merged `/book-assessment` page with Calendly inline embed, Shaeel discovered duplicate form fields: Cedar's assessment form rendered above Calendly's own booking form. When a parent selected a slot on Calendly's widget, Calendly presented its booking form (name, email, custom questions) *in addition to* Cedar's form, creating UX friction despite prefill attempts.
+
+**Shaeel's directive:** Drop Cedar's form entirely on `/book-assessment`. Use Calendly alone until Wave 3 (Calendly phase-out).
+
+### Implementation: Calendly-only Path
+
+- **`/book-assessment`** page becomes Calendly-only: inline Calendly embed + hero copy, What to Expect, social proof, FAQ sections (per Oracle mockup) — no form rendering
+- **Form code preservation:** `BookAssessmentPageClient.tsx` remains in repo as scaffolding for future Wave 3 custom form, marked dormant with TODO comment
+- **Nav/CTA unification:** Site-wide CTA standardization to "Book Free Assessment" → `/book-assessment` still ships (per Wave 1 P0 #2)
+- **Redirect:** `/free-trial` → 301 to `/book-assessment` still ships
+- **Asmah's workflow:** Calendly event type already captures intake questions via custom questions field; no operational friction
+
+### Wave 3 Rescoped: Full Calendly Replacement
+
+Morpheus clarified: Wave 3 shifts from "form backend only" to **atomic replacement of both form + calendar together.**
+
+**Rationale:** Intermediate state (form but still Calendly calendar) recreates the duplicate-fields wart. Replacing both as a unit keeps intake flow coherent.
+
+**New scope:**
+- Custom form (Azure Function, Resend backend, honeypot validation) — unchanged contract
+- Custom calendar (TBD approach: build, OSS lib, or self-hosted SaaS)
+- Both ship together; Wave 3 pause continues until calendar architecture is decided
+
+**Five open questions surfaced:**
+1. Custom calendar implementation approach (build vs OSS vs SaaS)
+2. Availability & sync strategy (Asmah's current workflow + Google Calendar integration mapping)
+3. Concurrent slot booking prevention (database transactions, optimistic/pessimistic concurrency)
+4. Reminder email automation (24h before, day-of; Resend templates + cron or Azure Logic Apps)
+5. Data storage & migration (Azure Table Storage, CosmosDB, PostgreSQL; Calendly booking cutover strategy)
+
+**Anti-drift verification:** Calendly-only intermediate state honors Wave 1 P0 #2 (canonical CTA `/book-assessment`). When Wave 3 ships, same URL endpoint serves custom form + calendar; no CTA redirect needed.
+
+### Implementation Commits
+
+- **1c0d348** (initial form-first merge, superseded for `/book-assessment` route only): CTA unification, nav cleanup, `/free-trial` redirect survive; form-first rendering discarded
+- **fe9f9ab** (Wave 3 spec rescope): Updated `.squad/specs/azure-function-submit-assessment.md` with rescope decision + 5 open questions; updated `combined-review.md` Wave 3 section and `azure-setup-guide.md` context
+- **fb3c5f7** (Calendly-only pivot): `/book-assessment` renders Calendly-only + sections; `BookAssessmentPageClient.tsx` dormant; form code preserved for Wave 3
+
+**Deployment:** GitHub Pages run 25526377501 verified Calendly-only shape live.
+
+### What Survives from Form-First Build
+
+- CTA unification work (site-wide "Book Free Assessment" → `/book-assessment`)
+- Nav cleanup (remove "Free Trial" from primary + mobile nav)
+- `/free-trial` → `/book-assessment` redirect
+- Footer updates
+- Page structure + sections (hero, What to Expect, social proof, FAQ)
+- Azure Function spec, Resend integration contract, honeypot validation logic — Wave 3 foundation
+
+### Learnings
+
+When product UX hits a dead-end (duplicate-fields bug), prefer pivot-in-place over revert: rescope the current work to drop the problematic component, preserve supporting work that remains valid. The form-first merge shed the form rendering but kept the CTA unification, nav restructure, and page structure — substantial work that advances the site even on the Calendly-only path.

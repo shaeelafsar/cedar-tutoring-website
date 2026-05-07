@@ -129,14 +129,18 @@ export function CalendlyInline({
 
   return (
     <div className={className}>
-      <div className="relative w-full overflow-hidden rounded-2xl border border-border bg-white shadow-sm min-h-[1150px] md:min-h-[720px]">
+      <div className="relative w-full overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
         {/* Calendly's iframe lives inside this div. dangerouslySetInnerHTML
             tells React's reconciler not to manage the children, so Calendly
-            can inject DOM without colliding with React on unmount. */}
+            can inject DOM without colliding with React on unmount.
+            The min-height MUST be on the .calendly-inline-widget div itself
+            (not a wrapper) — Calendly overrides positioning to `relative`,
+            so we can't rely on `absolute inset-0` filling a sized parent. */}
         <div
           ref={containerRef}
-          className="calendly-inline-widget absolute inset-0"
+          className="calendly-inline-widget block w-full min-h-[1150px] md:min-h-[720px]"
           data-url={embedUrl}
+          style={{ minWidth: "320px" }}
           dangerouslySetInnerHTML={{ __html: "" }}
         />
         {status !== "ready" && (

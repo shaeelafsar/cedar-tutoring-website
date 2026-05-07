@@ -178,7 +178,7 @@ export function getPricingPageContent(): PricingPageContent {
   const comparisonSection = page.sections[1];
   const tiersSection = page.sections[2];
   const allPlansSection = page.sections[3];
-  const faqSection = page.sections[4];
+  const rawFaqSection = page.sections[4];
 
   return pricingPageContentSchema.parse({
     seo: doc.data.seo,
@@ -211,12 +211,16 @@ export function getPricingPageContent(): PricingPageContent {
       items: doc.data.allPlansItems,
       footnote: doc.data.allPlansFootnote,
     },
-    faqSection: {
-      eyebrow: doc.data.faqEyebrow,
-      heading: faqSection.title,
-      subtitle: getFirstParagraph(faqSection.content),
-      items: doc.data.faqItems,
-    },
+    ...(rawFaqSection && doc.data.faqItems
+      ? {
+          faqSection: {
+            eyebrow: doc.data.faqEyebrow,
+            heading: rawFaqSection.title,
+            subtitle: getFirstParagraph(rawFaqSection.content),
+            items: doc.data.faqItems,
+          },
+        }
+      : {}),
     finalCta: doc.data.finalCta,
   });
 }

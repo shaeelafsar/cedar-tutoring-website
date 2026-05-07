@@ -100,7 +100,7 @@ Numbered roughly by *combined severity* (business impact × evidence strength), 
 
 | # | Action | Effort | Status | Source |
 |---|---|---|---|---|
-| 1 | **Wire the assessment form to a real submission destination** (Formspree / Netlify Forms / custom API). Owner receives test lead; lead is persisted; spam protection in place; success state only shows after delivery confirmed. | 2–4h (Formspree) to days (custom) | 🟡 NEEDS DECISION on submission backend | GPT |
+| 1 | **Wire the assessment form to Azure SWA managed Function + Resend.** `POST /api/submit-assessment` (same-origin Function) validates honeypot + Origin, sends email via Resend to `Info@cedartutoring.com`. No client-side secrets. Spec: `.squad/specs/azure-function-submit-assessment.md`. Research: `.squad/research/form-solutions-comparison.md`. Web3Forms dropped. | ~2h (Function + client rewire) | 🟢 DECISION LOCKED — Azure SWA + Resend | GPT → Morpheus |
 | 2 | **Replace all "Admission Form" CTAs with "Book a Free Assessment".** Update `content/pages/home/cta.md` and `content/programs/_hub.md`. Note: site is statically exported to GitHub Pages — server-side 301 redirects aren't available; use a static `/admission/index.html` with `<meta http-equiv="refresh">` to `/book-assessment/`, or simply delete the route and trust the link replacement. | ~30 min | 🟢 READY | GPT (verified) |
 | 3 | **Create the privacy policy page** and link it from form pages, footer, and metadata. Standard parent/student data policy; can use a generic template adapted to Cedar specifics. Also ensures the existing footer link in `content/site/metadata.md:97` stops 404'ing. | Half day (drafting + page) | 🟡 NEEDS LEGAL REVIEW once drafted | GPT (verified) |
 | 4 | **Fix all "Dallas-Fort Worth" references.** Edit `src/lib/seo.ts:9` and `src/app/(marketing)/page.tsx:67`. Replace with "Worth, IL and the South Suburbs of Chicago." Re-grep entire repo to confirm no other instances. | ~15 min | 🟢 READY | GPT (verified) |
@@ -157,7 +157,7 @@ Numbered roughly by *combined severity* (business impact × evidence strength), 
 These three close in roughly an hour and remove three of the most embarrassing user-facing defects.
 
 **Wave 2 — request founder decisions in parallel:**
-- P0 #1: which form backend (Formspree, Netlify Forms, custom API)?
+- P0 #1: ✅ form backend decided — Azure SWA + Resend (see Wave 3)
 - P0 #5: confirm founder name and team listing accuracy
 - P0 #6: build a Blog or remove the footer link?
 - P0 #7: pricing tier values to publish (or "starting at" ranges)?
@@ -165,7 +165,13 @@ These three close in roughly an hour and remove three of the most embarrassing u
 - P0 #9: approve the new home-hero copy
 - P0 #3: privacy-policy template draft for legal review
 
-**Wave 3 — execute on decisions** as each comes back. P0 #1 (form wiring) will likely be the longest-running; start it as soon as the backend is chosen so it can run while other items close.
+**Wave 3 — form backend + Azure migration** (decisions locked 2026-05-07):
+- P0 #1: **Wire assessment form to Azure SWA managed Function + Resend.** Architecture spec at `.squad/specs/azure-function-submit-assessment.md`. Research at `.squad/research/form-solutions-comparison.md`. Web3Forms is dropped entirely.
+  - Trinity: scaffold `api/submit-assessment/index.ts`, rewire `BookAssessmentPageClient.tsx` to POST `/api/submit-assessment`, remove `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`
+  - Mouse: test plan against SWA preview deployment (API-level + browser E2E)
+  - Shaeel: provision Azure SWA, Resend account, DNS cutover, add env vars to SWA Application Settings
+- Retire `deploy-pages.yml` workflow AFTER cutover verified end-to-end
+- Make repo private (post-cutover only)
 
 **Wave 4 — P1 polish** after all P0 close. P1 #11 (mobile drawer) and P1 #15 (nav restructure) are the largest remaining items.
 

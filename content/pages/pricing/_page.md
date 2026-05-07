@@ -71,16 +71,6 @@ allPlansItems:
   - "Free initial diagnostic assessment"
   - "Personalized learning approach for your child"
   - "Open parent communication and progress updates"
-faqEyebrow: "Common questions"
-faqItems:
-  - question: "Can I switch plans?"
-    answer: "Yes. You can switch between plans at the start of any new billing month. Just let us know before your next billing cycle and we will update your plan."
-  - question: "What's included in the free assessment?"
-    answer: "The free assessment is a one-on-one session where a Cedar teacher evaluates your child's current level, identifies learning gaps, and helps recommend the right plan and schedule for your family."
-  - question: "Do you offer discounts for siblings?"
-    answer: "The Family Plan is designed exactly for multi-child households — sessions can be shared across all your registered children at no extra per-child cost. It's the most cost-effective option for families with multiple students."
-  - question: "What's the cancellation policy?"
-    answer: "We require 48-hour notice to cancel or reschedule a session. Cancellations with less than 48 hours notice may count as a used session toward your monthly plan."
 finalCta:
   heading: "Have questions about which plan fits?"
   subtext: "Book a free assessment and our team will help you choose the right plan for your child."
@@ -116,7 +106,3 @@ Whether your child needs occasional subject help, daily homework support, or you
 ## All plans include certified teachers and a free assessment.
 
 Every plan includes access to certified teachers, personalized pacing, subject coverage across math, reading, writing, science, and Arabic, and a free initial assessment.
-
-## Common questions before you enroll.
-
-These are the questions families ask most often before choosing a plan at Cedar.

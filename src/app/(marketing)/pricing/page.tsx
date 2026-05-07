@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { ArrowRight, Check } from "lucide-react";
 
 import { CTASection } from "@/components/shared/CTASection";
-import { FAQAccordion } from "@/components/shared/FAQAccordion";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { PageHero } from "@/components/shared/PageHero";
 import { Reveal } from "@/components/shared/Reveal";
@@ -171,19 +170,6 @@ export default function PricingPage() {
               );
             })}
           </div>
-        </div>
-      </section>
-
-      {/* FAQ strip */}
-      <section className="px-4 py-16 md:px-6 lg:px-8 lg:py-20">
-        <div className="mx-auto max-w-5xl">
-          <h2 className="text-foreground mb-10 text-center text-2xl font-bold sm:text-3xl">
-            Common questions
-          </h2>
-          <FAQAccordion
-            items={pricingPageContent.faqSection.items}
-            defaultOpen={0}
-          />
         </div>
       </section>
 

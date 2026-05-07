@@ -245,9 +245,11 @@ export const pricingPageContentSchema = z.object({
     items: z.array(nonEmptyString),
     footnote: nonEmptyString.optional(),
   }),
-  faqSection: sectionShellContentSchema.extend({
-    items: z.array(faqItemSchema),
-  }),
+  faqSection: sectionShellContentSchema
+    .extend({
+      items: z.array(faqItemSchema),
+    })
+    .optional(),
   finalCta: ctaBlockSchema,
 });
 
@@ -573,8 +575,8 @@ export const pricingPageFrontmatterSchema = z.object({
   allPlansEyebrow: nonEmptyString,
   allPlansItems: z.array(nonEmptyString),
   allPlansFootnote: nonEmptyString.optional(),
-  faqEyebrow: nonEmptyString,
-  faqItems: z.array(faqItemSchema),
+  faqEyebrow: nonEmptyString.optional(),
+  faqItems: z.array(faqItemSchema).optional(),
   finalCta: ctaBlockSchema,
 });
 

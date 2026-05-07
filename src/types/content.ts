@@ -219,7 +219,7 @@ export interface PricingPageContent {
     items: string[];
     footnote?: string;
   };
-  faqSection: SectionShellContent & {
+  faqSection?: SectionShellContent & {
     items: FAQItem[];
   };
   finalCta: CtaBlock;

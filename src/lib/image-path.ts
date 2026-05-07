@@ -1,4 +1,4 @@
-const basePath = process.env.NODE_ENV === "production" ? "/cedar-tutoring-website" : "";
+const basePath = process.env.DEPLOY_TARGET === "github-pages" ? "/cedar-tutoring-website" : "";
 
 export function imagePath(src: string): string {
   if (src.startsWith("/") && (!basePath || !src.startsWith(basePath))) {

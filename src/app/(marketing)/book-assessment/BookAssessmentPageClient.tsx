@@ -283,11 +283,12 @@ export function BookAssessmentPageClient({
       />
 
       <section className="bg-muted/30 px-4 py-16 md:px-6 lg:px-8 lg:py-20">
-        <div className="mx-auto grid max-w-7xl gap-8 xl:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] xl:items-start">
+        <div className="mx-auto grid max-w-7xl gap-8 xl:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] xl:items-start">
           <motion.div
             initial={prefersReducedMotion ? undefined : { opacity: 0, y: 24 }}
             animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.45, ease: "easeOut" }}
+            className="xl:order-2"
           >
             <section
               aria-labelledby="assessment-form-heading"
@@ -768,7 +769,7 @@ export function BookAssessmentPageClient({
             </section>
           </motion.div>
 
-          <div className="space-y-6">
+          <div className="space-y-6 xl:order-1">
             <motion.aside
               initial={prefersReducedMotion ? undefined : { opacity: 0, y: 24 }}
               animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}

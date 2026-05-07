@@ -91,6 +91,26 @@ Web3Forms/Formspree public keys are not traditional API secrets — they're desi
 ### Architecture spec pattern for serverless form endpoints
 When writing specs for team consumption (Trinity implements, Mouse tests): lock every decision (payload schema, validation order, response codes, env var names, file paths). Don't leave "TBD" in a single-round spec — it becomes a blocker. Include a test hooks section that maps 1:1 to what the tester needs to assert.
 
+### Free Trial vs Book Assessment — IA/Funnel Analysis (2026-05-07T17:05:00-05:00)
+**By:** Morpheus (Lead/Architect)
+**Requested by:** Shaeel
+**Status:** COMPLETE — Analysis + recommendation delivered
+**Output:** `.squad/decisions/inbox/morpheus-free-trial-vs-book-assessment.md`
+
+**Question:** "Free Trial allows customer to book via Calendly and Book Assessment just lets them fill out a form — wouldn't this create sign-up fatigue or confusion for the end user?"
+
+**Findings:**
+1. **Operational gap:** Free Trial (Calendly) and Book Assessment (form) exist as two separate funnels with different destinations (Calendly calendar vs Info@ inbox). No evidence Cedar's team is deliberately running a two-funnel strategy; appears vestigial.
+2. **Architectural drift:** Wave 1 P0 #2 locked "Book a Free Assessment" as the canonical CTA and said Free Trial should be inside-funnel only. Current nav exposes both top-level, violating that decision.
+3. **Lead quality & ops inefficiency:** Calendly bookings arrive with zero assessment context (what program? what grade?); form submissions arrive without calendar availability. If both feed to the same person, Cedar must choose between fast scheduling (Calendly) or contextual intake (form), not both.
+4. **SEO cannibalization:** Two near-identical pages competing for "Cedar free [X]" keywords.
+
+**Recommendation:** **Option B — Merge** into single canonical "Book a Free Assessment" page with optional paths: Calendly inline (for calendar-first parents) + form below (for context-first parents). Both lead to same outcome (assessment + conversation). Clears IA, fixes Wave 1 P0 #2 drift, makes Wave 4 nav restructure clean (no top-nav Free Trial icon).
+
+**Wave 3 impact:** None — form spec unchanged, Azure Function unaffected. Merge is a UX/content reorganization, not a backend change.
+
+**Owner decision needed:** Should merged page offer Calendly first or form first? Architecture answer is B either way.
+
 ### Wave 3 Spec/Guide/Test-Plan Trio Locked (2026-05-07T19:50:02Z)
 **Status:** COMPLETE — Single-round cross-review done. All 5 open questions resolved. All 3 outputs approved/locked (with 4 test plan mechanical fixes noted).
 

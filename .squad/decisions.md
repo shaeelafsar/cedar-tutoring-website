@@ -542,3 +542,101 @@ const isGitHubPages = process.env.DEPLOY_TARGET === "github-pages";
 ## Sharp Edge — Follow-up Required
 
 `src/lib/image-path.ts` still uses `NODE_ENV === 'production'` to compute the image basePath string. This helper will misbehave on Azure SWA (prepending `/cedar-tutoring-website` to image URLs on a domain-root deployment). This needs a follow-up commit to align it with `DEPLOY_TARGET === 'github-pages'` before Wave 3 goes live.
+
+---
+
+# Session 2026-05-07: Wave 3 Pause + Free Trial / Book Assessment Merge
+
+**Status:** All decisions locked. Trinity dispatched for implementation. Calendly integration post-form-submit, form-first UX, and two Shaeel constraints (no duplicate data via prefill, Calendly as removable component) codified.
+
+---
+
+## Deploy Target: GitHub Pages (Until Wave 3 Ready)
+
+**Directive:** Continue deploying to GitHub Pages until Azure SWA is provisioned AND Wave 3 (form backend + Resend) is fully shipped and verified live.
+
+**Rationale:** Azure provisioning is async (Shaeel-side action). Do not break the live site while waiting.
+
+**Mechanism:** The `basePath` env-gate (committed in 18d15ec + follow-up image-path.ts sync) preserves this. The GH Pages CI workflow sets `DEPLOY_TARGET=github-pages` in the build step, which keeps basePath active. Local dev and future Azure SWA builds (which do not set this variable) correctly omit basePath, enabling domain-root serving.
+
+**No premature DNS cutover, no GH Pages workflow retirement, no private-repo flip** until Wave 3 is live on SWA.
+
+---
+
+## Free Trial vs Book Assessment: Anti-Drift Catch + UX Analysis
+
+**Wave 1 P0 #2 decision (locked 2026-05-07):** Site-wide primary CTA standardized as **"Book a Free Assessment"** linking to `/book-assessment/`. The "Admission Form" wording is retired.
+
+**Problem flagged by Morpheus (Architecture):** The current two-page model (Free Trial + Book Assessment) violates P0 #2 by maintaining two equally visible entry points, fragmenting lead tracking and creating parent-side UX confusion. Both pages exist with competing CTAs (nav shows Free Trial; hero shows Book Assessment), but Cedar's ops team is not deliberately running a dual-funnel strategy. Result: Calendly bookings have zero assessment context; form submissions have no calendar availability. Asmah must check two places (Calendly + email) for new leads.
+
+**UX analysis by Oracle:** Parent-facing fatigue is real. Both CTAs promise the same outcome ("book a free tutoring thing"); neither signals a difference in experience. From the parent's perspective, having two equally prominent pathways creates cognitive load (Hick's Law: choice complexity increases decision time and error likelihood). For a trust-driven service like tutoring, clarity + consistency build trust; two confusing CTAs undermine professionalism.
+
+**Consensus:** Both Oracle (UX) and Morpheus (IA) recommend merge. This fixes the drift, restores P0 #2, and clears Wave 4 nav restructuring path.
+
+---
+
+## Merge Decision: APPROVED (Form-First, Calendly Post-Submit)
+
+**Shaeel directive (locked 2026-05-07):**
+
+1. **Merge approved.** `/free-trial` and `/book-assessment` collapse into a single canonical page at `/book-assessment/`.
+   - `/free-trial` becomes a permanent 301 redirect to `/book-assessment` (preserves SEO + existing inbound links).
+   - "Free Trial" removed from primary nav.
+   - Hero secondary CTA across the site unifies to "Book Free Assessment" (per Wave 1 P0 #2 — drift now corrected).
+
+2. **Form-first, Calendly post-submit.**
+   - Above the fold: form. Calendly does NOT render until form is submitted.
+   - After successful form submit: optional Calendly section appears with prefilled data (parent name, email, student name, grade, program interests, location) so parents who want to grab a slot immediately can, without re-entering info.
+   - Form success state stands alone (green checkmark, thank-you message, what-happens-next reassurance) — Calendly is purely additive below it.
+
+### Constraint A: No Duplicate Data Entry
+
+**Implementation rule:** Use `react-calendly` `<InlineWidget />` `prefill` prop to map form fields to Calendly custom questions:
+```tsx
+<InlineWidget
+  url="..."
+  prefill={{
+    name: `${parentName}`,
+    email: parentEmail,
+    customAnswers: {
+      a1: studentName,
+      a2: gradeLevel,
+      // map remaining form fields to Cedar's Calendly event type custom questions
+    }
+  }}
+/>
+```
+After form submit (success state), pass form values into Calendly as prefill. If Cedar's Calendly event type doesn't have matching custom questions yet, Trinity leaves a TODO + pings Asmah via test plan to align. Basic name/email prefill honors the constraint; richer prefill is incremental.
+
+### Constraint B: Calendly Is Transitional — Keep It Removable
+
+**Implementation rule:** Keep the post-submit Calendly section as a **self-contained, isolated component** (one component, one import, one JSX section). When Wave 3 Resend backend is live and Cedar has internal scheduling, removing Calendly must be a single-component delete + props change, NOT a refactor. Do NOT couple Calendly's render state to the form's success state in a way that requires Calendly to exist for "form submitted" UX to work.
+
+---
+
+## Page Structure (Merged `/book-assessment`)
+
+**Fold-by-fold reference:** Oracle's mockup (`oracle-merged-book-assessment-mockup.md`, archived) details each section. TL;DR:
+
+1. **Hero:** "Let's Find the Right Fit for Your Child" + warm tutor-student photo + "Start Assessment" CTA (scrolls to form).
+2. **Form (primary):** 7 fields (parent name, email, phone, student name, grade, program interests, location, notes, contact preference). Validation + "No Credit Card" reassurance below submit.
+3. **Calendly (post-submit only):** Appears after form success. Copy: "Or pick a time now." Prefilled. Optional fallback: "We'll reach out within 24 hours if you skip this."
+4. **Context + Social Proof:** How assessments work + testimonials + FAQ (existing content reused).
+
+**Why form-first:** Forms should come early to capture intent. Respects parent time. Real fields (name, email, phone) signal trust. Contact preference dropdown reduces friction (no surprise phone call if they prefer email).
+
+**Why Calendly post-submit:** Psychologically crucial for intent-shown parents. Gives both lead types a path (instant bookers + deliberate planners). Operational clarity: Cedar's system gets form data + calendar event (if booked) OR form data + scheduled callback (if Calendly skipped).
+
+---
+
+## Wave 3 Impact: ZERO
+
+This is content/UX reorg, not backend change. Form payload schema, Azure Function design, Resend integration — all unchanged. The merged form fields = current form fields. Adding Calendly post-submit is purely a render concern, not a backend concern.
+
+---
+
+## Build / Dispatch
+
+- **Trinity (sonnet 4.6):** Implementing merged page now. Estimate ~4.5–6 hours. Full structure per Oracle mockup; prefill logic per Constraint A; self-contained Calendly component per Constraint B.
+- **Mouse (sonnet 4.6):** Queued. Runs after Trinity confirms green local build to update Playwright test coverage (Wave 2 / Wave 4 scope).
+- **Scribe:** Running in parallel with Trinity to flush 5 pending inbox files (this entry) into decisions.md.

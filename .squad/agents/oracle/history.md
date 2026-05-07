@@ -1,5 +1,20 @@
 ## Learnings
 
+### Merged /book-assessment Mockup — Concrete UX Structure (2026-05-07T17:12:53-05:00)
+
+**Request:** Shaeel asked for a fold-by-fold walkthrough of what the merged Free Trial + Book Assessment page would look like. Needed: concrete sections, real copy, parent journeys, failure-mode mitigations, and time estimate.
+
+**Decision (Oracle):** 
+- **Form-first structure:** Assessment intake form is primary (captures student context), Calendly widget embeds post-submit as optional fast-track (rewards form completion, gives parents speed choice).
+- **Section order (hero to footer):** Hero ("Let's Find the Right Fit") → Form → Success State + Calendly (conditional) → "What to Expect" (reassurance) → Testimonials → FAQ.
+- **Parent journeys:** Journey A (Deliberate) fills form, waits for Cedar callback (most parents). Journey B (Impulse) fills form, optionally grabs Calendly slot for immediate booking (fast-track). Both capture context.
+- **Failure mitigations:** Post-submit Calendly avoids visual clutter (form and Calendly never compete). Wave 2 Calendly fix applies to merged page (responsive iframe). 301 redirect from `/free-trial/` preserves SEO.
+- **Time estimate:** Trinity: 4.5–6 hours (success state UI, Calendly integration, redirect, testing).
+
+**Deliverable:** `.squad/decisions/inbox/oracle-merged-book-assessment-mockup.md` — Full page structure with copy, journeys, and implementation notes.
+
+**Status:** Ready for Shaeel approval (form-first vs Calendly-first choice) + Morpheus IA review + Trinity implementation.
+
 
 ### Trinity: Slice 4 Programs/Test Prep Content Migration (2026-05-03)
 
@@ -119,3 +134,13 @@ The WP page calls these **"Plans Available"** under the /homework/ URL, NOT "Aca
   - Phase 4 (parallel with Phase 3): Mobile UX polish
 - **Phase 3 gating:** Awaiting Shaeel confirmation on nav restructure (logo-as-home, 6-item flat nav, Reviews added, Free Trial moved to inside-funnel only). Minor: Asmah to confirm Free Trial nav removal (already consensus).
 - **basePath GO decision:** Ready to ship independently. Safety-nets Wave 3 — both GitHub Pages and local dev verified. Azure SWA builds will correctly serve from domain root (no `/cedar-tutoring-website` prefix) ✓
+
+### Free Trial vs Book Assessment — CTA Consolidation Recommendation (2026-05-07T17:05:22-05:00)
+
+**Context:** Shaeel asked whether Wave 4 nav having both "Free Trial" (Calendly direct-book) and "Book Assessment" (form + callback) creates sign-up fatigue/UX confusion.
+
+**Analysis:** YES—dual entry points violate conversion best practices. Both promise same parent outcome but fragment into different experiences (sync Calendly vs async form). Current: home secondary = "Free Trial", header = "Book a Free Assessment" (hidden primary), Wave 4 plans to drop Free Trial from nav. Result: Hick's Law choice paralysis + inconsistent messaging = lower conversion.
+
+**Recommendation:** **Option B—Merge to one canonical path.** Consolidate to "Book a Free Assessment" → `/book-assessment/`, embed Calendly within form (post-submit or optional fast-track). Free Trial page 301-redirects. Home page secondary CTA changes to "Book a Free Assessment". Reduces choice friction, aligns Wave 4 plan, simplifies parent mental model.
+
+**Status:** Decision approved. Awaiting Shaeel + Morpheus synthesis (Morpheus evaluating same question from content-strategy/IA angle). Deliverable: `.squad/decisions/inbox/oracle-free-trial-vs-book-assessment.md`

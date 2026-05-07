@@ -92,6 +92,62 @@
 **Source:** combined-review.md P0 #10; pre-session verification
 **Note:** P0 #10 (Cities we serve section on Contact page) was already complete prior to this Wave 1 session. No edit required. `content/pages/contact-us/_page.md` already lists 15 cities; `src/app/(marketing)/contact-us/page.tsx` already renders the full cities list. The original review finding was based on a pre-fix snapshot. Capturing this note ensures Wave 1 execution correctly reflects current state and prevents duplicate analysis in future sessions.
 
+### 2026-05-07T11:40:51-05:00: /pricing Page Strategy — Partial Pricing Disclosure Model
+**By:** Morpheus (Lead/Architect)
+**Status:** APPROVED
+**Source:** WP live site extraction from https://cedartutoring.com/plans/
+**Decision:** The new `/pricing` page uses a 3-tier comparison layout: As-Needed ($40/session), Family Plan ($699.99/$749.99/month contact-gated), and Academic Coaching (contact-gated). No blank containers. Page mirrors the live WP site's intentional partial-disclosure sales pattern.
+**Rationale:** Parents/guardians need honest, real pricing tiers even if some say "Contact us" instead of dollar figures. Matches WP site discovery (prices are Elementor-rendered, not in HTML).
+**Ambiguities resolved by Trinity Wave 2B:** Free trial scope, cancellation policy, sibling discounts, plan-switch policy, and academic coaching pricing flagged for Shaeel/Asmah confirmation post-merge.
+
+### 2026-05-07T12:14:01-05:00: WP Pricing Data Extraction Results — Consolidated
+**By:** Oracle (UX/Design Lead)
+**Status:** APPROVED
+**Source:** cedartutoring.com vision extraction (Playwright + Claude vision), verified against Morpheus curl-extraction
+**Decision:** Live site pricing tiers confirmed as canonical source for new /pricing page:
+- **As-Needed Tutoring:** $40/session (public)
+- **Family Plan:** $699.99/month (5 sessions/week); $749.99/month (6 sessions/week)
+- **Homework Help:** $419.99–$699.99/month (3–6 sessions/week)
+- **Academic Coaching:** Contact for pricing (not published on WP)
+**Caveat:** WP /homework/ page prices ($419.99–$699.99) are labeled "Homework Help," not "Academic Coaching." Trinity Wave 2B uses correct labeling.
+
+### 2026-05-07T12:42:00-05:00: Wave 2A Implementation — Web3Forms integration + P0 fixes
+**By:** Trinity (Frontend Dev)
+**Status:** COMPLETE — pending review
+**Change set:**
+1. **book-assessment form:** Replaced TODO submit handler with real Web3Forms integration; env var `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` required; botcheck honeypot added; friendly error fallback if key missing.
+2. **Navigation:** Removed "Free Trial" CTA from top nav to eliminate competing first-step (kept in footer as secondary path).
+3. **Footer:** Removed broken `/blog` link.
+4. **Privacy policy:** Created new `/privacy-policy` page with lawyer-review banner (amber) and full content sections; reusable child's privacy detail included.
+5. **Home hero:** Changed H1 from "WELCOME TO CEDAR TUTORING ACADEMY!" to "Personalized tutoring that helps your child feel confident again" (parent-benefit framing per audience decision).
+**Env Note:** Owner must set `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` before deploy. Free tier: 250 submissions/month.
+**Deferred:** Lawyer review of privacy policy; hero subheadline/CTA revision optional.
+
+### 2026-05-07T12:42:00-05:00: Wave 2B Implementation — /pricing page full rebuild + sub-tier toggles
+**By:** Trinity (Frontend Dev)
+**Status:** READY FOR REVIEW — 4 FAQ items flagged for Shaeel/Asmah confirmation
+**Change set:**
+1. **Content:** `content/pages/pricing/_page.md` — Three tiers with YAML-managed sub-tiers (Family Plan: 5/6 week; Homework Help: 3/4/5/6 week).
+2. **Schema:** Extended `PricingTier` interface with `PricingSubTier` + optional `subTiers[]` and `defaultSubTierIndex`.
+3. **Component:** New Client Component `PricingCardInteractive.tsx` with `aria-pressed` pill toggles (keyboard/SR accessible); defaults: Family Plan → 5/week, Homework Help → 4/week.
+4. **FAQ:** 4 answers written in good faith, all flagged for owner verification before launch.
+**Flags for confirmation:**
+- Plan switching allowed mid-month or only at billing start? Any fees?
+- Free assessment includes subject test or only level evaluation?
+- Additional sibling discounts beyond Family Plan?
+- Cancellation policy: exact language, grace periods, monthly plan refunds?
+**Validation:** tsc ✅, lint ✅ (baseline unchanged).
+
+### 2026-05-07T12:36:00-05:00: Wave 2C Implementation — About/team cleanup (founder rename + placeholder removal)
+**By:** Trinity (Frontend Dev)
+**Status:** COMPLETE
+**Change set:**
+1. **Founder:** Renamed "Amina Rahman" → "Asmah" in `content/pages/about/team.md`; updated bio and portrait path to match story.md truth.
+2. **Placeholders removed:** Deleted 3 fictional team entries (Nora Hassan, Omar Siddiqui, Sarah Khan) + their SVG portraits via `git rm`.
+3. **Page body:** Rewrote for single-founder framing.
+**Verification:** 0 remaining refs to Amina/Nora/Omar/Sarah in codebase. tsc ✅, lint ✅ (baseline unchanged).
+**Note:** `asmah.svg` remains placeholder; owner will supply real photo pre-launch.
+
 ## Governance
 
 - All meaningful changes require team consensus

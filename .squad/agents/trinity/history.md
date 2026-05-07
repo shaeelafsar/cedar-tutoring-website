@@ -78,3 +78,6 @@
 
 - **Azure migration target (2026-05-07):** Production deploy will move from GitHub Pages to Azure Static Web Apps + Functions (decision: coordinator). Free Azure credit covers low-traffic marketing site. Functions will host Web3Forms relay (secrets managed server-side). GitHub Pages remains staging target until Azure provisioned. Remember: Functions free tier = 1M executions/month, plenty for contact form.
 
+
+**2026-05-07T14:32 — Morpheus: Form Architecture Approved (Azure SWA + Resend)**  
+Form backend decided: Azure Static Web Apps managed Function + Resend email API. Trinity will implement `api/submit-assessment/index.ts` + form client POST. See `.squad/decisions.md` (2026-05-07T14:31:00) and `.squad/research/form-solutions-comparison.md` for full architecture.

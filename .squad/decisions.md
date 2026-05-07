@@ -223,3 +223,28 @@
 - All meaningful changes require team consensus
 - Document architectural decisions here
 - Keep history focused on work, decisions focused on direction
+
+### 2026-05-07T14:31:00-05:00: Form Architecture — Azure SWA Managed Function + Resend
+**By:** Morpheus (Lead/Architect)
+**Status:** APPROVED
+**Decision:** Use Azure Static Web Apps managed Azure Function as the form relay endpoint, sending assessment-request emails via Resend (email API) to `Info@cedartutoring.com`. Drop Web3Forms from the architecture entirely.
+**What changes:**
+- Form in `BookAssessmentPageClient.tsx` POSTs to `/api/submit-assessment` (same-origin Azure Function, auto-deployed with SWA)
+- Azure Function validates honeypot + Origin header, reads `RESEND_API_KEY` from App Settings, calls Resend API
+- No `NEXT_PUBLIC_*` env vars for form secrets — key lives exclusively in Azure Function App Settings
+- Web3Forms dependency removed (no access key needed, no third-party form vendor)
+- Resend free tier: 3,000 emails/month, 100/day — Cedar needs ~50/month
+**Why:**
+- Shaeel rejected exposing API keys to the browser (rules out Web3Forms public-key model)
+- Azure SWA managed Functions are free (1M executions/mo) and same-origin (no CORS)
+- Resend has the best DX for solo devs: simple API, instant account approval, auto DKIM/SPF
+- SendGrid rejected: painful account approval for new accounts, overkill API complexity
+- Web3Forms relay rejected: adds unnecessary vendor; Resend does everything directly
+- Total cost: $0 (Azure free credit + Resend free tier)
+- Setup time: ~2 hours
+**Impact:**
+- Trinity: implement `api/submit-assessment/index.ts` + update form client
+- Mouse: test Function (POST → mock → assert payload, honeypot rejection, origin check)
+- Pre-production checklist: add Azure SWA provisioning, Resend account, DNS, DKIM/SPF/DMARC verification
+- Graceful-fallback mode (phone/email display) remains active until Function is deployed and tested
+**Research:** Full analysis at `.squad/research/form-solutions-comparison.md`

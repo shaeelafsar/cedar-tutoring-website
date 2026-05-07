@@ -126,3 +126,37 @@ Trinity executed Slice 4 (Programs + Test Prep migration to content layer):
 - Content-driven pattern validated with Zod at build time
 
 **Impact:** Static export unblocked for test-prep routes. Ready for design review and copy approval.
+
+### PRD-Ready Website Review (2026-05-07T10:22:32.063-05:00)
+**Status:** COMPLETE — business/content/navigation notes written to `.squad/reviews/morpheus-prd-ready-review-notes.md`.
+
+**Key findings:**
+- Site is near launch-ready visually/content-wise, but not PRD-ready until critical conversion and launch-link issues are fixed.
+- Highest business risk: `/book-assessment` form currently has placeholder success behavior and no real submission integration.
+- Broken internal routes found during local Playwright review: `/admission`, `/privacy-policy`, and `/blog` return 404.
+- Legacy CTA content still links to `/admission/` from homepage/programs final CTA content.
+- Local SEO contains a geography mismatch: shared SEO/structured data references Dallas-Fort Worth while Cedar serves Worth, IL and Chicago South Suburbs.
+- Parent mental model should prioritize fit, trust, process clarity, schedule/budget, and one obvious first step.
+- Recommended canonical funnel: make “Book a Free Assessment” the primary first step and position “two free trial sessions” as a benefit within that flow unless the business intentionally wants two separate funnels.
+
+**Useful paths:**
+- `.squad/reviews/morpheus-prd-ready-review-notes.md` — Morpheus synthesis input.
+- `.squad/reviews/morpheus-runtime-summary.json` — local route/status/content summary from Playwright review.
+- `content/site/metadata.md` — primary nav/footer metadata; contains deferred footer links in frontmatter.
+- `content/pages/home/cta.md` and `content/programs/_hub.md` — still point CTA hrefs to `/admission/`.
+- `src/app/(marketing)/book-assessment/BookAssessmentPageClient.tsx` — form currently has placeholder submission TODO.
+- `src/lib/seo.ts` and `src/app/(marketing)/page.tsx` — SEO/structured-data geography should be corrected before launch.
+
+
+### PRD-Ready Final Review Synthesis (2026-05-07T10:22:32.063-05:00)
+- Created final parent/guardian launch-readiness artifact: `prd-ready-review-gpt.md`.
+- Key launch-readiness themes: site direction is strong and premium, but not PRD-ready until assessment form persistence, broken `/admission/` CTA/route, privacy policy, local SEO geography, pricing/contact unfinished sections, mobile nested navigation, CTA hierarchy, and production Lighthouse/axe/link gates are fixed.
+- Recommended funnel principle: make **Book a Free Assessment** the canonical first step and treat free trial as a supporting offer unless the owner intentionally wants two separate conversion paths.
+
+### Team Decision: Parent/Guardian Primary Audience (2026-05-07T10:13:08.554-05:00)
+**Captured by:** Coordinator (Copilot Directive)  
+Shaeel Afsar captured a team directive: whenever designing/UX/UI, ensure the team is always thinking from the target audience perspective. For Cedar, treat parents/guardians choosing tutoring for their child as the primary audience. This directive is now recorded in `.squad/decisions.md` for team reference.
+
+### Team Decision: P0 Launch Blockers Synthesis + Approval (2026-05-07T10:22:32.063-05:00)
+**Decision by:** Morpheus (synthesis) + Mouse (final verdict: APPROVED)  
+Morpheus synthesized all Oracle/Mouse/Morpheus findings into `prd-ready-review-gpt.md` and proposed a binding decision: the site should not launch until P0 blockers are fixed. Primary funnel canonical step: "Book a Free Assessment"; treat "Free Trial" as supporting offer unless business wants two separate funnels. Mouse reviewed final artifact and approved it as complete and accurate. Decision recorded in `.squad/decisions.md`: three decisions captured (user directive, synthesis, and approval verdict).

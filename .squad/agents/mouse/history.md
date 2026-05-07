@@ -34,3 +34,22 @@
 **Status:** ✅ APPROVED  
 Mouse's v1.1 test spec received unanimous approval from Trinity and Oracle review teams. All v1.0 blockers resolved. All concerns addressed. Mouse was the only REJECT on v1.0—all issues now fixed. Specs locked. Team advancing to wireframe phase.
 
+### PRD-ready QA review (2026-05-07T10:22:32.063-05:00)
+- Reviewed local site at `http://127.0.0.1:3000` across desktop/mobile key marketing, program, test prep, trust, contact, free-trial, and assessment routes.
+- Wrote QA synthesis notes to `.squad/reviews/mouse-prd-ready-review-notes.md`; did not create or edit `prd-ready-review-gpt.md`.
+- Launch blockers found: stale `Admission Form` CTAs to `/admission/` returning 404; mobile nested navigation regression on program child routes; home JSON-LD incorrectly references Dallas-Fort Worth instead of Worth, IL / South Suburbs of Chicago.
+- Existing Playwright mobile suite result during review: 25 passed, 2 failed, both in `tests/mobile-nav.spec.ts` around drawer brand text and missing active Programs child expansion.
+
+### Final PRD-ready deliverable review (2026-05-07T10:22:32.063-05:00)
+- **Verdict:** APPROVE `prd-ready-review-gpt.md` as the final review deliverable.
+- Verified the file exists at repo root with the exact required name and preserves all three source-note appendices verbatim.
+- The synthesis correctly centers the parent/guardian mental model and covers simplicity, modern/premium/aesthetic feel, concise navigation, logo/color theming, persuasive density vs clutter, production readiness, business-owner lens, and UX/designer lens.
+- Launch-gate implication: approval of the deliverable does **not** mean the website is launch-ready; the deliverable correctly identifies P0 blockers around assessment form plumbing, stale `/admission/` CTAs, missing privacy policy, incorrect Dallas-Fort Worth local SEO, and unfinished high-intent page states.
+
+### Team Decision: Parent/Guardian Primary Audience (2026-05-07T10:13:08.554-05:00)
+**Captured by:** Coordinator (Copilot Directive)  
+Shaeel Afsar captured a team directive: whenever designing/UX/UI, ensure the team is always thinking from the target audience perspective. For Cedar, treat parents/guardians choosing tutoring for their child as the primary audience. This directive is now recorded in `.squad/decisions.md` for team reference.
+
+### Team Decision: P0 Launch Blockers Synthesis Approved (2026-05-07T10:22:32.063-05:00)
+**Decision owners:** Morpheus (synthesis) + Mouse (final verdict: APPROVED)  
+Final deliverable `prd-ready-review-gpt.md` approved as complete and accurate. Morpheus and Mouse aligned that the site should not launch until P0 blockers are resolved: real assessment-form submission, fixing stale `/admission/` CTAs, adding privacy policy, correcting local SEO to Worth, IL / Chicago South Suburbs only, removing unfinished sections, fixing mobile navigation, and passing production gates. Decision recorded in `.squad/decisions.md`.

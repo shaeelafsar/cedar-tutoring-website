@@ -13,15 +13,15 @@ responsePromise: "We'll contact you within 24 hours."
 faqEyebrow: "Assessment FAQ"
 stepsSection:
   eyebrow: "What to expect"
-  heading: "A simple, supportive process from first form to first plan."
+  heading: "A simple, supportive process from first click to first plan."
   subtitle: "Every assessment is designed to reduce stress, answer questions clearly, and help families make a confident decision."
   items:
     - iconName: "file-pen-line"
-      title: "1. Fill out the form"
-      description: "Share your child's grade level, goals, and the subjects you want support with so we can prepare before we call."
+      title: "1. Pick a time online"
+      description: "Select any open slot on the calendar — it takes under a minute and no payment information is required."
     - iconName: "phone-call"
-      title: "2. We call to schedule"
-      description: "A Cedar team member reaches out within 24 hours to confirm details, answer questions, and find a convenient time."
+      title: "2. Cedar confirms your booking"
+      description: "A Cedar team member reaches out within 24 hours to confirm details, answer questions, and make sure everything is set."
     - iconName: "clipboard-check"
       title: "3. Free 30-minute assessment"
       description: "We meet with your child, identify strengths and learning gaps, and get clear on the support that will help most."
@@ -45,7 +45,7 @@ faqItems:
 
 # Let's Find the Right Fit for Your Child
 
-Answer a few quick questions about your student, and we'll schedule a personalized assessment.
+Choose a time on the calendar below — no forms, no payment required. A Cedar team member will confirm your free assessment within 24 hours.
 
 ## Tell us about your child.
 

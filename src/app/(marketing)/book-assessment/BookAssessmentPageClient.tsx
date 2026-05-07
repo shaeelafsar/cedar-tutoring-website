@@ -1,5 +1,11 @@
 "use client";
 
+// Wave 3 scaffolding: this client renders the assessment form + Resend backend integration.
+// Currently NOT mounted on any route — the canonical /book-assessment page uses Calendly only
+// (see BookAssessmentCalendlyClient.tsx). This component will be re-activated when Wave 3 ships
+// the full Calendly replacement (form + custom calendar + Resend backend).
+// See .squad/specs/azure-function-submit-assessment.md and combined-review.md Wave 3 section.
+
 import Image from "next/image";
 import { type FormEvent, useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
@@ -29,8 +35,6 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 import type { SiteConfig } from "@/lib/content/site";
 import { imagePath } from "@/lib/image-path";
 import { cn } from "@/lib/utils";
-
-import { PostSubmitCalendly } from "./PostSubmitCalendly";
 
 const WEB3FORMS_ACCESS_KEY =
   process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
@@ -1047,20 +1051,11 @@ export function BookAssessmentPageClient({
         </div>
       </section>
 
-      {/* Post-submit Calendly fast-track — additive, self-contained.
-          To remove Calendly: delete PostSubmitCalendly.tsx + this block.
-          The success state above is fully independent of this section. */}
-      {isSubmitted && (
-        <PostSubmitCalendly
-          calendlyUrl={calendlyUrl}
-          form={{
-            parentName: formState.parentName,
-            email: formState.email,
-            studentName: formState.studentName,
-            gradeLevel: formState.gradeLevel,
-          }}
-        />
-      )}
+      {/* Post-submit Calendly fast-track — removed in Calendly-only pivot.
+          Wave 3: when this component is re-activated, restore PostSubmitCalendly here:
+          {isSubmitted && (
+            <PostSubmitCalendly calendlyUrl={calendlyUrl} form={{ ... }} />
+          )} */}
     </>
   );
 }

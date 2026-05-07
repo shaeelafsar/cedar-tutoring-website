@@ -2,6 +2,29 @@
 
 **Foundational context archived to history-archive.md (2026-05-07T16:50:00Z). This file tracks active work from Wave 1 P0 execution onward.**
 
+### Round 2 Cross-Review: Spec, Guide, Test Plan Lock-in (2026-05-07T14:50:02-05:00)
+**By:** Morpheus (Lead/Architect)
+**Status:** COMPLETE — all artifacts reviewed, spec patched, decisions locked
+
+**Trinity's azure-setup-guide.md:** APPROVED. Guide is well-structured, Resend steps complete, basePath blocker already surfaced in Step 2 warning. No substantive edits needed.
+
+**Mouse's test-plan-azure-function.md:** APPROVED WITH 4 REQUIRED FIXES filed to `.squad/decisions/inbox/morpheus-mouse-test-plan-fixes.md`:
+1. Field names must be camelCase (not snake_case) to match spec
+2. `errors` response shape is object `{ field: message }`, not array `[{ field, message }]`
+3. §1.9 (413 test) needs splitting: 2000-char field cap → 400, 16KB total cap → 413
+4. §1.8 (429 test) needs Retry-After sub-cases per Q4
+
+**Q1-Q5 answers locked** in `.squad/decisions/inbox/morpheus-roundtwo-decisions-q1-q5.md`:
+- Q1: Keep `{ success, message, errors? }` envelope (not `{ ok, error }`)
+- Q2: `from: "Cedar Tutoring Website <noreply@cedartutoring.com>"`, `subject: "Cedar Tutoring — New Assessment Request"`
+- Q3: ALLOWED_ORIGINS = exact string match, no wildcards
+- Q4: Forward Resend's Retry-After header if present
+- Q5: Honeypot field = `botcheck` (confirmed everywhere)
+
+**Additional decision:** Honeypot triggers 200 silent discard (not 400). Spec §3a and §11 updated.
+
+**basePath blocker:** Added to pre-production-checklist.md as Trinity-owned 🔴 blocker under Azure SWA Provisioning, sequenced before first SWA build. Spec §13 migration checklist also updated.
+
 ### Wave 1 P0 Execution: CTA & Local SEO Standardization (2026-05-07T11:31:02-05:00)
 **Executed by:** Trinity (Frontend Dev)  
 **Status:** ✅ CLOSED (3 of 10 P0 items)  
@@ -41,3 +64,27 @@ Azure Static Web Apps' managed Functions feature is the killer pattern for stati
 
 ### Why public-key form services keep coming up despite being "less secure"
 Web3Forms/Formspree public keys are not traditional API secrets — they're designed to be exposed. The real defense is rate limiting + honeypots + origin checks, not key secrecy. A harvested key lets an attacker send spam submissions to *your* inbox (annoying but not a data breach). For most solo devs, this tradeoff is fine. Shaeel's preference for server-side secrets is a stronger-than-necessary posture, but it costs nothing extra given Azure migration, so it's the right call.
+
+### Anti-drift audit findings for Azure SWA + Resend migration (2026-05-07T14:50:02-05:00)
+1. **Wave 3 scope is consistent with original plan.** Wave 3 was always "execute on form backend decision" — Azure SWA + Resend is that decision, not scope expansion.
+2. **No scope creep from Azure migration.** The migration replaces GitHub Pages hosting (a pre-existing need) and solves the form backend (P0 #1) in one move. It does NOT introduce new features.
+3. **Web3Forms references needed cleanup** in combined-review.md P0 #1, pre-production-checklist.md (Form Hardening section), and `.env.local.example`. All updated.
+4. **GitHub Pages references retired** from pre-production-checklist.md DNS section (CNAME file, GitHub Pages IPs, Let's Encrypt). Replaced with SWA equivalents.
+5. **hCaptcha dependency dropped.** Web3Forms hCaptcha was in the checklist — not needed with Azure Function honeypot + Origin validation. No new CAPTCHA service introduced (honeypot is sufficient for Cedar's threat model).
+6. **Wave 4 (P1 polish) is unaffected** by Azure migration — nav restructure, mobile drawer, photographer session, etc. remain as-is.
+7. **No new agents needed for Wave 3.** Trinity implements, Mouse tests, Shaeel provisions. Morpheus wrote the spec.
+
+### Architecture spec pattern for serverless form endpoints
+When writing specs for team consumption (Trinity implements, Mouse tests): lock every decision (payload schema, validation order, response codes, env var names, file paths). Don't leave "TBD" in a single-round spec — it becomes a blocker. Include a test hooks section that maps 1:1 to what the tester needs to assert.
+
+### Wave 3 Spec/Guide/Test-Plan Trio Locked (2026-05-07T19:50:02Z)
+**Status:** COMPLETE — Single-round cross-review done. All 5 open questions resolved. All 3 outputs approved/locked (with 4 test plan mechanical fixes noted).
+
+**Cross-agent sync:**
+- Trinity's azure-setup-guide.md: APPROVED — user-facing 6-step checklist ready for Shaeel
+- Mouse's test-plan-azure-function.md: APPROVED WITH 4 FIXES (field name camelCase, response shapes object not array, additionalNotes 2000 not 5000, honeypot 200 not 400)
+- Morpheus's azure-function-submit-assessment.md: SPEC LOCKED with honeypot 200 silent discard confirmed as industry standard
+
+**Decisions locked:** Honeypot 200, response envelope finalized, ALLOWED_ORIGINS exact match, Resend email details locked, Q1-Q5 all answered.
+
+**Ready for:** Trinity implementation, Mouse test code, Shaeel provisioning (no blockers remain).

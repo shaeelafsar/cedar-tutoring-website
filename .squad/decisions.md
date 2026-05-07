@@ -248,3 +248,87 @@
 - Pre-production checklist: add Azure SWA provisioning, Resend account, DNS, DKIM/SPF/DMARC verification
 - Graceful-fallback mode (phone/email display) remains active until Function is deployed and tested
 **Research:** Full analysis at `.squad/research/form-solutions-comparison.md`
+
+### 2026-05-07T14:59:00-05:00: Azure Function Submit-Assessment Spec Locked
+**By:** Morpheus (Lead/Architect)
+**Status:** APPROVED (auto-approved — implements Wave 3 Azure SWA + Resend decision)
+**Decision:** Architecture spec for `POST /api/submit-assessment` is locked at `.squad/specs/azure-function-submit-assessment.md`. All implementation decisions final:
+- Payload schema matches `BookAssessmentPageClient.tsx` FormState exactly (camelCase fields)
+- Validation order: honeypot → Origin → Content-Type → payload size → required fields → optional fields
+- Response codes: 200/400/403/405/413/429/500/502
+- No custom rate limiting (SWA built-in sufficient)
+- No CAPTCHA (honeypot + Origin check sufficient)
+- No data persistence (emails only; add Azure Table Storage in Phase 2 if needed)
+- Two env vars: `RESEND_API_KEY` and `ALLOWED_ORIGINS`
+**Impact:**
+- Trinity: implement `api/submit-assessment/index.ts` + client rewire
+- Mouse: test plan maps to spec §11 test hooks
+- Shaeel: provision Azure SWA, Resend account, DNS cutover
+- Pre-production checklist: updated with sequenced Azure tasks
+- combined-review.md: Wave 3 section updated
+
+### 2026-05-07T14:57:00-05:00: next.config.ts basePath Blocks Azure Deploy
+**By:** Trinity (Frontend Engineer)
+**Status:** FLAG — needs implementation before SWA first build
+**Decision:** `next.config.ts` currently sets `basePath: '/cedar-tutoring-website'` when `NODE_ENV=production`. Since `next build` always runs with `NODE_ENV=production`, this will cause the first Azure SWA build to serve from `/cedar-tutoring-website/` path instead of domain root.
+**Fix:** Gate basePath behind `DEPLOY_TARGET=github-pages` env var instead of `NODE_ENV`. Use option (b):
+- Add `const deployTarget = process.env.DEPLOY_TARGET` check
+- Apply basePath only when `deployTarget === 'github-pages'`
+- Update `deploy-pages.yml` to set `env: DEPLOY_TARGET: github-pages`
+- No change needed for Azure workflow
+**Timing:** Must land on `main` before Azure SWA build can succeed
+**Files:** `next.config.ts`, `deploy-pages.yml` (GitHub workflow)
+
+### 2026-05-07T14:59:00-05:00: Azure Function Test Plan — 5 Open Questions from Mouse
+**By:** Mouse (Tester/QA)
+**Status:** RESOLVED (responses from Morpheus/Trinity in parallel decisions below)
+**Questions:**
+- Q1: Exact response body shapes → RESOLVED: use spec §6 shapes (errors as object, not array)
+- Q2: Resend `from` and `subject` → RESOLVED: from = `"Cedar Tutoring Website <noreply@cedartutoring.com>"`, subject = `"Cedar Tutoring — New Assessment Request"`
+- Q3: ALLOWED_ORIGINS match semantics → RESOLVED: exact string match on comma-separated list, no wildcards
+- Q4: Resend 429 Retry-After behavior → RESOLVED: omit `Retry-After` from Function response (don't forward from Resend)
+- Q5: Honeypot field name (`botcheck` vs `website`) → RESOLVED: confirmed `botcheck` (existing form unchanged)
+
+### 2026-05-07T15:05:00-05:00: Morpheus Round 2 Cross-Review — Q1–Q5 Locked
+**By:** Morpheus (Lead/Architect)
+**Status:** LOCKED (single-round review, final)
+**Decision:** All 5 Mouse questions answered; spec patched with Q1/Q4/Q5 corrections:
+- Response envelopes: `{ success: bool, message: string, errors?: Record<string, string> }` (NOT array)
+- Honeypot behavior: **200 silent discard** (NOT 400) — indistinguishable from success to deter bots
+- Honeypot name: confirmed `botcheck`
+- Resend 429: omit Retry-After forwarding (simplicity > complexity at Cedar volume)
+- Form email: `from = "Cedar Tutoring Website <noreply@cedartutoring.com>"`, `subject = "Cedar Tutoring — New Assessment Request"`
+- ALLOWED_ORIGINS: exact match, comma-separated, no wildcards
+- Honeypot logged at INFO level (observability without disclosure to client)
+**Patched files:** `.squad/specs/azure-function-submit-assessment.md` (honeypot to 200, Retry-After removed, field names camelCase throughout)
+
+### 2026-05-07T15:06:00-05:00: Mouse Test Plan Requires 4 Mechanical Fixes
+**By:** Morpheus (Cross-review) → Mouse (Action items)
+**Status:** APPROVED WITH FIXES (structure and coverage solid; 4 fixes needed before code)
+**Fixes required:**
+1. Field names: All test fixtures use snake_case; spec uses camelCase. Update: `parent_name` → `parentName`, `parent_email` → `email` (not `parent_email`), `student_name` → `studentName`, `grade_level` → `gradeLevel`, `program_interests` → `programInterests`, `preferred_location` → `preferredLocation`, `additional_notes` → `additionalNotes`, `preferred_contact_method` → `preferredContactMethod`
+2. Response shape: `errors` is object `{ fieldName: "message" }`, not array `[{ field, message }]`. Update all assertions in §1.3/1.4/1.9/2.3
+3. additionalNotes max length: Test uses 5000/6000 chars; spec says 2000. Split §1.9 into two tests: (a) 2001 chars → 400 validation error, (b) payload > 16KB total → 413
+4. Honeypot test §1.2: Already correct (recommends 200 silent discard); once spec is patched, no further change needed
+**Impact:** Mouse can write test code once these fixes are in place. Spec is now locked with all answers.
+
+### 2026-05-07T15:06:00-05:00: Trinity Spec Review — 3 Spec Gaps, 4 Test Plan Issues
+**By:** Trinity (Frontend Engineer)
+**Status:** NEEDS REVISIONS (3 fixes) + flagged issues (4 test plan fixes)
+**Findings:**
+1. Honeypot response code: Spec says 400; industry standard is 200 silent discard. Trinity recommends 200 (Morpheus implemented this fix in parallel)
+2. Runtime spec gap: Node.js version and Azure Functions v3 vs v4 not specified. Recommend v4 (app.http() model) with Node 20 LTS
+3. `additionalNotes` max length: Spec says 2000; test plan references 5000 (clarify in spec comments)
+4. Form contract locked in table with camelCase field names, required/optional flags, max lengths, validation types. All match `BookAssessmentPageClient.tsx` exactly
+5. `programInterests` is array (not comma-joined string as Web3Forms used)
+6. basePath fix recommendation: Gate behind `DEPLOY_TARGET=github-pages` (option b), not removed entirely — needed for GitHub Pages fallback during DNS transition
+7. Implementability: GO for payload/validation/response/Resend/env vars; blocked on honeypot behavior + runtime clarification
+**Action:** Morpheus to clarify v3 vs v4 model preference in spec §10
+
+### 2026-05-07T15:06:00-05:00: Azure Setup Guide & basePath Implications
+**By:** Trinity (Frontend Engineer)
+**Status:** APPROVED (Step 6 guide is complete; two minor gaps flagged)
+**Gaps:**
+1. Capture actual `ALLOWED_ORIGINS` value entered during provisioning (needed to verify Trinity's implementation)
+2. Clarify whether Resend is using verified domain (`cedartutoring.com`) or fallback (`onboarding@resend.dev`) — affects `EMAIL_FROM` constant Trinity uses
+**Otherwise:** Guide structure solid, hand-off checklist complete, pre-deployment verification steps clear

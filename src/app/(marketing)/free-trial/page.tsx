@@ -85,19 +85,17 @@ export default function FreeTrialPage() {
         className="bg-muted/35 px-4 py-12 md:px-6 md:py-16 lg:px-8 lg:py-20"
       >
         <div className="mx-auto max-w-5xl">
-          <Reveal>
-            <SectionHeading
-              eyebrow={freeTrialContent.booking.eyebrow}
-              heading={freeTrialContent.booking.heading}
-              subtitle={freeTrialContent.booking.subtitle}
-              headingId="booking-heading"
-            />
-            <CalendlyInline
-              url={freeTrialContent.booking.calendlyUrl}
-              fallbackPhone={freeTrialContent.booking.fallbackPhone}
-              className="mt-8 md:mt-10"
-            />
-          </Reveal>
+          <SectionHeading
+            eyebrow={freeTrialContent.booking.eyebrow}
+            heading={freeTrialContent.booking.heading}
+            subtitle={freeTrialContent.booking.subtitle}
+            headingId="booking-heading"
+          />
+          <CalendlyInline
+            url={freeTrialContent.booking.calendlyUrl}
+            fallbackPhone={freeTrialContent.booking.fallbackPhone}
+            className="mt-8 md:mt-10"
+          />
         </div>
       </section>
 

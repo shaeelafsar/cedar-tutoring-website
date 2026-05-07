@@ -7,9 +7,15 @@ eyebrow: "Free trial"
 introEyebrow: "Two sessions, on us"
 introHeading: "Two free sessions to see Cedar in action"
 introParagraphs:
-  - "We offer two free tutoring sessions to give parents and students the opportunity to explore the effectiveness of our teaching methods. Claim your free sessions today by booking your appointment below."
+  - "We offer two free tutoring sessions to give parents and students the opportunity to explore the effectiveness of our teaching methods. Pick a time that works for your family — we'll confirm by phone within one business day."
   - "Cedar Tutoring is here to provide you with the right tutoring package that meets your needs. Our free trial program gives you and your child the chance to witness us in action first-hand before committing to anything."
   - "For over 10 years, Cedar has continued to provide individualized and flexible tutoring programs that work on our students' weaknesses and help them meet their academic goals."
+
+bookingEyebrow: "Schedule your free trial"
+bookingHeading: "Pick a time that works for your family"
+bookingSubtitle: "Choose any open slot below and we'll confirm by phone within one business day. No payment, no card on file — just two free sessions."
+bookingCalendlyUrl: "https://calendly.com/cedartutoring"
+bookingFallbackPhone: "(708) 890-4400"
 
 tracksEyebrow: "Three tracks to try"
 tracksHeading: "Pick the track that fits your child today"

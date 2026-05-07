@@ -6,6 +6,7 @@ interface SectionHeadingProps {
   subtitle?: string;
   align?: "left" | "center";
   className?: string;
+  headingId?: string;
 }
 
 export function SectionHeading({
@@ -14,6 +15,7 @@ export function SectionHeading({
   subtitle,
   align = "center",
   className,
+  headingId,
 }: SectionHeadingProps) {
   return (
     <div
@@ -29,7 +31,10 @@ export function SectionHeading({
           {eyebrow}
         </span>
       ) : null}
-      <h2 className="font-heading text-foreground text-3xl font-bold tracking-tight md:text-4xl">
+      <h2
+        id={headingId}
+        className="font-heading text-foreground text-3xl font-bold tracking-tight md:text-4xl"
+      >
         {heading}
       </h2>
       {subtitle ? (

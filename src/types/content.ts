@@ -334,6 +334,13 @@ export interface FreeTrialPageContent {
     heading: string;
     paragraphs: string[];
   };
+  booking: {
+    eyebrow: string;
+    heading: string;
+    subtitle: string;
+    calendlyUrl: string;
+    fallbackPhone: string;
+  };
   tracks: SectionShellContent & {
     items: FreeTrialTrack[];
   };

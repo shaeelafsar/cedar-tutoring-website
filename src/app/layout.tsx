@@ -56,6 +56,11 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${newsreader.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="preconnect" href="https://assets.calendly.com" crossOrigin="" />
+        <link rel="preconnect" href="https://calendly.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://assets.calendly.com" />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

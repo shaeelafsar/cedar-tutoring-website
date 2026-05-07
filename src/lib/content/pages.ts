@@ -491,6 +491,13 @@ export function getFreeTrialPageContent(): FreeTrialPageContent {
       heading: doc.data.introHeading,
       paragraphs: doc.data.introParagraphs,
     },
+    booking: {
+      eyebrow: doc.data.bookingEyebrow,
+      heading: doc.data.bookingHeading,
+      subtitle: doc.data.bookingSubtitle,
+      calendlyUrl: doc.data.bookingCalendlyUrl,
+      fallbackPhone: doc.data.bookingFallbackPhone,
+    },
     tracks: {
       eyebrow: doc.data.tracksEyebrow,
       heading: doc.data.tracksHeading,

@@ -7,6 +7,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
+import { CalendlyInline } from "@/components/shared/CalendlyInline";
 import { CTASection } from "@/components/shared/CTASection";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { PageHero } from "@/components/shared/PageHero";
@@ -42,6 +43,21 @@ const freeTrialStructuredData = {
     availability: "https://schema.org/InStock",
     url: absoluteUrl("/free-trial"),
   },
+  potentialAction: {
+    "@type": "ReserveAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: freeTrialContent.booking.calendlyUrl,
+      actionPlatform: [
+        "http://schema.org/DesktopWebPlatform",
+        "http://schema.org/MobileWebPlatform",
+      ],
+    },
+    result: {
+      "@type": "Reservation",
+      name: "Free trial tutoring session",
+    },
+  },
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -62,6 +78,28 @@ export default function FreeTrialPage() {
         subtitle={freeTrialContent.hero.subtitle}
         breadcrumbs={[{ label: "Free Trial" }]}
       />
+
+      <section
+        id="book"
+        aria-labelledby="booking-heading"
+        className="bg-muted/35 px-4 py-12 md:px-6 md:py-16 lg:px-8 lg:py-20"
+      >
+        <div className="mx-auto max-w-5xl">
+          <Reveal>
+            <SectionHeading
+              eyebrow={freeTrialContent.booking.eyebrow}
+              heading={freeTrialContent.booking.heading}
+              subtitle={freeTrialContent.booking.subtitle}
+              headingId="booking-heading"
+            />
+            <CalendlyInline
+              url={freeTrialContent.booking.calendlyUrl}
+              fallbackPhone={freeTrialContent.booking.fallbackPhone}
+              className="mt-8 md:mt-10"
+            />
+          </Reveal>
+        </div>
+      </section>
 
       <section className="px-4 py-16 md:px-6 lg:px-8 lg:py-20">
         <div className="mx-auto max-w-4xl">

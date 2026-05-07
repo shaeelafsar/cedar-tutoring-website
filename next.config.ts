@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const repoBasePath = "/cedar-tutoring-website";
-const isProduction = process.env.NODE_ENV === "production";
+const isGitHubPages = process.env.DEPLOY_TARGET === "github-pages";
 
 const nextConfig: NextConfig = {
   output: "export",
@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
-  ...(isProduction
+  ...(isGitHubPages
     ? {
         basePath: repoBasePath,
         assetPrefix: `${repoBasePath}/`,

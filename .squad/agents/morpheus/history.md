@@ -171,3 +171,52 @@ Morpheus distilled `prd-ready-review-gpt.md` into a concise owner-facing action 
 **Status:** ✅ CLOSED (3 of 10 P0 items)  
 Trinity closed P0 #2 (CTA standardization), P0 #4 (local SEO geography), and P0 #10 (contact cities status). All "Admission Form" wording retired across content/ + src/; canonical CTA is "Book a Free Assessment" → `/book-assessment/`. All "Dallas-Fort Worth" references replaced with "Worth, IL and the South Suburbs of Chicago" in metadata and visible copy. Contact cities section verified complete. Grep verification confirms zero remaining instances of retired text/paths. tsc --noEmit clean. Decisions captured in `.squad/decisions.md`. Team should proceed to P0 #1, #3, #5–#9 in next waves.
 
+### WP Pricing Extraction: /plans/ Research (2026-05-07T11:40:51-05:00)
+**By:** Morpheus (Lead/Architect)  
+**Status:** COMPLETE — research only. Trinity to implement once Shaeel approves proposed structure.
+
+**What the live WP site actually publishes:**
+
+The `/plans/` page is a static Elementor page with three service cards (not tabs, not modals — plain cards with a "More Info" button each). Each "More Info" routes to a dedicated sub-page. HTML was brotli-compressed but fully static — no JS-gated content.
+
+#### Tier 1: As-Needed Tutoring
+- **URL:** `/hourly-tutoring/`
+- **Price:** **$40/hour** ← only hard price on the entire site
+- **Commitment:** None. Reserve only sessions you need.
+- **Booking lead time:** 48-hour notice before each session.
+- **CTA on detail page:** "Book a Free Consultation Now"
+
+#### Tier 2: Family Plans
+- **URL:** `/family-plans/`
+- **Price:** **NOT PUBLISHED** — no number anywhere on the page or sub-page
+- **Description:** Purchase a block of monthly sessions usable any time within that month. Any registered child in the family can use the hours.
+- **Commitment:** Monthly. Sessions expire at month end (implied by "within that month").
+- **Booking lead time:** 48-hour notice before each session.
+- **CTA on detail page:** "Book a Free Consultation Now" (no price — consultation gated)
+
+#### Tier 3: Academic Coaching
+- **URL:** `/homework`
+- **Price:** **NOT PUBLISHED** — described only as "an affordable monthly package"
+- **Description:** K-12. Math, reading, writing, science, Arabic. Homework help + independent learning skills. School-aligned curriculum approach. Individualized instruction.
+- **Commitment:** Monthly package (implied recurring).
+- **CTA on detail page:** "Book a Free Consultation Now" + "Plans Available" (links back to /plans/)
+
+#### Bonus: Test Prep (SAT/ACT)
+- **URLs:** `/sat/`, `/act/`
+- **Price:** **NOT PUBLISHED** — referred to only as "competitive monthly packages" on the `/free-trial/` page
+- **The three free-trial categories** (from `/free-trial/`) are: Academic Coaching, Advancement & Test Prep, Personalized Tutoring — each explicitly says "COMPETITIVE MONTHLY PACKAGES"
+
+#### Transportation (Not a pricing tier)
+- Appears as a fourth card on `/plans/`
+- Free within 5-mile radius; fee presumably applies beyond that but not stated
+- The "More Info" link is broken: `href="http://transportation"` — a WP misconfiguration
+
+**Structural observation — Elementor patterns used:**
+- Three-column Elementor grid (33% / 33% / 33%) at top of /plans/
+- Each card: heading, paragraph copy, Elementor button widget ("elementor-button-danger" styling = red button)
+- No pricing tables, no accordion/tabs, no JS-loaded content — all plain static HTML
+- A fourth full-width row below the three cards holds the Transportation section
+- All "More Info" buttons are standard anchor tags (not JS event handlers)
+
+**Critical finding:** The WP site uses a **partial pricing disclosure model**: publish the entry-level hourly rate ($40), hide monthly/package rates behind consultation. This is a deliberate sales tactic — get parents on a call before quoting recurring spend. The new /pricing page should respect this intent rather than override it with invented numbers.
+

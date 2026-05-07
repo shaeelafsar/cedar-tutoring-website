@@ -1,0 +1,243 @@
+{
+  "rows": [
+    {
+      "route": "/",
+      "status": 200,
+      "title": "Worth, IL Tutoring & Test Prep | Cedar Tutoring Academy",
+      "h1": "WELCOME TO CEDAR TUTORING ACADEMY\n!",
+      "h2": "Real stories from Cedar's 5.0-rated Google reviews. / In Search Of Excellence? See How We Can Help You / What to Expect: Success! / Why Cedar?",
+      "ctaCount": 9,
+      "words": 973,
+      "descLen": 267
+    },
+    {
+      "route": "/programs",
+      "status": 200,
+      "title": "Academic Programs | Cedar Tutoring Academy",
+      "h1": "In Search Of Excellence? See How We Can Help You",
+      "h2": "Programs list / How to Enroll Your Child in a Class",
+      "ctaCount": 7,
+      "words": 238,
+      "descLen": 97
+    },
+    {
+      "route": "/programs/math",
+      "status": 200,
+      "title": "Math Tutoring for All Levels | Cedar Tutoring Academy",
+      "h1": "MATH TUTORING FOR ALL LEVELS",
+      "h2": "THE IMPORTANCE OF MATH TUTORING / WHAT IS A CEDAR MATH SESSION LIKE? / How to Enroll Your Child in a Class / Helping your child understand and succeed in math.",
+      "ctaCount": 5,
+      "words": 610,
+      "descLen": 94
+    },
+    {
+      "route": "/programs/science",
+      "status": 200,
+      "title": "Science Tutoring for Middle School & High School | Cedar Tutoring Academy",
+      "h1": "SCIENCE TUTORING FOR MIDDLE SCHOOL & HIGH SCHOOL",
+      "h2": "Science can be a tricky subject for many students. / THE CEDAR SCIENCE TUTORING PROCESS / How to Enroll Your Child in a Class / Subjects We Tutor",
+      "ctaCount": 4,
+      "words": 503,
+      "descLen": 134
+    },
+    {
+      "route": "/programs/reading",
+      "status": 200,
+      "title": "Reading Tutoring for All Levels | Cedar Tutoring Academy",
+      "h1": "READING TUTORING FOR ALL LEVELS",
+      "h2": "Building a strong reading foundation at an early age is essential. / CEDAR READING TUTORING PROCESS / How to Enroll Your Child in a Class / Helping your child raise their reading and comprehension levels.",
+      "ctaCount": 4,
+      "words": 662,
+      "descLen": 137
+    },
+    {
+      "route": "/programs/writing",
+      "status": 200,
+      "title": "Writing Tutoring for All Levels | Cedar Tutoring Academy",
+      "h1": "WRITING TUTORING FOR ALL LEVELS",
+      "h2": "THE IMPORTANCE OF WRITING TUTORING / CEDAR'S WRITING TUTORING PROGRAMS / How to Enroll Your Child in a Class / Writing allows your child to communicate their ideas in a structured and organized manner.",
+      "ctaCount": 4,
+      "words": 617,
+      "descLen": 111
+    },
+    {
+      "route": "/programs/arabic",
+      "status": 200,
+      "title": "Arabic Tutoring | Cedar Tutoring Academy",
+      "h1": "Learning Arabic Cannot Get Easier Than This",
+      "h2": "We understand the fact that it is challenging to learn Arabic because the grammar structure is way too difficult to grasp. / We give special attention to each student's demands because we know for a fact that each child operates on a different cognitive, emotional and intellectual plane. / How to Enroll Your Child in a Class / Therefore, we teach kids to respond to linguistic and learning challenges correctly.",
+      "ctaCount": 6,
+      "words": 580,
+      "descLen": 122
+    },
+    {
+      "route": "/test-prep",
+      "status": 200,
+      "title": "ACT & SAT Prep | Cedar Tutoring Academy",
+      "h1": "PREP PROGRAMS FOR THE ACT and SAT",
+      "h2": "Why Our Test Preps Works - Tailored Prep Program for Excellent Results / Interested in ACT or SAT Prep?",
+      "ctaCount": 5,
+      "words": 237,
+      "descLen": 84
+    },
+    {
+      "route": "/test-prep/act",
+      "status": 200,
+      "title": "ACT Prep Tutoring | Cedar Tutoring Academy",
+      "h1": "ACT prep that helps students move faster, stay accurate, and feel in control.",
+      "h2": "Tailored Prep Program for Excellent Results / Tailored support aligned with SAT and ACT demands. / A tailored process for ACT and SAT prep. / Tailored tutoring, not set programs.",
+      "ctaCount": 4,
+      "words": 665,
+      "descLen": 147
+    },
+    {
+      "route": "/test-prep/sat",
+      "status": 200,
+      "title": "SAT Prep Tutoring | Cedar Tutoring Academy",
+      "h1": "SAT prep with a clear plan, targeted practice, and less test-day pressure.",
+      "h2": "Tailored Prep Program for Excellent Results / Tailored support aligned with SAT and ACT demands. / A tailored process for ACT and SAT prep. / Tailored tutoring, not set programs.",
+      "ctaCount": 5,
+      "words": 641,
+      "descLen": 146
+    },
+    {
+      "route": "/summer-programs",
+      "status": 200,
+      "title": "Summer Programs | Cedar Tutoring Academy",
+      "h1": "Summer Programs",
+      "h2": "A summer that builds skills your child will carry into fall / Summer plans built around your family's schedule / Educational fields explored each summer / Make this summer count",
+      "ctaCount": 2,
+      "words": 414,
+      "descLen": 127
+    },
+    {
+      "route": "/why-us",
+      "status": 200,
+      "title": "Why Us | Cedar Tutoring Academy",
+      "h1": "Why Cedar Tutoring Academy",
+      "h2": "Cedar Tutoring Academy® / How Cedar compares / Top reasons parents choose Cedar Tutoring Academy / What working with Cedar looks like",
+      "ctaCount": 2,
+      "words": 522,
+      "descLen": 152
+    },
+    {
+      "route": "/pricing",
+      "status": 200,
+      "title": "Plans | Cedar Tutoring Academy",
+      "h1": "Plans",
+      "h2": "Choose the support level that matches your child's pace, schedule, and priorities. / Clear billing and flexible monthly options. / Tutoring plans that fit different seasons of school. / As-Needed Tutoring",
+      "ctaCount": 6,
+      "words": 554,
+      "descLen": 103
+    },
+    {
+      "route": "/free-trial",
+      "status": 200,
+      "title": "Free Trial | Cedar Tutoring Academy",
+      "h1": "Free Trial",
+      "h2": "Pick a time that works for your family / Two free sessions to see Cedar in action / Pick the track that fits your child today / What happens after you book",
+      "ctaCount": 4,
+      "words": 440,
+      "descLen": 137
+    },
+    {
+      "route": "/book-assessment",
+      "status": 200,
+      "title": "Book a Free Assessment | Cedar Tutoring Academy",
+      "h1": "Book your free learning assessment.",
+      "h2": "Tell us about your child. / A simple, supportive process from first form to first plan. / Why families feel confident booking with Cedar. / Questions parents ask before booking.",
+      "ctaCount": 5,
+      "words": 779,
+      "descLen": 158
+    },
+    {
+      "route": "/locations",
+      "status": 200,
+      "title": "Worth, IL Tutoring Center | Cedar Tutoring Academy",
+      "h1": "Visit Cedar's Worth, IL tutoring center.",
+      "h2": "One welcoming center for consistent after-school support. / Our Worth, IL location and nearby service areas. / Worth Learning Center / Not sure if the Worth, IL center is the right fit for your family?",
+      "ctaCount": 3,
+      "words": 345,
+      "descLen": 166
+    },
+    {
+      "route": "/reviews",
+      "status": 200,
+      "title": "Parent & Student Reviews | Cedar Tutoring Academy",
+      "h1": "Real Google reviews from Cedar families.",
+      "h2": "Find stories that feel closest to your child's goals. / Ready to create a success story of your own?",
+      "ctaCount": 2,
+      "words": 1679,
+      "descLen": 159
+    },
+    {
+      "route": "/faq",
+      "status": 200,
+      "title": "FAQ | Cedar Tutoring Academy",
+      "h1": "Common questions from parents exploring Cedar.",
+      "h2": "Everything families usually ask before getting started. / Still have questions about your child's situation?",
+      "ctaCount": 4,
+      "words": 863,
+      "descLen": 151
+    },
+    {
+      "route": "/about",
+      "status": 200,
+      "title": "About Us | Cedar Tutoring Academy",
+      "h1": "A Worth, IL tutoring academy built around relationships, not volume.",
+      "h2": "Cedar Tutoring Academy® was founded by Asmah to give local families the kind of academic support she wanted students to truly feel. / What makes Cedar feel different from bigger tutoring centers. / Educators who bring warmth, expertise, and consistency to every session. / Want to see if Cedar is the right fit for your family?",
+      "ctaCount": 1,
+      "words": 832,
+      "descLen": 168
+    },
+    {
+      "route": "/contact-us",
+      "status": 200,
+      "title": "Contact Us | Cedar Tutoring Academy",
+      "h1": "Contact Us",
+      "h2": "Contact information / Families come to Cedar from across the South Suburbs / Ready to get started?",
+      "ctaCount": 2,
+      "words": 164,
+      "descLen": 124
+    },
+    {
+      "route": "/admission",
+      "status": 404,
+      "title": "Cedar Tutoring Academy",
+      "h1": "404",
+      "h2": "This page could not be found.",
+      "ctaCount": 0,
+      "words": 0,
+      "descLen": 160
+    },
+    {
+      "route": "/privacy-policy",
+      "status": 404,
+      "title": "Cedar Tutoring Academy",
+      "h1": "404",
+      "h2": "This page could not be found.",
+      "ctaCount": 0,
+      "words": 0,
+      "descLen": 160
+    },
+    {
+      "route": "/blog",
+      "status": 404,
+      "title": "Cedar Tutoring Academy",
+      "h1": "404",
+      "h2": "This page could not be found.",
+      "ctaCount": 0,
+      "words": 0,
+      "descLen": 160
+    }
+  ],
+  "mobile": {
+    "overflow": false,
+    "scrollWidth": 375,
+    "innerWidth": 375,
+    "headerText": ""
+  },
+  "errors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+}

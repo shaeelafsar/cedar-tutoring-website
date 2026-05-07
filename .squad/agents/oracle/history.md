@@ -45,3 +45,64 @@ Trinity closed P0 #2 (CTA standardization "Book a Free Assessment" → `/book-as
 ### Synthesis: P0 Launch Blockers Approved (2026-05-07T10:22:32.063-05:00)
 **Approved by:** Morpheus (Lead/Architect) + Mouse (Final Reviewer)  
 Morpheus synthesized all Oracle/Mouse/Morpheus findings into `prd-ready-review-gpt.md` and proposed a decision: the site should not launch until P0 blockers are resolved, including real assessment-form submission, fixing stale `/admission/` CTAs, adding privacy policy, correcting local SEO to Worth, IL / Chicago South Suburbs only, removing unfinished pricing/contact sections, fixing mobile navigation, and passing production Lighthouse/axe gates. Mouse approved the final deliverable as meeting all quality and completeness criteria. Decision recorded in `.squad/decisions.md`.
+
+### WP Pricing Extraction via Vision (2026-05-07T11:40:51-05:00)
+**Task:** Extract actual pricing from live cedartutoring.com WP site using Playwright screenshots + vision capability.
+
+**Extracted Pricing Data:**
+
+| Tier | Price | Unit | Sessions/month | What's Included | Fine Print |
+|------|-------|------|----------------|-----------------|------------|
+| As-Needed Tutoring | $40 | per session | Pay-as-you-go | Book only sessions you need; 48-hour advance notice | No commitment required |
+| Family Plan (5 sessions) | $699.99 | monthly | 5 sessions/week | Freedom to choose which child attends each day; 1 hour tutoring per day; mix and match between children | 48-hour advance notice required |
+| Family Plan (6 sessions) | $749.99 | monthly | 6 sessions/week | Same as 5-session plan with additional day | 48-hour advance notice required |
+| Academic Coaching | Contact | — | — | Elementary, middle, high school; math, reading, writing, science, Arabic | "More Info" CTA only; no price on WP site |
+| Transportation | Contact | — | — | Drop-off service; free within 5-mile radius | "More Info" CTA only |
+
+**Test Prep Pricing:** The /free-trial/ page mentions "COMPETITIVE MONTHLY PACKAGES" for Academic Coaching, Advancement & Test Prep, and Personalized Tutoring—but displays NO actual prices. Test prep pricing is gated behind "learn more" CTAs.
+
+**Observations:**
+- Only As-Needed Tutoring ($40/session) is visible on main /plans/ page
+- Family Plan pricing ($699.99 & $749.99) is ONLY visible on /plans/family-plan/ sub-page in styled Elementor banner graphics (orange/green gradient bars with white text)
+- Academic Coaching has NO visible pricing anywhere—gated behind consultation
+- /plans/as-needed-tutoring/ and /plans/academic-coaching/ return 404
+- No sibling-discount, cancellation, or rollover language visible on any page
+- Free Trial: 2 free tutoring sessions offered across all programs
+
+**Visual Design Notes for Trinity (new /pricing page direction):**
+- WP site uses bold colored banner strips (orange/green gradients) with large white price text for Family Plan tiers
+- Session counts displayed in large numbers on left side of banner (e.g., "5 SESSIONS", "6 SESSIONS")
+- Price positioned on right side with "/MONTHLY" suffix
+- Description text in smaller white font between session count and price
+- Overall: high-contrast, bold, easy-to-scan pricing cards—recommend similar approach for new site
+- Main /plans/ page uses simple card layout with image + title + description + red "More Info" CTA button
+
+### Homework Help Pricing Extraction (2026-05-07T12:14:01-05:00)
+**Task:** Vision-read pricing bubbles from https://cedartutoring.com/homework/ to extract "Academic Coaching" tiers previously not found.
+
+**KEY FINDING:** The /homework/ page pricing is labeled **"Plans Available"** (NOT "Academic Coaching"). These are the **Homework Help / Personalized Tutoring** plans, which differ from the Family Plan pricing on /plans/family-plan/.
+
+**Extracted from /homework/ (via Playwright + Vision):**
+
+| Tier | Price | Unit | Sessions/week | Description |
+|------|-------|------|---------------|-------------|
+| 3 Sessions | $419.99 | monthly | 3 | "Your child will attend Cedar Tutoring 3 days per week, for one hour a day." |
+| 4 Sessions | $549.99 | monthly | 4 | "Your child will attend Cedar Tutoring 4 days per week, for one hour a day." |
+| 5 Sessions | $649.99 | monthly | 5 | "Your child will attend Cedar Tutoring 5 days per week, for one hour a day." |
+| 6 Sessions | $699.99 | monthly | 6 | "Your child will attend Cedar Tutoring 6 days per week, for one hour a day." |
+
+**Visual Design:** Same Elementor pricing-bubble pattern as Family Plan—orange/blue/green gradient banners, large white session count on left, description in center, price+"/MONTHLY" on right.
+
+**Page Context:**
+- Heading: "Plans Available"
+- CTA: "Book a Free Consultation Now" (green button)
+- Sidebar: FREE TRIAL promo, RECENT POSTS
+- Benefits listed above pricing (numbered 5–10): school-aligned approach, improve weak spots, productive teacher ratio, boost confidence, tested programs, vastly experienced teachers
+
+**⚠️ IMPORTANT LABEL DISCREPANCY:**
+The WP page calls these **"Plans Available"** under the /homework/ URL, NOT "Academic Coaching." The previously captured "Academic Coaching" on /plans/ page was a different category (subjects: math, reading, writing, science, Arabic) with **no visible pricing** (gated behind "More Info" CTA).
+
+**Recommendation for Shaeel:**
+1. These /homework/ plans are likely the "Homework Help" or "Personalized Tutoring" tiers—NOT "Academic Coaching."
+2. Note the price difference: /homework/ 5-session plan = $649.99/mo vs /plans/family-plan/ 5-session = $699.99/mo. Different products!
+3. Suggest labeling these as "**Homework Help Plans**" or "**Personalized Tutoring**" on the new /pricing page, keeping "Academic Coaching" as a separate contact-gated category if it still exists.

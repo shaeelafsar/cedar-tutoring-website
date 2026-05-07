@@ -92,6 +92,11 @@ await page.screenshot({ path: "debug.png", fullPage: true });
 
 ## Common Patterns
 
+### Pattern: Conversion Link Crawl
+
+For launch-readiness reviews, crawl visible CTAs and legacy conversion URLs, then follow them to final status. Broken or stale enrollment links (for example, old admission routes) are higher priority than ordinary content defects because they fail at the moment a visitor is ready to act.
+
+
 ### Pattern: Wait for Element
 
 ```javascript

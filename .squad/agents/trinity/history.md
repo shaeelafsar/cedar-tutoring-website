@@ -37,3 +37,15 @@
 - Swapped the testimonial collection from placeholder/direct quotes to 18 real Google reviews, updated homepage featured review IDs, and refreshed dependent content references so program, homework help, Arabic, assessment, and test-prep pages no longer point at removed placeholder IDs.
 - Updated math, science, reading, and writing program bodies to use the live Cedar subject descriptions while preserving the existing Markdown/YAML content model.
 - Validation: `npm run build` ✅.
+
+### Wave 1 P0 Fixes (2026-05-07T11:31:02-05:00)
+**Status:** ✅ COMPLETED
+
+## Learnings
+
+- **Canonical CTA wording (sitewide):** "Book a Free Assessment" → `/book-assessment/` is the agreed primary CTA across the entire site. Never use "Admission Form" or `/admission/`.
+- **Local geography canonical phrasing:** "Worth, IL and the South Suburbs of Chicago" — use verbatim in copy, metadata, and structured data. Never use "Dallas-Fort Worth", "DFW", or any Texas reference.
+- **`/admission/` is intentionally a 404:** This site is a static export to GitHub Pages — Next.js `redirects()` config has no effect. There is no redirect from `/admission/` to `/book-assessment/`; we simply removed all links to the broken path.
+- **Active CTA content lives in two frontmatter files:** `content/pages/home/cta.md` (homepage final CTA) and `content/programs/_hub.md` (programs hub final CTA and detail page CTA config). Both needed the Admission Form → Book a Free Assessment swap.
+- **Contact page "Cities we serve" was already rendering correctly** as of this session — all 15 cities appear in server-rendered HTML. The original review finding (empty section) was based on an older site state and is now obsolete.
+- **Grep scope for active code:** Use `src/` and `content/` as the search scope when verifying no stale references remain; exclude `.squad/`, `.git/`, `combined-review.md`, and `prd-ready-review-*.md` which legitimately reference the broken state.

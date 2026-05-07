@@ -44,7 +44,11 @@ function loadCalendlyScript(): Promise<void> {
     ) as HTMLScriptElement | null;
     if (existing) {
       existing.addEventListener("load", () => resolve(), { once: true });
-      existing.addEventListener("error", () => reject(new Error("calendly-script-error")), { once: true });
+      existing.addEventListener(
+        "error",
+        () => reject(new Error("calendly-script-error")),
+        { once: true },
+      );
       if (window.Calendly) resolve();
       return;
     }
@@ -96,30 +100,51 @@ export function CalendlyInline({
     setStatus("loading");
     ensureStylesheet(CALENDLY_CSS_HREF);
 
+    // Watch for the iframe Calendly injects so we can clear the loading
+    // overlay the moment the calendar is actually visible.
+    const observer = new MutationObserver(() => {
+      if (cancelled) return;
+      if (container.querySelector("iframe")) {
+        setStatus("ready");
+      }
+    });
+    observer.observe(container, { childList: true, subtree: true });
+
     loadCalendlyScript()
       .then(() => {
         if (cancelled) return;
-        if (!window.Calendly || !containerRef.current) {
+        if (!window.Calendly) {
           setStatus("failed");
           return;
         }
-        // Idempotent: don't re-init if Calendly already injected an iframe
-        // (Strict Mode double-effect, HMR re-runs, or auto-init via class).
-        if (!containerRef.current.querySelector("iframe")) {
+        // Idempotent init: skip if Calendly already injected an iframe (Strict
+        // Mode double-effect, HMR, or repeat mount). Note: we deliberately do
+        // NOT set the .calendly-inline-widget class or data-url on our
+        // container — those trigger Calendly's auto-init on script load,
+        // which races with this explicit init and aborts the iframe.
+        if (!container.querySelector("iframe")) {
           window.Calendly.initInlineWidget({
             url: embedUrl,
-            parentElement: containerRef.current,
+            parentElement: container,
           });
+        } else {
+          setStatus("ready");
         }
-        setStatus("ready");
+        // Safety fallback in case the iframe loads but the MutationObserver
+        // misses it for some reason.
+        setTimeout(() => {
+          if (!cancelled && container.querySelector("iframe")) {
+            setStatus("ready");
+          }
+        }, 8000);
       })
       .catch(() => {
-        if (cancelled) return;
-        setStatus("failed");
+        if (!cancelled) setStatus("failed");
       });
 
     return () => {
       cancelled = true;
+      observer.disconnect();
     };
   }, [embedUrl]);
 
@@ -130,18 +155,19 @@ export function CalendlyInline({
   return (
     <div className={className}>
       <div className="relative w-full overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
-        {/* Calendly's iframe lives inside this div. dangerouslySetInnerHTML
-            tells React's reconciler not to manage the children, so Calendly
-            can inject DOM without colliding with React on unmount.
-            The min-height MUST be on the .calendly-inline-widget div itself
-            (not a wrapper) — Calendly overrides positioning to `relative`,
-            so we can't rely on `absolute inset-0` filling a sized parent. */}
+        {/*
+          Plain ref'd div — NOT marked with the .calendly-inline-widget class
+          and NOT given a data-url attribute, both of which would trigger
+          Calendly's automatic init on script load and race with our
+          explicit initInlineWidget call. We also avoid React children &
+          dangerouslySetInnerHTML so React's reconciler never wipes the
+          iframe Calendly injects.
+        */}
         <div
           ref={containerRef}
-          className="calendly-inline-widget block w-full min-h-[1150px] md:min-h-[720px]"
-          data-url={embedUrl}
+          className="block w-full min-h-[1150px] md:min-h-[720px]"
           style={{ minWidth: "320px" }}
-          dangerouslySetInnerHTML={{ __html: "" }}
+          aria-describedby={status !== "ready" ? noticeId : undefined}
         />
         {status !== "ready" && (
           <div

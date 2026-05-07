@@ -106,3 +106,16 @@ The WP page calls these **"Plans Available"** under the /homework/ URL, NOT "Aca
 1. These /homework/ plans are likely the "Homework Help" or "Personalized Tutoring" tiers—NOT "Academic Coaching."
 2. Note the price difference: /homework/ 5-session plan = $649.99/mo vs /plans/family-plan/ 5-session = $699.99/mo. Different products!
 3. Suggest labeling these as "**Homework Help Plans**" or "**Personalized Tutoring**" on the new /pricing page, keeping "Academic Coaching" as a separate contact-gated category if it still exists.
+
+---
+
+## Wave 3 Pause & Phase 3 Dispatch (2026-05-07)
+
+- **Wave 3 paused** by Shaeel pending Azure SWA + Resend provisioning (infrastructure provisioning is out-of-band; spec fully locked; ready to ship when Azure+Resend ready)
+- **Morpheus Wave 3 pause shortlist:** 4 phases of safe work during pause
+  - Phase 1 ✓: Housekeeping (f59034b)
+  - Phase 2 ✓: basePath env-gate (18d15ec + d89d835) — prerequisite for Wave 3 SWA deployment
+  - Phase 3 (pending Shaeel nav decision): Nav restructure + mobile drawer
+  - Phase 4 (parallel with Phase 3): Mobile UX polish
+- **Phase 3 gating:** Awaiting Shaeel confirmation on nav restructure (logo-as-home, 6-item flat nav, Reviews added, Free Trial moved to inside-funnel only). Minor: Asmah to confirm Free Trial nav removal (already consensus).
+- **basePath GO decision:** Ready to ship independently. Safety-nets Wave 3 — both GitHub Pages and local dev verified. Azure SWA builds will correctly serve from domain root (no `/cedar-tutoring-website` prefix) ✓

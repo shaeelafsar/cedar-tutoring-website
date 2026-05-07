@@ -42,3 +42,12 @@
 - **Honeypot field continuity:** Check existing form/test code for field names before planning — discrepancy surfaced as regression risk (botcheck vs website)
 - **Azure SWA Function test environment:** Unit tests use Vitest `environment: 'node'` (not jsdom). Separate `api/vitest.config.ts`. Integration tests need `PLAYWRIGHT_BASE_URL` env var for preview URL.
 - **Manual gates as test artifacts:** Email verification cannot be automated — document as explicit step with owner and time bound
+
+---
+
+## Wave 3 Pause & Deployment Context (2026-05-07)
+
+- **Wave 3 paused** pending Shaeel's Azure SWA + Resend provisioning (spec locked; ships when infrastructure ready)
+- **basePath env-gate landed:** `DEPLOY_TARGET=github-pages` now gates basePath and image-path helpers. Both GitHub Pages and local builds verified; Azure SWA will serve from domain root ✓
+- **SWA test plan update:** Test against both build modes (DEPLOY_TARGET set for GH Pages CI, unset for local/SWA builds). Ensure image URLs, asset paths, and Calendly iframe render correctly on domain-root deployment (no `/cedar-tutoring-website` prefix).
+- **Form backend prereq:** basePath env-gate is safety net for Wave 3 Function. First SWA build will now serve from domain root (not `/cedar-tutoring-website/`), enabling clean form submission routes.

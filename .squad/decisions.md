@@ -332,3 +332,213 @@
 1. Capture actual `ALLOWED_ORIGINS` value entered during provisioning (needed to verify Trinity's implementation)
 2. Clarify whether Resend is using verified domain (`cedartutoring.com`) or fallback (`onboarding@resend.dev`) — affects `EMAIL_FROM` constant Trinity uses
 **Otherwise:** Guide structure solid, hand-off checklist complete, pre-deployment verification steps clear
+### 2026-05-07T16:48:29-05:00: User directive — Wave 3 paused
+**By:** Shaeel (via Squad coordinator)
+**What:** Wave 3 (Azure SWA + Resend form backend) is paused pending Shaeel's Azure provisioning. Continue Wave 4 / housekeeping / Wave-3-prep work that's safe to land independently. **Reminder owed:** when Shaeel signals "back on Wave 3" (or at start of any session where Azure has been provisioned), surface the Wave 3 resume checklist immediately.
+**Why:** Shaeel needs to provision Azure SWA + sign up for Resend (out-of-band action). Team should not sit idle in the meantime, and assumption is Wave 3 spec stays locked.
+# Wave 3 Paused — What Ships Now (2026-05-07)
+
+**Author:** Morpheus (Lead/Architect)  
+**Status:** APPROVED — ready for squad dispatch  
+**Shaeel's directive:** Pause Wave 3 until Azure SWA + Resend provisioning unlocks. Continue safe work in parallel.
+
+---
+
+## Executive Summary
+
+While Wave 3 (Azure SWA + Resend form backend) is paused, **four independent workstreams are safe to land now**:
+
+1. **Housekeeping (git cleanup)** — Trinity owns, ~30 min, LOW RISK → ship first
+2. **basePath env-gate** — Trinity owns, ~2 hours, LOW-MEDIUM RISK → ship second (accelerates Wave 3 when it resumes)
+3. **Wave 4 P1 nav restructure** — Trinity owns, ~8 hours, MEDIUM RISK → ship third (touches every page, needs full QA)
+4. **Wave 4 P1 mobile drawer fix** — Trinity owns, ~3 hours, LOW RISK → ship in parallel with nav (both navigation)
+
+All other Wave 4 items require Asmah (photographer session, business expert review) or are blocked by basePath (housekeeping).
+
+---
+
+## Recommended First Batch (parallel)
+
+| # | Item | Agent | Risk | Parallel | Why Now |
+|---|------|-------|------|----------|---------|
+| 1 | **Housekeeping: commit git items** (history.md, .gitignore, skills folder) | Trinity | LOW | ✓ | Unblocks the queue. Takes 30 min. |
+| 2 | **basePath env-gate: `DEPLOY_TARGET=github-pages`** | Trinity | LOW-MED | ✓ | ~2 hours. Safety-nets Wave 3 implementation. When Shaeel provisions SWA, first build won't serve from `/cedar-tutoring-website/`. This is a pre-requisite for Wave 3 to land cleanly. Lands independently on main; GH Pages still works. |
+| 3 | **Wave 4 P1 #15: nav restructure** (6 items, flat structure, Reviews added) | Trinity | MEDIUM | ⏳ after #2 | Large surface area (Header/nav on every page, multiple routes). Needs full Playwright pass after. Serialize after basePath to keep main stable. |
+| 4 | **Wave 4 P1 #11: mobile drawer nested routes** (expose Programs/Test Prep children, fix test) | Trinity | LOW | ✓ parallel w/ #3 | Small, scoped. Fixes a known test failure (wave-2.spec.ts). Can go out in parallel as long as nav structure is locked. |
+
+---
+
+## basePath Env-Gate Decision: GO ✓
+
+**Status:** APPROVED. Can land independently. No blocking changes needed. Safety-nets Wave 3 implementation.
+
+### Current Blocker
+- `next.config.ts` gates basePath on `NODE_ENV === 'production'`
+- `next build` always runs with `NODE_ENV=production` → basePath always active
+- First Azure SWA build will serve from `/cedar-tutoring-website/` instead of domain root → BROKEN
+
+### Solution
+Gate on `DEPLOY_TARGET=github-pages` instead:
+- **Option (b) from decisions.md**: Use env var to distinguish deployment targets
+
+### Implementation Brief for Trinity
+
+**Files to change:**
+
+1. **`next.config.ts`** (5 lines):
+```typescript
+// OLD:
+const isProduction = process.env.NODE_ENV === "production";
+
+// NEW:
+const deployTarget = process.env.DEPLOY_TARGET || '';
+const isGitHubPages = deployTarget === 'github-pages';
+```
+Replace the spread operator condition:
+```typescript
+// OLD:
+...(isProduction ? { basePath: repoBasePath, assetPrefix: `${repoBasePath}/` } : {})
+
+// NEW:
+...(isGitHubPages ? { basePath: repoBasePath, assetPrefix: `${repoBasePath}/` } : {})
+```
+
+2. **`.github/workflows/deploy-pages.yml`** (1 line in build step):
+```yaml
+# In the "Build" step, change:
+- name: Build
+  run: npm run build
+
+# To:
+- name: Build
+  run: npm run build
+  env:
+    DEPLOY_TARGET: github-pages
+```
+
+3. **No source code changes needed:**
+   - `imagePath()` utility in `src/lib/image-path.ts` already handles dual-base pattern correctly
+   - All image/link paths flow through `imagePath()` (verified via grep)
+   - Calendly iframe does not depend on basePath (src is absolute URL)
+
+### Local dev + SWA behavior:
+- **Local `npm run dev`:** `DEPLOY_TARGET` unset → basePath disabled → serve from `/` ✓
+- **Local `npm run build && npm start`:** `DEPLOY_TARGET` unset, `NODE_ENV=production` → basePath disabled → serve from `/` ✓
+- **GH Pages CI:** `DEPLOY_TARGET=github-pages` → basePath enabled → `/cedar-tutoring-website/` ✓
+- **Azure SWA build:** `DEPLOY_TARGET` unset (Azure CI won't set it) → basePath disabled → serve from `/` ✓
+
+### Test plan:
+1. Verify GH Pages still works after merge (rerun existing deploy workflow)
+2. Verify local build works: `DEPLOY_TARGET='' npm run build` → no basePath in output
+3. Verify GH Pages build works: `DEPLOY_TARGET=github-pages npm run build` → basePath in output
+4. (Wave 3) Verify SWA build works: standard `npm run build` in SWA CI → no basePath ✓
+
+### Risk: LOW-MEDIUM
+- Mechanical change, well-tested in build system
+- GH Pages behavior unchanged (CI always sets DEPLOY_TARGET)
+- SWA behavior unlocked (no basePath, correct for domain root)
+- Fallback: if SWA deploys wrong, just unset `DEPLOY_TARGET` in SWA build settings (a 30-second Azure Portal click)
+
+---
+
+## Full Ordered Shortlist
+
+| # | Item | Agent | Risk | Parallel? | Blocker | Why This Position |
+|---|------|-------|------|-----------|---------|-------------------|
+| 1 | **Housekeeping: commit 5 git items** (morpheus/history.md, .gitignore dev-server.log, .squad/skills/ folder, playwright.config.ts investigation, wave-2.spec.ts investigation) | Trinity | LOW | ✓ | None | Clear the queue immediately. 30 min. Unblocks main for next PRs. |
+| 2 | **basePath env-gate: `DEPLOY_TARGET=github-pages`** (next.config.ts + deploy-pages.yml) | Trinity | LOW-MED | ✓ | None | Safety-nets Wave 3. Can land now, no GH Pages breakage. Prerequisite for clean SWA handoff. ~2 hours (including local + CI test cycles). |
+| 3 | **Wave 4 P1 #15: nav restructure** (6 items: logo-as-home, Programs/Test Prep flat, Reviews added, drop Free Trial from nav, 32px gaps, sentence-case) | Trinity | MEDIUM | ⏳ after #2 | Asmah confirmation on Free Trial removal (minor, already consensus but worth double-check) | Touches every page. Large surface area. Needs full Playwright pass after. Serialize AFTER basePath to keep main stable. ~8 hours (Trinity build + Trinity test + review). |
+| 4 | **Wave 4 P1 #11: mobile drawer nested routes** (expose Programs/Test Prep child routes, fix wave-2.spec.ts test) | Trinity | LOW | ✓ parallel w/ #3 | nav structure (#3) must be locked first (drawer reflects nav hierarchy) | Small, scoped. Known failing test. Can ship in parallel once nav structure is locked. ~3 hours. |
+| 5 | **Wave 4 P1 #17: sticky mobile CTA bar** ("Book a Free Assessment") | Trinity | LOW | ✓ independent | None | Complementary to mobile drawer fix. Low risk, high UX impact on mobile. Can ship anytime. ~2 hours. |
+| 6 | **Wave 4 P1 #18: click-to-call icon in mobile nav** | Trinity | LOW | ✓ independent | None | Tiny feature. ~1 hour. Can ship anytime. |
+| 7 | **Wave 4 P1 #30: subtle hover micro-interactions** (50ms scale on cards, 100ms button shift, 150ms nav underline) | Trinity | LOW | ✓ independent | None | Polish. Can ship anytime. ~2 hours. |
+| 8 | **Wave 4 P1 #1–7 (copy/content-only):** FAQ re-add placeholder + sentence-case hero + business expert review + photographer session prep | Asmah | MEDIUM-HIGH | ⏳ blocked | Asmah availability + photographer scheduling | All require Asmah input/approval. Not actionable yet. Queue for after housekeeping + nav complete. |
+| 9 | **Wave 4 P1 #25: Lighthouse + axe audit** (Performance ≥90, Accessibility ≥95) | Mouse | MEDIUM | ⏳ after #3–#7 | nav restructure complete (large change to the page) | Run after major nav/mobile changes to baseline performance. ~2 hours to capture + address criticals. |
+
+---
+
+## Recommended Dispatch Order (by phase)
+
+### Phase 1: Housekeeping (30 min, LOW RISK) — go now
+- **1:** Commit git items (Trinity)
+
+### Phase 2: Wave 3 Safety-Net (2 hours, LOW-MEDIUM RISK) — go now
+- **2:** basePath env-gate (Trinity)
+
+### Phase 3: Nav Restructure (8 hours, MEDIUM RISK) — serialize after Phase 2
+- **3:** Nav restructure (Trinity, includes Asmah confirmation on Free Trial)
+- **4:** Mobile drawer nested routes (Trinity, parallel with #3)
+
+### Phase 4: Mobile Polish (5 hours, LOW RISK) — parallel with Phase 3
+- **5:** Sticky mobile CTA bar (Trinity)
+- **6:** Click-to-call icon (Trinity)
+- **7:** Hover micro-interactions (Trinity)
+
+### Phase 5: Audit & Content (post-Trinity) — serialize after #3
+- **9:** Lighthouse + axe audit (Mouse, after nav is stable)
+- **8:** FAQ / content / photographer session (Asmah, whenever ready)
+
+---
+
+## Reminder When Wave 3 Resumes
+
+> **When Shaeel signals "back on Wave 3":**
+> 
+> "Wave 3 is unblocked. Recap: basePath env-gate landed on main (basePath now guarded by `DEPLOY_TARGET=github-pages`). Azure SWA builds will serve from domain root, not `/cedar-tutoring-website/`. Resend account + domain verification ready? If yes, Trinity scaffolds `api/submit-assessment/index.ts`, rewires `BookAssessmentPageClient.tsx`, updates `.env.local.example`. Mouse runs the test plan. Follow `azure-setup-guide.md` for Shaeel's provisioning steps. First build should be clean."
+
+---
+
+## Key Decisions Locked
+
+1. **basePath env-gating:** Approved for independent land. Prerequisite for Wave 3.
+2. **Nav structure:** Consensus locked (logo-as-home, 6 items flat, Reviews added, Free Trial → inside-funnel only). Asmah to confirm Free Trial removal minor reversal.
+3. **Mobile drawer:** Must reflect final nav structure; test must be updated; ship in parallel with nav.
+4. **Wave 3 sequencing:** basePath lands first; then SWA provisioning can proceed cleanly.
+
+---
+
+## Blockers / Open Items
+
+- **Asmah free-trial nav removal confirmation** (minor — already consensus, but Shaeel had earlier kept it. Worth a 30-second async check before Trinity builds nav).
+- **Shaeel's Azure SWA + Resend provisioning** (out of scope for this shortlist, but critical path for Wave 3 resume).
+- **Photographer session scheduling** (Asmah owns, not urgent for code ship).
+
+---
+
+## Appendix: Why These 4 Workstreams Are Safe
+
+✓ **Housekeeping:** Pure cleanup. No code logic changes. No merge conflicts.  
+✓ **basePath env-gate:** Gated by env var (no default behavior change for local/SWA). GH Pages behavior identical (we always set DEPLOY_TARGET in CI).  
+✓ **Nav restructure:** Scoped to Header + routes. Touches every page but no form/API changes. Can test in isolation. Large, but independent of Wave 3.  
+✓ **Mobile drawer:** Affects drawer nested nav only. Small surface area. Fixes known test failure.  
+
+❌ **Form backend (Wave 3):** Needs `RESEND_API_KEY` + `ALLOWED_ORIGINS` from Azure SWA Application Settings (Shaeel task).  
+❌ **FAQ re-add:** Needs Asmah to confirm real answers (not actionable yet).  
+❌ **Photographer session:** Needs Asmah to schedule (not actionable yet).
+# basePath Env-Gate Decision — Trinity Summary (2026-05-07)
+
+**Author:** Trinity (Frontend Dev)  
+**Commit:** 18d15ec — build: env-gate basePath behind DEPLOY_TARGET=github-pages  
+**Status:** SHIPPED to main
+
+## Decision
+
+`next.config.ts` previously gated `basePath: '/cedar-tutoring-website'` and `assetPrefix` on `process.env.NODE_ENV === 'production'`. Since `next build` always runs with `NODE_ENV=production` regardless of deploy target, this meant every production build — including future Azure SWA builds — would incorrectly set basePath, causing the site to serve from `/cedar-tutoring-website/` instead of domain root on SWA.
+
+The gate was switched to `process.env.DEPLOY_TARGET === 'github-pages'`. The GH Pages CI workflow (`deploy-pages.yml`) now sets `DEPLOY_TARGET=github-pages` in the build step `env:` block, preserving existing behavior. Azure SWA builds (which do not set this variable) will correctly produce no basePath, enabling domain-root serving.
+
+**Before:**
+```typescript
+const isProduction = process.env.NODE_ENV === "production";
+...(isProduction ? { basePath: repoBasePath, assetPrefix: `${repoBasePath}/` } : {})
+```
+
+**After:**
+```typescript
+const isGitHubPages = process.env.DEPLOY_TARGET === "github-pages";
+...(isGitHubPages ? { basePath: repoBasePath, assetPrefix: `${repoBasePath}/` } : {})
+```
+
+## Sharp Edge — Follow-up Required
+
+`src/lib/image-path.ts` still uses `NODE_ENV === 'production'` to compute the image basePath string. This helper will misbehave on Azure SWA (prepending `/cedar-tutoring-website` to image URLs on a domain-root deployment). This needs a follow-up commit to align it with `DEPLOY_TARGET === 'github-pages'` before Wave 3 goes live.

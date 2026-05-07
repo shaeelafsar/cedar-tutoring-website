@@ -2,6 +2,20 @@
 
 **Foundational context archived to history-archive.md (2026-05-07T16:50:00Z). This file tracks active work from Wave 1 P0 execution onward.**
 
+### WordPress AI Prompt Variant (2026-05-07T15:57:23-05:00)
+**By:** Morpheus (Lead/Architect)
+**Requested by:** Shaeel
+**Status:** COMPLETE — chat-side deliverable only (no file saved per instructions)
+
+Produced a second distillation prompt for Cedar — this time targeting WordPress AI (the site-builder AI inside WP admin / WordPress.com), NOT a code-writing agent. This is a fundamentally different deliverable from the prior Next.js greenfield prompt.
+
+**Calibration applied vs. the prior code-writing AI prompt:**
+- DROPPED: Next.js, Zod, static export, basePath, Azure SWA, Azure Functions, Resend, camelCase API contracts, response envelopes, Tailwind, shadcn, Radix, Markdown content model, deploy target alternatives, GitHub Pages, and the 5 technical Gotchas list (all Next.js-specific noise for a WP AI builder).
+- ADDED: Visual/aesthetic direction (warm greens, earthy gold), photography style guidance (real photos, no generic stock), plugin guidance (WP AI over-installs — explicit restraint requested), Calendly inline embed instruction (owner already uses it), form fields via native/plugin form (not a coded endpoint), footer hours block, phone/address/email as tel:/maps/mailto links.
+- PRESERVED: Business identity, Worth IL geography guardrail, canonical "Book a Free Assessment" CTA, sitemap (15 pages), partial pricing disclosure rule, real-Google-reviews-only rule, NOT-to-build section, and escape hatch.
+
+**Key insight:** WordPress AI is content-and-design-led. It does not consume API contracts or deploy config. The receiving context is a page/block builder, not a compiler. Prompts for WP AI should read like a brand brief + content brief, not a technical spec.
+
 ### Round 2 Cross-Review: Spec, Guide, Test Plan Lock-in (2026-05-07T14:50:02-05:00)
 **By:** Morpheus (Lead/Architect)
 **Status:** COMPLETE — all artifacts reviewed, spec patched, decisions locked
@@ -88,3 +102,44 @@ When writing specs for team consumption (Trinity implements, Mouse tests): lock 
 **Decisions locked:** Honeypot 200, response envelope finalized, ALLOWED_ORIGINS exact match, Resend email details locked, Q1-Q5 all answered.
 
 **Ready for:** Trinity implementation, Mouse test code, Shaeel provisioning (no blockers remain).
+
+### Project Distillation into Greenfield AI Prompt (2026-05-07T15:45:09-05:00)
+**By:** Morpheus (Lead/Architect)
+**Requested by:** Shaeel
+**Status:** COMPLETE — chat-side deliverable only (no file saved per instructions)
+
+Synthesized the entire Cedar project into a single 900-word copy-pasteable prompt a greenfield AI agent could use to rebuild the site from scratch. Covered: business reality, IA (routes + nav), tech stack with rationale, content model (markdown + Zod), form architecture (Azure SWA + Resend + honeypot), deploy target reasoning (SWA vs GitHub Pages vs Cloudflare), quality bar, what-not-to-do, five real gotchas, and delivery order.
+
+**Pattern extracted to:** `.squad/skills/project-distillation-prompt/SKILL.md`
+
+**Key distillation choices:**
+- Business-first ordering (not stack-first) — forces the receiving agent to internalize audience constraints before writing a line of code
+- "What NOT to build" section included — AI agents over-build for small business clients without explicit guardrails
+- Gotchas section is highest-value: represents actual debugging hours, not generic best practices
+- Calibrated length: ~900 words (within 600-1200 target) using headed sections so the receiving agent can navigate
+- Corrected location: Worth, IL / South Suburbs of Chicago (NOT Frisco TX which was the P0 SEO bug we fixed)
+
+### Wave 3 Paused — What Ships Now (2026-05-07T20:18:00-05:00)
+**By:** Morpheus (Lead/Architect)  
+**Status:** APPROVED — shortlist ready for squad dispatch
+
+Shaeel paused Wave 3 pending Azure SWA + Resend provisioning. Analyzed remaining backlog to find safe, independent work.
+
+**Four workstreams approved to ship in parallel:**
+1. **Housekeeping** (git cleanup) — Trinity, ~30 min, LOW RISK
+2. **basePath env-gate** — Trinity, ~2 hours, LOW-MEDIUM RISK → PREREQUISITE FOR WAVE 3
+3. **Wave 4 P1 nav restructure** — Trinity, ~8 hours, MEDIUM RISK → serialize after basePath
+4. **Wave 4 P1 mobile drawer fix** — Trinity, ~3 hours, LOW RISK → parallel with nav
+
+**basePath Decision: GO** ✓
+- Gate on `DEPLOY_TARGET=github-pages` (not `NODE_ENV`)
+- GH Pages CI sets DEPLOY_TARGET=github-pages → basePath active (current behavior preserved)
+- Local dev / SWA → DEPLOY_TARGET unset → basePath disabled (correct for SWA domain root)
+- Changes: `next.config.ts` (3 lines), `deploy-pages.yml` (1 env var line)
+- No source code changes needed (`imagePath()` utility already handles dual-base correctly)
+- Risk: LOW-MEDIUM (mechanical change, well-tested in build system, fallback exists)
+
+**When Wave 3 Resumes:** Shaeel signals → Trinity scaffolds Form backend, Mouse tests. First SWA build will be clean (basePath already landed as critical prerequisite).
+
+**Output:** `.squad/decisions/inbox/morpheus-wave3-paused-shortlist.md` — full ordered backlog with dispatch phases.
+

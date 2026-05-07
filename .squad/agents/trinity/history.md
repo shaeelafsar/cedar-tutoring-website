@@ -46,3 +46,19 @@
 - **programInterests:** Array in new payload (not comma-joined as Web3Forms used)
 - **Honeypot field:** botcheck confirmed (no form changes needed)
 - **Azure Functions v4 preferred:** app.http() inline registration model, Node 20 LTS
+
+- **basePath env-gate (2026-05-07):** Gated `basePath`/`assetPrefix` in `next.config.ts` behind `process.env.DEPLOY_TARGET === 'github-pages'` instead of `NODE_ENV === 'production'`. The GH Pages workflow (`deploy-pages.yml`) now sets `DEPLOY_TARGET=github-pages` in its build step env. Both behaviors verified locally: unset → no basePath (correct for Azure SWA); set → basePath active (GH Pages preserved). **Sharp edge:** `src/lib/image-path.ts` still gates its basePath string on `NODE_ENV === 'production'` — this is a straggler that will misbehave on Azure SWA (images will get wrong prefix). Needs a follow-up commit to align it with the new `DEPLOY_TARGET` gate.
+- image-path.ts gate brought in sync with next.config.ts — both now key on DEPLOY_TARGET=github-pages.
+
+---
+
+## Wave 3 Pause & Phase 3 Context (2026-05-07)
+
+- **Wave 3 paused** by Shaeel (Azure SWA + Resend provisioning out-of-band; spec locked; ready to ship when provisioning done)
+- **Morpheus produced ordered shortlist:** 4 independent workstreams
+  - Phase 1: Housekeeping (f59034b ✓)
+  - Phase 2: basePath env-gate (18d15ec + d89d835 ✓) — prereq for Wave 3 Azure SWA deploy
+  - Phase 3: Nav restructure (~8h, MEDIUM risk, serialize after Phase 2) + mobile drawer fix (~3h, can parallel)
+  - Phase 4: Mobile polish (CTA bar, click-to-call, micro-interactions)
+- **Phase 3 blockers:** Asmah Free Trial nav confirmation (minor), **Shaeel nav structure decision** (logo-as-home, 6-item flat nav, Reviews added, Free Trial removed from main nav)
+- **basePath GO:** Ready to land independently; both local dev and GH Pages behavior verified; Azure SWA will serve from domain root ✓

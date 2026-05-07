@@ -1,4 +1,6 @@
-## Recent Work
+## Summary
+
+**Lead Architect for Cedar Tutoring Academy website rebuild (Next.js 15/React 19/Tailwind/TypeScript).** Executed Wave 1 P0 launch blockers prioritization (May 7); locked spec artifacts (Azure Function, Resend integration, test plan); identified basePath blocker (Trinity-owned pre-SWA build); rescoped Wave 3 to atomic form + calendar replacement via custom backend. Produced WordPress AI variant prompt for owner context. Resolved 5 critical cross-agent questions (Q1-Q5); enabled Mouse's test plan fixes; surfaced Azure SWA provisioning sequence. Currently in Wave 3 pause pending owner calendar architecture decision (5 open questions).
 
 **Foundational context archived to history-archive.md (2026-05-07T16:50:00Z). This file tracks active work from Wave 1 P0 execution onward.**
 

@@ -1,4 +1,44 @@
+## Summary
+
+**Web-design specialist executing framework-grounded UX/UI audit for Cedar Tutoring Academy website (May 7).** Applied Nielsen heuristics, Krug, CCD Attention Ratio, Hick's Law, IA (Rosenfeld/Morville), Halvorson Content Audit, WCAG 2.1 AA, Gestalt+Fitts frameworks. Captured 40 Playwright screenshots (20 pages × 2 viewports) to assess design coherence, accessibility, and user expectations. Verdict: site is NOT bloated; repetition is intentional per design intent. Found 1 P0 (duplicate intro on /pricing) and 4 visual-rendering bugs missed by smoke testing (team images /about, fields /summer-programs, reviews grid /reviews, map /locations). Screenshots stored in `.squad/agents/oracle/screenshots/` (do not commit — large PNGs). Findings feed into Wave 3 fix priorities and post-deployment regression testing.
+
 ## Learnings
+
+### UX/UI Bloat & Repetition Audit (2026-05-07T18:22:39-05:00)
+
+**Request:** Shaeel wanted a comprehensive bloat and repetition audit across all pages — identify what to trim, merge, or dedupe.
+
+**Key Findings:**
+1. **CTA density is appropriate** — 3-5 CTAs per page (hero + inline + closing) is standard conversion pattern. Exception: /book-assessment has 10 (self-referential bloat).
+2. **Testimonial reuse is conservative** — Only 7 testimonials used across site. Home shows 3, /reviews shows all 18. Program pages show 1-2 relevant ones. No bloat detected.
+3. **Cross-page structural repetition is intentional:**
+   - "finalCta" section on 9 pages → standard conversion pattern, keep
+   - "trustBullets" vary per page context (not copy-paste)
+   - Process sections differ between programs vs test-prep
+4. **Content overlap between /why-us and Home "Why Cedar":**
+   - Home has 4-item "Why Cedar" section with comparison table
+   - /why-us has expanded version with full competitor comparison + 10 reasons list
+   - **Verdict:** NOT duplicate — Home teases, /why-us delivers. Keep both.
+5. **FAQ overlap:**
+   - /faq has 18 items across 5 categories
+   - Program/test-prep detail pages have 2-3 page-specific FAQ items
+   - /book-assessment has 4 assessment-specific FAQ items
+   - **Verdict:** No duplication — each FAQ is contextually relevant
+6. **Page size rankings (KB):** /reviews (186K), /faq (100K), /why-us (98K), /about (85K). Reviews is largest due to 18 testimonial cards — acceptable for a dedicated reviews page.
+
+**P0 Recommendation:** Trim /book-assessment redundant "Book" CTAs (10→5) and self-referential copy.
+
+**P1 Recommendations:**
+- Consider removing Home "Why Cedar" comparison table (just keep 4-item differentiator list) since /why-us has the full comparison
+- /free-trial page could be simplified since /book-assessment now covers same user intent
+
+**Inventory for future reference:**
+- 9 pages with finalCta closing sections
+- 10 pages with trustBullets in CTAs
+- 18 testimonials total (7 reused across 2-3 pages each)
+- 5 process/enrollment flows (Programs detail, Test-prep detail, Home "How It Works", /book-assessment "What to Expect", /free-trial "What happens after")
+
+---
 
 ### Merged /book-assessment Mockup — Concrete UX Structure (2026-05-07T17:12:53-05:00)
 
@@ -172,3 +212,50 @@ Shaeel's form-first mockup (Oracle recommendation: "Free Trial / Book Assessment
 Oracle's `/book-assessment` mockup remains a valid reference for page structure + section copy. The form rendering layer was the transient piece; the architectural shape (hero → context → booking widget → proof → FAQ) survives Calendly-only pivot.
 
 **Commits:** fb3c5f7 (Calendly-only pivot preserves Oracle's section structure, discards form layer)
+
+
+---
+
+### Framework-Grounded UX/UI Bloat & Repetition Audit (2026-05-07T18:45:00-05:00)
+
+**Request:** Comprehensive audit of page structure, CTA density, cross-page repetition, and design quality using explicitly cited UX frameworks.
+
+**Frameworks Applied:**
+- web-design-reviewer skill (project-specific) — visual inspection via Playwright screenshots
+- Nielsen's 10 Usability Heuristics (#4 Consistency, #8 Aesthetic/Minimalist)
+- Krug's "Don't Make Me Think" — scannability + clarity
+- CCD Attention Ratio (Oli Gardner) — CTAs-to-goal ratio
+- Hick's Law — choice overload
+- Information Architecture (Rosenfeld/Morville) — cross-page redundancy
+- Halvorson Content Audit — quantitative inventory + ROT
+- Gestalt principles — proximity, similarity
+- WCAG 2.1 AA — accessibility gates
+- Fitts's Law — CTA target sizing
+
+**Screenshot Inventory:** 40 screenshots captured (20 pages × 2 viewports: 1440×900 desktop, 390×844 mobile). Total size: ~30MB. Saved to `.squad/agents/oracle/screenshots/`.
+
+**Quantitative Findings:**
+- Total pages audited: 20
+- Pages with finalCta sections: 10
+- Pages with trustBullets: 9
+- Total testimonials in collection: 18 (reused across 5-6 pages)
+- Total FAQ items (site-wide): ~24 categories, 18 on /faq + page-specific FAQs
+- Average CTAs per page: 3-5 (hero + inline + closing)
+- Attention Ratio outliers: /book-assessment (simplified to ~5:1), /pricing (5:1), /home (6:1)
+
+**Key Cross-Cutting Findings:**
+1. **FinalCta repetition is intentional** — standard conversion pattern (Nielsen #4 Consistency)
+2. **Pricing page hero text duplication** — same sentence appears in hero subtitle AND intro section (ROT: Redundant)
+3. **Why-Us vs Home Why-Cedar overlap** — Home teases, /why-us delivers; NOT redundant per IA principles
+4. **Test-prep detail pages are lean** — minimal section bloat; contextual FAQs; proper attention ratio
+5. **Reviews page has empty-feeling filter section** — Gestalt figure/ground concern; reviews content loads lazily
+
+**P0 Recommendations:**
+- TRIM: Pricing page redundant intro sentence (exact duplicate of hero)
+- KEEP: finalCta pattern across all pages (Nielsen #4)
+
+**P1 Recommendations:**
+- Consider adding reviews count badge to /reviews filter area to reduce figure/ground confusion
+- /about page team section images appear blocked in screenshot (verify image loading)
+
+**Status:** Audit complete. Report delivered. No code changes made (Oracle: specs only).

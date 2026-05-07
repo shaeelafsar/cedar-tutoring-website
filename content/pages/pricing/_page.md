@@ -1,99 +1,122 @@
 ---
 component: "PricingPage"
 seo:
-  title: "Plans | Cedar Tutoring Academy"
-  description: "Explore Cedar Tutoring Academy plans including As-Needed Tutoring, Family Plans, and Academic Coaching."
-eyebrow: "Plans"
+  title: "Plans & Pricing | Cedar Tutoring Academy"
+  description: "Choose the tutoring plan that fits your family. All plans include certified tutors, in-person sessions at our Worth, IL location, and a free initial assessment."
+eyebrow: "Plans & Pricing"
 introEyebrow: "Flexible tutoring options"
-introSubtitle: "Choose the tutoring support that fits your family best."
+introSubtitle: "Choose the plan that fits your family."
 comparisonEyebrow: "What families should know"
 comparisonHighlights:
-  - "$40 hourly rate for as-needed tutoring"
-  - "48-hour notice required for scheduling"
-  - "Monthly family plans can be used by any registered child"
-  - "Free diagnostic assessment"
+  - "Certified, experienced teachers — not college tutors"
+  - "In-person sessions at our Worth, IL location"
+  - "Free initial diagnostic assessment included"
+  - "48-hour cancellation notice required"
 tiersEyebrow: "Plan options"
 pricingTiers:
   - id: "as-needed-tutoring"
     name: "As-Needed Tutoring"
     priceLabel: "$40"
-    cadence: "per hour"
-    description: "The Cedar hourly rate is $40. Parents/Students do not need to reserve any sessions in advance, and instead you may reserve only the sessions you need."
+    cadence: "/ session"
+    description: "No commitment. Book sessions as you need them. 48-hour cancellation notice required."
     features:
-      - "We only need a 48-hour notice in advance of your session to reserve it and to schedule the appropriate tutor for your child."
+      - "No monthly commitment"
+      - "Book only the sessions you need"
+      - "Math, reading, writing, science, Arabic"
+      - "48-hour cancellation notice"
     badge: "Flexible"
-  - id: "family-plans"
-    name: "Family Plans"
-    priceLabel: "Flexible"
-    cadence: "monthly sessions"
-    description: "Cedar Tutoring offers flexible family plans that allows you to reserve monthly sessions that can be used any time within that month, to send any registered child of yours at Cedar to use those hours as you see fit."
+  - id: "family-plan"
+    name: "Family Plan"
+    priceLabel: "$699.99"
+    cadence: "/ monthly"
+    description: "Mix children — different kids can attend different sessions. Best for households with multiple students."
     features:
-      - "We only need a 48-hour notice in advance of any session to allow for scheduling."
-    badge: "Family"
+      - "Any registered child in your household can use sessions"
+      - "Mix subjects and children across sessions"
+      - "Free initial assessment included"
+      - "Monthly billing — no contracts"
+    badge: "Most Popular"
     highlighted: true
-  - id: "academic-coaching"
-    name: "Academic Coaching"
-    priceLabel: "Specialized"
-    cadence: "elementary through high school"
-    description: "Cedar Tutoring provides specialized help for elementary, middle school, and high school grade levels."
+    subTiers:
+      - sessionsPerWeek: 5
+        price: "$699.99"
+      - sessionsPerWeek: 6
+        price: "$749.99"
+    defaultSubTierIndex: 0
+  - id: "homework-help"
+    name: "Homework Help"
+    priceLabel: "$549.99"
+    cadence: "/ monthly"
+    description: "Daily after-school support for one child. Subjects: math, reading, writing, science, Arabic."
     features:
-      - "We offer help in subject areas including math, reading, writing, science, and Arabic."
-      - "Our goal is to guide your child through their homework, and help them become independent learners."
-    badge: "Support"
-
-allPlansEyebrow: "Included information"
+      - "Daily after-school homework support"
+      - "1 hour per session"
+      - "Math, reading, writing, science, Arabic"
+      - "Free initial assessment included"
+    badge: "Daily Support"
+    subTiers:
+      - sessionsPerWeek: 3
+        price: "$419.99"
+      - sessionsPerWeek: 4
+        price: "$549.99"
+      - sessionsPerWeek: 5
+        price: "$649.99"
+      - sessionsPerWeek: 6
+        price: "$699.99"
+    defaultSubTierIndex: 1
+allPlansEyebrow: "Included with every plan"
 allPlansItems:
-  - "As-Needed Tutoring is $40 per hour."
-  - "Family Plans reserve monthly sessions that can be used any time within that month."
-  - "Academic Coaching is available for elementary, middle school, and high school grade levels."
-
-faqEyebrow: "Plans FAQ"
+  - "Certified, experienced teachers (not college tutors)"
+  - "In-person sessions at our Worth, IL location"
+  - "Free initial diagnostic assessment"
+  - "Personalized learning approach for your child"
+  - "Open parent communication and progress updates"
+faqEyebrow: "Common questions"
 faqItems:
-  - question: "How much is As-Needed Tutoring?"
-    answer: "The Cedar hourly rate is $40."
-  - question: "Do parents need to reserve sessions in advance?"
-    answer: "Parents/Students do not need to reserve any sessions in advance, and instead you may reserve only the sessions you need."
-  - question: "How much notice does Cedar need for scheduling?"
-    answer: "We only need a 48-hour notice in advance of your session to reserve it and to schedule the appropriate tutor for your child."
-  - question: "Who can use Family Plan hours?"
-    answer: "Family Plans can be used any time within that month, to send any registered child of yours at Cedar to use those hours as you see fit."
-
+  - question: "Can I switch plans?"
+    answer: "Yes. You can switch between plans at the start of any new billing month. Just let us know before your next billing cycle and we will update your plan."
+  - question: "What's included in the free assessment?"
+    answer: "The free assessment is a one-on-one session where a Cedar teacher evaluates your child's current level, identifies learning gaps, and helps recommend the right plan and schedule for your family."
+  - question: "Do you offer discounts for siblings?"
+    answer: "The Family Plan is designed exactly for multi-child households — sessions can be shared across all your registered children at no extra per-child cost. It's the most cost-effective option for families with multiple students."
+  - question: "What's the cancellation policy?"
+    answer: "We require 48-hour notice to cancel or reschedule a session. Cancellations with less than 48 hours notice may count as a used session toward your monthly plan."
 finalCta:
-  heading: "Interested in Cedar's plans?"
-  subtext: "Claim your free sessions today by booking your appointment below."
+  heading: "Have questions about which plan fits?"
+  subtext: "Book a free assessment and our team will help you choose the right plan for your child."
   primaryCta:
-    label: "Free Trial"
-    href: "/free-trial/"
+    label: "Book a Free Assessment"
+    href: "/book-assessment/"
   secondaryCta:
     label: "Call Cedar"
     href: "tel:+17088904400"
   trustBullets:
-    - "$40 as-needed tutoring"
-    - "Flexible family plans"
-    - "Academic coaching"
-    - "No contracts required"
+    - "Free initial assessment"
+    - "No commitment required"
+    - "Certified teachers"
+    - "Worth, IL location"
 ---
 
-# Plans
+# Plans & Pricing
 
-Explore Cedar Tutoring Academy's flexible plans for as-needed tutoring, monthly family sessions, and academic coaching.
+Choose the plan that fits your family. All plans include certified tutors, in-person sessions at our Worth, IL location, and a free initial assessment.
 
-## Choose the support level that matches your child's pace, schedule, and priorities.
+## Flexible plans built for real families.
 
-Cedar offers flexible options — from as-needed hourly sessions to monthly family plans that let you use reserved hours across all your enrolled children.
+Cedar offers three plan types to fit different schedules and household needs — from flexible as-needed hourly sessions to daily homework help and multi-child family plans.
 
-## Clear billing and flexible monthly options.
+## No hidden fees and no contracts.
 
-Our pricing is straightforward: $40/hr for as-needed sessions, or choose a monthly family plan for reserved hours. No hidden fees, no contracts, and free diagnostic assessments.
+Our pricing is transparent: what you see is what you pay. Monthly plans are billed monthly with no long-term commitment. Cancel or switch at the start of any billing cycle.
 
-## Tutoring plans that fit different seasons of school.
+## Choose your plan.
 
-Whether your child needs ongoing weekly support or intensive help before exams, our plans adapt to your schedule. We only need 48-hour notice to book sessions.
+Whether your child needs occasional subject help, daily homework support, or you have multiple kids to support, we have a plan built for that.
 
-## What every family gets at Cedar.
+## All plans include certified teachers and a free assessment.
 
-Every Cedar family gets individualized learning plans, weekly progress updates, open communication with tutors, and a caring environment where your child builds confidence alongside academics.
+Every plan includes access to certified teachers, personalized pacing, subject coverage across math, reading, writing, science, and Arabic, and a free initial assessment.
 
 ## Common questions before you enroll.
 
-These are the key details families usually want to confirm before enrolling.
+These are the questions families ask most often before choosing a plan at Cedar.

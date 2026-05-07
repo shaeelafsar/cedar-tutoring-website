@@ -8,3 +8,4 @@ const siteMetadata = getSiteMetadata();
 export const SITE_CONFIG = siteMetadata.site;
 export const NAV_ITEMS: NavItem[] = siteMetadata.navigation;
 export const FOOTER_NAV = siteMetadata.footerNav;
+export const FOOTER_LEGAL_LINKS: NavItem[] = siteMetadata.footer?.links ?? [];

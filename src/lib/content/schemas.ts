@@ -128,6 +128,11 @@ export const locationContentSchema = z.object({
 
 export const locationContentsSchema = z.array(locationContentSchema);
 
+export const pricingSubTierSchema = z.object({
+  sessionsPerWeek: z.number(),
+  price: nonEmptyString,
+});
+
 export const pricingTierSchema = z.object({
   id: nonEmptyString,
   name: nonEmptyString,
@@ -137,6 +142,8 @@ export const pricingTierSchema = z.object({
   features: z.array(nonEmptyString),
   badge: nonEmptyString.optional(),
   highlighted: z.boolean().optional(),
+  subTiers: z.array(pricingSubTierSchema).optional(),
+  defaultSubTierIndex: z.number().optional(),
 });
 
 export const pricingTiersSchema = z.array(pricingTierSchema);
@@ -684,6 +691,12 @@ export const siteMetadataSchema = z.object({
     testPrep: z.array(navItemSchema),
     company: z.array(navItemSchema),
   }),
+  footer: z
+    .object({
+      copyright: nonEmptyString.optional(),
+      links: z.array(navItemSchema).optional(),
+    })
+    .optional(),
 });
 
 const comparisonRowSchema = z.object({

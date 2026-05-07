@@ -30,6 +30,9 @@ import type { SiteConfig } from "@/lib/content/site";
 import { imagePath } from "@/lib/image-path";
 import { cn } from "@/lib/utils";
 
+const WEB3FORMS_ACCESS_KEY =
+  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
+
 interface ProgramOption {
   id: string;
   label: string;
@@ -174,6 +177,7 @@ export function BookAssessmentPageClient({
   const [submitAttempted, setSubmitAttempted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const successRef = useRef<HTMLDivElement | null>(null);
   const parentNameRef = useRef<HTMLInputElement | null>(null);
   const emailRef = useRef<HTMLInputElement | null>(null);
@@ -242,6 +246,7 @@ export function BookAssessmentPageClient({
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSubmitAttempted(true);
+    setSubmitError(null);
 
     const normalized = normalizeSubmission(formState);
     const nextErrors = validateForm(normalized);
@@ -261,13 +266,48 @@ export function BookAssessmentPageClient({
     setIsSubmitting(true);
 
     try {
-      // TODO: Replace this placeholder success state with a real submission integration (Formspree, Netlify Forms, Google Forms, or custom API).
-      if (!prefersReducedMotion) {
-        await new Promise((resolve) => setTimeout(resolve, 350));
+      if (!WEB3FORMS_ACCESS_KEY) {
+        setSubmitError(
+          "Form temporarily unavailable — please call us at +1 708 890-4400 or email Info@cedartutoring.com"
+        );
+        return;
       }
 
-      setIsSubmitted(true);
-      setErrors({});
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: "Cedar Tutoring — Free Assessment Request",
+          from_name: "Cedar Tutoring Website",
+          name: normalized.parentName,
+          email: normalized.email,
+          phone: normalized.phone,
+          student_name: normalized.studentName,
+          grade_level: normalized.gradeLevel,
+          program_interests: normalized.programInterests.join(", "),
+          preferred_location: normalized.preferredLocation || "No preference",
+          preferred_contact_method: normalized.preferredContactMethod,
+          additional_notes: normalized.additionalNotes || "None",
+          botcheck: "",
+        }),
+      });
+
+      const data = (await response.json()) as { success: boolean; message?: string };
+
+      if (response.ok && data.success) {
+        setIsSubmitted(true);
+        setErrors({});
+      } else {
+        setSubmitError(
+          data.message ??
+            "Something went wrong. Please call us at +1 708 890-4400 or email Info@cedartutoring.com"
+        );
+      }
+    } catch {
+      setSubmitError(
+        "Unable to submit — please call us at +1 708 890-4400 or email Info@cedartutoring.com"
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -389,6 +429,7 @@ export function BookAssessmentPageClient({
                             setFormState(initialFormState);
                             setIsSubmitted(false);
                             setSubmitAttempted(false);
+                            setSubmitError(null);
                           }}
                           className="border-border bg-background text-foreground hover:border-primary/25 inline-flex items-center justify-center rounded-full border px-5 py-3 text-sm font-semibold transition-colors hover:text-[hsl(var(--primary-text))]"
                         >
@@ -404,12 +445,22 @@ export function BookAssessmentPageClient({
                   onSubmit={handleSubmit}
                   className="mt-8 space-y-6"
                 >
+                  {/* Web3Forms honeypot anti-spam field — must be empty on submission */}
+                  <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} aria-hidden="true" tabIndex={-1} />
                   {submitAttempted && Object.keys(errors).length > 0 ? (
                     <div
                       role="alert"
                       className="border-destructive/20 bg-destructive/6 text-destructive rounded-2xl border px-4 py-3 text-sm leading-6"
                     >
                       Please fix the highlighted fields and try again.
+                    </div>
+                  ) : null}
+                  {submitError ? (
+                    <div
+                      role="alert"
+                      className="border-destructive/20 bg-destructive/6 text-destructive rounded-2xl border px-4 py-3 text-sm leading-6"
+                    >
+                      {submitError}
                     </div>
                   ) : null}
 

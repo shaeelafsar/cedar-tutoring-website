@@ -1,53 +1,55 @@
 import type { Metadata } from "next";
-import { ArrowRight, Check, CircleDollarSign } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 
 import { CTASection } from "@/components/shared/CTASection";
 import { FAQAccordion } from "@/components/shared/FAQAccordion";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { PageHero } from "@/components/shared/PageHero";
 import { Reveal } from "@/components/shared/Reveal";
-import { SectionHeading } from "@/components/shared/SectionHeading";
 import { getPricingTiers } from "@/lib/content/collections";
 import { getPricingPageContent } from "@/lib/content/pages";
 import { SITE_CONFIG } from "@/lib/constants";
 import { absoluteUrl, buildPageMetadata } from "@/lib/seo";
+import { PricingCardInteractive } from "./PricingCardInteractive";
 
 const pricingPageContent = getPricingPageContent();
 const pricingTiers = getPricingTiers();
 
-const pricingPageStructuredData = {
+const structuredData = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: `${SITE_CONFIG.name} Tutoring Services`,
-  serviceType: "K-12 tutoring and test prep",
+  serviceType: "K-12 tutoring and homework help",
   provider: {
     "@type": "EducationalOrganization",
     name: SITE_CONFIG.name,
     url: SITE_CONFIG.url,
   },
-  areaServed: "South Suburbs of Chicago, Illinois",
+  areaServed: "Worth, IL and the South Suburbs of Chicago",
   offers: pricingTiers.map((tier) => ({
     "@type": "Offer",
     name: tier.name,
     description: tier.description,
-    price: tier.priceLabel.replace(/[^\d.]/g, ""),
+    price: tier.subTiers
+      ? tier.subTiers[tier.defaultSubTierIndex ?? 0].price.replace(/[^\d.]/g, "")
+      : tier.priceLabel.replace(/[^\d.]/g, ""),
     priceCurrency: "USD",
     url: absoluteUrl("/pricing"),
   })),
 };
 
-export async function generateMetadata(): Promise<Metadata> {
-  return buildPageMetadata({
-    title: pricingPageContent.seo.title,
-    description: pricingPageContent.seo.description,
-    path: "/pricing",
-  });
-}
+export const metadata: Metadata = buildPageMetadata({
+  title: "Plans & Pricing | Cedar Tutoring Academy",
+  description:
+    "Choose the plan that fits your family. All plans include certified tutors, in-person sessions at our Worth, IL location, and a free initial assessment.",
+  path: "/pricing",
+});
 
 export default function PricingPage() {
   return (
     <>
-      <JsonLd data={pricingPageStructuredData} />
+      <JsonLd data={structuredData} />
+
       <PageHero
         eyebrow={pricingPageContent.hero.eyebrow}
         heading={pricingPageContent.hero.heading}
@@ -55,72 +57,42 @@ export default function PricingPage() {
         breadcrumbs={[{ label: "Pricing" }]}
       />
 
-      <section className="px-4 py-16 md:px-6 lg:px-8 lg:py-20">
-        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
-          <Reveal>
-            <div>
-              <SectionHeading
-                eyebrow={pricingPageContent.intro.eyebrow}
-                heading={pricingPageContent.intro.heading}
-                subtitle={pricingPageContent.intro.subtitle}
-                align="left"
-                className="mb-6"
-              />
-              <div className="text-muted-foreground space-y-5 text-base leading-8 md:text-lg">
-                {pricingPageContent.intro.paragraphs.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.06}>
-            <aside className="border-border bg-foreground rounded-3xl border p-6 text-white shadow-sm sm:p-8">
-              <div className="flex items-start gap-4">
-                <div className="text-accent flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/10">
-                  <CircleDollarSign className="size-6" />
-                </div>
-                <div>
-                  <p className="text-sm font-bold tracking-[0.14em] text-white/75 uppercase">
-                    {pricingPageContent.comparisonNote.eyebrow}
-                  </p>
-                  <h2 className="mt-3 text-2xl font-bold text-white">
-                    {pricingPageContent.comparisonNote.heading}
-                  </h2>
-                  <p className="mt-4 text-sm leading-7 text-white/75 sm:text-base">
-                    {pricingPageContent.comparisonNote.body}
-                  </p>
-                </div>
-              </div>
-
-              <ul className="mt-6 space-y-3 rounded-2xl bg-white/6 p-4 sm:p-5">
-                {pricingPageContent.comparisonNote.highlights.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 text-sm leading-6 text-white/85"
-                  >
-                    <Check className="text-accent mt-1 size-4 shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </aside>
-          </Reveal>
+      {/* Intro */}
+      <section className="px-4 py-12 md:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-muted-foreground text-lg leading-8">
+            Choose the plan that fits your family. All plans include certified
+            tutors, in-person sessions at our Worth, IL location, and a free
+            initial assessment.
+          </p>
         </div>
       </section>
 
-      <section className="bg-muted/35 px-4 py-16 md:px-6 lg:px-8 lg:py-20">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading
-            eyebrow={pricingPageContent.tiersSection.eyebrow}
-            heading={pricingPageContent.tiersSection.heading}
-            subtitle={pricingPageContent.tiersSection.subtitle}
-          />
-
-          <div className="grid gap-6 lg:grid-cols-3 lg:items-stretch">
+      {/* Pricing cards — 3 side-by-side on desktop, stacked on mobile */}
+      <section className="bg-muted/35 px-4 py-16 md:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-6 md:grid-cols-3 md:items-stretch">
             {pricingTiers.map((tier, index) => {
               const isHighlighted = Boolean(tier.highlighted);
 
+              if (tier.subTiers && tier.subTiers.length > 0) {
+                return (
+                  <Reveal key={tier.id} delay={index * 0.05} className="h-full">
+                    <PricingCardInteractive
+                      name={tier.name}
+                      cadence={tier.cadence}
+                      description={tier.description}
+                      features={tier.features}
+                      badge={tier.badge}
+                      highlighted={isHighlighted}
+                      subTiers={tier.subTiers}
+                      defaultSubTierIndex={tier.defaultSubTierIndex ?? 0}
+                    />
+                  </Reveal>
+                );
+              }
+
+              // Static card (no sub-tiers — As-Needed Tutoring)
               return (
                 <Reveal key={tier.id} delay={index * 0.05} className="h-full">
                   <article
@@ -180,9 +152,9 @@ export default function PricingPage() {
                       ))}
                     </ul>
 
-                    <div className="mt-8 pt-2">
+                    <div className="mt-auto pt-8">
                       <a
-                        href="/book-assessment"
+                        href="/book-assessment/"
                         className={[
                           "inline-flex w-full items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-semibold transition-all",
                           isHighlighted
@@ -190,7 +162,7 @@ export default function PricingPage() {
                             : "border-border bg-background text-foreground hover:border-primary/25 border hover:text-[hsl(var(--primary-text))]",
                         ].join(" ")}
                       >
-                        Book assessment
+                        Book a Free Assessment
                         <ArrowRight className="size-4" />
                       </a>
                     </div>
@@ -202,42 +174,12 @@ export default function PricingPage() {
         </div>
       </section>
 
+      {/* FAQ strip */}
       <section className="px-4 py-16 md:px-6 lg:px-8 lg:py-20">
-        <div className="border-border bg-card mx-auto max-w-6xl rounded-[2rem] border p-6 shadow-sm sm:p-8 lg:p-10">
-          <SectionHeading
-            eyebrow={pricingPageContent.allPlansInclude.eyebrow}
-            heading={pricingPageContent.allPlansInclude.heading}
-            subtitle={pricingPageContent.allPlansInclude.subtitle}
-          />
-
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {pricingPageContent.allPlansInclude.items.map((item, index) => (
-              <Reveal key={item} delay={index * 0.03}>
-                <div className="bg-muted/50 flex h-full items-start gap-3 rounded-2xl p-4">
-                  <div className="bg-primary/10 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-full">
-                    <Check className="size-4" />
-                  </div>
-                  <p className="text-muted-foreground text-sm leading-6 sm:text-base">
-                    {item}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <p className="text-muted-foreground mt-6 text-sm leading-6">
-            {pricingPageContent.allPlansInclude.footnote}
-          </p>
-        </div>
-      </section>
-
-      <section className="bg-muted/35 px-4 py-16 md:px-6 lg:px-8 lg:py-20">
         <div className="mx-auto max-w-5xl">
-          <SectionHeading
-            eyebrow={pricingPageContent.faqSection.eyebrow}
-            heading={pricingPageContent.faqSection.heading}
-            subtitle={pricingPageContent.faqSection.subtitle}
-          />
+          <h2 className="text-foreground mb-10 text-center text-2xl font-bold sm:text-3xl">
+            Common questions
+          </h2>
           <FAQAccordion
             items={pricingPageContent.faqSection.items}
             defaultOpen={0}

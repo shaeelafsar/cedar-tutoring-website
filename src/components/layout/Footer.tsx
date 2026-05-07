@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { TreePine, Phone, Mail, MapPin } from "lucide-react";
-import { SITE_CONFIG, FOOTER_NAV } from "@/lib/constants";
+import { SITE_CONFIG, FOOTER_NAV, FOOTER_LEGAL_LINKS } from "@/lib/constants";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -127,6 +127,20 @@ export function Footer() {
           <span>
             © {currentYear} {SITE_CONFIG.name}. All rights reserved.
           </span>
+          {FOOTER_LEGAL_LINKS.length > 0 ? (
+            <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
+              {FOOTER_LEGAL_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="transition-colors hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </div>
       </div>
     </footer>

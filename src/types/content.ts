@@ -104,6 +104,11 @@ export interface LocationContent {
   image?: ContentImage;
 }
 
+export interface PricingSubTier {
+  sessionsPerWeek: number;
+  price: string;
+}
+
 export interface PricingTier {
   id: string;
   name: string;
@@ -113,6 +118,8 @@ export interface PricingTier {
   features: string[];
   badge?: string;
   highlighted?: boolean;
+  subTiers?: PricingSubTier[];
+  defaultSubTierIndex?: number;
 }
 
 export interface SectionShellContent {

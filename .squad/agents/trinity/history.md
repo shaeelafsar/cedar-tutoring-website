@@ -49,3 +49,26 @@
 - **Active CTA content lives in two frontmatter files:** `content/pages/home/cta.md` (homepage final CTA) and `content/programs/_hub.md` (programs hub final CTA and detail page CTA config). Both needed the Admission Form → Book a Free Assessment swap.
 - **Contact page "Cities we serve" was already rendering correctly** as of this session — all 15 cities appear in server-rendered HTML. The original review finding (empty section) was based on an older site state and is now obsolete.
 - **Grep scope for active code:** Use `src/` and `content/` as the search scope when verifying no stale references remain; exclude `.squad/`, `.git/`, `combined-review.md`, and `prd-ready-review-*.md` which legitimately reference the broken state.
+- **Founder name is Asmah (not Amina Rahman):** `content/pages/about/team.md` previously listed "Amina Rahman" as Founder & Director — a placeholder name. Corrected to `Asmah` per story.md and owner decision (Wave 2 P0 #5). Portrait renamed from `amina-rahman.svg` → `asmah.svg` (still a placeholder SVG; owner will supply real photo pre-launch).
+- **Web3Forms integration pattern:** POST to `https://api.web3forms.com/submit` with `Content-Type: application/json`; body must include `access_key`, `subject`, `from_name`, and all form fields, plus `botcheck: ""` (native honeypot). Check `response.ok && data.success` for success. Key stored as `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (inlined at build time — deploy must have it set in environment). If key is missing at runtime, surface a friendly error referencing phone + email rather than crashing.
+- **Dedicated submitError state for API failures:** When a form has both field-level validation errors and possible API/network failures, use a separate `submitError: string | null` state rather than repurposing a field's error slot. Show it in its own role="alert" banner above the form.
+- **Privacy policy pattern for this codebase:** No content loader needed — render JSX directly in the Server Component page file. Use `PageHero` + `Reveal` for consistent shell. Import `SITE_CONFIG` for real contact details. Add a pending-legal-review banner (`bg-amber-50`) until lawyer signs off. Use `prose prose-slate` Tailwind class for readable long-form text.
+- **Hero heading lives in Markdown body H1, not frontmatter:** `content/pages/home/hero.md` heading is parsed via `parseMarkdownPage()` from the `# H1` line in the body — `eyebrow` is a separate frontmatter field. Update the `# H1` to change the hero headline; leave `eyebrow` alone.
+- **`metadata` export vs `generateMetadata` for static pages:** Static marketing pages with no dynamic data can use `export const metadata: Metadata = buildPageMetadata(...)` (plain export) rather than `export async function generateMetadata()`. Both are valid; use whichever other pages in the route group use for consistency.
+- **Team page is single-member:** Placeholder teammates Nora Hassan, Omar Siddiqui, and Sarah Khan were removed; Asmah is the only real team member. Team page body copy updated to reflect single-founder framing. Layout left as-is (single-card grid is acceptable per task brief).
+
+### Wave 2 Batch B — /pricing page rebuild (2026-05-07T12:32:14-05:00)
+**Status:** ✅ COMPLETED
+
+- Rebuilt `/pricing` page with three real pricing tiers (As-Needed Tutoring $40/session, Family Plan $699.99–$749.99/month, Homework Help $419.99–$699.99/month) matching cedartutoring.com exactly. No Academic Coaching tier (per user decision).
+- Added sub-tier toggle interaction: `PricingCardInteractive.tsx` is a `'use client'` pill-button segmented control inside each monthly plan card; the page.tsx remains a Server Component.
+- Extended `PricingTier` interface and `pricingTierSchema` with optional `subTiers: PricingSubTier[]` and `defaultSubTierIndex: number` fields to hold the session-count variants in YAML frontmatter.
+- Data source: `content/pages/pricing/_page.md` frontmatter (YAML) — consistent with the markdown-first content convention. Kept 5 H2 sections in the markdown body for backwards-compat with `getPricingPageContent()` loader.
+- FAQ answers (4 questions) written with best-effort accuracy; 4 placeholders flagged in `trinity-wave2b-pricing.md` for owner confirmation.
+- Validation: `npx tsc --noEmit` ✅; `npm run lint` ✅ (only pre-existing unrelated failures).
+
+## Learnings
+
+- **Pricing card sub-tier pattern:** Server Component loads all tier data from markdown frontmatter (including `subTiers` array). For cards with `subTiers`, render `PricingCardInteractive` (Client Component) — pass typed props, manage `useState` for selectedIndex client-side. For static cards, render inline JSX in the Server Component.
+- **Content data source for pricing:** `content/pages/pricing/_page.md` YAML frontmatter holds the full tier/sub-tier/price/FAQ/CTA data. The markdown body needs exactly 5 H2 sections for the `getPricingPageContent()` loader to not throw on section index reads.
+- **Sub-tier schema extension:** Add `pricingSubTierSchema` (sessionsPerWeek: number, price: string) and make `subTiers`/`defaultSubTierIndex` optional on `pricingTierSchema` — no breaking change to existing content that doesn't have these fields.

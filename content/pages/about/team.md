@@ -3,52 +3,19 @@ component: "Team"
 order: 5
 eyebrow: "Meet the team"
 members:
-  - id: "amina-rahman"
-    name: "Amina Rahman"
+  - id: "asmah"
+    name: "Asmah"
     role: "Founder & Academy Director"
     credentials:
       - "M.Ed."
       - "Curriculum Planning"
       - "Family Success Lead"
-    bio: "Amina founded Cedar to create the kind of tutoring experience she wanted families to feel immediately: personal, organized, encouraging, and rooted in real academic progress. She oversees assessments, program matching, and the teaching standards that shape Cedar's day-to-day experience."
+    bio: "Asmah founded Cedar to create the kind of tutoring experience she wanted families to feel immediately: personal, organized, encouraging, and rooted in real academic progress. She oversees assessments, program matching, and the teaching standards that shape Cedar's day-to-day experience."
     image:
-      src: "/images/team/amina-rahman.svg"
-      alt: "Illustrated portrait card for Amina Rahman"
-  - id: "nora-hassan"
-    name: "Nora Hassan"
-    role: "Reading & Writing Specialist"
-    credentials:
-      - "B.A. English"
-      - "Literacy Instruction"
-      - "K–8 Support"
-    bio: "Nora helps students turn reading and writing from a stress point into a skill they can approach with confidence. Families appreciate her calm teaching style, clear explanations, and ability to break big assignments into manageable next steps."
-    image:
-      src: "/images/team/nora-hassan.svg"
-      alt: "Illustrated portrait card for Nora Hassan"
-  - id: "omar-siddiqui"
-    name: "Omar Siddiqui"
-    role: "Math & Science Tutor"
-    credentials:
-      - "B.S. Engineering"
-      - "STEM Instruction"
-      - "Middle & High School"
-    bio: "Omar specializes in helping students understand why concepts work, not just how to finish the worksheet. His sessions focus on clarity, confidence, and building durable study habits that carry into class and exams."
-    image:
-      src: "/images/team/omar-siddiqui.svg"
-      alt: "Illustrated portrait card for Omar Siddiqui"
-  - id: "sarah-khan"
-    name: "Sarah Khan"
-    role: "Test Prep & Student Strategy Coach"
-    credentials:
-      - "B.S. Psychology"
-      - "SAT/ACT Strategy"
-      - "Progress Coaching"
-    bio: "Sarah guides students through the structure, pacing, and mindset side of test prep so they can stay consistent without burning out. She is known for making big goals feel actionable and keeping both students and parents aligned on progress."
-    image:
-      src: "/images/team/sarah-khan.svg"
-      alt: "Illustrated portrait card for Sarah Khan"
+      src: "/images/team/asmah.svg"
+      alt: "Illustrated portrait card for Asmah"
 ---
 
-# Educators who bring warmth, expertise, and consistency to every session.
+# The educator behind every Cedar session.
 
-Cedar's team blends subject knowledge with patient teaching and parent-friendly communication. Here are a few of the people families get to know.
+Asmah founded Cedar Tutoring Academy to give families a personal, organized, and encouraging tutoring experience rooted in real academic progress.

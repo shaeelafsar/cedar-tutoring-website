@@ -56,8 +56,6 @@ navigation:
     href: "/summer-programs"
   - label: "Why Us"
     href: "/why-us"
-  - label: "Free Trial"
-    href: "/free-trial"
   - label: "Plans"
     href: "/pricing"
   - label: "Contact Us"
@@ -95,8 +93,6 @@ footer:
   links:
     - label: "Privacy policy"
       href: "/privacy-policy"
-    - label: "Blog"
-      href: "/blog"
 ---
 
 # Cedar Tutoring Academy

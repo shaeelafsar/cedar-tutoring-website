@@ -160,3 +160,9 @@ Shaeel Afsar captured a team directive: whenever designing/UX/UI, ensure the tea
 ### Team Decision: P0 Launch Blockers Synthesis + Approval (2026-05-07T10:22:32.063-05:00)
 **Decision by:** Morpheus (synthesis) + Mouse (final verdict: APPROVED)  
 Morpheus synthesized all Oracle/Mouse/Morpheus findings into `prd-ready-review-gpt.md` and proposed a binding decision: the site should not launch until P0 blockers are fixed. Primary funnel canonical step: "Book a Free Assessment"; treat "Free Trial" as supporting offer unless business wants two separate funnels. Mouse reviewed final artifact and approved it as complete and accurate. Decision recorded in `.squad/decisions.md`: three decisions captured (user directive, synthesis, and approval verdict).
+
+### Session Work: Owner Action Brief Priority Synthesis (2026-05-07T11:10:33.863-05:00)
+**By:** Morpheus (sync spawn)  
+**Reviewed by:** Mouse (sync reviewer gate) — APPROVED  
+Morpheus distilled `prd-ready-review-gpt.md` into a concise owner-facing action brief, surfacing five P0 launch blockers as immediate priorities and framing P1/P2/P3 work as post-P0 improvements. Mouse approved the brief as business-readable, focused, and consistent with full audit. Decision captured in `.squad/decisions.md` and merged by Scribe. Team now has canonical owner escalation path with clear fix order.
+

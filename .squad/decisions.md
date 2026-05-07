@@ -5,6 +5,12 @@
 
 ## Active Decisions
 
+### 2026-05-07T11:10:33.863-05:00: Owner Action Brief — P0 launch blockers prioritization
+**By:** Morpheus (Lead/Architect)
+**Status:** APPROVED
+**Decision:** Use the report's existing P0 launch blockers as the owner-facing launch brief and recommended fix order. Treat P1 items as post-P0/pre-announcement improvements, and P2/P3 items as launch-quality or post-launch polish rather than the first owner escalation.
+**Rationale:** The owner needed a concise, business-readable summary without changing the underlying audit. The existing report already identifies the five P0 blockers and separates P1/P2/P3 work, so the brief should surface those findings without introducing unsupported claims.
+
 ### 2026-05-04T19:26:14.937-05:00: Markdown files with YAML frontmatter as canonical content source
 **By:** Trinity (Frontend Engineer)
 **Status:** APPROVED

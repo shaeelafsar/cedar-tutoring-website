@@ -18,7 +18,6 @@ const staticRoutes = [
   "/programs",
   "/why-us",
   "/summer-programs",
-  "/free-trial",
   "/contact-us",
 ] as const;
 

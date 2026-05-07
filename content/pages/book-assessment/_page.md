@@ -43,9 +43,9 @@ faqItems:
     answer: "We'll walk you through what we noticed, answer your questions, and recommend the program, schedule, and location that make the most sense for your child."
 ---
 
-# Book your free learning assessment.
+# Let's Find the Right Fit for Your Child
 
-Tell us a little about your child and we'll guide you through a simple, no-pressure next step: a free 30-minute assessment, a scheduling call, and a personalized learning plan built around real needs.
+Answer a few quick questions about your student, and we'll schedule a personalized assessment.
 
 ## Tell us about your child.
 

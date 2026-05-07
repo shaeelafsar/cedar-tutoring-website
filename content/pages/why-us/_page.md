@@ -107,8 +107,8 @@ finalCta:
     label: "Book a free assessment"
     href: "/book-assessment"
   secondaryCta:
-    label: "Try a free trial"
-    href: "/free-trial"
+    label: "See our plans"
+    href: "/pricing"
   trustBullets:
     - "2:1 student-to-teacher ratio"
     - "No contracts, ever"

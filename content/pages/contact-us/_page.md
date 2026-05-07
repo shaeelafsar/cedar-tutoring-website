@@ -63,8 +63,8 @@ finalCta:
     label: "Book a free assessment"
     href: "/book-assessment"
   secondaryCta:
-    label: "Try a free trial"
-    href: "/free-trial"
+    label: "See our plans"
+    href: "/pricing"
   trustBullets:
     - "Free assessment"
     - "Same-day response"

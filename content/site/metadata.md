@@ -77,8 +77,6 @@ footerNav:
       href: "/test-prep/act"
     - label: "SAT Prep"
       href: "/test-prep/sat"
-    - label: "Free Trial"
-      href: "/free-trial"
   company:
     - label: "Why Us"
       href: "/why-us"

@@ -58,8 +58,8 @@ finalCta:
   heading: "Interested in ACT or SAT Prep?"
   subtext: "Claim your free sessions today by booking your appointment below."
   primaryCta:
-    label: "Free Trial"
-    href: "/free-trial/"
+    label: "Book Free Assessment"
+    href: "/book-assessment"
 ---
 
 # PREP PROGRAMS FOR THE ACT and SAT

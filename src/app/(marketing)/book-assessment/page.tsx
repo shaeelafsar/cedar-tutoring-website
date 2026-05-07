@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { getLocations, getTestimonialsByIds } from "@/lib/content/collections";
-import { getBookAssessmentPageContent } from "@/lib/content/pages";
+import { getBookAssessmentPageContent, getFreeTrialPageContent } from "@/lib/content/pages";
 import { getAllPrograms } from "@/lib/content/programs";
 import { getAllTestPrep } from "@/lib/content/testPrep";
 import { SITE_CONFIG } from "@/lib/constants";
@@ -23,6 +23,9 @@ const programOptions = [
   })),
 ];
 
+// Calendly URL lives in the free-trial content until Wave 3 consolidates it.
+const calendlyUrl = getFreeTrialPageContent().booking.calendlyUrl;
+
 export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata({
     title: pageContent.seo.title,
@@ -39,6 +42,7 @@ export default function BookAssessmentPage() {
       programOptions={programOptions}
       siteConfig={SITE_CONFIG}
       testimonials={testimonials}
+      calendlyUrl={calendlyUrl}
     />
   );
 }

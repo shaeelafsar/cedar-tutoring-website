@@ -30,6 +30,8 @@ import type { SiteConfig } from "@/lib/content/site";
 import { imagePath } from "@/lib/image-path";
 import { cn } from "@/lib/utils";
 
+import { PostSubmitCalendly } from "./PostSubmitCalendly";
+
 const WEB3FORMS_ACCESS_KEY =
   process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
 
@@ -44,6 +46,7 @@ interface BookAssessmentPageClientProps {
   programOptions: ProgramOption[];
   siteConfig: SiteConfig;
   testimonials: Testimonial[];
+  calendlyUrl: string;
 }
 
 type ContactMethod = "phone" | "email" | "either";
@@ -170,6 +173,7 @@ export function BookAssessmentPageClient({
   programOptions,
   siteConfig,
   testimonials,
+  calendlyUrl,
 }: BookAssessmentPageClientProps) {
   const prefersReducedMotion = useReducedMotion();
   const [formState, setFormState] = useState<FormState>(initialFormState);
@@ -392,28 +396,50 @@ export function BookAssessmentPageClient({
                         Request received
                       </p>
                       <h3 className="text-foreground mt-3 text-3xl font-bold tracking-tight">
-                        Thank you! We&apos;ll contact you within 24 hours.
+                        Thanks,{" "}
+                        {formState.parentName
+                          ? formState.parentName.split(" ")[0]
+                          : ""}
+                        ! We&apos;ll be in touch within 24 hours.
                       </h3>
                       <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-7">
-                        A Cedar team member will review your details, reach out
-                        using your preferred contact method, and help schedule
-                        your free 30-minute assessment.
+                        We&apos;ve received your assessment request for{" "}
+                        {formState.studentName || "your student"}. Here&apos;s
+                        what happens next:
                       </p>
 
-                      <div className="mt-6 grid gap-3 sm:grid-cols-3">
+                      <ol className="mt-6 space-y-3">
                         {[
-                          "We'll confirm your goals and answer questions.",
-                          "We'll help choose the right location and timing.",
-                          "You'll get a personalized recommendation — no pressure.",
+                          {
+                            step: "1",
+                            text: "Cedar reviews your submission and prepares for your child's needs.",
+                          },
+                          {
+                            step: "2",
+                            text: "A Cedar team member contacts you within 24 hours using your preferred method.",
+                          },
+                          {
+                            step: "3",
+                            text: "You schedule a free 30-minute assessment at a time that works for you.",
+                          },
+                          {
+                            step: "4",
+                            text: "We share a personalized learning plan — no pressure, no obligation.",
+                          },
                         ].map((item) => (
-                          <div
-                            key={item}
-                            className="bg-card/80 text-muted-foreground rounded-2xl border border-white/40 px-4 py-3 text-sm leading-6"
+                          <li
+                            key={item.step}
+                            className="bg-card/80 flex items-start gap-3 rounded-2xl border border-white/40 px-4 py-3 text-sm leading-6"
                           >
-                            {item}
-                          </div>
+                            <span className="bg-success/20 text-success flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                              {item.step}
+                            </span>
+                            <span className="text-muted-foreground">
+                              {item.text}
+                            </span>
+                          </li>
                         ))}
-                      </div>
+                      </ol>
 
                       <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                         <a
@@ -1020,6 +1046,21 @@ export function BookAssessmentPageClient({
           </div>
         </div>
       </section>
+
+      {/* Post-submit Calendly fast-track — additive, self-contained.
+          To remove Calendly: delete PostSubmitCalendly.tsx + this block.
+          The success state above is fully independent of this section. */}
+      {isSubmitted && (
+        <PostSubmitCalendly
+          calendlyUrl={calendlyUrl}
+          form={{
+            parentName: formState.parentName,
+            email: formState.email,
+            studentName: formState.studentName,
+            gradeLevel: formState.gradeLevel,
+          }}
+        />
+      )}
     </>
   );
 }

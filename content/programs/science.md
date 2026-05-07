@@ -25,8 +25,8 @@ cta:
   heading: "Interested in science tutoring?"
   subtext: "Claim your free sessions today by booking your appointment below."
   primaryCta:
-    label: "Free Trial"
-    href: "/free-trial/"
+    label: "Book Free Assessment"
+    href: "/book-assessment"
 ---
 
 # SCIENCE TUTORING FOR MIDDLE SCHOOL & HIGH SCHOOL

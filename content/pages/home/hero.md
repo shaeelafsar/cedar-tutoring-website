@@ -9,8 +9,8 @@ primaryCta:
   label: "Why Cedar?"
   href: "/why-us/"
 secondaryCta:
-  label: "Free Trial"
-  href: "/free-trial/"
+  label: "Book Free Assessment"
+  href: "/book-assessment"
 stats:
   - value: "5.0"
     label: "Google rating"

@@ -33,26 +33,28 @@ test.describe('Mobile navigation', () => {
       await expect(menuButton).toHaveCount(1);
       await menuButton.click();
       await expect(page.getByRole('navigation', { name: 'Mobile navigation' })).toHaveCount(1);
-      await expect(drawer).toContainText('Where Learning Takes Root');
+      await expect(drawer).toContainText('Strengthening Academic Abilities Efficiently and Effectively');
       await page.screenshot({
         path: screenshotPath('mobile-home-after-redesign.png'),
         fullPage: true,
       });
     });
 
-    await test.step('Verify branded actions and contact links are present', async () => {
-      await expect(drawer.getByRole('link', { name: 'Book a Free Assessment' })).toHaveCount(1);
-      await expect(drawer.getByRole('link', { name: '(469) 757-2220' })).toHaveCount(1);
-      await expect(drawer.getByRole('link', { name: 'info@cedartutoring.com' })).toHaveCount(1);
-      await expect(drawer.getByRole('button', { name: 'Expand Programs' })).toHaveCount(1);
-      await expect(drawer.getByRole('button', { name: 'Expand Test Prep' })).toHaveCount(1);
+    await test.step('Verify all top-level nav links are present', async () => {
+      const nav = drawer.getByRole('navigation', { name: 'Mobile navigation' });
+      await expect(nav.getByRole('link', { name: 'Home' })).toHaveCount(1);
+      await expect(nav.getByRole('link', { name: 'Academic Programs' })).toHaveCount(1);
+      await expect(nav.getByRole('link', { name: 'Test Prep' })).toHaveCount(1);
+      await expect(nav.getByRole('link', { name: 'Summer Programs' })).toHaveCount(1);
+      await expect(nav.getByRole('link', { name: 'Why Us' })).toHaveCount(1);
+      await expect(nav.getByRole('link', { name: 'Plans' })).toHaveCount(1);
+      await expect(nav.getByRole('link', { name: 'Contact Us' })).toHaveCount(1);
     });
 
-    await test.step('Expand Programs and reveal the subject links', async () => {
-      await drawer.getByRole('button', { name: 'Expand Programs' }).click();
-      await expect(drawer.getByRole('link', { name: 'Math' })).toHaveCount(1);
-      await expect(drawer.getByRole('link', { name: 'Reading' })).toHaveCount(1);
-      await expect(drawer.getByRole('link', { name: 'Homework Help' })).toHaveCount(1);
+    await test.step('Verify branded actions and contact links are present', async () => {
+      await expect(drawer.getByRole('link', { name: 'Book a Free Assessment' })).toHaveCount(1);
+      await expect(drawer.getByRole('link', { name: '+1 708 890-4400' })).toHaveCount(1);
+      await expect(drawer.getByRole('link', { name: 'Info@cedartutoring.com' })).toHaveCount(1);
     });
 
     await test.step('Verify the drawer opens without browser errors', async () => {
@@ -60,22 +62,15 @@ test.describe('Mobile navigation', () => {
     });
   });
 
-  test('Programs child routes keep the current section expanded with active child link state', async ({ page }) => {
+  test('Programs child routes show the parent nav link in the drawer', async ({ page }) => {
     await page.goto('/programs/math', { waitUntil: 'networkidle' });
     await page.getByRole('button', { name: 'Open navigation menu' }).click();
 
     const drawer = page.locator('[data-slot="sheet-content"]');
-    const programsToggle = drawer.getByRole('button', { name: 'Collapse Programs' });
-    const mathLink = drawer.getByRole('link', { name: 'Math' });
 
-    await test.step('Keep the active parent section expanded', async () => {
-      await expect(programsToggle).toHaveCount(1);
-      await expect(mathLink).toHaveCount(1);
-    });
-
-    await test.step('Expose the active page semantics for the selected child route', async () => {
-      await expect(mathLink).toHaveAttribute('aria-current', 'page');
-      await expect(drawer.getByRole('link', { name: 'Programs' })).toHaveCount(1);
+    await test.step('Parent nav link is accessible from a programs child route', async () => {
+      await expect(drawer.getByRole('navigation', { name: 'Mobile navigation' })).toHaveCount(1);
+      await expect(drawer.getByRole('link', { name: 'Academic Programs' })).toHaveCount(1);
     });
   });
 });

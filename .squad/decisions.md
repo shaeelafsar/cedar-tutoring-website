@@ -702,3 +702,16 @@ Morpheus clarified: Wave 3 shifts from "form backend only" to **atomic replaceme
 ### Learnings
 
 When product UX hits a dead-end (duplicate-fields bug), prefer pivot-in-place over revert: rescope the current work to drop the problematic component, preserve supporting work that remains valid. The form-first merge shed the form rendering but kept the CTA unification, nav restructure, and page structure — substantial work that advances the site even on the Calendly-only path.
+
+### 2026-05-07T15:45:12.000-05:00: /faq default category changed from "All" to "General"
+**By:** Trinity (Frontend Engineer)
+**Status:** APPROVED
+**Decision:** Changed the `/faq` page default selected category from "All" (18 items) to "General" (4 items — most universally relevant questions).
+**Rationale:** Hick's Law: 18 accordion items increases time-to-decision. "General" answers the broadest new-visitor questions (ages, programs, online/in-person, differentiators). Users can filter to specific categories via button tap.
+**Impact:**
+- Default render: 4 items instead of 18
+- "All" tab remains accessible
+- Filter UX unchanged
+- FAQPage JSON-LD unaffected (still includes all 18)
+- No content changes
+**Robustness:** Default logic `categories.includes("General") ? "General" : categories[0]` — tolerates future removal of "General".

@@ -51,3 +51,13 @@
 - **basePath env-gate landed:** `DEPLOY_TARGET=github-pages` now gates basePath and image-path helpers. Both GitHub Pages and local builds verified; Azure SWA will serve from domain root ✓
 - **SWA test plan update:** Test against both build modes (DEPLOY_TARGET set for GH Pages CI, unset for local/SWA builds). Ensure image URLs, asset paths, and Calendly iframe render correctly on domain-root deployment (no `/cedar-tutoring-website` prefix).
 - **Form backend prereq:** basePath env-gate is safety net for Wave 3 Function. First SWA build will now serve from domain root (not `/cedar-tutoring-website/`), enabling clean form submission routes.
+
+### Visual Bug Triage Skill Created (2026-05-07T18:45:00-05:00)
+
+**By:** Trinity (Frontend Engineer)
+
+**Skill:** `.squad/skills/visual-bug-triage/SKILL.md`
+
+**Purpose:** Methodology for distinguishing screenshot artifacts (animation/timing) from actual render bugs. Documented for team reuse in future audit follow-ups.
+
+**Recommendation:** Always pair screenshot-based bug reports with scroll-into-view verification tests to validate render behavior before flagging as bugs.

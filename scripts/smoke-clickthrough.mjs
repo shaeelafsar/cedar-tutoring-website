@@ -194,6 +194,24 @@ async function checkPage(context, routePath, viewport) {
       result.notes.push("No <h1> found");
     }
 
+    // /book-assessment specific checks — Calendly embed + no old assessment form
+    if (routePath === "/book-assessment") {
+      // Allow Calendly client component to mount
+      await page.waitForTimeout(3000);
+      const calendlyCount = await page.locator(".cedar-calendly-host").count();
+      result.calendlyEmbed =
+        calendlyCount > 0 &&
+        (await page.locator(".cedar-calendly-host").first().isVisible());
+      if (!result.calendlyEmbed) {
+        result.notes.push("Calendly embed (.cedar-calendly-host) NOT visible — Calendly widget may have failed to mount");
+      }
+      const formCount = await page.locator("form").count();
+      result.noAssessmentForm = formCount === 0;
+      if (!result.noAssessmentForm) {
+        result.notes.push(`Unexpected <form> on /book-assessment (${formCount} form(s)) — old assessment form may have re-appeared`);
+      }
+    }
+
     // 3. Header nav links
     const headerLinks = await page
       .locator("header a[href]")

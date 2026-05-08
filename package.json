@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "smoke:deployed": "node scripts/smoke-deployed.mjs"
+    "smoke:deployed": "node scripts/smoke-clickthrough.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",

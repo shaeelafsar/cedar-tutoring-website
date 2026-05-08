@@ -23,10 +23,9 @@ test.describe('Mobile UX Check (375x812)', () => {
       const response = await page.goto(pg.path, { waitUntil: 'networkidle' });
       const status = response?.status() ?? 0;
 
-      // Screenshot
+      // Screenshot (viewport only — fullPage hits Firefox's 32767px height limit on tall pages)
       await page.screenshot({
         path: `tests/screenshots/${pg.name.toLowerCase().replace(/\s+/g, '-')}-mobile.png`,
-        fullPage: true,
       });
 
       // Check status
@@ -93,21 +92,18 @@ test.describe('Mobile UX Check (375x812)', () => {
   });
 
   test('Navigation is accessible on mobile', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
     await page.goto('/', { waitUntil: 'networkidle' });
 
-    // Look for hamburger menu / mobile nav toggle
-    const mobileMenuBtn = page.locator('button[aria-label*="menu" i], button[aria-label*="nav" i], [data-testid="mobile-menu"]');
-    const hasMobileMenu = await mobileMenuBtn.count() > 0;
+    await test.step('Open mobile navigation drawer', async () => {
+      const menuBtn = page.getByRole('button', { name: 'Open navigation menu' });
+      await menuBtn.click();
+      // Wait for drawer to be fully open before asserting contents
+      await expect(page.locator('[data-slot="sheet-content"][data-open]')).toHaveCount(1);
+    });
 
-    if (hasMobileMenu) {
-      await mobileMenuBtn.first().click();
-      await page.waitForTimeout(500);
+    await test.step('Take screenshot of open navigation', async () => {
       await page.screenshot({ path: 'tests/screenshots/mobile-nav-open.png' });
-    } else {
-      // Check if nav links are visible without a menu button
-      const navLinks = page.locator('nav a');
-      const navCount = await navLinks.count();
-      console.log(`[INFO] No mobile menu button found. Nav links visible: ${navCount}`);
-    }
+    });
   });
 });

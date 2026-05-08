@@ -36,6 +36,12 @@ test.describe('Wave 2 — Top Navigation', () => {
     });
 
     await test.step('Assert "Plans" nav link exists and points to /pricing', async () => {
+      const viewport = page.viewportSize();
+      if (viewport && viewport.width < 1024) {
+        // On mobile viewports the desktop nav is display:none — open the hamburger drawer first
+        await page.getByRole('button', { name: 'Open navigation menu' }).click();
+        await expect(page.locator('[data-slot="sheet-content"][data-open]')).toHaveCount(1);
+      }
       const plansLink = page.getByRole('navigation').getByRole('link', { name: 'Plans' });
       // href may include trailing slash depending on Next.js config
       await expect(plansLink).toHaveAttribute('href', /^\/pricing\/?$/);

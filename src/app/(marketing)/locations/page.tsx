@@ -233,17 +233,30 @@ export default function LocationsPage() {
                         </div>
                       </div>
 
-                      <div className="border-primary/25 bg-primary/5 mt-6 rounded-2xl border border-dashed p-4">
-                        <p className="text-foreground text-sm font-semibold">
-                          Map preview
-                        </p>
-                        <p className="text-muted-foreground mt-2 text-sm leading-6">
-                          {address}
-                        </p>
-                        <p className="text-muted-foreground mt-2 text-xs leading-5">
-                          A full map embed can be added later. For now, use
-                          directions to open this location in Google Maps.
-                        </p>
+                      <div className="border-border mt-6 overflow-hidden rounded-2xl border shadow-sm">
+                        <div className="relative aspect-video w-full">
+                          <iframe
+                            src={`https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`}
+                            title={`Map showing ${location.name} at ${address}`}
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            className="h-full w-full border-0"
+                            allowFullScreen
+                          />
+                        </div>
+                        <div className="bg-muted/40 flex items-center justify-between gap-3 px-4 py-2.5">
+                          <p className="text-muted-foreground truncate text-xs">
+                            {address}
+                          </p>
+                          <a
+                            href={`https://www.google.com/maps?q=${encodeURIComponent(address)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary hover:text-primary/80 shrink-0 text-xs font-semibold transition-colors"
+                          >
+                            Get directions ↗
+                          </a>
+                        </div>
                       </div>
 
                       <div className="bg-muted/50 text-muted-foreground mt-6 rounded-2xl p-4 text-sm leading-6">

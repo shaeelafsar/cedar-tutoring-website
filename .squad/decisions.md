@@ -715,3 +715,33 @@ When product UX hits a dead-end (duplicate-fields bug), prefer pivot-in-place ov
 - FAQPage JSON-LD unaffected (still includes all 18)
 - No content changes
 **Robustness:** Default logic `categories.includes("General") ? "General" : categories[0]` — tolerates future removal of "General".
+
+### 2026-05-07T19:02:14-05:00: Typography Casing Rule
+**By:** Oracle (UX/Design)
+**Status:** APPROVED
+**Decision:** Uppercase is permitted ONLY for eyebrows (short section labels 1-5 words above main heading), navigation group titles (footer/sidebar), badges/chips (promotional/status labels), and table headers. Uppercase is NOT permitted for h2/h3/h4 headings (always sentence case), button text, body text, or link text.
+**What changed:** Fixed why-us theme headings (h3: "Personalized Learning", "Real Results", "No-Strings Affordability") from uppercase to sentence case per Bringhurst typography standards.
+**File:** `src/app/(marketing)/why-us/page.tsx:166`
+**Rationale:** Subheadings should never be uppercase per typography best practices; full headlines read cold/corporate. Cedar's warm, family-oriented brand voice requires sentence case headings.
+**Verification:** Change committed; live deploy verified.
+**Impact:** 1 file, 1 line change; cosmetic fix; high reversibility.
+
+### 2026-05-07T19:02:14-05:00: NEXT_PUBLIC_ Required for Client-Readable Env Vars
+**By:** Trinity (Frontend Engineer)
+**Status:** APPROVED
+**Decision:** Any environment variable read in code executing on the client side (React Client Components, hooks, utilities imported by Client Components) must be prefixed `NEXT_PUBLIC_`. Non-`NEXT_PUBLIC_` variables are stripped from client JS bundle at build time and resolve to `undefined` during client hydration.
+**Rule:** Check when adding env-controlled features: (1) Does code reading var run in Client Component or shared lib? → must be `NEXT_PUBLIC_` (2) Does var contain a secret? → must NOT be `NEXT_PUBLIC_` (3) Verify with local build + grep `out/index.html` to confirm value embedded correctly
+**Cedar fix (2026-05-07):** Renamed `DEPLOY_TARGET` → `NEXT_PUBLIC_DEPLOY_TARGET` across `src/lib/image-path.ts`, `next.config.ts`, `.github/workflows/deploy-pages.yml`
+**Root cause:** Logo preload 404 on every page — `next/image` with `priority` injects `<link rel="preload">` during hydration using un-prefixed client-side src, overriding correct SSG preload
+**Verification:** Deploy succeeded; logo preload now correct; console error resolved.
+**References:** Next.js environment variables documentation; client-side bundle analysis patterns
+
+### 2026-05-07T19:02:14-05:00: Smoke Methodology — Click-Through > Route-Load-Only
+**By:** Mouse (QA Engineer)
+**Status:** APPROVED
+**Decision:** Route smoke tests must include full click-through validation (CTA navigation, nav link verification, console error capture) rather than route-load-only checks. This canonical approach catches static-screenshot-invisible defects: wrong basePath hrefs, console resource 404s, client-side env var issues.
+**Methodology:** 9 mandatory checks per route (script: `scripts/smoke-clickthrough.mjs`): (1) HTTP 200 + page loads (2) h1 present & non-empty (3) Header nav links verify basePath & destination h1 (4) Footer nav links same (5) CTAs categorize (internal/external/tel/mailto/calendly) & verify internal hrefs contain basePath (6) Dead-link HEAD sweep on unique internal hrefs (7) Image naturalWidth > 0 after load (8) Scroll-to-bottom + screenshot (catches whileInView failures) (9) Mobile pass (375×812): hamburger opens, mobile nav links have basePath, no horizontal scroll
+**Live smoke results (b2b2979, deploy #42):** 20 sitemap routes + 2 extras → all 22 passing; 1 P1 found (logo preload basePath — routed to Trinity, fixed in Trinity-NEXT_PUBLIC_ENV_RULE above)
+**Key insight:** Static screenshot smoke cannot catch CTA href basePath issues, console resource 404s, or client-side env variable availability defects; click-through smoke catches all three
+**Reversibility:** Can be refactored for different stack without methodology loss; script archived as team reusable asset
+

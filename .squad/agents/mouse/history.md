@@ -35,8 +35,31 @@
 
 **Ready for:** Test code writing once Trinity confirms spec patches are merged
 
+### Click-Through Smoke Test — Live Deploy (2026-05-07T19:02:14-05:00)
+
+**Status:** ✅ COMPLETE — live site at b2b2979 / deploy #42 tested
+
+**Script created:** `scripts/smoke-clickthrough.mjs` — 9-check mandatory protocol
+
+**Results summary:**
+- 20 routes from sitemap + 2 extras (free-trial, privacy-policy) = 22 total
+- All pages: HTTP 200, h1 present, no broken nav links, no dead links, no broken images
+- Mobile: all 20 routes pass — hamburger opens, nav links have basePath, no h-scroll
+- **1 defect found (P1):** `<link rel="preload" href="/images/logos/cedar-logo-original.jpg">` missing basePath — fires 404 console error on every page. Root: `DEPLOY_TARGET` not `NEXT_PUBLIC_`; client-side hydration loses the env var; `next/image` injects a second wrong preload. Logo renders correctly — no user-visible impact.
+
+**Routed to:** Trinity (via `.squad/decisions/inbox/mouse-smoke-clickthrough.md`)
+
+**Status:** Methodology now codified in team decisions (2026-05-07T19:02:14-05:00). Defect fixed by Trinity in commit 6bb4f39. Script archived as reusable team asset.
+
+---
+
 ## Learnings
 
+- **Click-through smoke vs route-load smoke:** Route-load-only smoke (h1, footer, console) creates false confidence. It cannot detect: CTAs with raw hrefs missing basePath, broken `<link rel="preload">` from client-side env var loss, or mobile nav regressions.
+- **`naturalWidth` check ≠ preload 404:** `document.images[].naturalWidth` only catches `<img>` elements. `<link rel="preload" as="image">` firing a 404 is invisible to it. Add `page.on('response')` status=404 sweep as a separate check.
+- **`NEXT_PUBLIC_` is mandatory for client components:** `DEPLOY_TARGET` without the prefix is stripped from the client bundle. Any env var consumed by a `"use client"` component must be `NEXT_PUBLIC_`. The `imagePath()` helper is called in the Header (client component) — so it needs `NEXT_PUBLIC_DEPLOY_TARGET`.
+- **Prefetch `ERR_ABORTED` is not a bug:** Next.js Link prefetches routes in viewport; they show as `ERR_ABORTED` in requestfailed but do NOT surface as console errors. Safe to ignore.
+- **Skill documented:** `.squad/skills/click-through-smoke/SKILL.md`
 - **Test-plan structure for serverless Functions:** 5 mandatory layers (unit, integration, fixtures, mocking, out-of-scope)
 - **Mocking strategy:** Prefer injectable fake client over `vi.mock` for external services. Fake records calls in array for assertions.
 - **Honeypot field continuity:** Check existing form/test code for field names before planning — discrepancy surfaced as regression risk (botcheck vs website)

@@ -26,3 +26,37 @@
 **Recommendation:** Pair screenshot audits with scroll-into-view tests to verify actual render behavior vs. animation/timing artifacts. Skill documented at `.squad/skills/visual-bug-triage/SKILL.md`.
 
 **Open Question:** /locations map needs live Google Maps embed (requires API key + Oracle design spec).
+
+### Typography Casing Audit (2026-05-07T19:02:00-05:00)
+
+**By:** Oracle (UX/Design) — responding to user report "some fonts are all capitalized"
+
+**Method:** Source grep (uppercase, tracking-) + Playwright visual inspection (14 pages, computed styles)
+
+**Findings:**
+- 50+ uppercase elements detected across site
+- 95% are **intentional eyebrows/badges/nav labels** — KEEP
+- 1 pattern is **inconsistent**: why-us theme h3 headings ("Personalized Learning", "Real Results", "No-Strings Affordability") use `uppercase` but function as subheadings, not eyebrows
+
+**Casing Rule Codified:**
+- Eyebrows: `text-xs font-semibold/bold uppercase tracking-[0.12em+]` — KEEP
+- Nav group titles: `text-sm font-semibold uppercase tracking-wider` — KEEP  
+- Badges: `text-xs font-bold uppercase` — KEEP
+- Table headers: `text-xs font-bold uppercase tracking-[0.12em]` — KEEP
+- h2/h3/h4 headings: Sentence case — NEVER uppercase
+- Buttons: Sentence case — NEVER uppercase
+
+**Fix Required:**
+- `src/app/(marketing)/why-us/page.tsx:166` — remove `uppercase` from theme h3 class
+
+**Frameworks Applied:**
+- Bringhurst (Elements of Typographic Style): ALL CAPS for short labels only
+- Nielsen #4: Consistency across similar elements
+- Cedar brand: Warm/family voice conflicts with heavy uppercase
+
+**Artifacts:**
+- Screenshots: `.squad/agents/oracle/screenshots/typography-*.png`
+- Decision: `.squad/decisions/inbox/oracle-typography-rule.md` → **MERGED to .squad/decisions.md (2026-05-07T19:02:14-05:00)**
+- Skill: `.squad/skills/typography-audit/SKILL.md`
+
+**Status:** Rule now codified in team decisions. Trinity fixed `/why-us` h3 in commit 6bb4f39. Pattern available for future audits and code review gates.

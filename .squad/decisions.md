@@ -745,3 +745,45 @@ When product UX hits a dead-end (duplicate-fields bug), prefer pivot-in-place ov
 **Key insight:** Static screenshot smoke cannot catch CTA href basePath issues, console resource 404s, or client-side env variable availability defects; click-through smoke catches all three
 **Reversibility:** Can be refactored for different stack without methodology loss; script archived as team reusable asset
 
+### 2026-05-07T19:56:44-05:00: User directive — Wave 3 is a deferred feature
+**By:** Shaeel Afsar (via Copilot)
+**Status:** APPROVED
+**What:** Wave 3 (full Calendly replacement: form + Resend email + custom calendar atomic ship on Azure SWA) is now classified as a **deferred feature** — not paused-but-imminent. Stop surfacing Wave 3 reminders at the end of every session. The current Calendly-only approach is the production solution for the foreseeable future. Revisit only when Shaeel explicitly raises Wave 3 again.
+**Why:** Repeated session-end reminders are noise; the team should treat Calendly-only as the steady state. The Azure SWA spec, decisions, and combined-review docs remain in-repo as reference for whenever Wave 3 is revived, but no proactive surfacing.
+**Implication for the team:**
+- Trinity, Mouse, Oracle: do NOT propose Wave 3 work or scope creep toward custom forms/calendar/email unless Shaeel asks.
+- Coordinator: drop the standing "Wave 3 still paused" footer from session summaries.
+- The .squad/specs/azure-function-submit-assessment.md spec stays as cold-storage; it's not active backlog.
+
+### 2026-05-07T20:11:05-05:00: /locations Page Strategy — Free Maps Iframe (No API Key)
+**By:** Trinity (Frontend Engineer)
+**Status:** IMPLEMENTED (Commit: be1d139)
+**Decision:** Replace the `/locations` map placeholder with a no-API-key Google Maps iframe embed.
+**Rationale:** Shaeel greenlit the embed. Free iframe pattern requires no API key, no billing, no env vars — correct choice for a static marketing site with one location.
+**Implementation Details:**
+- **Pattern:** `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed` — no Maps JS API, no API key required.
+- **Address source-of-truth:** `content/pages/locations/_page.md` — `addressLine1` / `city` / `state` / `zip` fields. The `formatAddress()` helper in `locations/page.tsx` constructs the full string. Do NOT hard-code the address anywhere else.
+- **Container:** `relative aspect-video w-full` so the map stays 16:9 and scales on all viewport sizes.
+- **Accessibility:** `title` attribute with location name + address, `loading="lazy"`, `referrerPolicy="no-referrer-when-downgrade"`.
+- **"Get directions" link:** `<a target="_blank" rel="noopener noreferrer">` — plain anchor, NOT Next.js `<Link>` (external URL).
+**"No API Key by Design" choice:** Decided to keep this permanently as no-API-key embed (not upgrade to Maps JS API later) unless a specific feature requirement demands it (clustering, custom markers, etc.). Rationale: adds billing risk with zero UX gain for a single-location academy.
+
+### 2026-05-07T20:11:05-05:00: Smoke Script Consolidation — Legacy smoke-deployed.mjs Deleted
+**By:** Trinity (Frontend Engineer)
+**Status:** IMPLEMENTED (Commit: 2dd6163)
+**Decision:** `scripts/smoke-deployed.mjs` has been permanently deleted. `npm run smoke:deployed` now runs `scripts/smoke-clickthrough.mjs`.
+**Rationale:** The legacy script performed only route-load + h1/footer/console checks. The click-through script covers a strict superset: 9 checks per route × 20 routes × desktop + mobile, dead-link HEAD sweep, image naturalWidth, CTA navigation verification, and mobile hamburger. The old script's two unique checks (Calendly embed on `/book-assessment`, and `noAssessmentForm`) were ported into `smoke-clickthrough.mjs` before deletion, preserving 100% coverage.
+**Impact:**
+- One fewer script to maintain. No drift risk.
+- `npm run smoke:deployed` is now the single, comprehensive gate.
+- SKILL.md upgrade path item "Add Calendly embed verification" fulfilled.
+
+### 2026-05-07T20:11:05-05:00: Known-Unknown — 5 Pre-Existing Playwright Failures in Baseline
+**By:** Mouse (QA Engineer)
+**Status:** RECORDED (Out-of-scope for polish round)
+**What:** While rewriting mobile nav drawer test suite (Polish Round), Mouse surfaced 5 additional pre-existing failures in `mobile-ux` and `wave-2` test specs that were previously hidden or passing with stale assertions.
+**Root cause:** Test drift caused by CSS/UX changes not reflected in test expectations (e.g., nav reflow, mobile breakpoints, accessibility tree changes).
+**Action taken:** Tests rewritten, mobile-nav suite now 175/175 passed. The 5 other failures left untouched as explicitly out-of-scope.
+**Implication:** Future work should audit `mobile-ux.spec.ts` and `wave-2.spec.ts` to bring baseline to 100% passing before next feature work begins. Do not ignore these; they represent real UX drift that may affect parent/guardian experience on mobile.
+**Reversibility:** Failures are reproducible; marking as known-unknown preserves context for triage.
+

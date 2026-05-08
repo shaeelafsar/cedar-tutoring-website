@@ -51,10 +51,35 @@
 
 **Status:** Methodology now codified in team decisions (2026-05-07T19:02:14-05:00). Defect fixed by Trinity in commit 6bb4f39. Script archived as reusable team asset.
 
+**Polish Round Update (2026-05-07):** Trinity further consolidated by deleting legacy `scripts/smoke-deployed.mjs` and rebinding `npm run smoke:deployed` → click-through. Commit 2dd6163. **Smoke is now canonical; old route-load-only script permanently removed.** Ported Calendly embed and noAssessmentForm checks before deletion.
+
+---
+
+### Mobile Nav Drawer Test Fixes (2026-05-07T20:11:05-05:00)
+**Status:** ✅ COMPLETE — 8/8 mobile-nav tests green across all 4 browser projects
+
+**Which tests failed (all 4 browsers × 2 test titles = 8 failures):**
+1. `Homepage - drawer shows branded navigation and quick contact actions`
+2. `Programs child routes keep the current section expanded with active child link state`
+
+**Root causes (all test drift, production code is correct):**
+1. **Tagline string changed:** Test asserted `'Where Learning Takes Root'`; actual tagline is `'Strengthening Academic Abilities Efficiently and Effectively'` (updated in `content/site/metadata.md`)
+2. **Contact info changed:** Phone was `(469) 757-2220`; now `+1 708 890-4400`. Email was `info@cedartutoring.com`; now `Info@cedartutoring.com` (capital I)
+3. **Nav redesigned from expandable → flat:** Tests assumed `Expand Programs` / `Expand Test Prep` buttons and child links (Math, Reading, Homework Help) in the mobile drawer. The nav was redesigned to flat top-level links. No children in `navigation` YAML. No expand/collapse buttons rendered. Nav label also changed from `Programs` to `Academic Programs`.
+
+**Fixes applied:**
+- Test 1: Updated tagline assertion, phone, email. Added new step verifying all 7 flat nav links by `getByRole('link')`. Removed Expand/Collapse button assertions and child-link expand flow.
+- Test 2: Renamed test (`Programs child routes show the parent nav link in the drawer`). Replaced Collapse/child assertions with a single assertion: `Academic Programs` link is present when navigating from `/programs/math`.
+
+**Green count:** 175 passed; 5 pre-existing failures in `mobile-ux.spec.ts` and `wave-2.spec.ts` (unrelated, baseline unchanged)
+
+**Skill extracted:** `.squad/skills/playwright-nav-drawer-tests/SKILL.md`
+
 ---
 
 ## Learnings
 
+- **Mobile nav drawer test drift checklist:** When a mobile nav drawer test fails, verify (1) tagline/branding strings in content files, (2) contact info in site config, (3) nav structure (flat vs expandable, label changes). See `.squad/skills/playwright-nav-drawer-tests/SKILL.md`.
 - **Click-through smoke vs route-load smoke:** Route-load-only smoke (h1, footer, console) creates false confidence. It cannot detect: CTAs with raw hrefs missing basePath, broken `<link rel="preload">` from client-side env var loss, or mobile nav regressions.
 - **`naturalWidth` check ≠ preload 404:** `document.images[].naturalWidth` only catches `<img>` elements. `<link rel="preload" as="image">` firing a 404 is invisible to it. Add `page.on('response')` status=404 sweep as a separate check.
 - **`NEXT_PUBLIC_` is mandatory for client components:** `DEPLOY_TARGET` without the prefix is stripped from the client bundle. Any env var consumed by a `"use client"` component must be `NEXT_PUBLIC_`. The `imagePath()` helper is called in the Header (client component) — so it needs `NEXT_PUBLIC_DEPLOY_TARGET`.

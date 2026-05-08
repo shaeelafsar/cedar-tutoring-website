@@ -163,7 +163,7 @@ export default function WhyUsPage() {
           ].map(({ theme, indices }) => (
             <div key={theme} className="mb-10 last:mb-0">
               <Reveal>
-                <h3 className="text-foreground mb-4 text-base font-bold tracking-wide uppercase text-[hsl(var(--primary-text))]">
+                <h3 className="text-foreground mb-4 text-base font-bold tracking-wide text-[hsl(var(--primary-text))]">
                   {theme}
                 </h3>
               </Reveal>

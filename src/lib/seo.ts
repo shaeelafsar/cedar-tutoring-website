@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 
+import { BRAND_SOCIAL_IMAGE } from "@/lib/branding";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export const SITE_URL = SITE_CONFIG.url;
 export const SITE_NAME = SITE_CONFIG.name;
-export const DEFAULT_OG_IMAGE = "/images/logos/cedar-logo-original.jpg";
+export const DEFAULT_OG_IMAGE = BRAND_SOCIAL_IMAGE;
 export const DEFAULT_DESCRIPTION =
   "Explore personalized K-12 tutoring in reading, math, writing, science, Arabic, homework help, and test prep with caring teachers for families in Worth, IL and the South Suburbs of Chicago.";
 

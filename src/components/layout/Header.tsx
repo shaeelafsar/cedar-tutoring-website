@@ -29,6 +29,7 @@ import {
 import { useState } from "react";
 import { buttonVariants } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { BRAND_LOGO } from "@/lib/branding";
 import type { NavItem, SiteConfig } from "@/lib/content/site";
 import { imagePath } from "@/lib/image-path";
 import { cn } from "@/lib/utils";
@@ -318,10 +319,11 @@ function BrandLink({ className }: { className?: string }) {
       aria-label="Cedar Tutoring Academy home"
     >
       <Image
-        src={imagePath("/images/logos/cedar-logo-original.jpg")}
-        alt="Cedar Tutoring Academy"
-        width={240}
-        height={133}
+        src={imagePath(BRAND_LOGO.src)}
+        alt={BRAND_LOGO.alt}
+        width={BRAND_LOGO.width}
+        height={BRAND_LOGO.height}
+        sizes="(min-width: 768px) 101px, 72px"
         className="h-10 w-auto md:h-14"
         priority
       />
@@ -366,10 +368,11 @@ export function Header({ navItems, siteConfig }: HeaderProps) {
                   aria-label="Cedar Tutoring Academy home"
                 >
                   <Image
-                    src={imagePath("/images/logos/cedar-logo-original.jpg")}
-                    alt="Cedar Tutoring Academy"
-                    width={240}
-                    height={133}
+                    src={imagePath(BRAND_LOGO.src)}
+                    alt={BRAND_LOGO.alt}
+                    width={BRAND_LOGO.width}
+                    height={BRAND_LOGO.height}
+                    sizes="72px"
                     className="h-10 w-auto"
                     priority
                   />

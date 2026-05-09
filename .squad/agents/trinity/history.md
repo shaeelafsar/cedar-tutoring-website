@@ -91,3 +91,5 @@ Shaeel discovered duplicate-fields bug: Cedar's form above Calendly's form creat
 **Commits:** 1c0d348 (form-first, superseded for `/book-assessment` only), fe9f9ab (Wave 3 rescope docs), fb3c5f7 (Calendly-only pivot)
 
 **Deployment:** GitHub Pages run 25526377501 (Calendly-only shape verified live)
+
+- **Next.js App Router favicon + branding audit (2026-05-09T10:39:20-05:00):** App Router serves browser/app icons from co-located files in `src/app/`: root `favicon.ico` for legacy tabs, `icon.svg`/`icon.png` for modern icons, and `apple-icon.png` for iOS. Cedar's canonical source logo is `public/images/logos/cedar-logo-original.jpg` (1915×1061 JPEG). Use `src/lib/branding.ts` as the code source of truth for logo path/alt/intrinsic dimensions and `public/og-image.png` as the canonical social preview image. Header logo pattern: `next/image` with intrinsic `240×133`, rendered at `h-10 w-auto md:h-14`, above the fold with `priority`, explicit `sizes`, and branded alt text `Cedar Tutoring Academy`.

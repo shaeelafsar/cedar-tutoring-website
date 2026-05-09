@@ -41,3 +41,12 @@
 3. **Azure SWA managed Functions killer pattern:** For static-site solo devs, SWA + Functions is perfect fit: drop `api/` folder, auto-deploy same-origin, free 1M executions/month. Collapses "I need a backend" into "add a folder."
 
 4. **Public-key form service model:** Web3Forms/Formspree keys are NOT traditional secrets. Defense is rate limiting + honeypots + origin checks, not key secrecy. Harvested key lets attacker spam *your* inbox (annoying, not breach). Shaeel's server-side-secrets posture is stronger-than-necessary but costs nothing extra given Azure migration.
+
+5. **Static-only Azure SWA Bicep structure:** The Azure prep layer now lives in `infra/` as `main.bicep`, `main.parameters.json`, and `README.md`. Resource group creation stays outside Bicep, and the template provisions only one `Microsoft.Web/staticSites` resource so infrastructure remains prep-only, not cutover.
+
+6. **SWA SKU default reasoning:** `Free` is the right default for the initial static-only marketing-site provision because it minimizes cost and risk while GitHub Pages remains live. `Standard` is allowed as a parameter so Shaeel can upgrade later without changing template structure if production needs justify it.
+
+7. **Azure region rationale:** `centralus` is the default because it is the closest broadly available Azure region to Worth, IL for this deployment context. No subscription, compliance, or latency requirement currently outweighs the simple nearest-region choice.
+
+8. **Deferred Azure scope:** Function App, Resend/email settings, App Insights, Log Analytics, Key Vault, custom domains, Azure deploy workflow, Storage, CDN, and Front Door remain out of scope. The form backend is deferred indefinitely, Calendly remains steady state, DNS cutover is a separate owner-led task, and GitHub Pages remains live until Azure deployment is verified.
+

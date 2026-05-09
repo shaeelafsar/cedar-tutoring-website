@@ -77,9 +77,36 @@
 
 ---
 
+### 5 Baseline Playwright Failures Fixed (2026-05-08T15:31:16.293-05:00)
+**Status:** ✅ COMPLETE — 180/180 passing across all 4 browser projects. Pushed to main (commit 3a74567).
+
+**Classification: all 5 were test drift. No production bugs.**
+
+| # | Test | Browser(s) | Root Cause | Fix Applied |
+|---|------|-----------|------------|-------------|
+| 1 | `mobile-ux.spec.ts:95` "Navigation is accessible on mobile" | chromium | No `setViewportSize` call; hamburger `aria-label="Open navigation menu"` is in DOM via `lg:hidden` so `.count() > 0` was true, but `display:none` at desktop → click timeout | Added `setViewportSize(375×812)` before goto; replaced attribute-selector with `getByRole('button', {name: 'Open navigation menu'})`; removed `waitForTimeout(500)` → `await expect([data-slot="sheet-content"][data-open]).toHaveCount(1)` |
+| 2 | `mobile-ux.spec.ts:95` "Navigation is accessible on mobile" | firefox | Same as #1 | Same fix (setViewportSize applies per-test) |
+| 3 | `wave-2.spec.ts:31` "Plans link exists; Free Trial absent" | mobile-chrome | Desktop nav uses `hidden lg:flex` → `display:none` on mobile → not in accessibility tree → `getByRole('navigation')` finds nothing → timeout | Detect viewport < 1024px; if mobile, click `Open navigation menu` and wait for `[data-slot="sheet-content"][data-open]`; then proceed — drawer's `Mobile navigation` is now the resolved nav role |
+| 4 | `wave-2.spec.ts:31` "Plans link exists; Free Trial absent" | mobile-firefox | Same as #3 | Same fix |
+| 5 | `mobile-ux.spec.ts:17` "Reviews (/reviews) loads and renders" | mobile-firefox | `fullPage: true` screenshot on Firefox/Gecko throws when page height > 32767px; Reviews page at 375px wide is extremely tall | Removed `fullPage: true` from all diagnostic screenshots in the loop — viewport-only capture is sufficient for diagnostics and has no browser height limit |
+
+**New patterns added to SKILL.md:**
+- `fullPage: true` + Firefox 32767px limit
+- Mobile viewport drift: `display:none` desktop nav + accessibility tree exclusion
+- `.count()` vs visibility trap (`.count()` resolves for DOM-present hidden elements; `.click()` will timeout)
+
+**Final suite count: 180 passed, 0 failed**
+
+---
+
 ## Learnings
 
 - **Mobile nav drawer test drift checklist:** When a mobile nav drawer test fails, verify (1) tagline/branding strings in content files, (2) contact info in site config, (3) nav structure (flat vs expandable, label changes). See `.squad/skills/playwright-nav-drawer-tests/SKILL.md`.
+- **`.count()` vs visibility trap:** `.count()` resolves to a positive number even for DOM-present but CSS-hidden elements. Never gate a `.click()` on `.count() > 0` alone — the element may be `display:none`. Use `getByRole` (which excludes accessibility-tree-invisible elements) or check `.isVisible()` before clicking.
+- **`display:none` and the accessibility tree:** Playwright's `getByRole` excludes elements that are not in the accessibility tree. An element with `display:none` (e.g. from `hidden lg:flex`) is not accessible → `getByRole('navigation')` won't find it on mobile. Always scope role queries to elements that are actually rendered at the current viewport.
+- **Mobile viewport drift pattern:** Tests that check desktop nav links MUST either (a) set the viewport to a desktop width so the desktop nav is visible, OR (b) handle the mobile case by opening the hamburger drawer first. `getByRole('navigation')` on a mobile viewport (< lg breakpoint) will find nothing if the desktop nav is `display:none`.
+- **Firefox `fullPage: true` height limit:** Firefox/Gecko rejects `fullPage: true` screenshots when the page height exceeds 32767px. This can silently fail only on mobile-firefox with very long pages (e.g. Reviews at 375px wide). Remove `fullPage: true` from diagnostic screenshots; viewport-only capture has no limit and is sufficient for smoke diagnostics.
+- **webServer config is missing from playwright.config.ts:** The Playwright config has no `webServer` block. Tests require a manually started dev server. This is a source of false "all tests fail" confusion when running without the server. Consider adding `webServer: { command: 'next dev', port: 3000, reuseExistingServer: true }` (Morpheus decision needed).
 - **Click-through smoke vs route-load smoke:** Route-load-only smoke (h1, footer, console) creates false confidence. It cannot detect: CTAs with raw hrefs missing basePath, broken `<link rel="preload">` from client-side env var loss, or mobile nav regressions.
 - **`naturalWidth` check ≠ preload 404:** `document.images[].naturalWidth` only catches `<img>` elements. `<link rel="preload" as="image">` firing a 404 is invisible to it. Add `page.on('response')` status=404 sweep as a separate check.
 - **`NEXT_PUBLIC_` is mandatory for client components:** `DEPLOY_TARGET` without the prefix is stripped from the client bundle. Any env var consumed by a `"use client"` component must be `NEXT_PUBLIC_`. The `imagePath()` helper is called in the Header (client component) — so it needs `NEXT_PUBLIC_DEPLOY_TARGET`.
@@ -109,3 +136,11 @@
 **Purpose:** Methodology for distinguishing screenshot artifacts (animation/timing) from actual render bugs. Documented for team reuse in future audit follow-ups.
 
 **Recommendation:** Always pair screenshot-based bug reports with scroll-into-view verification tests to validate render behavior before flagging as bugs.
+
+## 2026-05-09 — Cross-Agent Update: Azure SWA went live
+
+**Context:** Morpheus authored static-only Bicep IaC. Trinity tuned Azure SWA workflow and verified deployment. Both GitHub Pages and Azure SWA now deploy in parallel.
+
+**Deployment:** `https://green-plant-0df01b610.7.azurestaticapps.net` (validation phase)
+
+**Implication for Mouse:** Deployment landscape now includes Azure SWA parallel to GitHub Pages. Monitor for any changes to accessibility or rendering behavior between the two hosting platforms during cutover planning.

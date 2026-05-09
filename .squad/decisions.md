@@ -787,3 +787,29 @@ When product UX hits a dead-end (duplicate-fields bug), prefer pivot-in-place ov
 **Implication:** Future work should audit `mobile-ux.spec.ts` and `wave-2.spec.ts` to bring baseline to 100% passing before next feature work begins. Do not ignore these; they represent real UX drift that may affect parent/guardian experience on mobile.
 **Reversibility:** Failures are reproducible; marking as known-unknown preserves context for triage.
 
+### 2026-05-09T15:20:22Z: Defer Wave 3 form backend feature indefinitely
+**By:** Shaeel Afsar (via Coordinator)
+**Status:** APPROVED
+**Decision:** The form backend feature (Azure Function `/api/submit-assessment` + Resend transactional email) is deferred **indefinitely**. Calendly remains the steady-state booking flow. Azure migration scope reduces to **static-site hosting only** — no Function App, no Resend account, no email infrastructure.
+**Rationale:** Shaeel confirmed Resend was only ever scoped to the form backend. Scheduling is already handled by Calendly, so removing the form-backend feature removes all need for Resend. Bicep IaC for Azure SWA reflects this reduced scope.
+**Impact:**
+- Bicep `infra/main.bicep` provisions Azure Static Web Apps only — no Function App resource
+- `.squad/specs/azure-function-submit-assessment.md` remains as cold storage (do not delete)
+- `BookAssessmentPageClient.tsx` graceful-fallback (phone/email display) and Calendly embed remain active
+- GH Pages remains the live deploy target; Bicep is preparation only
+
+### 2026-05-09T15:20:22Z: Bicep IaC authored for static-only Azure SWA
+**By:** Morpheus (Lead/Architect)
+**Status:** APPROVED
+**Decision:** Bicep IaC authored for static-only Azure Static Web Apps deployment. Template provisions a single `Microsoft.Web/staticSites` resource. Function App and Resend infrastructure explicitly excluded. Infra-only commit; does not deploy site code.
+**Files:** `infra/main.bicep`, `infra/main.parameters.json`, `infra/README.md`
+**Impact:** Shaeel can run `az deployment group create` to provision the Azure Static Web Apps resource. Future cutover sequence and deployment-token retrieval documented in `infra/README.md`.
+
+### 2026-05-09T15:26:16Z: Azure SWA workflow tuned for Next.js static export
+**By:** Trinity (Frontend Engineer)
+**Status:** APPROVED
+**Decision:** Azure Static Web Apps workflow tuned for Next.js static export by changing output directory from `build` to `out`. Portal-generated workflow updated and committed. First parallel-deploy run succeeded.
+**Files:** `.github/workflows/azure-static-web-apps-green-plant-0df01b610.yml` — `output_location: "build"` → `output_location: "out"`
+**Validation:** Azure SWA URL live at `https://green-plant-0df01b610.7.azurestaticapps.net`. Smoke tests passed: `/`, `/about/`, `/programs/` all HTTP 200. basePath gate confirmed OFF for Azure builds.
+**Impact:** Both GitHub Pages and Azure SWA now deploy on every push to `main`. GitHub Pages remains active; Azure SWA available for validation in parallel. Cutover is Shaeel's call after Azure stays clean across commits.
+
